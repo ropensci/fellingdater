@@ -27,13 +27,16 @@ estimate of the felling date is closely related to the construction date
 of the structure or building phase that was sampled for tree-ring
 dating.
 
+![](./figures/core_samples.jpg)
+
 ## Motivation
 
 These R scripts and functions were developped during the analysis of a
 large set of tree-ring data that were taken from medieval timber
 constructions in the town of Bruges (Belgium). The results of this study
-are presented in a paper that was submitted to *Dendrochronologia* and
-is currently under peer review.
+are presented in a paper that was submitted to
+[*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia)
+and is currently under peer review.
 
 > Haneca, Kristof
 > [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
@@ -58,33 +61,33 @@ sequence).
 The examples below all rely on published sapwood models for European oak
 ( *Quercus robur* L. and *Quercus petraea* (Matt.) Liebl.).
 
-The `sapwood_PDF()`-function takes 5 arguments: - swr = the observed
-number of sapwood rings on a timber - last = a calendar date for the
-last measured tree ring on a dendrochronologically dated sample
-(optional) - model = should be one of `c("Holstein_1980", "Wazny_1990")`
-(more models will be added later) - hdi = `TRUE/FALSE` whether the
-highest probability density interval (hdi) should be computed or not
-(relies on package `HDInterval`) - credMass = number \[0, 1\] that
-assigns the credibility mass associated with the hdi
+The `sapwood_PDF()`-function takes 5 arguments:
 
-OUtput is a `data.frame` with 3 variables: - `year`: ascending sequence
-staring at 0 when last is not set to a calendar year, or starting from
-the calendar year of the last observed sapwood ring - `swr`: ascending
-sequence starting at the observed number of sapwood rings - `p`:
-probability associated with the number of sapwood rings (swr), based on
-the sapwood model provided
+  - swr = the observed number of sapwood rings on a timber
+  - last = a calendar date for the last measured tree ring on a
+    dendrochronologically dated sample (optional)
+  - model = should be one of `c("Holstein_1980", "Wazny_1990")` (more
+    models will be added later)
+  - hdi = `TRUE/FALSE` whether the highest probability density interval
+    (hdi) should be computed or not (relies on package `HDInterval`)
+  - credMass = number \[0, 1\] that assigns the credibility mass
+    associated with the hdi
+
+Output is a `data.frame` with 3 variables:
+
+  - `year`: ascending sequence staring at 0 when last is not set to a
+    calendar year, or starting from the calendar year of the last
+    observed sapwood ring
+  - `swr`: ascending sequence starting at the observed number of sapwood
+    rings
+  - `p`: probability associated with the number of sapwood rings (swr),
+    based on the sapwood model provided
+
+<!-- end list -->
 
 ``` r
 source("./R/sapwood_PDF.R")
-library(tidyverse)
-#> -- Attaching packages ----------------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --
-#> v ggplot2 3.3.0     v purrr   0.3.3
-#> v tibble  3.0.0     v dplyr   0.8.5
-#> v tidyr   1.0.2     v stringr 1.4.0
-#> v readr   1.3.1     v forcats 0.5.0
-#> -- Conflicts -------------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
+require(tidyverse)
 
 # 8 sapwood rings observed and the Hollstein 1980 model as a reference
 sw1 <- sapwood_PDF(swr = 8, last = 1234, model = "Hollstein_1980")
@@ -111,7 +114,8 @@ rings and the horizontal line depicts the 95.4% credible interval for
 the felling date of the tree.
 
 ``` r
-library(HDInterval) # this package assist to compute the highest density interval
+library(HDInterval) # this package assist in computing the highest probability density interval
+# https://CRAN.R-project.org/package=HDInterval 
 
 # the 'full' sapwood model (Wazny 1990)
 sw2 <- sapwood_PDF(swr = 0, last = 1224, model = "Wazny_1990")
@@ -139,4 +143,84 @@ ggplot(sw2) +
   theme_minimal()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- --> \#\#
+sapwood\_combine()
+
+A function that tries to estimate a single felling date for a set of
+dated tree-ring series with (partly) preserved sapwood.
+
+``` r
+# some test-data
+
+dummy1 <- data.frame(
+  keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
+  Date_end = c(1000, 1005, 1000, 1000, 1010),
+  SWR = c(5, 10, 15, 16, 8),
+  Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
+
+dummy2 <- data.frame(
+  keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
+  Date_end = c(1000, 1005, 1008, 1000, 1010),
+  SWR = c(5, 10, NA, 1, 3),
+  Waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE))
+  
+```
+
+``` r
+source("./R/sapwood_combine.R")
+
+swc1 <- sapwood_combine(dummy1, hdi = TRUE, credMass = .90, model = "Hollstein_1990")
+
+str(swc1)
+#> List of 6
+#>  $ rawData  :'data.frame':   114 obs. of  7 variables:
+#>   ..$ year : num [1:114] 997 998 999 1000 1001 ...
+#>   ..$ trs_1: num [1:114] 0 0 0 0.00292 0.00785 ...
+#>   ..$ trs_2: num [1:114] 0 0 0 0 0 ...
+#>   ..$ trs_3: num [1:114] 0 0 0 0.098 0.0945 ...
+#>   ..$ trs_4: num [1:114] 0 0 0 0.1047 0.0989 ...
+#>   ..$ trs_5: num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
+#>   ..$ COMB : num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
+#>  $ A_c      : Named num 60
+#>   ..- attr(*, "names")= chr "Ac: critical threshold (%)"
+#>  $ A_comb   : Named num 60
+#>   ..- attr(*, "names")= chr "A_comb"
+#>  $ hdi_model: Named num [1:2] 1010 1015
+#>   ..- attr(*, "names")= chr [1:2] "lower" "upper"
+#>   ..- attr(*, "credMass")= num 0.9
+#>   ..- attr(*, "sapwood_model")= chr "Hollstein_1990"
+#>  $ summary  : chr [1:5, 1:5] "trs_1" "trs_2" "trs_3" "trs_4" ...
+#>   ..- attr(*, "dimnames")=List of 2
+#>   .. ..$ : chr [1:5] "trs_1" "trs_2" "trs_3" "trs_4" ...
+#>   .. ..$ : chr [1:5] "series" "endDate" "swr" "waneyEdge" ...
+#>  $ message  : chr "felling date range:  1010  -  1015"
+```
+
+## sapwood\_comb\_plot()
+
+Plot the output of `sapwood_combine()` with `ggplot()`
+
+``` r
+source("./R/sapwood_comb_plot.R")
+
+sapwood_comb_plot(dummy1, credMass = .954, model = "Hollstein_1990")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+``` r
+
+sapwood_comb_plot(dummy2, credMass = .954, model = "Hollstein_1990")
+#> Warning: Removed 343 rows containing missing values (position_stack).
+#> Warning: Removed 300 rows containing missing values (position_stack).
+#> Warning: Removed 60 row(s) containing missing values (geom_path).
+
+#> Warning: Removed 60 row(s) containing missing values (geom_path).
+```
+
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+## sapwood\_SPD()
+
+Computes a summed probability density from a set of tree-ring series
+with (partly) preserved sapwood.
