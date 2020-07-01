@@ -35,13 +35,14 @@ are presented in a paper that was submitted to
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia)
 and is currently under peer review.
 
-<!-- > Haneca, Kristof [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), -->
-
-<!-- Debonne, Vincent [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), -->
-
-<!-- Hoffsummer, Patrick, -->
-
-<!-- (under review). The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200 – 1500). _Dendrochronologia_. -->
+> Haneca, Kristof
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
+> Debonne, Vincent
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X),
+> Hoffsummer, Patrick, (under review). The ups and downs of the building
+> trade in a medieval city: tree-ring data as proxies for economic,
+> social and demographic dynamics in Bruges (c. 1200 – 1500).
+> *Dendrochronologia*.
 
 ## Overview of R-functions
 

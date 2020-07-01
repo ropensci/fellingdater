@@ -1,19 +1,28 @@
 ---
-output: github_document
+output: 
+  github_document:
+    toc: TRUE
 ---
-
->Kristof Haneca [![](https://svgshare.com/s/9pP.svg)](https://www.researchgate.net/profile/Kristof_Haneca)
->`r format(Sys.time(), '%d %B, %Y')`
 
 ```{r, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
+  warning = FALSE,
   collapse = TRUE,
+  fig.path = "./figures/",
   comment = "#>"
-)
+  )
 title <- "The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200 – 1500)"
 library(tidyverse)
 ```
+
+
+> <br/>
+> Kristof Haneca<br/>
+>`r format(Sys.time(), '%d %B, %Y')`<br/>
+> [![](./figures/RG.png)](https://www.researchgate.net/profile/Kristof_Haneca)
+
+
 
 # fellingDateR: estimating felling dates from historical tree-ring series
 
@@ -28,10 +37,11 @@ Where it can be assumed that a group of historical timbers were all felled at th
 These R scripts and functions were developed during the analysis of a large set of tree-ring data that were taken from medieval timber constructions in the town of Bruges (Belgium). The results of this study are presented in a paper that was submitted to [ _Dendrochronologia_ ](https://www.journals.elsevier.com/dendrochronologia) and is currently under peer review.
 
 
-<!-- > Haneca, Kristof [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), -->
-<!-- Debonne, Vincent [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), -->
-<!-- Hoffsummer, Patrick, -->
-<!-- (under review). `r title`. _Dendrochronologia_. -->
+> Haneca, Kristof [![](./figures/ORCHiD.png)](https://orcid.org/0000-0002-7719-8305), Debonne, Vincent, Hoffsummer, Patrick, (under review). `r title`. _Dendrochronologia_.
+
+### Content
+
+The [:file\_folder: R](/R) directory contains an R-scripts for each function.
 
 
 ## Overview of R-functions
@@ -97,7 +107,7 @@ ggplot(sw2) +
   geom_segment(aes(y = .005, yend = .005, x = sw4["lower"], xend = sw4["upper"])) +
   theme_minimal()
 ```
-## sapwood_combine()
+### sapwood_combine()
 
 A function that tries to estimate a single felling date for a set of dated tree-ring series with (partly) preserved sapwood.
 
@@ -145,14 +155,14 @@ dummy5 <- data.frame(
 ```{r}
 source("./R/sapwood_combine.R")
 
-swc1 <- sapwood_combine(dummy1, hdi = TRUE, credMass = .90, model = "Hollstein_1990")
+swc1 <- sapwood_combine(dummy1, hdi = TRUE, credMass = .90, model = "Hollstein_1980")
 
 str(swc1)
 
 ```
 
 
-## sapwood_comb_plot()
+### sapwood_comb_plot()
 
 Plot the output of `sapwood_combine()` with `ggplot()`
 
@@ -160,14 +170,14 @@ This first set of tree-ring series migh share a common felling date, situated be
 ```{r, warning = FALSE}
 source("./R/sapwood_comb_plot.R")
 
-sapwood_comb_plot(dummy1, credMass = .954, model = "Hollstein_1990")
+sapwood_comb_plot(dummy1, credMass = .954, model = "Hollstein_1980")
 
 ```
 When a series with preserved waney edge is dated, an exact felling date can be determined and evaluated whether the other series with preserved sapwood go together with this felling date.
 
 ```{r}
 
-sapwood_comb_plot(dummy2, credMass = .954, model = "Hollstein_1990")
+sapwood_comb_plot(dummy2, credMass = .954, model = "Hollstein_1980")
 
 ```
 
@@ -175,7 +185,7 @@ A data set with series that have different felling dates. No common felling date
 
 ```{r}
 
-sapwood_comb_plot(dummy3, credMass = .954, model = "Hollstein_1990")
+sapwood_comb_plot(dummy3, credMass = .954, model = "Hollstein_1980")
 
 ```
 
@@ -183,7 +193,7 @@ For this set of tree-ring series, no common felling date can be estimated. Proba
 
 ```{r}
 
-sapwood_comb_plot(dummy4, credMass = .954, model = "Hollstein_1990")
+sapwood_comb_plot(dummy4, credMass = .954, model = "Hollstein_1980")
 
 ```
 
@@ -191,11 +201,11 @@ Ony a _terminus post quem_ or 'earliest possible felling date' can be computed w
 
 ```{r}
 
-sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1990")
+sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1980")
 
 ```
 
-## sapwood_SPD()
+### sapwood_SPD()
 
 Computes a summed probability density from a set of tree-ring series with (partly) preserved sapwood.
 

@@ -51,11 +51,11 @@ sapwood_comb_plot <- function(x, credMass = 0.954, model = "Hollstein_1980"){
     # # plot tpq as arrow pointing away from end date
     { if (length(tpq) > 0)
       geom_point(data = pdf %>% filter(series %in% tpq) %>% filter(!is.na(p)) %>% group_by(series) %>% summarize(max = max(year)),
-                 aes(x = max + 1, y = .5),
+                 aes(x = max + 1, y = .6),
                  size = 2, fill = "darkblue") } +
     { if (length(tpq) > 0)
       geom_segment(data = pdf %>% filter(series %in% tpq) %>% filter(!is.na(p)) %>% group_by(series) %>% summarize(max = max(year)),
-                   aes(x = max + 1, xend = max + tpq_min + 1, y = .5, yend = .5, group = series),
+                   aes(x = max + 1, xend = max + tpq_min + 1, y = .6, yend = .6, group = series),
                    arrow = arrow(length = unit(0.08, "npc")))
     } +
       
@@ -71,7 +71,7 @@ sapwood_comb_plot <- function(x, credMass = 0.954, model = "Hollstein_1980"){
 
     # add summary text
     geom_text(data = summary, aes(x = plyr::round_any(range[2] + 40, 10, ceiling),
-                                    y = 0.5, 
+                                    y = 0.6, 
                                     label = paste0(
                                       series, " (last: ", endDate, ", swr: ", ifelse(is.na(swr), "- ", swr), ")",
                                       "\n ", ifelse(is.na(A_i), "", paste0("A_i = ", round(as.numeric(A_i), 1), "%"))), hjust = 1)) +
@@ -79,7 +79,7 @@ sapwood_comb_plot <- function(x, credMass = 0.954, model = "Hollstein_1980"){
     { if (nrow(summary %>% filter(Agreement == "poor")) != 0)
       geom_text(data = summary %>% filter(Agreement == "poor"),
                 aes(x = plyr::round_any(range[2] + 40, 10, ceiling),
-                    y = 0.2,
+                    y = 0.15,
                     label = "!! poor agreement (Ac = 60%)",
                     color = "tomato3", hjust = 1)) 
      } +
