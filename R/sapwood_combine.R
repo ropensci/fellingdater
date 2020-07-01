@@ -143,7 +143,7 @@ sapwood_combine <- function(x, credMass = 0.954, hdi = FALSE, model = "Hollstein
         # check rowwise if there is any p-value ==1 and replace COMB at that position with 1
         pdf_matrix[apply(pdf_matrix[,2:length(keycodes)+1] == 1, 1, FUN=function(x) any(x, na.rm = TRUE)), "COMB"] <- 1
         
-      } else (sum(pdf_matrix$COMB, na.rm = T) > 0) {
+      } else if (sum(pdf_matrix$COMB, na.rm = TRUE) > 0) {
         # avoid division by 0
         pdf_matrix$COMB <- pdf_matrix$COMB/sum(pdf_matrix$COMB, na.rm = TRUE)
 
