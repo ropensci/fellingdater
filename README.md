@@ -1,10 +1,7 @@
 
------
-
-title: “fellingDateR: brief overview” author: “Kristof Haneca” date: “01
-juli, 2020” output: github\_document
-
------
+> Kristof Haneca
+> [![](https://svgshare.com/s/9pP.svg)](https://www.researchgate.net/profile/Kristof_Haneca)
+> 01 juli, 2020
 
 # fellingDateR: estimating felling dates from historical tree-ring series
 
@@ -38,14 +35,13 @@ are presented in a paper that was submitted to
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia)
 and is currently under peer review.
 
-> Haneca, Kristof
-> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
-> Debonne, Vincent
-> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X),
-> Hoffsummer, Patrick, (under review). The ups and downs of the building
-> trade in a medieval city: tree-ring data as proxies for economic,
-> social and demographic dynamics in Bruges (c. 1200 – 1500).
-> *Dendrochronologia*.
+<!-- > Haneca, Kristof [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), -->
+
+<!-- Debonne, Vincent [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), -->
+
+<!-- Hoffsummer, Patrick, -->
+
+<!-- (under review). The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200 – 1500). _Dendrochronologia_. -->
 
 ## Overview of R-functions
 

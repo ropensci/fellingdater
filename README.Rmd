@@ -1,12 +1,9 @@
 ---
-
-title: "fellingDateR: brief overview"
-author: "Kristof Haneca"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: github_document
-
 ---
 
+>Kristof Haneca [![](https://svgshare.com/s/9pP.svg)](https://www.researchgate.net/profile/Kristof_Haneca)
+>`r format(Sys.time(), '%d %B, %Y')`
 
 ```{r, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(
@@ -31,10 +28,10 @@ Where it can be assumed that a group of historical timbers were all felled at th
 These R scripts and functions were developed during the analysis of a large set of tree-ring data that were taken from medieval timber constructions in the town of Bruges (Belgium). The results of this study are presented in a paper that was submitted to [ _Dendrochronologia_ ](https://www.journals.elsevier.com/dendrochronologia) and is currently under peer review.
 
 
-> Haneca, Kristof [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
-Debonne, Vincent [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X),
-Hoffsummer, Patrick,
-(under review). `r title`. _Dendrochronologia_.
+<!-- > Haneca, Kristof [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), -->
+<!-- Debonne, Vincent [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), -->
+<!-- Hoffsummer, Patrick, -->
+<!-- (under review). `r title`. _Dendrochronologia_. -->
 
 
 ## Overview of R-functions
