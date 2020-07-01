@@ -6,7 +6,7 @@ juli, 2020” output: github\_document
 
 -----
 
-# Estimating felling dates from historical tree-ring series
+# fellingDateR: estimating felling dates from historical tree-ring series
 
 The set of functions presented on this Github repository will help you
 infer felling date estimates from dated tree-ring series with partially
@@ -31,7 +31,7 @@ dating.
 
 ## Motivation
 
-These R scripts and functions were developped during the analysis of a
+These R scripts and functions were developed during the analysis of a
 large set of tree-ring data that were taken from medieval timber
 constructions in the town of Bruges (Belgium). The results of this study
 are presented in a paper that was submitted to
@@ -152,17 +152,40 @@ dated tree-ring series with (partly) preserved sapwood.
 ``` r
 # some test-data
 
+# all series have partially preserved sapwood
 dummy1 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
-  Date_end = c(1000, 1005, 1000, 1000, 1010),
+  Date_end = c(1000, 1009, 1007, 1005, 1010),
   SWR = c(5, 10, 15, 16, 8),
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
 
+# one series has an exact felling date (= waney edge preserved)
 dummy2 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
   Date_end = c(1000, 1005, 1008, 1000, 1010),
   SWR = c(5, 10, NA, 1, 3),
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE))
+
+# multiple felling dates
+dummy3 <- data.frame(
+  keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
+  Date_end = c(1000, 1005, 1008, 1000, 1010),
+  SWR = c(5, 10, NA, 1, NA),
+  Waneyedge = c(TRUE, TRUE, TRUE, TRUE, TRUE))
+
+# combination of series with and without sapwood rings
+dummy4 <- data.frame(
+  keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
+  Date_end = c(1000, 1005, 1005, 1020, 1040),
+  SWR = c(5, 10, NA, 1, 0),
+  Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
+
+# 
+dummy5 <- data.frame(
+  keycode = c("trs_1", "trs_2", "trs_3", "trs_4"),
+  Date_end = c(1000, 1005, 1000, 1000),
+  SWR = c(NA, NA, NA, NA),
+  Waneyedge = c(FALSE, FALSE, FALSE, FALSE))
   
 ```
 
@@ -176,16 +199,16 @@ str(swc1)
 #>  $ rawData  :'data.frame':   114 obs. of  7 variables:
 #>   ..$ year : num [1:114] 997 998 999 1000 1001 ...
 #>   ..$ trs_1: num [1:114] 0 0 0 0.00292 0.00785 ...
-#>   ..$ trs_2: num [1:114] 0 0 0 0 0 ...
-#>   ..$ trs_3: num [1:114] 0 0 0 0.098 0.0945 ...
-#>   ..$ trs_4: num [1:114] 0 0 0 0.1047 0.0989 ...
+#>   ..$ trs_2: num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
+#>   ..$ trs_3: num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
+#>   ..$ trs_4: num [1:114] 0 0 0 0 0 ...
 #>   ..$ trs_5: num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
 #>   ..$ COMB : num [1:114] 0 0 0 0 0 0 0 0 0 0 ...
 #>  $ A_c      : Named num 60
 #>   ..- attr(*, "names")= chr "Ac: critical threshold (%)"
-#>  $ A_comb   : Named num 60
+#>  $ A_comb   : Named num 118
 #>   ..- attr(*, "names")= chr "A_comb"
-#>  $ hdi_model: Named num [1:2] 1010 1015
+#>  $ hdi_model: Named num [1:2] 1010 1016
 #>   ..- attr(*, "names")= chr [1:2] "lower" "upper"
 #>   ..- attr(*, "credMass")= num 0.9
 #>   ..- attr(*, "sapwood_model")= chr "Hollstein_1990"
@@ -193,12 +216,15 @@ str(swc1)
 #>   ..- attr(*, "dimnames")=List of 2
 #>   .. ..$ : chr [1:5] "trs_1" "trs_2" "trs_3" "trs_4" ...
 #>   .. ..$ : chr [1:5] "series" "endDate" "swr" "waneyEdge" ...
-#>  $ message  : chr "felling date range:  1010  -  1015"
+#>  $ message  : chr "felling date range:  1010  -  1016"
 ```
 
 ## sapwood\_comb\_plot()
 
 Plot the output of `sapwood_combine()` with `ggplot()`
+
+This first set of tree-ring series migh share a common felling date,
+situated between 1010 and 1018 AD.
 
 ``` r
 source("./R/sapwood_comb_plot.R")
@@ -206,7 +232,10 @@ source("./R/sapwood_comb_plot.R")
 sapwood_comb_plot(dummy1, credMass = .954, model = "Hollstein_1990")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- --> When a series
+with preserved waney edge is dated, an exact felling date can be
+determined and evaluated whether the other series with preserved sapwood
+go together with this felling date.
 
 ``` r
 
@@ -219,6 +248,44 @@ sapwood_comb_plot(dummy2, credMass = .954, model = "Hollstein_1990")
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+A data set with series that have different felling dates. No common
+felling date can be presented.
+
+``` r
+
+sapwood_comb_plot(dummy3, credMass = .954, model = "Hollstein_1990")
+#> Warning: Removed 300 rows containing missing values (position_stack).
+#> Warning: Removed 60 row(s) containing missing values (geom_path).
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+For this set of tree-ring series, no common felling date can be
+estimated. Probably this dataset contains tree-ring series from
+different building phases or includes reused older timbers.
+
+``` r
+
+sapwood_comb_plot(dummy4, credMass = .954, model = "Hollstein_1990")
+#> Warning: Removed 376 rows containing missing values (position_stack).
+#> Warning: Removed 300 rows containing missing values (position_stack).
+#> Warning: Removed 60 row(s) containing missing values (geom_path).
+
+#> Warning: Removed 60 row(s) containing missing values (geom_path).
+```
+
+![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+Ony a *terminus post quem* or ‘earliest possible felling date’ can be
+computed when no sapwood is preserved.
+
+``` r
+
+sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1990")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ## sapwood\_SPD()
 
