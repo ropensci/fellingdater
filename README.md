@@ -326,11 +326,12 @@ dummy6 <- data.frame(
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
   )
 
-# Compute the summed probability density for the `dummy6` data set. The resulting SPD is not scaled to 1 and a running mean with a bandwidth of 11 years is added.
+# Compute the summed probability density for the `dummy6` data set. 
+# The resulting SPD is not scaled to 1 and a running mean with a bandwidth of 11 years is added.
 
 spd <- sapwood_SPD(dummy6, scale_p = FALSE, run_mean = TRUE, w = 11)
 
-head(spd, 20)
+head(spd, 15)
 #>    year       trs_1      trs_2      trs_3      trs_4      trs_5 trs_6 trs_7
 #> 1  1000 0.002920056         NA         NA         NA         NA    NA    NA
 #> 2  1001 0.007851331         NA         NA         NA         NA    NA    NA
@@ -347,11 +348,6 @@ head(spd, 20)
 #> 13 1012 0.056362726 0.06763227 0.06900015 0.05428204 0.04636769    NA    NA
 #> 14 1013 0.052391329 0.06875092 0.06200058 0.04781388 0.05439222    NA    NA
 #> 15 1014 0.048051247 0.06784774 0.05527707 0.04192130 0.06010854    NA    NA
-#> 16 1015 0.043581505 0.06536724 0.04896001 0.03661178 0.06340130    NA    NA
-#> 17 1016 0.039160474 0.06175244 0.04312601 0.03187028 0.06444998    NA    NA
-#> 18 1017 0.034913805 0.05740128 0.03781117 0.02766709 0.06360329    NA    NA
-#> 19 1018 0.030923857 0.05264617 0.03302221 0.02396366 0.06127797    NA    NA
-#> 20 1019 0.027239021 0.04774901 0.02874559 0.02071701 0.05788931    NA    NA
 #>    trs_8 trs_9         SPD SPD_MovAv
 #> 1     NA    NA 0.002920056        NA
 #> 2     NA    NA 0.007851331        NA
@@ -368,26 +364,22 @@ head(spd, 20)
 #> 13    NA    NA 0.293644867 0.2667485
 #> 14    NA    NA 0.285348932 0.2625032
 #> 15    NA    NA 0.273205888 0.2572127
-#> 16    NA    NA 0.257921835 0.2468023
-#> 17    NA    NA 0.240359193 0.2329719
-#> 18    NA    NA 0.221396631 0.2176131
-#> 19    NA    NA 0.201833883 0.2012316
-#> 20    NA    NA 0.182339946 0.1843891
 ```
 
 ``` r
-library(ggformula) # for geom_spline()
+library(ggformula) 
+# for geom_spline()
+
+# Plot the output of `sapwood_SPD()`
 
 spd %>%
-
-    select(year, SPD, SPD_MovAv) %>%
-  
-    ggplot() +
-    geom_col(aes(x = year, y = SPD), fill = "lightblue", color = "lightblue", alpha = 0.5) +
-    geom_spline(aes(x = year, y = SPD_MovAv), nknots = 20, color = "red3") +
-    xlim(1000, 1100) +
-    xlab("Calendar year") +
-    theme_minimal()
+select(year, SPD, SPD_MovAv) %>%
+ggplot() +
+  geom_col(aes(x = year, y = SPD), fill = "lightblue", color = "lightblue", alpha = 0.5) +
+  geom_spline(aes(x = year, y = SPD_MovAv), nknots = 20, color = "red3") +
+  xlim(1000, 1100) +
+  xlab("Calendar year") +
+  theme_minimal()
 ```
 
 ![](./figures/unnamed-chunk-13-1.png)<!-- -->
