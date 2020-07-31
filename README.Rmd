@@ -237,7 +237,8 @@ dummy6 <- data.frame(
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
   )
 
-# Compute the summed probability density for the `dummy6` data set. The resulting SPD is not scaled to 1 and a running mean with a bandwidth of 11 years is added.
+# Compute the summed probability density for the `dummy6` data set. 
+# The resulting SPD is not scaled to 1 and a running mean with a bandwidth of 11 years is added.
 
 spd <- sapwood_SPD(dummy6, scale_p = FALSE, run_mean = TRUE, w = 11)
 
@@ -246,7 +247,10 @@ head(spd, 15)
 ```
 
 ```{r, warning = FALSE, message = FALSE}
-library(ggformula) # for geom_spline()
+library(ggformula) 
+# for geom_spline()
+
+# Plot the output of `sapwood_SPD()`
 
 spd %>%
 select(year, SPD, SPD_MovAv) %>%
