@@ -10,17 +10,17 @@
           - [sapwood\_comb\_plot()](#sapwood_comb_plot)
           - [sapwood\_SPD()](#sapwood_spd)
 
-> <br/> Kristof Haneca<br/> 31 juli, 2020<br/>
+> <br/> Kristof Haneca<br/> 12 augustus, 2020<br/>
 > 
 > [![](./figures/RG.png)](https://www.researchgate.net/profile/Kristof_Haneca)
 
 # fellingDateR: estimating felling dates from historical tree-ring series
 
 The set of functions presented on this Github repository will help you
-infer felling date estimates from dated tree-ring series with partially
-preserved sapwood. Furthermore, an additional function provides a tool
-to sum sapwood probability distributions, comparable to ‘summed
-probability densities’ commonly used for sets of radiocarbon
+to infer felling date estimates from dated tree-ring series with
+partially preserved sapwood. Furthermore, an additional function
+provides a tool to sum sapwood probability distributions, comparable to
+‘summed probability densities’ commonly used for sets of radiocarbon
 (<sup>14</sup>C) dates.
 
 Where it can be assumed that a group of historical timbers were all
@@ -47,12 +47,12 @@ this study are presented in a paper that is submitted to
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia)
 and is currently under peer review.
 
-> Haneca, Kristof
+> Kristof HANECA
 > [![](./figures/ORCHiD.png)](https://orcid.org/0000-0002-7719-8305),
-> Debonne, Vincent, Hoffsummer, Patrick, (under review). The ups and
-> downs of the building trade in a medieval city: tree-ring data as
-> proxies for economic, social and demographic dynamics in Bruges
-> (c. 1200 – 1500). *Dendrochronologia*.
+> Vincent DEBONNE, Patrick HOFFSUMMER, (under review). The ups and downs
+> of the building trade in a medieval city: tree-ring data as proxies
+> for economic, social and demographic dynamics in Bruges (c. 1200 –
+> 1500). *Dendrochronologia*.
 
 ### Content
 
@@ -65,7 +65,7 @@ function.
 
 The function `sapwood_PDF()` computes the probability density function
 (PDF) for the estimated felling dated, derived from the number of
-observed sapwood rings, on a core sample or cross section from a timber,
+observed sapwood rings, on a core sample or cross section of a timber,
 and a chosen sapwood model that gives the probability for any number of
 sapwood rings (as observed on samples with a complete pith to bark
 sequence).
@@ -75,15 +75,16 @@ The examples below all rely on published sapwood models for European oak
 
 The `sapwood_PDF()`-function takes 5 arguments:
 
-  - swr = the observed number of sapwood rings on a timber
-  - last = a calendar date for the last measured tree ring on a
+  - `swr` = the observed number of sapwood rings on a timber
+  - `last` = a calendar date for the last measured tree ring on a
     dendrochronologically dated sample (optional)
-  - model = should be one of `c("Holstein_1980", "Wazny_1990")` (more
+  - `model` = should be one of `c("Holstein_1980", "Wazny_1990")` (more
     models will be added later)
-  - hdi = `TRUE/FALSE` whether the highest probability density interval
-    (hdi) should be computed or not (relies on package `HDInterval`)
-  - credMass = number \[0, 1\] that assigns the credibility mass
-    associated with the hdi
+  - `hdi` = `TRUE/FALSE` whether the highest probability density
+    interval (hdi) should be computed or not (relies on package
+    `HDInterval`)
+  - `credMass` = number \[0, 1\] that assigns the credibility mass
+    associated with the hdi, e.g. 0.95
 
 Output is a `data.frame` with 3 variables:
 
@@ -101,7 +102,7 @@ Output is a `data.frame` with 3 variables:
 source("./R/sapwood_PDF.R")
 require(tidyverse)
 
-# 8 sapwood rings observed and the Hollstein 1980 model as a reference:
+# 8 sapwood rings observed and the Hollstein 1980 sapwood model:
 
 sw1 <- sapwood_PDF(swr = 8, last = 1234, model = "Hollstein_1980")
 
@@ -118,7 +119,7 @@ The hdi delineates an interval in which the actual felling date is most
 likely situated. It is the shortest interval within a probability
 distribution for a given probability mass or credible interval. The hdi
 summarizes the distribution by specifying an interval that spans most of
-the distribution, say 95% of it, such that every point inside the
+the distribution, say 95% of it, as such that every point inside the
 interval has higher credibility than any point outside the interval.
 
 In the example below, 10 sapwood rings were observed on a sample (last
@@ -164,41 +165,66 @@ ggplot(sw2) +
 
 ### sapwood\_combine()
 
-A function that attemps to estimate the shared felling date for a set of
+This function attemps to estimate the shared felling date for a set of
 dated tree-ring series with (partly) preserved sapwood.
 
-``` r
-# some test-data
+The `sapwood_combine()`-function takes 4 arguments:
 
-# all series have partially preserved sapwood
+  - data = a `data.frame` with 4 columns
+    
+      - first column: character vector with unique keycodes for the
+        (dated) tree-ring series
+      - second column: numeric vector with the end dates (calendar year
+        of the last tree-ring) for each tree- ring series
+      - third column: the observed number of sapwood rings on each
+        examined sample
+      - fourth column: logical vector TRUE/FALSE to indicate if waney
+        edge/last ring is present
+
+  - `hdi` = `TRUE/FALSE` whether the highest probability density
+    interval (hdi) for the shared felling date should be computed or
+    not. If FALSE, ony the raw output is returned
+
+  - `credMass` = number \[0, 1\] that assigns the credibility mass
+    associated with the hdi, e.g. 0.95
+
+  - `model` = should be one of `c("Holstein_1980", "Wazny_1990")` (more
+    models will be added later)
+
+<!-- end list -->
+
+``` r
+# First, some example datasets are created:
+
+## a dataset where all series have partially preserved sapwood
 dummy1 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
   Date_end = c(1000, 1009, 1007, 1005, 1010),
   SWR = c(5, 10, 15, 16, 8),
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
 
-# one series has an exact felling date (= waney edge preserved)
+## a dataset in which one series has an exact felling date (= waney edge preserved)
 dummy2 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
   Date_end = c(1000, 1005, 1008, 1000, 1010),
   SWR = c(5, 10, NA, 1, 3),
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE))
 
-# multiple felling dates
+## a dataset with multiple exact felling dates
 dummy3 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
   Date_end = c(1000, 1005, 1008, 1000, 1010),
   SWR = c(5, 10, NA, 1, NA),
   Waneyedge = c(TRUE, TRUE, TRUE, TRUE, TRUE))
 
-# combination of series with and without sapwood rings
+## a combination of series with and without sapwood rings
 dummy4 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
   Date_end = c(1000, 1005, 1005, 1020, 1040),
   SWR = c(5, 10, NA, 1, 0),
   Waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
 
-# series without preserved sapwood 
+## this dataset contains series without preserved sapwood 
 dummy5 <- data.frame(
   keycode = c("trs_1", "trs_2", "trs_3", "trs_4"),
   Date_end = c(1000, 1005, 1000, 1000),
@@ -207,10 +233,12 @@ dummy5 <- data.frame(
   
 ```
 
+The output generated by `sapwood_combine()` when `hdi` is TRUE is a
+list:
+
 ``` r
 source("./R/sapwood_combine.R")
 
-# example of the output generated by `sapwood_combine` when `hdi` is TRUE
 swc1 <- sapwood_combine(dummy1, hdi = TRUE, credMass = .90, model = "Hollstein_1980")
 
 str(swc1)
@@ -240,16 +268,16 @@ str(swc1)
 
 ### sapwood\_comb\_plot()
 
-`sapwood_comb_plot()` provides an easy-to-use function to plot the
-output of `sapwood_combine()` with `ggplot()`.
+`sapwood_comb_plot()` provides an easy-to-use function to compute and
+simultaneously plot the output of `sapwood_combine()` with `ggplot()`.
 
 For each individual series the probability density for the number of
-sapwood rings (i.e. the date range in which the actual felling date is
-situated) is displayed, according to the chosen sapwood model. The
-combined probability density for the shared felling date is highlighted
-in dark grey. A horizontal line delineates the *highest probability
-density interval* (hdi) according to the chosen credible interval
-(`credMass`).
+observed sapwood rings (i.e. the date range in which the actual felling
+date is situated) is displayed, according to the chosen sapwood model.
+The combined probability density for the shared felling date is
+highlighted in dark grey. A horizontal line delineates the *highest
+probability density interval* (hdi) according to the chosen credible
+interval (`credMass`).
 
 The `dummy1` set of simulated tree-ring series might share a common
 felling date. According to the `sapwood_combine()` output this shared
@@ -315,6 +343,14 @@ sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1980")
 Computes a *summed probability density* for a set of tree-ring series
 with (partly) preserved sapwood.
 
+First the PDF for the estimated felling date for each individual series
+with (partly) preserved sapwood and/or waney edge is computed. Then the
+summed probability density (SPD) is computed as the sum of all
+probabilities associated with each individual calendar year. Optionally,
+a moving average/running mean of the SPD is added to the output
+(`run_mean = TRUE`) with a chosen bandwidth (`w = 11` in the example
+below).
+
 ``` r
 source("./R/sapwood_SPD.R")
 source("./R/MovAv.R")
@@ -366,11 +402,11 @@ head(spd, 15)
 #> 15    NA    NA 0.273205888 0.2572127
 ```
 
+Plot the output of `sapwood_SPD()`
+
 ``` r
 library(ggformula) 
 # for geom_spline()
-
-# Plot the output of `sapwood_SPD()`
 
 spd %>%
 select(year, SPD, SPD_MovAv) %>%

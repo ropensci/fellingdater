@@ -96,7 +96,7 @@ library(HDInterval)
 # https://CRAN.R-project.org/package=HDInterval 
 
 # the 'full' sapwood model (Wazny 1990)
-sw2 <- sapwood_PDF(swr = 0, last = 1234, model = "Wazny_1990")
+sw2 <- sapwood_PDF(swr = 0, last = 1224, model = "Wazny_1990")
 
 # the 'truncated' sapwood model when 7 sapwood rings are observed
 sw3 <- sapwood_PDF(swr = 10, last = 1234, model = "Wazny_1990")
@@ -121,7 +121,7 @@ ggplot(sw2) +
 
 This function attemps to estimate the shared felling date for a set of dated tree-ring series with (partly) preserved sapwood.
 
-The `sapwood_combine()`-function takes 5 arguments:
+The `sapwood_combine()`-function takes 4 arguments:
 
   - data = a `data.frame` with 4 columns
     + first column: character vector with unique keycodes for the (dated) tree-ring series
@@ -241,7 +241,7 @@ sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1980")
 
 Computes a _summed probability density_ for a set of tree-ring series with (partly) preserved sapwood.
 
-First the PDF for the estimated felling date for each individual series with (partly) preserved sapwood and/or waney edge is computed. Then the summed probability density (SPD) is computed as the sum of all probabilities associated with each individual calendar year. Optionally, a moving average/running mean of the SPD is added to the output (`run_mean` = TRUE) with a chosen bandwidth (`w`).
+First the PDF for the estimated felling date for each individual series with (partly) preserved sapwood and/or waney edge is computed. Then the summed probability density (SPD) is computed as the sum of all probabilities associated with each individual calendar year. Optionally, a moving average/running mean of the SPD is added to the output (`run_mean = TRUE`) with a chosen bandwidth (`w = 11` in the example below).
 
 ```{r, warning = FALSE}
 source("./R/sapwood_SPD.R")
