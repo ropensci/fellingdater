@@ -43,7 +43,8 @@ These R scripts and functions were developed during the analysis of a large set 
 
 
 >
->Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. `r title`. _Dendrochronologia_, _in press_. doi: https://doi.org/10.1016/j.dendro.2020.125773
+> Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. `r title`. _Dendrochronologia_, ***in press***.  
+> https://doi.org/10.1016/j.dendro.2020.125773
 >
 
 ### Content

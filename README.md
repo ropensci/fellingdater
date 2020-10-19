@@ -51,7 +51,7 @@ this study are presented in a paper published in
 > Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the
 > building trade in a medieval city: tree-ring data as proxies for
 > economic, social and demographic dynamics in Bruges (*c.* 1200 –
-> 1500). *Dendrochronologia*, *in press*. doi:
+> 1500). *Dendrochronologia*, ***in press***.  
 > <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ### Content
