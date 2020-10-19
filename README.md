@@ -10,7 +10,7 @@
           - [sapwood\_comb\_plot()](#sapwood_comb_plot)
           - [sapwood\_SPD()](#sapwood_spd)
 
-> <br/> Kristof Haneca<br/> 12 augustus, 2020<br/>
+> <br/> Kristof Haneca<br/> 19 oktober, 2020<br/>
 > 
 > [![](./figures/RG.png)](https://www.researchgate.net/profile/Kristof_Haneca)
 
@@ -43,16 +43,16 @@ These R scripts and functions were developed during the analysis of a
 large set of tree-ring data that originate from medieval timber
 constructions in the town of
 [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of
-this study are presented in a paper that is submitted to
-[*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia)
-and is currently under peer review.
+this study are presented in a paper published in
+[*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
 > Kristof HANECA
-> [![](./figures/ORCHiD.png)](https://orcid.org/0000-0002-7719-8305),
-> Vincent DEBONNE, Patrick HOFFSUMMER, (under review). The ups and downs
-> of the building trade in a medieval city: tree-ring data as proxies
-> for economic, social and demographic dynamics in Bruges (c. 1200 –
-> 1500). *Dendrochronologia*.
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
+> Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the
+> building trade in a medieval city: tree-ring data as proxies for
+> economic, social and demographic dynamics in Bruges (*c.* 1200 –
+> 1500). *Dendrochronologia*, *in press*. doi:
+> <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ### Content
 
@@ -300,6 +300,8 @@ date.
 ``` r
 
 sapwood_comb_plot(dummy2, credMass = .954, model = "Hollstein_1980")
+#> `summarise()` ungrouping output (override with `.groups` argument)
+#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](./figures/unnamed-chunk-8-1.png)<!-- -->
@@ -324,6 +326,8 @@ different building phases or includes reused, older timbers.
 ``` r
 
 sapwood_comb_plot(dummy4, credMass = .954, model = "Hollstein_1980")
+#> `summarise()` ungrouping output (override with `.groups` argument)
+#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](./figures/unnamed-chunk-10-1.png)<!-- -->
@@ -334,6 +338,8 @@ computed when no sapwood is preserved.
 ``` r
 
 sapwood_comb_plot(dummy5, credMass = .954, model = "Hollstein_1980")
+#> `summarise()` ungrouping output (override with `.groups` argument)
+#> `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](./figures/unnamed-chunk-11-1.png)<!-- -->
