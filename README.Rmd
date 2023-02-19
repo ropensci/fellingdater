@@ -69,7 +69,7 @@ sw_model("Hollstein_1980")
 
 ## Motivation
 
-This package and and functions were developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in the town of [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study are presented in a paper published in [_Dendrochronologia_](https://www.journals.elsevier.com/dendrochronologia).
+This package was developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in the town of [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study are presented in a paper published in [_Dendrochronologia_](https://www.journals.elsevier.com/dendrochronologia).
 
 >
 > Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (_c._ 1200 – 1500). _Dendrochronologia_ 64, 125773.  
@@ -77,8 +77,6 @@ This package and and functions were developed during the analysis of a large dat
 >
 
 ## Main functions
-
-### sw_model
 
 ### sw_interval 
 
@@ -121,16 +119,65 @@ ggplot2::ggplot(pdf) +
   ggplot2::theme_minimal()
 ```
 
-## fd_report
+### fd_report
 
-## sw_combine and sw_combine_plot
+### sw_combine and sw_combine_plot
 
-# Helper functions
+## Helper functions
 
-## read_fh and get_header
+### sw_data_overview
 
-## sw_model
+The function `sw_data_overview` provides an overview of all published sapwood data sets that are distributed with this package.
 
-## sw_data_overview
+```{r}
 
-## sw_data_info
+sw_data_overview()
+
+```
+
+### sw_data_info
+
+More information on one of the sawpood data sets - how to cite, the area they represent, etc. - can be retrieved by the `sw_data_info` function.
+
+```{r}
+
+sw_data_info("Pilcher_1987")
+
+```
+
+### sw_model
+
+A graphical representation of the sapwood data sets is provided by the `sw_model` function. 
+
+```{r}
+
+sw_model("Sohar_2012_ELL_c")
+
+sw_data_info("Sohar_2012_ELL_c")
+
+
+```
+This function allows to fit a distribution to a data set of observed sapwood numbers and computes the highest posterior density interval (hdi) for a given credibility mass.
+The density function fitted to the sapwood data set should be one of:
+
+   * "lognormal" (the default value),
+   * "normal",
+   * "weibull",
+   * "gammma".
+   
+The credible interval should be a value between 0 and 1.
+
+```{r}
+
+sw_model("Wazny_1990", densfun = "weibull", credMass= .90, plot = TRUE)
+
+```
+
+When `plot = FALSE`, a list with the numeric output of the modelling process is returned. 
+
+### read_fh and get_header
+
+
+
+
+

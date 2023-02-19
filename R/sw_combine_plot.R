@@ -46,6 +46,8 @@ sw_combine_plot <- function(x) {
                                        2,
                                        FUN = rescale)
 
+     pdf <- as.data.frame(pdf) # added to avoid warning by dplyr::filter
+
      combo <- pdf[, c("year", "COMB")]
 
      range <- range(pdf$year)
@@ -78,7 +80,7 @@ sw_combine_plot <- function(x) {
           { if (length(tpq) < nrow(summary))
                ggplot2::geom_area(fill = "grey90", alpha = 0.7) } +
           { if (length(tpq) < nrow(summary))
-               ggplot2::geom_line(color = "grey40", size = 0.5) } +
+               ggplot2::geom_line(color = "grey40", linewidth = 0.5) } +
 
           # plot tpq as arrow pointing away from end date
           { if (length(tpq) > 0)
@@ -145,7 +147,7 @@ sw_combine_plot <- function(x) {
 
           { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
                ggplot2::geom_text(data = summary |>  dplyr::filter(agreement == "poor"),
-                                  ggplot2::aes(x = plyr::round_any(range[2] + 40, 10, ceiling),
+                                  ggplot2::aes(x = plyr::round_any(range[2] + 20, 10, ceiling),
                                                y = 0.15,
                                                label = "poor agreement",
                                                color = "tomato3", hjust = 1))
@@ -161,7 +163,7 @@ sw_combine_plot <- function(x) {
                             plyr::round_any(range[2] + 40, 10, ceiling),
                             10)) +
 
-          ggplot2::theme(axis.text=ggplot2::element_text(size=12),
+          ggplot2::theme(axis.text=ggplot2::element_text(size=10),
                          axis.title.x=ggplot2::element_blank(),
                          axis.title.y=ggplot2::element_blank(),
                          axis.text.y = ggplot2::element_blank(),

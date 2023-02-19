@@ -84,11 +84,10 @@ sw_model("Hollstein_1980")
 
 ## Motivation
 
-This package and and functions were developed during the analysis of a
-large data set of tree-ring series that originate from medieval timber
-constructions in the town of
-[Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of
-this study are presented in a paper published in
+This package was developed during the analysis of a large data set of
+tree-ring series that originate from medieval timber constructions in
+the town of [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium).
+The results of this study are presented in a paper published in
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
 > Kristof HANECA
@@ -100,8 +99,6 @@ this study are presented in a paper published in
 > <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ## Main functions
-
-### sw_model
 
 ### sw_interval
 
@@ -152,16 +149,104 @@ ggplot2::ggplot(pdf) +
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-## fd_report
+### fd_report
 
-## sw_combine and sw_combine_plot
+### sw_combine and sw_combine_plot
 
-# Helper functions
+## Helper functions
 
-## read_fh and get_header
+### sw_data_overview
 
-## sw_model
+The function `sw_data_overview` provides an overview of all published
+sapwood data sets that are distributed with this package.
 
-## sw_data_overview
+``` r
 
-## sw_data_info
+sw_data_overview()
+#>  [1] "Brathen_1982"     "Hollstein_1980"   "Miles_1997_NM"    "Miles_1997_SC"   
+#>  [5] "Miles_1997_WBC"   "Pilcher_1987"     "Sohar_2012_ELL_c" "Sohar_2012_ELL_t"
+#>  [9] "Sohar_2012_FWE_c" "Sohar_2012_FWE_t" "Wazny_1990"       "vanDaalen_NLBE"  
+#> [13] "vanDaalen_Norway"
+```
+
+### sw_data_info
+
+More information on one of the sawpood data sets - how to cite, the area
+they represent, etc. - can be retrieved by the `sw_data_info` function.
+
+``` r
+
+sw_data_info("Pilcher_1987")
+#> $data
+#> [1] "Pilcher_1987"
+#> 
+#> $citation
+#> [1] "Pilcher J.R. 1987. A 700 year dating chronology for northern France. Applications of tree-ring studies. Current research in dendrochronology and related subjects. BAR International Series 333, 127–139."
+#> 
+#> $area
+#> [1] "Northern France"
+#> 
+#> $n_observations
+#> [1] 116
+#> 
+#> $summary_raw_data
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#>   12.00   22.00   26.00   26.72   31.00   49.00
+```
+
+### sw_model
+
+A graphical representation of the sapwood data sets is provided by the
+`sw_model` function.
+
+``` r
+
+sw_model("Sohar_2012_ELL_c")
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+``` r
+
+sw_data_info("Sohar_2012_ELL_c")
+#> $data
+#> [1] "Sohar_2012_ELL_c"
+#> 
+#> $citation
+#> [1] "Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (Quercus robur L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001"
+#> 
+#> $area
+#> [1] "Eastern Estonia, Latvia, Lithuania (sapwood determined by color)."
+#> 
+#> $n_observations
+#> [1] 562
+#> 
+#> $summary_raw_data
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#>    2.00   10.00   12.00   11.69   13.00   27.00
+```
+
+This function allows to fit a distribution to a data set of observed
+sapwood numbers and computes the highest posterior density interval
+(hdi) for a given credibility mass. The density function fitted to the
+sapwood data set should be one of:
+
+-   “lognormal” (the default value),
+-   “normal”,
+-   “weibull”,
+-   “gammma”.
+
+The credible interval should be a value between 0 and 1.
+
+``` r
+
+sw_model("Wazny_1990", densfun = "weibull", credMass= .90, plot = TRUE)
+#> Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+When `plot = FALSE`, a list with the numeric output of the modelling
+process is returned.
+
+### read_fh and get_header
