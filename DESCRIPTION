@@ -1,10 +1,15 @@
 Package: fellingdateR
-Title: What the Package Does (One Line, Title Case)
+Title: `fellingdateR` is an R package that aims to facilitate the organisation, 
+  analysis and interpretation of tree-ring data from wooden heritage objects 
+  and structures
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7719-8305"))
+Description: `fellingdateR` is an R package that aims to facilitate the 
+  organization, analysis and interpretation of tree-ring data from wooden 
+  cultural heritage objects and structures.
+License: MIT + file LICENSE.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
