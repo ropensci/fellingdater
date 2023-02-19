@@ -1,0 +1,212 @@
+---
+title: "convert raw sapwood counts to .rda and .csv files"
+output: html_document
+date: "2023-02-19"
+---
+
+# Hollstein_1980
+
+```{r}
+Hollstein_1980 <-
+        read.csv(here::here("data-raw", "Hollstein_1980.csv"), sep = ",") |>
+        dplyr::count(n_sapwood) |>
+        dplyr::rename("count" = "n") |> 
+        dplyr::filter(!is.na(count))
+
+attr(Hollstein_1980, "citation") <-
+        "Hollstein E. 1980. Mitteleuropäische Eichenchronologie: Trierer dendrochronologische Forschungen zur Archäologie und Kunstgeschichte, Trierer Grabungen und Forschungen. Verlag Phillipp von Zabern, Mainz am Rhein.
+
+Digitized from the originale publication by: Haneca K., Debonne V., 2012. Precise tree-ring dating of building activities despite the absence of bark: A case-study on medieval church roofs in Damme, Belgium. Dendrochronologia 30, 23–34. https://doi.org/10.1016/j.dendro.2011.06.002"
+
+attr(Hollstein_1980, "area") <- "South and Central Germany"
+
+usethis::use_data(Hollstein_1980, overwrite = TRUE)
+
+```
+
+# Wazny_1990
+
+```{r}
+Wazny_1990 <-  
+        read.csv(here::here("data-raw", "Wazny_1990.csv"), sep = ",") |>
+        dplyr::filter(!is.na(count))
+
+attr(Wazny_1990, "citation") <-
+        "Wazny T. 1990. Aufbau und Anwendung der Dendrochronologie für Eichenholz in Polen (PhD dissertation). Hamburg University, Hamburg."
+
+attr(Wazny_1990, "area") <- "Poland"
+
+usethis::use_data(Wazny_1990, overwrite = TRUE)
+```
+
+# Pilcher 1987
+
+```{r}
+
+Pilcher_1987 <- 
+        read.csv(here::here("data-raw", "Pilcher_1987.csv"), sep = ",") |>
+        dplyr::filter(!is.na(count))
+
+attr(Pilcher_1987, "citation") <-
+        "Pilcher J.R. 1987. A 700 year dating chronology for northern France. Applications of tree-ring studies. Current research in dendrochronology and related subjects. BAR International Series 333, 127–139."
+
+attr(Pilcher_1987, "area") <- "Northern France"
+
+usethis::use_data(Pilcher_1987, overwrite = TRUE)
+
+```
+
+# Brathen 1982
+
+```{r }
+
+Brathen_1982 <- 
+        read.csv(here::here("data-raw", "Brathen_1982.csv"), sep = ",") |>
+        dplyr::filter(!is.na(count))
+
+attr(Brathen_1982, "citation") <-
+        "Bräthen A. 1982. A tree-ring chronology from the western part of Sweden. Sapwood and a dating problem, in: Hackens T., Mejdahl V. (Eds.), Second Nordic Conference on the Application of Scientific Methods in Archaeology, PACT 7(1). pp. 27–35."
+attr(Brathen_1982, "area") <- "Western Sweden"
+
+usethis::use_data(Brathen_1982, overwrite = TRUE)
+
+```
+
+
+# Miles_1997
+
+```{r}
+Miles_1997_NM <- 
+        read.csv(here::here("data-raw", "Miles_1997.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Miles1997_NM) |>
+        dplyr::rename(count = Miles1997_NM) |>
+        dplyr::filter(!is.na(count))
+
+attr(Miles_1997_NM, "citation") <-
+        "Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563."
+attr(Miles_1997_NM, "area") <- "U.K.: Nothern Midland counties, Cheshire, Staffordshire, West Midlands, Northamptonshire, Cambridgeshire, and everything to the north."
+
+usethis::use_data(Miles_1997_NM, overwrite = TRUE)
+
+
+Miles_1997_WBC <- 
+        read.csv(here::here("data-raw", "Miles_1997.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Miles1997_WBC) |>
+        dplyr::rename(count = Miles1997_WBC) |>
+        dplyr::filter(!is.na(count))
+
+attr(Miles_1997_WBC, "citation") <-
+        "Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563."
+attr(Miles_1997_WBC, "area") <- "U.K.: Wales and border counties, Shropshire, Hereford and Worcester."
+
+usethis::use_data(Miles_1997_WBC, overwrite = TRUE)
+
+
+Miles_1997_SC <- 
+        read.csv(here::here("data-raw", "Miles_1997.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Miles1997_SC) |>
+        dplyr::rename(count = Miles1997_SC) |>
+        dplyr::filter(!is.na(count))
+
+attr(Miles_1997_SC, "citation") <-
+        "Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563."
+attr(Miles_1997_SC, "area") <- "U.K.: Southern counties, up to and including Gloucestershire, Warwickshire,
+Bedfordshire, Suffolk and Norfolk."
+
+usethis::use_data(Miles_1997_SC, overwrite = TRUE)
+
+```
+
+
+# Sohar 2012
+
+```{r}
+Sohar_2012_FWE_c <- 
+        read.csv(here::here("data-raw", "SOhar_2012.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Sohar2012_FWE_c) |>
+        dplyr::rename(count = Sohar2012_FWE_c) |>
+        dplyr::filter(!is.na(count))
+
+attr(Sohar_2012_FWE_c, "citation") <-
+        "Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (Quercus robur L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001"
+attr(Sohar_2012_FWE_c, "area") <- "Southern Finland and western Estonia (sapwood determined by color)."
+
+usethis::use_data(Sohar_2012_FWE_c, overwrite = TRUE)
+
+
+Sohar_2012_ELL_c <- 
+        read.csv(here::here("data-raw", "SOhar_2012.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Sohar2012_ELL_c) |>
+        dplyr::rename(count = Sohar2012_ELL_c) |>
+        dplyr::filter(!is.na(count))
+
+attr(Sohar_2012_ELL_c, "citation") <-
+        "Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (Quercus robur L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001"
+attr(Sohar_2012_ELL_c, "area") <- "Eastern Estonia, Latvia, Lithuania (sapwood determined by color)."
+
+usethis::use_data(Sohar_2012_ELL_c, overwrite = TRUE)
+
+
+Sohar_2012_FWE_t <-
+        read.csv(here::here("data-raw", "SOhar_2012.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Sohar2012_FWE_t) |>
+        dplyr::rename(count = Sohar2012_FWE_t) |>
+        dplyr::filter(!is.na(count))
+
+attr(Sohar_2012_FWE_t, "citation") <-
+        "Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (Quercus robur L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001"
+attr(Sohar_2012_FWE_t, "area") <- "Southern Finland and western Estonia (sapwood determined by presence of tyloses)."
+
+usethis::use_data(Sohar_2012_FWE_t, overwrite = TRUE)
+
+
+Sohar_2012_ELL_t <- 
+        read.csv(here::here("data-raw", "SOhar_2012.csv"), sep = ",") |>
+        dplyr::select(n_sapwood, Sohar2012_ELL_t) |>
+        dplyr::rename(count = Sohar2012_ELL_t) |>
+        dplyr::filter(!is.na(count))
+
+attr(Sohar_2012_ELL_t, "citation") <-
+        "Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (Quercus robur L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001"
+attr(Sohar_2012_ELL_t, "area") <- "Eastern Estonia, Latvia, Lithuania (sapwood determined by presence of tyloses)."
+
+usethis::use_data(Sohar_2012_ELL_t, overwrite = TRUE)
+
+```
+
+# van Daalen, unpubl.
+
+```{r}
+
+vanDaalen_Norway <- 
+        read.csv(here::here("data-raw", "vanDaalen_Norway_unpublished.csv"), sep = ",") |>
+        dplyr::select(n_sapwood) |>
+        dplyr::count(n_sapwood) |>
+        dplyr::rename("count" = "n") |> 
+        dplyr::filter(!is.na(count))
+
+attr(vanDaalen_Norway, "citation") <-
+        "Sjoerd van Daalen (Van Daalen Dendrochronologie, the Netherlands), unpublished data (version 19-12-2022)"
+attr(vanDaalen_Norway, "area") <- "Historical timbers found in the Netherlands that were imported from Norway."
+
+usethis::use_data(vanDaalen_Norway, overwrite = TRUE)
+
+```
+
+```{r}
+
+vanDaalen_NLBE <- 
+        read.csv(here::here("data-raw", "vanDaalen_NLBE_unpublished.csv"), sep = ",") |> 
+        dplyr::select(n_sapwood) |>
+        dplyr::count(n_sapwood) |>
+        dplyr::rename("count" = "n") |> 
+        dplyr::filter(!is.na(count))
+
+attr(vanDaalen_NLBE, "citation") <-
+        "Sjoerd van Daalen (Van Daalen Dendrochronologie, the Netherlands), unpublished data"
+attr(vanDaalen_NLBE, "area") <- "Historical timbers found in the Netherlands en Belgium, with a local provenance."
+
+usethis::use_data(vanDaalen_NLBE, overwrite = TRUE)
+
+```
+
