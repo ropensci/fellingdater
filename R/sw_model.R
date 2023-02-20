@@ -91,7 +91,8 @@ or path to a .csv file with columns `n_sapwood` and `count`.)"
 
           spline_int <-
                as.data.frame(stats::spline(sw_model$n_sapwood,
-                                           sw_model$model_fit)
+                                           sw_model$model_fit,
+                                           xout = seq(1, max, 0.2))
                )
 
           if (plot) {
@@ -110,14 +111,15 @@ or path to a .csv file with columns `n_sapwood` and `count`.)"
 
                     ggplot2::geom_ribbon(
                          data = subset(
-                              sw_model,
-                              n_sapwood >= hdi_model[[1]] &
-                                   n_sapwood <= hdi_model[[2]]
+                                 spline_int,
+                                 x >= hdi_model[[1]] &
+                                      x <= hdi_model[[2]]
+
                          ),
                          ggplot2::aes(
                               ymin = 0,
-                              ymax = model_fit,
-                              x = n_sapwood
+                              ymax = y,
+                              x = x
                          ),
                          fill = "grey30",
                          alpha = 0.2
@@ -128,8 +130,8 @@ or path to a .csv file with columns `n_sapwood` and `count`.)"
                              ggplot2::aes(
                                      x = hdi_model[[1]],
                                      xend = hdi_model[[2]],
-                                     y = -.5, yend = -.5),
-                             colour = "grey30", size = .8, alpha = 0.5) +
+                                     y = 0, yend = 0),
+                             colour = "grey30", size = .8, alpha = 0.8) +
 
                     ggplot2::geom_line(
                          data = spline_int,
