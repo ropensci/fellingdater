@@ -13,7 +13,7 @@
 #'   * "lognormal" (the default value),
 #'   * "normal",
 #'   * "weibull",
-#'   * "gammma".
+#'   * "gamma".
 #' @param credMass A `scalar [0, 1]` specifying the mass within the credible
 #'   interval (default = .954).
 #' @param plot `Logical.` If `TRUE` a plot is returned of the fitted density
@@ -111,8 +111,8 @@ or path to a .csv file with columns `n_sapwood` and `count`.)"
                     ggplot2::geom_ribbon(
                          data = subset(
                               sw_model,
-                              n_sapwood >= hdi_model[1] &
-                                   n_sapwood <= hdi_model[2]
+                              n_sapwood >= hdi_model[[1]] &
+                                   n_sapwood <= hdi_model[[2]]
                          ),
                          ggplot2::aes(
                               ymin = 0,
@@ -122,6 +122,14 @@ or path to a .csv file with columns `n_sapwood` and `count`.)"
                          fill = "grey30",
                          alpha = 0.2
                     ) +
+
+                     ggplot2::geom_segment(
+                             data = hdi_model,
+                             ggplot2::aes(
+                                     x = hdi_model[[1]],
+                                     xend = hdi_model[[2]],
+                                     y = -.5, yend = -.5),
+                             colour = "grey30", size = .8, alpha = 0.5) +
 
                     ggplot2::geom_line(
                          data = spline_int,
@@ -204,6 +212,7 @@ d.count <- function(densfun = densfun,
                shape = param1,
                scale = param2,
                log = log
+
           )
      } else if (densfun == "gamma") {
           n  * stats::dgamma(

@@ -171,8 +171,9 @@ sw_data_overview()
 
 ### sw_data_info
 
-More information on one of the sawpood data sets - how to cite, the area
-they represent, etc. - can be retrieved by the `sw_data_info` function.
+More information on one of the sawpood data sets - how to cite the data
+set, the area the data represents, the number of observations and some
+basic summary stats - can be retrieved by the `sw_data_info` function.
 
 ``` r
 
@@ -234,13 +235,13 @@ sapwood data set should be one of:
 -   “lognormal” (the default value),
 -   “normal”,
 -   “weibull”,
--   “gammma”.
+-   “gamma”.
 
 The credible interval should be a value between 0 and 1.
 
 ``` r
 
-sw_model("Wazny_1990", densfun = "weibull", credMass= .90, plot = TRUE)
+sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 #> Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ```
 
