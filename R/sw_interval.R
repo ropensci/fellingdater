@@ -24,6 +24,9 @@
 #'   * _gammma_.
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
 #'   sapwood data set is provided from user-defined .csv-file.
+#' @param plot A `logical`. If `TRUE` a plot is returned of the individual
+#'   sapwood model and estimate of the felling date range.
+#'   If `FALSE` a list with numeric output of the modelling process is returned.
 #'
 #' @export
 #'
@@ -99,7 +102,7 @@ sw_interval <- function(n_sapwood = NA,
      pdf$p <- pdf$p/sum(pdf$p)
 
      #compute limits of hdi-interval
-     hdi_int <- hdi(x = pdf[, -1],
+     hdi_int <- hdi(x = pdf[, -1],a = "n_sapwood", b = "p",
                 credMass = credMass)
 
      # Add calendar years to output when y is provided

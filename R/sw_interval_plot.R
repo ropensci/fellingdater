@@ -7,8 +7,10 @@
 #' @return  ggplot style graph.
 #' @export
 #'
-#' @examples
 sw_interval_plot <- function(x, credMass = .954){
+        # to avoid notes in CMD check
+
+        p.x <- upper <- year <- NULL
 
      sw_data.p <- attributes(x)$sapwood_data
      densfun.p <- attributes(x)$model

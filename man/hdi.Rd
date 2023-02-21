@@ -4,11 +4,17 @@
 \alias{hdi}
 \title{hdi: computes the highest posterior density interval (hdi)}
 \usage{
-hdi(x, credMass = 0.954)
+hdi(x, a = "n_sapwood", b = "p", credMass = 0.954)
 }
 \arguments{
 \item{x}{A \code{data.frame} with columns ´n_sapwood´ and 'p' (the associated
-probability). \code{x} is computed in functions \link{sw_model} and \link{sw_interval}.}
+probability). \code{x} is computed in functions \link{sw_model}, \link{sw_interval},
+and \link{sw_combine}.}
+
+\item{a}{The name of the column in x that lists the number of sapwood rings.}
+
+\item{b}{The name of the column in x that lists the the associated
+probability of having n sapwood rings.}
 
 \item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
@@ -20,7 +26,7 @@ associated probability ´p´.
 \description{
 This function returns a matrix with 'upper' and 'lower' limits
 of the hdi (\emph{highest density interval}), and the associated probability 'p'.
-The function first sorts the input \code{data.frame} - with columns ´n_sapwood´
+The function first sorts the input \code{data.frame} - with columns 'n_sapwood´
 and 'p' (the associated probability) - by column 'p' in decreasing order
 and then it calculates the HDI by finding the first value of the sorted
 probabilities higher than the specified \code{credMass.} It then finds the

@@ -269,8 +269,10 @@ the presence of waney edge.\n",
 
           } else {
 
-               hdi <- hdi(pdf_matrix[, c("year", "COMB")],
-                          credMass = credMass)
+               hdi <- hdi(pdf_matrix, a = "year", b = "COMB",
+                             credMass = credMass)
+               # hdi <- hdi(pdf_matrix[, c("year", "COMB")],
+               #            credMass = credMass)
 
                if (hdi[1] == hdi[2]){
                     message <- paste("exact felling date: ", hdi[2])

@@ -23,7 +23,7 @@ Should be one of:
 \item "lognormal" (the default value),
 \item "normal",
 \item "weibull",
-\item "gammma".
+\item "gamma".
 }}
 
 \item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible

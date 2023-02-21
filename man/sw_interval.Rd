@@ -11,7 +11,8 @@ sw_interval(
   credMass = 0.954,
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  sep = ";"
+  sep = ";",
+  plot = FALSE
 )
 }
 \arguments{
@@ -34,14 +35,18 @@ columns ´n_sapwood´ and ´count´.}
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
 \itemize{
-\item "lognormal" (the default value),
-\item "normal",
-\item "weibull",
-\item "gammma".
+\item \emph{lognormal} (the default value),
+\item \emph{normal},
+\item \emph{weibull},
+\item \emph{gammma}.
 }}
 
 \item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
 sapwood data set is provided from user-defined .csv-file.}
+
+\item{plot}{A \code{logical}. If \code{TRUE} a plot is returned of the individual
+sapwood model and estimate of the felling date range.
+If \code{FALSE} a list with numeric output of the modelling process is returned.}
 }
 \value{
 Depends on the value of \code{hdi}.
