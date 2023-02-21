@@ -49,7 +49,7 @@ dummy1
 ```
 
 
-```{r example}
+```{r example, dpi=200}
 
 library(fellingdateR)
 # basic example
@@ -60,7 +60,7 @@ sw_combine(dummy1, plot = TRUE)
 
 The sapwood data used in the example below was published by Hollstein in 1980:
 
-```{r model_sapwood_counts}
+```{r model_sapwood_counts, dpi=200}
 
 sw_model("Hollstein_1980")
 
@@ -139,7 +139,7 @@ sw_data_overview()
 
 More information on one of the sawpood data sets - how to cite the data set, the area the data represents, the number of observations and some basic summary stats - can be retrieved by the `sw_data_info` function.
 
-```{r}
+```{r sw_data_info}
 
 sw_data_info("Pilcher_1987")
 
@@ -149,7 +149,7 @@ sw_data_info("Pilcher_1987")
 
 A graphical representation of the sapwood data sets is provided by the `sw_model` function. 
 
-```{r}
+```{r sw_model_plot, dpi=200}
 
 sw_model("Sohar_2012_ELL_c")
 
@@ -167,7 +167,7 @@ The density function fitted to the sapwood data set should be one of:
    
 The credible interval should be a value between 0 and 1.
 
-```{r}
+```{r sw_model_plot2, dpi=200}
 
 sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 

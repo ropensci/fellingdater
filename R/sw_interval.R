@@ -18,10 +18,10 @@
 #' columns ´n_sapwood´ and ´count´.
 #' @param densfun Name of the density function fitted to the sapwood data set.
 #'   Should be one of:
-#'   * "lognormal" (the default value),
-#'   * "normal",
-#'   * "weibull",
-#'   * "gammma".
+#'   * _lognormal_ (the default value),
+#'   * _normal_,
+#'   * _weibull_,
+#'   * _gammma_.
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
 #'   sapwood data set is provided from user-defined .csv-file.
 #'
@@ -41,7 +41,8 @@ sw_interval <- function(n_sapwood = NA,
                         credMass = 0.954,
                         sw_data = "Hollstein_1980",
                         densfun = "lognormal",
-                        sep = ";") {
+                        sep = ";",
+                        plot = FALSE) {
      # check input
      if (is.na(n_sapwood)) {
           message(" --> no pdf/hdi can be returend when n_sapwood = NA")
@@ -97,50 +98,63 @@ sw_interval <- function(n_sapwood = NA,
      # scale density function to 1
      pdf$p <- pdf$p/sum(pdf$p)
 
-     if (hdi == FALSE){
+     #compute limits of hdi-interval
+     hdi_int <- hdi(x = pdf[, -1],
+                credMass = credMass)
+
+     # Add calendar years to output when y is provided
+     if (last == 0) {
+             attr(hdi_int, "credMass") <- credMass
+             attr(hdi_int, "sapwood_data") <- sw_data
+             attr(hdi_int, "model") <- densfun
+        }
+     if (last != 0) {
+
+             hdi_int[1] <- hdi_int[[1]] - n_sapwood + last
+             hdi_int[2] <- hdi_int[[2]] - n_sapwood + last
+        }
+
+     attr(pdf, "sapwood_data") <- sw_data
+     attr(pdf, "model") <- densfun
+     attr(pdf, "credMass") <- credMass
+     attr(pdf, "hdi") <- hdi_int
+
+     if (hdi == FALSE & plot == FALSE){
 
           if (nrow(pdf) <= 1) {
                pdf[1,] <- c(last, n_sapwood, NA)
                warning("\n --> No upper limit for the hdi could be computed.")
           }
-          return(pdf)
+
+        return(pdf)
 
      } else if (hdi == TRUE & nrow(pdf) <= 1) {
           # when a very high number of swr is given, the pdf_matrix is empty
           # --> create hdi manually
-          hdi <- c(last, NA_integer_, NA_integer_)
-          names(hdi) <- c("lower", "upper", "p")
-          attr(hdi, "credMass") <- credMass
-          attr(hdi, "sapwood_data") <- sw_data
-          attr(hdi, "model") <- densfun
+          hdi_int <- c(last, NA_integer_, NA_integer_)
+          names(hdi_int) <- c("lower", "upper", "p")
+          attr(hdi_int, "credMass") <- credMass
+          attr(hdi_int, "sapwood_data") <- sw_data
+          attr(hdi_int, "model") <- densfun
+
           warning("\n --> No upper limit for the hdi could be computed.")
 
-          return(hdi)
+          return(hdi_int)
+
+     } else if (plot == TRUE) {
+
+        int_plot <- sw_interval_plot(x = pdf, credMass = credMass)
+        suppressWarnings(print(int_plot))
+
 
      } else {
+             attr(hdi_int, "credMass") <- credMass
+             attr(hdi_int, "sapwood_data") <- sw_data
+             attr(hdi_int, "model") <- densfun
 
-          hdi <- hdi(x = pdf[, -1],
-                     credMass = credMass)
-          # Add calendar years to output when y is provided
-          if (last == 0) {
-               attr(hdi, "credMass") <- credMass
-               attr(hdi, "sapwood_data") <- sw_data
-               attr(hdi, "model") <- densfun
-
-               return(hdi)
-
-          } else {
-
-               hdi[1] <- hdi[1] - n_sapwood + last
-               hdi[2] <- hdi[2] - n_sapwood + last
-               attr(hdi, "credMass") <- credMass
-               attr(hdi, "sapwood_data") <- sw_data
-               attr(hdi, "model") <- densfun
-
-               return(hdi)
+             return(hdi_int)
 
           }
-     }
 }
 
 

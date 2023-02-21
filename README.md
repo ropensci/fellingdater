@@ -205,7 +205,7 @@ A graphical representation of the sapwood data sets is provided by the
 sw_model("Sohar_2012_ELL_c")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-sw_model_plot-1.png" width="100%" />
 
 ``` r
 
@@ -245,7 +245,7 @@ sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 #> Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-sw_model_plot2-1.png" width="100%" />
 
 When `plot = FALSE`, a list with the numeric output of the modelling
 process is returned.

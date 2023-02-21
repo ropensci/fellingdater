@@ -2,7 +2,7 @@
 #'
 #' @description This function returns a matrix with 'upper' and 'lower' limits
 #'  of the hdi (*highest density interval*), and the associated probability 'p'.
-#'  The function first sorts the input `data.frame` - with columns ´n_sapwood´
+#'  The function first sorts the input `data.frame` - with columns 'n_sapwood´
 #'  and 'p' (the associated probability) - by column 'p' in decreasing order
 #'  and then it calculates the HDI by finding the first value of the sorted
 #'  probabilities higher than the specified `credMass.` It then finds the
@@ -14,7 +14,11 @@
 #'  This function is applied in functions [sw_model] and [sw_interval].
 #'
 #' @param x A `data.frame` with columns ´n_sapwood´ and 'p' (the associated
-#' probability). `x` is computed in functions [sw_model] and [sw_interval].
+#'  probability). `x` is computed in functions [sw_model], [sw_interval],
+#'  and [sw_combine].
+#' @param a The name of the column in x that lists the number of sapwood rings.
+#' @param b The name of the column in x that lists the the associated
+#'   probability of having n sapwood rings.
 #' @param credMass A `scalar [0, 1]` specifying the mass within the credible
 #'  interval (default = .954).
 #'
@@ -29,10 +33,12 @@
 #' @export
 
 hdi <- function(x,
+                a = "n_sapwood",
+                b = "p",
                 credMass = 0.954) {
      hdi_interval <- c(NA_real_, NA_real_, NA_real_)
-     df <- data.frame(n = as.numeric(x[,1]),
-                      p = as.numeric(x[, 2]))
+     df <- data.frame(n = as.numeric(x[, a]),
+                      p = as.numeric(x[, b]))
      df <- df[df$p > 0, ]
      # a vector with sorted probabilities
      df_sorted <- sort(df$p, decreasing = TRUE)
