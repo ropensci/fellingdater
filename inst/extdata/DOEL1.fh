@@ -1,0 +1,438 @@
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1158
+Dated=Dated
+DateEnd=1292
+KeyCode=K1_091
+Length=135
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Tree
+SeriesType=Single curve
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+KeyNo=K1_091
+SapWoodRings=15
+Comment=keelplank
+DATA:Single
+   250   273   227   144   147   229   283   269   141   136
+   222   105   124   106   152   162   188   144   143    86
+    97   342   338   384   373   486   305   335   362   295
+   211   152   216   289   324   173   281   272   361   285
+   310   335   287   330   249   240   210   181   136    93
+    71   120   179   224   181   163   194   219   206   163
+   167   185   167   233   209   216   162   213   192   161
+   100   154   168   211   162   139   192   167   162   168
+   181   197   188   198   151   203   186   189   199   229
+   165   156   164   199   131   174   155   193   159    78
+   133   166    98    97   163   186   113   103   122   110
+   121   123    68   119   110   111   126   166   142   167
+   112   135   131    97    94    95   105    78    69    52
+    90    82    77    67   110     0     0     0     0     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1193
+Dated=Dated
+KeyCode=S38-BB
+Length=114
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Tree
+SeriesType=Single curve
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+DateEnd=1306
+KeyNo=S38-BB
+Comment=HW/SW boundary | K1_281 | framing timber
+SapWoodRings=0
+DATA:Single
+   130   105   108    92    51    90    64    80    82    69
+    71    70    69    57    67    76    57    96    76    46
+    61    91    88    88    94    78    94    63    64    67
+    64    60    63    59    46    40    77    64    60    55
+    50    61    50    47    41    52    58    56    47    43
+    39    44    45    35    33    38    43    43    41    40
+    33    28    31    33    32    35    39    44    49    34
+    33    36    38    53    41    34    41    34    31    36
+    33    48    46    46    50    33    42    38    43    35
+    44    33    47    35    41    34    31    48    48    42
+    47    41    44    45    34    40    43    30    37    34
+    38    36    30    26     0     0     0     0     0     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1222
+Dated=Dated
+KeyCode=GD3-1BB
+Length=89
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Tree
+SapWoodRings=5
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+SeriesType=Single curve
+DateEnd=1310
+KeyNo=GD3-1BB
+Comment=K1_370 | hull plank
+DATA:Single
+   314   240   167   220   224   198   283   233   224   245
+   238   219   209   253   273   348   275   289   285   250
+   198   273   234   180   137   117   134   222   229   191
+   159   192   153   174   170   232   174   192   148   151
+   196   249   244   229   246   195   189   231   168   212
+   172   259   215   211   186   197   116   136   155   139
+   136   143   154   139   161   207   273   293   242   230
+   194   201   145   151   167   105   111   123   140   126
+   124    75   106    96    84    99    86    77    71     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1220
+Dated=Dated
+DateEnd=1310
+KeyCode=GR1mBB
+Length=91
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Chrono
+Town=Doel
+Street=Deurganckdok
+PersId=Kristof Haneca
+Bark=-
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+SeriesType=Single curve
+WaldKante=---
+ChronoMemberKeycodes=K1_001,K1_004x,GR1-3BB
+ChronoMemberCount=3
+KeyNo=GR1mBB
+SapWoodRings=3
+Comment=hull plank
+DATA:Quadro
+   108     1     0     0   117     1     1     0    92     1     0     1   116     1     1     0
+   102     1     0     1    72     1     0     1    89     1     1     0    89     1     0     0
+    77     1     0     1   101     1     1     0   107     2     1     0    89     2     1     1
+   107     2     2     0   119     2     2     0   131     2     1     1    89     2     0     2
+    89     2     1     1   124     2     2     0   118     2     1     1   141     2     2     0
+   102     2     0     2    80     2     0     2    98     2     2     0   141     2     2     0
+    94     2     0     2    98     2     2     0   107     2     2     0   114     2     2     0
+    70     2     0     2    90     2     2     0   128     3     2     0   151     3     2     1
+   145     3     1     2   170     3     3     0   145     3     1     2   102     3     0     3
+    81     3     0     3    79     3     2     1    87     3     2     0    85     3     1     2
+    85     3     1     2    70     3     0     3    90     3     3     0   100     3     3     0
+   136     3     3     0   134     3     2     1   134     3     1     2    85     3     0     3
+   129     3     3     0   173     3     3     0   140     3     0     3   123     3     2     1
+   111     3     0     3   107     3     1     2   180     3     3     0   234     3     3     0
+   230     3     1     2   281     3     3     0   135     3     0     3   102     3     0     3
+   115     3     2     1   158     3     3     0   164     3     3     0   160     3     1     2
+   237     3     3     0   131     3     0     3   104     3     0     3    89     3     0     3
+    96     3     2     1   122     3     3     0   166     3     3     0   166     3     1     1
+    90     3     0     3   110     3     3     0   162     3     3     0   173     3     3     0
+   244     3     3     0   163     3     0     3   161     3     1     2   150     3     2     1
+   163     3     1     1   133     3     0     3   183     3     3     0   194     3     3     0
+   166     3     0     3   186     2     1     1   193     2     2     0   178     2     1     1
+   161     2     0     2   195     1     1     0   146     1     0     1     0     0     0     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1150
+Dated=Dated
+DateEnd=1314
+KeyCode=GQ1mBB
+Length=165
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Chrono
+SapWoodRings=7
+Town=Doel
+Street=Deurganckdok
+PersId=Kristof Haneca
+Bark=-
+SeriesType=Single curve
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+WaldKante=---
+ChronoMemberKeycodes=GQ1-2BB,K1_007,K1_009
+ChronoMemberCount=3
+KeyNo=GQ1mBB
+Comment=hull plank
+DATA:Quadro
+   380     3     0     0   415     3     2     1   463     3     3     0   431     3     0     3
+   397     3     0     3   410     3     2     1   202     3     0     3   324     3     3     0
+   375     3     3     0   307     3     0     3   419     3     3     0   374     3     0     3
+   454     3     3     0   461     3     2     1   391     3     0     3   374     3     2     1
+   302     3     1     2   230     3     0     3   257     3     3     0   303     3     3     0
+   290     3     0     1   184     3     0     3   158     3     1     2   198     3     3     0
+   184     3     0     3   144     3     0     3   118     3     0     3   120     3     2     1
+   137     3     3     0   175     3     3     0   144     3     0     3   126     3     0     3
+    88     3     0     3   162     3     3     0   149     3     1     2   165     3     2     1
+   208     3     3     0   163     3     0     3   124     3     0     3   100     3     0     3
+   100     3     2     1   116     3     3     0   110     3     1     2    89     3     0     3
+    82     3     0     3   104     3     3     0    91     3     0     3    91     3     2     1
+   127     3     3     0   141     3     3     0   139     3     1     2   130     3     1     2
+   112     3     0     3   123     3     2     1    99     3     0     3    72     3     0     3
+    83     3     3     0    79     3     0     3    75     3     0     3    98     3     3     0
+   110     3     3     0   135     3     3     0    94     3     0     3    74     3     0     3
+   113     3     3     0   123     3     2     0   113     3     1     2    95     3     0     3
+   105     3     3     0   133     3     3     0   139     3     2     1   135     3     1     2
+   112     3     0     3    99     3     1     2   113     3     3     0    95     3     0     3
+    99     3     2     1    99     3     2     1    91     3     0     3   118     3     3     0
+   135     3     2     1    97     3     0     3   100     3     2     1   146     3     3     0
+   133     3     0     3   103     3     0     3    91     3     0     3   121     3     3     0
+   111     3     1     2   135     3     3     0   101     3     0     3    86     3     0     3
+   104     3     3     0   136     3     3     0   109     3     0     3   128     3     2     1
+    96     3     0     3   115     3     3     0    73     3     0     3    96     3     3     0
+   123     3     3     0   117     3     0     2   100     3     0     3   113     3     3     0
+    81     3     0     3    75     3     0     2    62     3     0     3    88     3     3     0
+    85     3     1     2    81     3     1     2    88     3     3     0    76     3     1     2
+   103     3     3     0    99     3     1     1   152     3     3     0   154     3     2     1
+   152     3     2     1   113     3     0     3   124     3     2     1   177     3     3     0
+   136     3     0     3   124     3     0     3   112     3     0     3    92     3     0     3
+   127     3     3     0   153     3     3     0   134     3     1     2   185     3     3     0
+    98     3     0     3    77     3     0     3    94     3     3     0   105     3     3     0
+   117     3     3     0   134     3     3     0   118     3     0     3    92     3     0     3
+    80     3     0     3    90     3     3     0   126     3     3     0   153     3     3     0
+   155     3     2     1   148     3     1     2    91     3     0     3   131     3     3     0
+   144     3     2     1   145     3     1     2   214     3     3     0   129     3     0     3
+   144     3     2     1   151     3     1     2   156     3     1     1   145     3     0     3
+   170     3     2     0   186     3     2     1   195     3     1     2   199     3     2     1
+   223     3     2     1   166     3     0     3   174     3     2     1   131     3     0     3
+   133     3     1     2   121     3     1     2   124     1     1     0   205     1     1     0
+   182     1     0     1     0     0     0     0     0     0     0     0     0     0     0     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1207
+Dated=Dated
+DateEnd=1320
+KeyCode=K1_095
+Length=114
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Tree
+SapWoodRings=21
+Town=Doel
+Street=Deurganckdok
+PersId=Kristof Haneca
+Bark=-
+SeriesType=Single curve
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+KeyNo=K1_095
+Comment=inner stem
+DATA:Single
+    93    86    99    91   106   105   111   144   190   119
+   157   200   157   125   109   110   187   174   199   194
+   126   276   214   215   193   151   173   150   110   110
+   115   134   120   113    75    66    90   130   152   111
+   136   157   136   156   190   164   198   175   193   170
+   211   137   157   180   247   188   114   158   154   161
+    83    85   122    97   144   110    97   115   156   137
+   126    56    59    64    88   127   102   144    93    71
+    60    56    62    67    94    64    95   140   133   115
+   116   111    90    91    96    71    89    97   106    88
+    71    53    56    57    49    55    48    62    55    47
+    60    63    55    72     0     0     0     0     0     0
+HEADER:
+DateEnd=1322
+Length=83
+Location=KOGGE ANTWERPEN GG1-1BB
+Species=QUSP
+SapWoodRings=13
+PersId=EH
+KeyCode=GG1-1BB
+CreationDate=20001127
+DataFormat=Tree
+Dated=Dated
+DateBegin=1240
+KeyNo=GG1-1BB
+Comment=hull plank
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+SpeciesName=Quercus spp.
+DataType=Ringwidth
+DATA:Single
+   327   191   236   243   236   215   304   310   219   325
+   325   348   269   264   373   525   378   376   288   431
+   472   276   327   472   438   451   351   293   229   294
+   168   201   166   220   151   229   247   229   163   197
+   231   199   251   171   211   185   211   155   209   188
+   265   264   232   315   191   147   128   153   205   223
+   177   201   266   220   234   213   235   258   240   208
+   171   200   161   160   197   169   215   141   227   157
+   172   206    97     0     0     0     0     0     0     0
+HEADER:
+LabotaryCode=Flanders Heritage agency
+DataType=Ringwidth
+DateBegin=1164
+Dated=Dated
+DateEnd=1322
+KeyCode=S13mSB
+Length=159
+Project=Ship timbers DOEL 1
+Country=Belgium
+Pith=-
+SpeciesName=Quercus spp.
+Location=Doel_Deurganckdok
+Species=QUSP
+DataFormat=Chrono
+SeriesType=Single curve
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+WaldKante=---
+ChronoMemberKeycodes=S1-3SB,K1_076
+ChronoMemberCount=2
+Comment=average of S1-3SB,K1_076 | framing timber
+KeyNo=S13mSB
+SapWoodRings=20
+DATA:Quadro
+   184     1     0     0   235     1     1     0   229     1     0     1   225     2     1     0
+   221     2     1     1   422     2     2     0   364     2     0     2   443     2     2     0
+   319     2     0     2   250     2     0     2   133     2     0     2   145     2     2     0
+   146     2     1     1   114     2     0     2    97     2     0     1   153     2     2     0
+   138     2     0     2   127     2     0     2   159     2     2     0   203     2     2     0
+   185     2     0     2   254     2     2     0   237     2     0     2   183     2     0     2
+   139     2     0     2   102     2     0     2    71     2     0     2   103     2     2     0
+   109     2     2     0    77     2     0     2    91     2     2     0   130     2     2     0
+   108     2     0     2    92     2     0     2   128     2     2     0   154     2     2     0
+   171     2     2     0   183     2     1     1   134     2     0     2   130     2     1     1
+    87     2     0     2    84     2     1     1    98     2     1     0    77     2     0     2
+    83     2     2     0    72     2     0     2   123     2     2     0   113     2     0     2
+   101     2     0     2    75     2     0     2    74     2     1     1    79     2     2     0
+   116     2     2     0    93     2     0     2    82     2     0     2   108     2     2     0
+   115     2     1     1   120     2     1     1    91     2     0     2    59     2     0     2
+    58     2     1     1    78     2     2     0    76     2     1     1    67     2     0     2
+    65     2     1     1    87     2     2     0    79     2     0     2    60     2     0     2
+    57     2     1     1    73     2     2     0    84     2     2     0    54     2     0     2
+    60     2     1     1    63     2     2     0    75     2     2     0    68     2     0     2
+    85     2     2     0    58     2     0     2    42     2     0     2    62     2     2     0
+    69     2     2     0    67     2     0     2    52     2     0     2    49     2     0     2
+    49     2     1     1    67     2     2     0    53     2     0     2    73     2     2     0
+    67     2     1     1    68     2     1     1    51     2     0     2    54     2     1     1
+    44     2     0     2    45     2     1     0    68     2     2     0    52     2     0     2
+    64     2     2     0    54     2     0     2    46     2     0     2    52     2     2     0
+    46     2     0     2    52     2     2     0    51     2     1     1    51     2     1     1
+    60     2     2     0    91     2     2     0    67     2     0     2    62     2     1     1
+    48     2     0     2    43     2     1     1    44     2     1     1    66     2     2     0
+    79     2     2     0    96     2     2     0    55     2     0     2    52     2     0     2
+    67     2     2     0    61     2     0     2    75     2     2     0    57     2     0     2
+    70     2     2     0    45     2     0     2    44     2     1     1    42     2     1     1
+    48     2     2     0    60     2     2     0    72     2     2     0    81     2     2     0
+    62     2     0     2    65     2     1     0    64     2     1     1    49     2     0     2
+    64     2     2     0    55     2     0     2    66     2     2     0    58     2     0     2
+    46     2     0     2    51     2     1     1    65     2     2     0    54     1     0     1
+    53     1     0     1    66     1     1     0    75     1     1     0    52     1     0     1
+    51     1     0     1    60     1     1     0    77     1     1     0    43     1     0     1
+    52     1     1     0    58     1     1     0    66     1     1     0    69     1     1     0
+    83     1     1     0    46     1     0     1    52     1     1     0    48     1     0     1
+    53     1     1     0    56     1     1     0    56     1     0     0     0     0     0     0
+HEADER:
+KeyCode=S13A-BB
+Length=93
+Location=Doel_Deurganckdok
+Species=QUSP
+WaldKante=WKE
+SapWoodRings=19
+DateEnd=1324
+Comment=framing timber
+PersId=KH
+DataFormat=Tree
+Dated=Dated
+DateBegin=1232
+KeyNo=S13A-BB
+InvalidRingsAfter=1
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+Project=Ship timbers DOEL 1
+SpeciesName=Quercus spp.
+DataType=Ringwidth
+DATA:Single
+   115   194   159   193   150   178   170   139   106    58
+    47    62    47    76    75    66    52    72    52    57
+    73    57    42    62    60    98   193   301   223   246
+   338   214   320   258   269   365   229   227   264   350
+   390   243   190   191   186   200   112   199   234   190
+   196   178   187   160   133    93   102   108   129   118
+    64    86   102   105    89    95    81    98    77    80
+    92    87   154   159   118    79    84   116    76    60
+    77    79   112    85   110    79    81    84    57    75
+    53    69    36     0     0     0     0     0     0     0
+HEADER:
+DateEnd=1324
+Length=104
+Location=KOGGE ANTWERPEN S6-SB
+Species=QUSP
+SapWoodRings=14
+PersId=EH
+KeyCode=S6-SB
+CreationDate=20001128
+DataFormat=Tree
+Dated=Dated
+DateBegin=1221
+KeyNo=S6-SB
+WaldKante=WKE
+InvalidRingsAfter=1
+GlobalMathCommentCount=0
+ImageCount=0
+CommentCount=0
+BibliographyCount=0
+Comment=framing timber
+SpeciesName=Quercus spp.
+DataType=Ringwidth
+DATA:Single
+   100    84    38    23    83    57    97   137   172   161
+   133    91   135    92   157   128   161   134   163   155
+   142   128   139   140   145   139   116    92    86    77
+    49    73   109    99   129   132   128   123    99    92
+   122   139   172   196   152   169   171   203   194   217
+   424   417   236   395   366   362   297   216   289   293
+   260   210   147   130    86    66    39    74    64   120
+   156   100   130   139   140   118   107    62    74    58
+    57    72    51    73   125   201   134   158   205   127
+   121   214   152   183   196   166   147   142    99   107
+   114   106    95    96     0     0     0     0     0     0

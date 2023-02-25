@@ -7,7 +7,7 @@
 sw_interval_plot(x, credMass = 0.954)
 }
 \arguments{
-\item{x}{Output of \code{sw_interval()}.}
+\item{x}{Output of \code{\link[=sw_interval]{sw_interval()}}.}
 
 \item{credMass}{A \code{scalar} \verb{[0, 1]} specifying the mass within the credible
 interval (default = .954).}

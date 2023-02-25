@@ -39,19 +39,15 @@ devtools::install_github("hanecakr/fellingdateR")
 The following example shows a felling date estimate for a set of four dated tree-ring series:
 
 ```{r}
-## a dataset where all series have partially preserved sapwood
-dummy1 <- data.frame(
-  series = c("trs_1", "trs_2", "trs_3", "trs_4", "trs_5"),
-  last = c(1000, 1009, 1007, 1005, 1010),
-  n_sapwood = c(5, 10, 15, 16, 8),
-  waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE))
+library(fellingdateR)
+
+## a data set where all series have partially preserved sapwood:
+load("R/sysdata.rda")
 dummy1
 ```
 
 
 ```{r example, dpi=200}
-
-library(fellingdateR)
 # basic example
 
 sw_combine(dummy1, plot = TRUE)
@@ -82,10 +78,10 @@ This package was developed during the analysis of a large data set of tree-ring 
 
 This function computes the probability density function (PDF) and highest probability density interval (hdi) of the felling date range baased on the observed number of sapwood rings, their chronological dating and the selected sapwood data and model.
 
+`sw_interval()` computes the PDF of sapwood estimates, or limits of the hdi for the felling date. In the example below, 10 sapwood rings were observed on a sample (last ring dated to 1234 AD) that is supposed to have a provenance in the Southern Baltic  region (sapwood model published by Wazny, 1990).
+The hdi delineates an interval in which the actual felling date is most likely situated. It is the shortest interval within a probability distribution for a given probability mass or credible interval. The hdi summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, as such that every point inside the interval has higher credibility than any point outside the interval.
+
 ```{r}
-# The following code computes the PDF of sapwood estimates, or limits of the hdi for the felling date.
-# In the example below, 10 sapwood rings were observed on a sample (last ring dated to 1234 AD) that is supposed to have a provenance in the Southern Baltic  region (sapwood model published by Wazny, 1990).
-# The hdi delineates an interval in which the actual felling date is most likely situated. It is the shortest interval within a probability distribution for a given probability mass or credible interval. The hdi summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, as such that every point inside the interval has higher credibility than any point outside the interval.
 
 sw_interval(n_sapwood = 10,
             last = 1234,
@@ -98,30 +94,51 @@ sw_interval(n_sapwood = 10,
 When `hdi = FALSE` a matrix is returned with scaled p values for each number of observed sapwood rings.
 
 ```{r}
-# 8 sapwood rings observed and the Hollstein 1980 sapwood model:
-pdf <- sw_interval(n_sapwood = 10,
+# 10 sapwood rings observed and the Wazny 1990 sapwood model:
+sw_interval(n_sapwood = 10,
             last = 1234,
-            hdi = FALSE,
+            hdi = TRUE,
             credMass = .95, 
             sw_data = "Wazny_1990", 
-            densfun = "lognormal")
-
-full <- sw_interval(n_sapwood = 0,
-            last = 1224,
-            hdi = FALSE,
-            credMass = .95, 
-            sw_data = "Wazny_1990", 
-            densfun = "lognormal")
-
-# plot the probability distribution of the 'truncated' sapwood model:
-ggplot2::ggplot(pdf) +
-  ggplot2::geom_area(ggplot2::aes(x = year, y = p), fill = "burlywood2", color = "burlywood4") +
-  ggplot2::theme_minimal()
+            densfun = "lognormal",
+            plot = T)
 ```
 
 ### fd_report
 
+```{r}
+tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
+                 swr = c(10, 11, 12),
+                 waneyedge = c(FALSE, FALSE,TRUE),
+                 end = c(123, 456, 1789))
+fd_report(tmp,
+         series = "id",
+         n_sapwood = "swr",
+         last = "end",
+         sw_data = "Wazny_1990")
+```
+
+
 ### sw_combine and sw_combine_plot
+
+```{r}
+
+dummy0
+
+output_comb <- sw_combine(dummy0,
+   series = "trs",
+   last = "end",
+   n_sapwood = "swr",
+   waneyedge = "bark",
+   credMass = .954,
+   plot = FALSE
+)
+
+head(output_comb$rawData, 20)
+
+output_comb[-1]
+```
+
 
 ## Helper functions
 
@@ -129,7 +146,7 @@ ggplot2::ggplot(pdf) +
 
 The function `sw_data_overview` provides an overview of all published sapwood data sets that are distributed with this package.
 
-```{r}
+```{r overview}
 
 sw_data_overview()
 
@@ -139,7 +156,7 @@ sw_data_overview()
 
 More information on one of the sawpood data sets - how to cite the data set, the area the data represents, the number of observations and some basic summary stats - can be retrieved by the `sw_data_info` function.
 
-```{r sw_data_info}
+```{r info}
 
 sw_data_info("Pilcher_1987")
 
@@ -149,7 +166,7 @@ sw_data_info("Pilcher_1987")
 
 A graphical representation of the sapwood data sets is provided by the `sw_model` function. 
 
-```{r sw_model_plot, dpi=200}
+```{r model, dpi=200}
 
 sw_model("Sohar_2012_ELL_c")
 
@@ -177,7 +194,29 @@ When `plot = FALSE`, a list with the numeric output of the modelling process is 
 
 ### read_fh and get_header
 
+The `read_fh()` function is an extension to the `dplR::read.fh()` function fro the dplR package.
+It allows to read .fh (format Heidelberg) files of ring widths AND additionale information found in the HEADER
+fields are listed as attributes.
 
+It also allows to read ring-width data in CHRONO and HALF-CHRONO format.
 
+Furthermore, the `read_fh()` function is case insensitive. 
 
+```{r}
+
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+
+Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+
+head(Doel1_trs, 10)
+
+```
+
+When `header = TRUE`, the `get_header` function is triggered and HEADER fields are listed as a `data.frame`.
+
+```{r}
+
+read_fh(Doel1, verbose = FALSE, header = TRUE)
+
+```
 

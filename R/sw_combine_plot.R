@@ -45,10 +45,10 @@ sw_combine_plot <- function(x) {
      pdf[, 2:ncol(x$rawData)] <- apply(pdf[, 2:ncol(x$rawData)],
                                        2,
                                        FUN = rescale)
-
      pdf <- as.data.frame(pdf) # added to avoid warning by dplyr::filter
 
      combo <- pdf[, c("year", "COMB")]
+     combo <- as.data.frame(combo) # added to avoid warning by dplyr::filter
 
      range <- range(pdf$year)
 

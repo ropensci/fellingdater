@@ -22,4 +22,5 @@ Imports:
     ggtext,
     MASS,
     plyr,
-    tidyr
+    tidyr,
+    utils
