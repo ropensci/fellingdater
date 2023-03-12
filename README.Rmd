@@ -36,7 +36,7 @@ You can install the development version of fellingddateR from [GitHub](https://g
 devtools::install_github("hanecakr/fellingdateR")
 ```
 
-## Examples
+## Basic example
 
 In the following example the combined felling date range for a set of four dated tree-ring series is computed:
 
@@ -126,6 +126,11 @@ The procedure to combine felling dates of a group of related, individual series 
 
 -   an overview of the felling date range for the individual series (`$individual_series`), and their *Agreement index* (A_i) to the combined model.
 
+
+#### dummy0
+
+A data set with dated tree-ring series which all have partially preserved sapwood. The names of the variables in the data set are mapped to the parameters of the `sw_combine()` function. In the example below, the numeric output is returned:
+
 ```{r}
 
 dummy0
@@ -144,6 +149,47 @@ head(output_comb$rawData, 20)
 output_comb[-1]
 ```
 
+
+
+#### dummy2
+
+A data set with 5 tree-ring series of which one has an exact felling date:
+
+```{r}
+dummy2
+sw_combine(dummy2, plot = TRUE)
+
+```
+
+#### dummy3
+
+A data set where all tree-ring series have been measured up to the waney edge:  
+
+```{r}
+dummy3
+sw_combine(dummy3, plot = TRUE)
+```
+
+#### dummy4
+
+An attempt to compute a common felling date for a group of tree-ring series. All series include partially preserved sapwood:
+
+```{r}
+dummy4
+sw_combine(dummy4, plot = TRUE)
+```
+No common felling date can be computed for this particular data set. The model fails (agreement index of the model is  below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
+
+#### dummy5
+
+When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined: 
+
+```{r}
+dummy5
+sw_combine(dummy5, plot = TRUE)
+```
+
+
 ## Helper functions
 
 ### sw_data_overview
@@ -159,7 +205,7 @@ Load the original data with, e.g. `get("Hollstein_1980")`.
 
 ### sw_data_info
 
-More information on one of the sawpood data sets - how to cite the data set, the area the data represents, the number of observations and some basic summary stats - can be retrieved by the `sw_data_info()` function.
+More information on one of the sapwood data sets - how to cite the data set, the area the data represents, the number of observations and some basic summary stats - can be retrieved by the `sw_data_info()` function.
 
 ```{r info}
 sw_data_info("Pilcher_1987")

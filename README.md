@@ -18,7 +18,7 @@ dates.
 ![](man/figures/roof_cores.png)
 
 Where it can be assumed that a group of historical timbers were all
-felled at the same time (i.e. the same year), but due to the absence of
+felled at the same time (i.e. the same year), but due to the absence of
 the bark/cambial zone (waney edge) and the last formed tree ring this
 cannot be assessed, the preserved sapwood rings can be used to infer a
 date range for the felling date.
@@ -38,7 +38,7 @@ You can install the development version of fellingddateR from
 devtools::install_github("hanecakr/fellingdateR")
 ```
 
-## Examples
+## Basic example
 
 In the following example the combined felling date range for a set of
 four dated tree-ring series is computed:
@@ -50,11 +50,11 @@ library(fellingdateR)
 load("R/sysdata.rda")
 dummy1
 #>   series last n_sapwood waneyedge
-#> 1  trs_1 1000         5     FALSE
-#> 2  trs_2 1009        10     FALSE
-#> 3  trs_3 1007        15     FALSE
-#> 4  trs_4 1005        16     FALSE
-#> 5  trs_5 1010         8     FALSE
+#> 1 trs_06 1000         5     FALSE
+#> 2 trs_07 1009        10     FALSE
+#> 3 trs_08 1007        15     FALSE
+#> 4 trs_09 1005        16     FALSE
+#> 5 trs_10 1010         8     FALSE
 ```
 
 ``` r
@@ -179,15 +179,22 @@ function. It returns a list with:
     (`$individual_series`), and their *Agreement index* (A_i) to the
     combined model.
 
+#### dummy0
+
+A data set with dated tree-ring series of which all have partially
+preserved sapwood. The names of the variablers in the data set are
+mapped to the parameters of the `sw_combine()` function. In hte example
+below, the numeric output is returned:
+
 ``` r
 
 dummy0
-#>     trs  end swr  bark
-#> 1 trs_1 1000   5 FALSE
-#> 2 trs_2 1009  10 FALSE
-#> 3 trs_3 1007  15 FALSE
-#> 4 trs_4 1005  16 FALSE
-#> 5 trs_5 1010   8 FALSE
+#>      trs  end swr  bark
+#> 1 trs_01 1000   5 FALSE
+#> 2 trs_02 1009  10 FALSE
+#> 3 trs_03 1007  15 FALSE
+#> 4 trs_04 1005  16 FALSE
+#> 5 trs_05 1010   8 FALSE
 
 output_comb <- sw_combine(dummy0,
    series = "trs",
@@ -199,7 +206,7 @@ output_comb <- sw_combine(dummy0,
 )
 
 head(output_comb$rawData, 20)
-#>    year       trs_1      trs_2      trs_3      trs_4      trs_5       COMB
+#>    year      trs_01     trs_02     trs_03     trs_04     trs_05       COMB
 #> 1   997 0.000000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
 #> 2   998 0.000000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
 #> 3   999 0.000000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
@@ -241,11 +248,11 @@ output_comb[-1]
 #> 
 #> $individual_series
 #>   series last n_sapwood waneyedge lower upper   A_i
-#> 1  trs_1 1000         5     FALSE  1001  1029 122.0
-#> 2  trs_2 1009        10     FALSE  1009  1033 132.3
-#> 3  trs_3 1007        15     FALSE  1007  1029 103.9
-#> 4  trs_4 1005        16     FALSE  1005  1026  78.9
-#> 5  trs_5 1010         8     FALSE  1010  1036 108.5
+#> 1 trs_01 1000         5     FALSE  1001  1029 122.0
+#> 2 trs_02 1009        10     FALSE  1009  1033 132.3
+#> 3 trs_03 1007        15     FALSE  1007  1029 103.9
+#> 4 trs_04 1005        16     FALSE  1005  1026  78.9
+#> 5 trs_05 1010         8     FALSE  1010  1036 108.5
 #> 
 #> $A_comb
 #> Overall agreement index (%) 
@@ -258,6 +265,81 @@ output_comb[-1]
 #> $model_summary
 #> [1] "felling date range:  1010  -  1018"
 ```
+
+#### dummy2
+
+A data set with one exact felling date:
+
+``` r
+dummy2
+#>   series last n_sapwood waneyedge
+#> 1 trs_11 1000         5     FALSE
+#> 2 trs_12 1005        10     FALSE
+#> 3 trs_13 1008        NA     FALSE
+#> 4 trs_14 1000         1     FALSE
+#> 5 trs_15 1010         3      TRUE
+sw_combine(dummy2, plot = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+#### dummy3
+
+A data set where all tree-ring series have been measured up to the waney
+edge:
+
+``` r
+dummy3
+#>   series last n_sapwood waneyedge
+#> 1 trs_16 1000         5      TRUE
+#> 2 trs_17 1005        10      TRUE
+#> 3 trs_18 1008        NA      TRUE
+#> 4 trs_19 1000         1      TRUE
+#> 5 trs_20 1010        NA      TRUE
+sw_combine(dummy3, plot = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+#### dummy4
+
+An attempt to compute a common felling date for a group of tree-ring
+series, all with partially preserved sapwood:
+
+``` r
+dummy4
+#>   series last n_sapwood waneyedge
+#> 1 trs_21 1000         5     FALSE
+#> 2 trs_22 1005        10     FALSE
+#> 3 trs_23 1005        NA     FALSE
+#> 4 trs_24 1020         1     FALSE
+#> 5 trs_25 1040         0     FALSE
+sw_combine(dummy4, plot = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" /> No
+common felling date can be computed for this particular dataz set. The
+model fails (agreement index of the model is below the critical
+threshold value (A_c) of 60%). Three series have an individual agreement
+index below 60%.
+
+#### dummy5
+
+When no sapwood rings were observed and measured, only an
+`earliest possible felling date` (**terminus post quem**) can be
+determined:
+
+``` r
+dummy5
+#>   series last n_sapwood waneyedge
+#> 1 trs_26 1000        NA     FALSE
+#> 2 trs_27 1005        NA     FALSE
+#> 3 trs_28 1000        NA     FALSE
+#> 4 trs_29 1000        NA     FALSE
+sw_combine(dummy5, plot = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ## Helper functions
 
@@ -274,7 +356,7 @@ sw_data_overview()
 #> [13] "vanDaalen_Norway"
 ```
 
-Load the original data with, e.g. `get("Hollstein_1980")`.
+Load the original data with, e.g. `get("Hollstein_1980")`.
 
 ### sw_data_info
 
@@ -347,7 +429,6 @@ The credible interval should be a value between 0 and 1.
 
 ``` r
 sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
-#> Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ```
 
 <img src="man/figures/README-sw_model_plot2-1.png" width="100%" />
