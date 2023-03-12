@@ -62,7 +62,7 @@ sw_combine <- function(x,
      }
      swr <- x[, n_sapwood]
      if (is.character(swr)) stop(
-          "--> input has non-numeric swr-numbers in the third column")
+          "--> 'n_sapwood' must be a numeric vector")
 
      cambium <- x[, waneyedge]
      if (!is.logical(cambium)) {
