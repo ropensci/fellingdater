@@ -188,6 +188,14 @@ When no sapwood rings are observed and measured, only an `earliest possible fell
 dummy5
 sw_combine(dummy5, plot = TRUE)
 ```
+### sw_sum
+
+The `sw_sum()` function computes the the summed probability density (SPD) for a set of felling date ranges.
+
+```{r}
+sw_sum(dummy7, plot = TRUE)
+```
+
 
 
 ## Helper functions

@@ -72,3 +72,25 @@ When \code{FALSE} a \code{data.frame} with the combined probability and modellin
 \description{
 Combine multiple estimates of the felling date for a single event.
 }
+\examples{
+# a data set in which all series have preserved sapwood
+
+dummy1 <- data.frame(
+series = c("trs_06", "trs_07", "trs_08", "trs_09", "trs_10"),
+last = c(1000, 1009, 1007, 1005, 1010),
+n_sapwood = c(5, 10, 15, 16, 8),
+waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE)
+)
+sw_combine(dummy1, plot = TRUE)
+
+# a data set in which one series has an exact felling date (= waney edge preserved)
+
+dummy2 <- data.frame(
+series = c("trs_11", "trs_12", "trs_13", "trs_14", "trs_15"),
+last = c(1000, 1005, 1008, 1000, 1010),
+n_sapwood = c(5, 10, NA, 1, 3),
+waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE)
+)
+sw_combine(dummy2, plot = TRUE)
+
+}
