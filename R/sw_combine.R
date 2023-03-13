@@ -60,6 +60,8 @@
 #' )
 #' sw_combine(dummy2, plot = TRUE)
 #'
+#' sw_combine(fellingdateR:::dummy4, plot= FALSE)
+#'
 sw_combine <- function(x,
                        series = "series",
                        last = "last",

@@ -11,14 +11,8 @@
 #' @export
 #'
 #' @examples
-#' dummy6 <- data.frame(
-#' series = c("trs_30", "trs_31", "trs_32", "trs_34", "trs_35", "trs_36",
-#' "trs_37", "trs_38", "trs_39"),
-#' last = c(1000, 1009, 1007, 1005, 1010, 1020, 1025, 1050, 1035),
-#' n_sapwood = c(5, 10, 15, 16, 8, 0, 10, 3, 1),
-#' waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
-#' )
-#' tmp <- sw_sum(dummy6)
+#' dummy6 <- fellingdateR:::dummy6)
+#' dummy6
 #' sw_sum_plot(tmp, bar_col = "burlywood1")
 #'
 sw_sum_plot <- function(x, bar_col = "lightblue", spline_col = "tomato3") {

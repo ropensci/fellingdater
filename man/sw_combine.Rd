@@ -93,4 +93,6 @@ waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE)
 )
 sw_combine(dummy2, plot = TRUE)
 
+sw_combine(fellingdateR:::dummy4, plot= FALSE)
+
 }
