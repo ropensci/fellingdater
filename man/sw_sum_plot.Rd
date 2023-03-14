@@ -21,13 +21,8 @@ This function plots the result of \code{sw_sum()} - both the SPD and
 the occurrence of exact felling dates - and adds a smoothing spline to the SPD.
 }
 \examples{
-dummy6 <- data.frame(
-series = c("trs_30", "trs_31", "trs_32", "trs_34", "trs_35", "trs_36",
-"trs_37", "trs_38", "trs_39"),
-last = c(1000, 1009, 1007, 1005, 1010, 1020, 1025, 1050, 1035),
-n_sapwood = c(5, 10, 15, 16, 8, 0, 10, 3, 1),
-waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
-)
+dummy6 <- fellingdateR:::dummy6
+dummy6
 tmp <- sw_sum(dummy6)
 sw_sum_plot(tmp, bar_col = "burlywood1")
 

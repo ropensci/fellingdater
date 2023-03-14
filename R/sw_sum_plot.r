@@ -11,8 +11,9 @@
 #' @export
 #'
 #' @examples
-#' dummy6 <- fellingdateR:::dummy6)
+#' dummy6 <- fellingdateR:::dummy6
 #' dummy6
+#' tmp <- sw_sum(dummy6)
 #' sw_sum_plot(tmp, bar_col = "burlywood1")
 #'
 sw_sum_plot <- function(x, bar_col = "lightblue", spline_col = "tomato3") {

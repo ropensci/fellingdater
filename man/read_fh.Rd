@@ -39,7 +39,7 @@ the \strong{dplR package}, developped by Andy Bunn (Bunn 2008, Bunn 2010,
 Bunn et al. 2022).
 }
 \author{
-The original \code{read.fh()} function is part of the \strong{dplR-package}
+The original \code{read.fh()} function is part of the \strong{dplR package}
 and was developped by Christian Zang, with new features and patches by Mikko
 Korpela and Ronald Visser. This \code{read_fh()} function expands the
 functionalities of the original \code{\link[dplR:read.fh]{dplR::read.fh()}} function.

@@ -25,7 +25,7 @@
 #' @return a `data.frame` containing ring-width measurements with calendar
 #'   years as `row.names` and header fields as `attributes.`
 #'
-#' @author The original `read.fh()` function is part of the **dplR-package**
+#' @author The original `read.fh()` function is part of the **dplR package**
 #'  and was developped by Christian Zang, with new features and patches by Mikko
 #'  Korpela and Ronald Visser. This `read_fh()` function expands the
 #'  functionalities of the original [dplR::read.fh()] function.
