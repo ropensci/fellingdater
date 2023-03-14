@@ -281,7 +281,9 @@ dummy5
 sw_combine(dummy5, plot = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%"/> \### sw_sum
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%"/>
+
+### sw_sum
 
 The `sw_sum()` function computes the the summed probability density (SPD) for a set of felling date ranges.
 
@@ -305,7 +307,7 @@ sw_data_overview()
 #> [13] "vanDaalen_Norway"
 ```
 
-Load the original data with, e.g. `get("Hollstein_1980")`.
+Load the original data with, e.g. `get("Hollstein_1980")`.
 
 ### sw_data_info
 

@@ -67,7 +67,9 @@ sw_sum <- function (x,
                 df <- df[-which.nna, ]
                 swr <- df[[n_sapwood]]
                 cambium <- df[[waneyedge]]
-
+                if (!is.logical(cambium)) {
+                        cambium <- ifelse(grepl("wk", cambium, ignore.case = TRUE), TRUE, FALSE)
+                }
                 warning(paste0(" --> ", length(which.nna), " Series without sapwood rings or waney edge detected\n and removed from the data set")
                 )
         }
