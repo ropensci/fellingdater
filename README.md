@@ -1,37 +1,24 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # `fellingdateR`: estimating felling dates from historical tree-ring series
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
-This R-package offers a set of functions that can assist you to infer
-felling date estimates from dated tree-ring series. The presence of
-(partially) preserved sapwood or waney edge allows to estimate a range
-for the actual felling date, for individual series as well as for a
-group of timbers. Furthermore, an additional function provides a tool to
-sum sapwood probability distributions, comparable to ‘summed probability
-densities’ commonly applied to sets of radiocarbon (<sup>14</sup>C)
-dates.
+This R-package offers a set of functions that can assist you to infer felling date estimates from dated tree-ring series. The presence of (partially) preserved sapwood or waney edge allows to estimate a range for the actual felling date, for individual series as well as for a group of timbers. Furthermore, an additional function provides a tool to sum sapwood probability distributions, comparable to 'summed probability densities' commonly applied to sets of radiocarbon (<sup>14</sup>C) dates.
 
 ![](man/figures/roof_cores.png)
 
-Where it can be assumed that a group of historical timbers were all
-felled at the same time (i.e. the same year), but due to the absence of
-the bark/cambial zone (waney edge) and the last formed tree ring this
-cannot be assessed, the preserved sapwood rings can be used to infer a
-date range for the felling date.
+Where it can be assumed that a group of historical timbers were all felled at the same time (i.e. the same year), but due to the absence of the bark/cambial zone (waney edge) and the last formed tree ring this cannot be assessed, the preserved sapwood rings can be used to infer a date range for the felling date.
 
-Taking into account the observed number of sapwood rings on all samples
-and combining them into a single estimate, is likely to provide a more
-accurate and precise estimate of the felling date year for the group of
-timbers under study.
+Taking into account the observed number of sapwood rings on all samples and combining them into a single estimate, is likely to provide a more accurate and precise estimate of the felling date year for the group of timbers under study.
 
 ## Installation
 
-You can install the development version of fellingddateR from
-[GitHub](https://github.com/) with:
+You can install the development version of fellingddateR from [GitHub](https://github.com/) with:
 
 ``` r
 #install.packages("devtools")
@@ -40,8 +27,7 @@ devtools::install_github("hanecakr/fellingdateR")
 
 ## Basic example
 
-In the following example the combined felling date range for a set of
-four dated tree-ring series is computed:
+In the following example the combined felling date range for a set of four dated tree-ring series is computed:
 
 ``` r
 library(fellingdateR)
@@ -61,51 +47,30 @@ dummy1
 sw_combine(dummy1, plot = TRUE)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="100%"/>
 
-The sapwood data used in the example above was published by Hollstein in
-1980:
+The sapwood data used in the example above was published by Hollstein in 1980:
 
 ``` r
 sw_model("Hollstein_1980")
 ```
 
-<img src="man/figures/README-model_sapwood_counts-1.png" width="100%" />
+<img src="man/figures/README-model_sapwood_counts-1.png" width="100%"/>
 
 ## Motivation
 
-This package was developed during the analysis of a large data set of
-tree-ring series that originate from medieval timber constructions in
-[Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of
-this study were published in
-[*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
+This package was developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study were published in [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
-> Kristof HANECA
-> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
-> Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the
-> building trade in a medieval city: tree-ring data as proxies for
-> economic, social and demographic dynamics in Bruges (*c.* 1200 –
-> 1500). *Dendrochronologia* 64, 125773.  
+> Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
 > <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ## Main functions
 
 ### sw_interval
 
-This function computes the probability density function (PDF) and
-highest probability density interval (hdi) of the felling date range
-based on the observed number of sapwood rings, their chronological
-dating and the selected sapwood data and model.
+This function computes the probability density function (PDF) and highest probability density interval (hdi) of the felling date range based on the observed number of sapwood rings, their chronological dating and the selected sapwood data and model.
 
-In the example below, 10 sapwood rings were observed on a sample (last
-ring dated to 1234 AD) that is supposed to have a provenance in the
-Southern Baltic region (sapwood model published by Wazny, 1990). The hdi
-delineates an interval in which the actual felling date is most likely
-situated. It is the shortest interval within a probability distribution
-for a given probability mass or credible interval. The hdi summarizes
-the distribution by specifying an interval that spans most of the
-distribution, say 95% of it, as such that every point inside the
-interval has higher credibility than any point outside the interval.
+In the example below, 10 sapwood rings were observed on a sample (last ring dated to 1234 AD) that is supposed to have a provenance in the Southern Baltic region (sapwood model published by Wazny, 1990). The hdi delineates an interval in which the actual felling date is most likely situated. It is the shortest interval within a probability distribution for a given probability mass or credible interval. The hdi summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, as such that every point inside the interval has higher credibility than any point outside the interval.
 
 ``` r
 sw_interval(n_sapwood = 10,
@@ -118,11 +83,9 @@ sw_interval(n_sapwood = 10,
 #> 1  1234  1250 0.9611797
 ```
 
-When `hdi = FALSE` a matrix is returned with scaled p values for each
-number of observed sapwood rings.
+When `hdi = FALSE` a matrix is returned with scaled p values for each number of observed sapwood rings.
 
-The results of this procedure can be visualized by setting
-`plot = TRUE`.
+The results of this procedure can be visualized by setting `plot = TRUE`.
 
 ``` r
 # 10 sapwood rings observed and the Wazny 1990 sapwood model:
@@ -135,12 +98,11 @@ sw_interval(n_sapwood = 10,
             plot = T)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%"/>
 
 ### fd_report
 
-Reporting estimates of the felling date range for individual series, is
-provided by the `fd_report()` function.
+Reporting estimates of the felling date range for individual series, is provided by the `fd_report()` function.
 
 ``` r
 tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
@@ -160,31 +122,19 @@ fd_report(tmp,
 
 ### sw_combine
 
-The procedure to combine felling dates of a group of related, individual
-series with (partially) preserved sapwood, in order to narrow down the
-range of a common felling date is provided by the `sw_combine()`
-function. It returns a list with:
+The procedure to combine felling dates of a group of related, individual series with (partially) preserved sapwood, in order to narrow down the range of a common felling date is provided by the `sw_combine()` function. It returns a list with:
 
--   the pdf for the felling date of the individual series and the pdf of
-    the model that combines these individual series (`$dataRaw`),
+-   the pdf for the felling date of the individual series and the pdf of the model that combines these individual series (`$dataRaw`),
 
--   the hdi for the combined estimate of the common felling date
-    (`$hdi_model`),
+-   the hdi for the combined estimate of the common felling date (`$hdi_model`),
 
--   the *Agreement index* (`$A_comb`) of the model, expressing how well
-    the individual series fit into the model (ideally around 100%, and
-    not lower than the critical threshold A_c = 60%) ,
+-   the *Agreement index* (`$A_comb`) of the model, expressing how well the individual series fit into the model (ideally around 100%, and not lower than the critical threshold A_c = 60%) ,
 
--   an overview of the felling date range for the individual series
-    (`$individual_series`), and their *Agreement index* (A_i) to the
-    combined model.
+-   an overview of the felling date range for the individual series (`$individual_series`), and their *Agreement index* (A_i) to the combined model.
 
 #### dummy0
 
-A data set with dated tree-ring series of which all have partially
-preserved sapwood. The names of the variablers in the data set are
-mapped to the parameters of the `sw_combine()` function. In hte example
-below, the numeric output is returned:
+A data set with dated tree-ring series which all have partially preserved sapwood. The names of the variables in the data set are mapped to the parameters of the `sw_combine()` function. In the example below, the numeric output is returned:
 
 ``` r
 
@@ -268,7 +218,7 @@ output_comb[-1]
 
 #### dummy2
 
-A data set with one exact felling date:
+A data set with 5 tree-ring series of which one has an exact felling date:
 
 ``` r
 dummy2
@@ -281,12 +231,11 @@ dummy2
 sw_combine(dummy2, plot = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%"/>
 
 #### dummy3
 
-A data set where all tree-ring series have been measured up to the waney
-edge:
+A data set where all tree-ring series have been measured up to the waney edge:
 
 ``` r
 dummy3
@@ -299,12 +248,11 @@ dummy3
 sw_combine(dummy3, plot = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%"/>
 
 #### dummy4
 
-An attempt to compute a common felling date for a group of tree-ring
-series, all with partially preserved sapwood:
+An attempt to compute a common felling date for a group of tree-ring series. All series include partially preserved sapwood:
 
 ``` r
 dummy4
@@ -317,17 +265,11 @@ dummy4
 sw_combine(dummy4, plot = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" /> No
-common felling date can be computed for this particular dataz set. The
-model fails (agreement index of the model is below the critical
-threshold value (A_c) of 60%). Three series have an individual agreement
-index below 60%.
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%"/> No common felling date can be computed for this particular data set. The model fails (agreement index of the model is below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
 
 #### dummy5
 
-When no sapwood rings were observed and measured, only an
-`earliest possible felling date` (**terminus post quem**) can be
-determined:
+When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined:
 
 ``` r
 dummy5
@@ -339,14 +281,21 @@ dummy5
 sw_combine(dummy5, plot = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%"/> \### sw_sum
+
+The `sw_sum()` function computes the the summed probability density (SPD) for a set of felling date ranges.
+
+``` r
+sw_sum(dummy7, plot = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%"/>
 
 ## Helper functions
 
 ### sw_data_overview
 
-The function `sw_data_overview()` provides an overview of all published
-sapwood data sets that are distributed with this package.
+The function `sw_data_overview()` provides an overview of all published sapwood data sets that are distributed with this package.
 
 ``` r
 sw_data_overview()
@@ -360,9 +309,7 @@ Load the original data with, e.g. `get("Hollstein_1980")`.
 
 ### sw_data_info
 
-More information on one of the sawpood data sets - how to cite the data
-set, the area the data represents, the number of observations and some
-basic summary stats - can be retrieved by the `sw_data_info()` function.
+More information on one of the sapwood data sets - how to cite the data set, the area the data represents, the number of observations and some basic summary stats - can be retrieved by the `sw_data_info()` function.
 
 ``` r
 sw_data_info("Pilcher_1987")
@@ -385,15 +332,14 @@ sw_data_info("Pilcher_1987")
 
 ### sw_model
 
-A graphical representation of a sapwood data set is provided by the
-`sw_model()` function.
+A graphical representation of a sapwood data set is provided by the `sw_model()` function.
 
 ``` r
 
 sw_model("Sohar_2012_ELL_c")
 ```
 
-<img src="man/figures/README-model-1.png" width="100%" />
+<img src="man/figures/README-model-1.png" width="100%"/>
 
 ``` r
 
@@ -415,15 +361,12 @@ sw_data_info("Sohar_2012_ELL_c")
 #>    2.00   10.00   12.00   11.69   13.00   27.00
 ```
 
-The `sw_model()` function allows to fit a distribution to a data set of
-observed sapwood numbers and computes the highest posterior density
-interval (hdi) for a given credibility mass. The density function fitted
-to the sapwood data set should be one of:
+The `sw_model()` function allows to fit a distribution to a data set of observed sapwood numbers and computes the highest posterior density interval (hdi) for a given credibility mass. The density function fitted to the sapwood data set should be one of:
 
--   “lognormal” (the default value),
--   “normal”,
--   “weibull”,
--   “gamma”.
+-   "lognormal" (the default value),
+-   "normal",
+-   "weibull",
+-   "gamma".
 
 The credible interval should be a value between 0 and 1.
 
@@ -431,23 +374,15 @@ The credible interval should be a value between 0 and 1.
 sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 ```
 
-<img src="man/figures/README-sw_model_plot2-1.png" width="100%" />
+<img src="man/figures/README-sw_model_plot2-1.png" width="100%"/>
 
-When `plot = FALSE`, a list with the numeric output of the modelling
-process is returned.
+When `plot = FALSE`, a list with the numeric output of the modelling process is returned.
 
 ### read_fh and get_header
 
-The `read_fh()` function is an extension to the `dplR::read.fh()`
-function from the [**dplR package**](https://github.com/AndyBunn/dplR)
-([Bunn 2008](https://doi.org/10.1016/j.dendro.2008.01.002), [Bunn
-2010](https://doi.org/10.1016/j.dendro.2009.12.001), [Bunn *et al.*
-2022](https://github.com/AndyBunn/dplR)). It allows to read .fh (format
-Heidelberg) files of ring widths AND additional information found in the
-HEADER fields are listed as attributes.
+The `read_fh()` function is an extension to the `dplR::read.fh()` function from the [**dplR package**](https://github.com/AndyBunn/dplR) ([Bunn 2008](https://doi.org/10.1016/j.dendro.2008.01.002), [Bunn 2010](https://doi.org/10.1016/j.dendro.2009.12.001), [Bunn *et al.* 2022](https://github.com/AndyBunn/dplR)). It allows to read .fh (format Heidelberg) files of ring widths AND additional information found in the HEADER fields are listed as attributes.
 
-This function also works with ring-width data in CHRONO and HALF-CHRONO
-format.
+This function also works with ring-width data in CHRONO and HALF-CHRONO format.
 
 Furthermore, the `read_fh()` function is case insensitive.
 
@@ -475,8 +410,7 @@ head(Doel1_trs, 15)
 #> 1164   2.83     NA      NA     NA   3.91     NA      NA   1.84      NA    NA
 ```
 
-When `header = TRUE`, the `get_header()` function is triggered and
-HEADER fields in the .fh file are returned as a `data.frame`.
+When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`.
 
 ``` r
 read_fh(Doel1, verbose = FALSE, header = TRUE)
