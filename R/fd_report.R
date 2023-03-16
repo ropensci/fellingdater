@@ -67,6 +67,19 @@ fd_report <- function(
           sep = ";") {
 
      df <- as.data.frame(x)
+     # Check columns exist
+     if (!series %in% names(df)) {
+          stop("--> 'series' does not exist")
+     }
+     if (!last %in% names(df)) {
+          stop("--> 'last' does not exist")
+     }
+     if (!n_sapwood %in% names(df)) {
+          stop("--> 'n_sapwood' does not exist")
+     }
+     if (!waneyedge %in% names(df)) {
+          stop("--> 'waneyedge' does not exist")
+     }
      series <- df[[series]] # check for NA's
      if (any(is.na(series))) {
           stop("--> some 'series' have no id")
