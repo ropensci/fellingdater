@@ -61,7 +61,7 @@ p <-
         ggplot2::geom_line(data = spline_int,
                            ggplot2::aes(x = x, y = y),
                            color = spline_col,
-                           size = 1,
+                           linewidth = 1,
                            alpha = .5) +
         { if (nrow(fd) > 0) ggplot2::geom_point(data = fd,
                             ggplot2::aes(x = year, y = SPD + y * p_max/20),
