@@ -106,7 +106,7 @@ testthat::test_that("Output is a data.frame", {
      testthat::expect_s3_class(x, "data.frame")
 })
 
-testthat::test_that("No last is undated", {
+testthat::test_that("No last date gives undated", {
      x <- fd_report(testdata
      )
      testthat::expect_equal(
@@ -120,5 +120,39 @@ testthat::test_that("No last is undated", {
      testthat::expect_equal(
           x$felling_date[4],
           "undated"
+     )
+})
+
+testthat::test_that("Waneyedge gives exact date", {
+     x <- fd_report(testdata
+     )
+     testthat::expect_equal(
+          x$lower[3],
+          NA_real_
+     )
+     testthat::expect_equal(
+          x$upper[3],
+          1789
+     )
+     testthat::expect_equal(
+          x$felling_date[3],
+          "in 1789"
+     )
+})
+
+testthat::test_that("No Waneyedge gives bewteen date", {
+     x <- fd_report(testdata
+     )
+     testthat::expect_equal(
+          x$lower[1],
+          x$last[1]
+     )
+     testthat::expect_gte(
+          x$upper[1],
+          x$last[1]+x$n_sapwood[1]
+     )
+     testthat::expect_match(
+          x$felling_date[1],
+          sprintf("^between %d and %d$", x$lower[1], x$upper[1])
      )
 })
