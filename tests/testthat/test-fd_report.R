@@ -1,23 +1,45 @@
-testdata <- data.frame(id = c("aaa", "bbb", "ccc"),
-                  swr = c(10, 11, 12),
-                  waneyedge = c(FALSE, FALSE,TRUE),
-                  end = c(123, 456, 1789))
+testdata <- data.frame(series = c("aaa", "bbb", "ccc", "no_last", "no_sapwood"),
+                       n_sapwood = c(10, 11, 12, 10, NA),
+                       waneyedge = c(FALSE, FALSE, TRUE, FALSE, FALSE),
+                       last = c(123, 456, 1789, NA, 1978))
 
-testthat::test_that("Wrong arguments generate errors", {
+testthat::test_that("Data must be present", {
      testthat::expect_error(
           fd_report(),
           regexp = "argument \"x\""
      )
+})
+
+testthat::test_that("Series must be present", {
      testthat::expect_error(
           fd_report(testdata,
+               series = "bestaat_niet"
           ),
           regexp = "series"
      )
+     testdata <- data.frame(series = c(NA, "bbb", "ccc"),
+                            n_sapwood = c(10, 11, 12),
+                            waneyedge = c(FALSE, FALSE,TRUE),
+                            last = c(123, 456, 1789))
+     testthat::expect_error(
+          fd_report(testdata),
+          regexp = "series"
+     )
+})
+
+testthat::test_that("n_sapwood must be numeric", {
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id",
-                    "last"="end"
+                    "n_sapwood" = "bestaat_niet"
           ),
+          regexp = "n_sapwood"
+     )
+     testdata <- data.frame(series = c("aaa", "bbb", "ccc"),
+                            n_sapwood = c("tien", 11, 12),
+                            waneyedge = c(FALSE, FALSE,TRUE),
+                            last = c(123, 456, 1789))
+     testthat::expect_error(
+          fd_report(testdata),
           regexp = "n_sapwood"
      )
 })
@@ -25,7 +47,7 @@ testthat::test_that("Wrong arguments generate errors", {
 testthat::test_that("last must be numeric", {
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id"
+                    "last" = "bestaat_niet"
           ),
           regexp = "last"
      )
@@ -42,22 +64,16 @@ testthat::test_that("last must be numeric", {
 testthat::test_that("waneyedge must be boolean", {
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id",
-                    "last"="end",
-                    "n_sapwood"="swr",
                     "waneyedge" = "waynesedge"
           ),
           regexp = "waneyedge"
      )
-     testdata <- data.frame(id = c("aaa", "bbb", "ccc"),
-                            swr = c(10, 11, 12),
+     testdata <- data.frame(series = c("aaa", "bbb", "ccc"),
+                            n_sapwood = c(10, 11, 12),
                             waneyedge = c("ja", "nee", 345),
-                            end = c(123, 456, 1789))
+                            last = c(123, 456, 1789))
      testthat::expect_warning(
-          fd_report(testdata,
-                    "series" = "id",
-                    "last"="end",
-                    "n_sapwood"="swr",
+          fd_report(testdata
           ),
           regexp = "waneyedge"
      )
@@ -66,27 +82,18 @@ testthat::test_that("waneyedge must be boolean", {
 testthat::test_that("credMass must be between 0 and 1", {
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id",
-                    "last" = "end",
-                    "n_sapwood" = "swr",
                     "credMass" = "lots"
           ),
           regexp = "credMass"
      )
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id",
-                    "last" = "end",
-                    "n_sapwood" = "swr",
                     "credMass" = -145
           ),
           regexp = "credMass"
      )
      testthat::expect_error(
           fd_report(testdata,
-                    "series" = "id",
-                    "last" = "end",
-                    "n_sapwood" = "swr",
                     "credMass" = 1.01
           ),
           regexp = "credMass"
@@ -94,10 +101,24 @@ testthat::test_that("credMass must be between 0 and 1", {
 })
 
 testthat::test_that("Output is a data.frame", {
-     x <- fd_report(testdata,
-                    "series" = "id",
-                    "last"="end",
-                    "n_sapwood"="swr"
+     x <- fd_report(testdata
      )
      testthat::expect_s3_class(x, "data.frame")
+})
+
+testthat::test_that("No last is undated", {
+     x <- fd_report(testdata
+     )
+     testthat::expect_equal(
+          x$lower[4],
+          NA_real_
+     )
+     testthat::expect_equal(
+          x$upper[4],
+          NA_real_
+     )
+     testthat::expect_equal(
+          x$felling_date[4],
+          "undated"
+     )
 })
