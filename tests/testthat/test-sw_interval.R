@@ -41,6 +41,28 @@ testthat::test_that("credMass is a number between 0 and 1", {
      )
 })
 
+testthat::test_that("sw_data exists", {
+     testthat::expect_message(
+          sw_interval(
+               n_sapwood=50,
+               last=1980,
+               sw_data = "Van_Daele_1978"
+          ),
+          regexp = "No sapwood data set specified"
+     )
+})
+
+# testthat::test_that("hdi with very large n_sapwood gives warning", {
+#      testthat::expect_warning(
+#           sw_interval(
+#                n_sapwood = 12345,
+#                last = 1234,
+#                hdi = TRUE,
+#           ),
+#           regexp = "n_sapwood"
+#      )
+# })
+
 testthat::test_that("hdi works with lognormal density function", {
      hdi <- sw_interval(
           n_sapwood = 10,
