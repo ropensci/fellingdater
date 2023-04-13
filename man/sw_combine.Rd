@@ -66,7 +66,7 @@ combined estimate of the felling date.
 If \code{FALSE} a list with numeric output of the modelling process is returned.}
 }
 \value{
-Depend on the value of plot. If TRUE a ggplot style
+Depends on the value of plot. If TRUE a ggplot style
 When \code{FALSE} a \code{data.frame} with the combined probability and modelling parameters
 }
 \description{
