@@ -35,7 +35,7 @@
 #'   sapwood data set is provided from user-defined .csv-file.
 #'
 #' @description Combine multiple estimates of the felling date for a single event.
-#' @return Depend on the value of plot. If TRUE a ggplot style
+#' @return Depends on the value of plot. If TRUE a ggplot style
 #'   When `FALSE` a `data.frame` with the combined probability and modelling parameters
 #' @export
 #'
