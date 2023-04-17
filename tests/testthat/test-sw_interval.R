@@ -91,13 +91,22 @@ testthat::test_that("hdi works with normal density function", {
      testthat::expect_gte(hdi$p[1], 0.95)
 })
 
-# testthat::test_that("hdi does not work with invalid density function", {
-#      testthat::expect_error(
-#           sw_interval(
-#                n_sapwood=50,
-#                last=1980,
-#                densfun = "nuka-cola"
-#           ),
-#           regexp = "not a supported distribution"
-#      )
-# })
+testthat::test_that("hdi does not work with invalid density function", {
+     testthat::expect_error(
+          sw_interval(
+               n_sapwood=50,
+               last=1980,
+               densfun = "nuka-cola"
+          ),
+          regexp = "not a supported distribution"
+     )
+})
+
+testthat::test_that("d.dens does not work with invalid density function", {
+     testthat::expect_error(
+          d.dens(
+               densfun = "nuka-cola",
+          ),
+          regexp = "not a supported distribution"
+     )
+})
