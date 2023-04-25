@@ -45,8 +45,12 @@ In the following example the combined felling date range for a set of four dated
 library(fellingdateR)
 
 ## a data set where all series have partially preserved sapwood:
-load("R/sysdata.rda")
-dummy1
+dummy1 <- data.frame(
+  series = c("trs_06", "trs_07", "trs_08", "trs_09", "trs_10"),
+  last = c(1000, 1009, 1007, 1005, 1010),
+  n_sapwood = c(5, 10, 15, 16, 8),
+  waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE)
+)
 ```
 
 ```{r example}
