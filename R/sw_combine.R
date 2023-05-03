@@ -78,19 +78,19 @@ sw_combine <- function(x,
      n <- nrow(x)
      endDate <- x[, last]
 
-     if (any(is.na(as.numeric(endDate))) | is.factor(endDate) | is.logical(endDate)) {
+     if (any(is.na(endDate)) | !is.numeric(endDate)) {
           stop(
-               "--> input does not provide end dates in the second column
-(some are empty or not numeric)")
+"--> Please check the column with 'end dates'.
+Some values are possibly missing or the values are not numeric")
      }
      swr <- x[, n_sapwood]
-     if (is.character(swr)) stop(
-          "--> 'n_sapwood' must be a numeric vector")
+     if (!is.numeric(swr)) stop(
+"--> 'n_sapwood' must be a numeric vector")
 
      cambium <- x[, waneyedge]
      if (!is.logical(cambium)) {
           warning(
-               "Column 'waneyedge' in data.frame should be logical (TRUE/FALSE), indicating
+" --> Column 'waneyedge' should be logical (TRUE/FALSE), indicating
 the presence of waney edge.\n",
 " --> Converted to TRUE/FALSE based on presence of string 'wK'.")
           cambium <- ifelse(grepl("wk", cambium, ignore.case = TRUE),
@@ -98,8 +98,7 @@ the presence of waney edge.\n",
                             FALSE)
      }
 
-     timeRange <- range(endDate)
-     timeAxis <- seq(timeRange[1]-3, timeRange[2] + 100, by = 1)
+     timeAxis <- seq(min(endDate) - 3, max(endDate) + 100, by = 1)
 
      pdf_matrix <- matrix(nrow = length(timeAxis), ncol = 1)
      colnames(pdf_matrix) <- "year"

@@ -7,7 +7,9 @@ Authors@R: c(
     person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be",role = c("aut", "cre"),
         comment = c(ORCID = "0000-0002-7719-8305")),
     person("Koen", "Van Daele", role = "ctb",
-        comment = c(ORCID = "0000-0002-8153-2978"))
+        comment = c(ORCID = "0000-0002-8153-2978")),
+    person("Ronald", "Visser", role = "ctb",
+        comment = c(ORCID = "0000-0001-6966-1729"))    
     )
 Description: `fellingdateR` is an R package that aims to facilitate the 
   organization, analysis and interpretation of tree-ring data from wooden 
