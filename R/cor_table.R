@@ -13,7 +13,7 @@
 #'   references are removed from the output.
 #' @param output Should be one of `matrix` or `table` (default).
 #' @param values A character vector listing all correlation values that
-#'   should be computed. Defaults to all possible values:\n
+#'   should be computed. Defaults to all possible values:
 #'   c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho")
 #' @param sort_by Correlation value by which the output is sorted for each
 #'   series in x.
@@ -36,6 +36,9 @@ cor_table <-
               values = c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho"),
               sort_by = "t_Ho") #c("glk", "t_St", "t_BP", "t_Ho", "r_pearson"))
      {
+          # to avoid notes in CMD check
+          pnorm <- lag <- cor <- select <- series <- reference <- NULL
+
           ### checks
           x_ori <- x
 
@@ -76,7 +79,7 @@ cor_table <-
           }
           if (min_overlap < 50) {
                warning(
-                    "The minimum number of overlap (`min_overlap = `) is lower than 50.\n
+                    "The minimum number of overlap (`min_overlap = `) is lower than 50.
                     This might lead to statistically insignificant matches."
                )
           }
@@ -117,8 +120,8 @@ cor_table <-
           y <- y[rownames(y) %in% interval, , drop = FALSE]
 
           # remove empty columns
-          x <- x[, sapply(x, function(col) sum(!is.na(col))) > 3]
-          y <- y[, sapply(y, function(col) sum(!is.na(col))) > 3]
+          x <- x[, sapply(x, function(col) sum(!is.na(col))) > 3, drop = FALSE]
+          y <- y[, sapply(y, function(col) sum(!is.na(col))) > 3, drop = FALSE]
 
 
           ### overlap

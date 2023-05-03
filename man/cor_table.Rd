@@ -2,7 +2,7 @@
 % Please edit documentation in R/cor_table.R
 \name{cor_table}
 \alias{cor_table}
-\title{cor_table: calculate correlation values between tree-ring series}
+\title{cor_table: calculates correlation values between tree-ring series}
 \usage{
 cor_table(
   x,
@@ -16,22 +16,24 @@ cor_table(
 }
 \arguments{
 \item{x}{Name of a \code{data.frame} (of class ´rwl´) with tree-ring data,
-where each column represents a measurement series, and years as rownames.}
+where each column represents a measurement series, and calendar years
+are listed as rownames.}
 
 \item{y}{Name of a \code{data.frame} (of class ´rwl´) with tree-ring data,
-where each column represents a measurement series, and years as rownames.
+where each column represents a measurement series, and years are listed
+as rownames.
 x is compared to this series (y = reference).
-If \code{NULL} (default) x is compared to itself.}
+If \code{NULL} (default) x is compared to itself (y = x).}
 
-\item{min_overlap}{A numeric specifying the minimal overlap between series.}
+\item{min_overlap}{A \code{numeric} specifying the minimal overlap between series.}
 
 \item{remove.duplicates}{Logical. If \code{TRUE} identical pairs of series and
-references are removed from the output}
+references are removed from the output.}
 
-\item{output}{Should be one of ´matrix' or ´table´ (default).}
+\item{output}{Should be one of \code{matrix} or \code{table} (default).}
 
 \item{values}{A character vector listing all correlation values that
-should be computed. defaults to all possible values:
+should be computed. Defaults to all possible values:
 c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho")}
 
 \item{sort_by}{Correlation value by which the output is sorted for each
@@ -39,12 +41,12 @@ series in x.}
 }
 \value{
 Depends on the value of \code{output}. If \code{matrix} a list of correlation
-matrices is returend. If  \code{table} a data.frame is returned with all
-correlation values listed by @param values.
+matrices is returned. If  \code{table} a data.frame is returned with all
+correlation values listed by \code{values.}
 }
 \description{
 This function calculates common correlation values between dated
-tree-ring series (@param x ) and a set of reference chronologies (@param y ).
+tree-ring series (\code{x}) and a set of reference chronologies (\code{y}).
 When no master chronologies are provided, each series in x is compared to all
 other series in x.
 }
