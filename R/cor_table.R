@@ -117,8 +117,8 @@ cor_table <-
           y <- y[rownames(y) %in% interval, , drop = FALSE]
 
           # remove empty columns
-          x <- x[, sapply(x, function(col) sum(!is.na(col))) > 3]
-          y <- y[, sapply(y, function(col) sum(!is.na(col))) > 3]
+          x <- x[, sapply(x, function(col) sum(!is.na(col))) > 3, drop = FALSE]
+          y <- y[, sapply(y, function(col) sum(!is.na(col))) > 3, drop = FALSE]
 
 
           ### overlap

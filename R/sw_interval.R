@@ -77,9 +77,11 @@ sw_interval <- function(n_sapwood = NA,
      a <- sw_model_params$fit_parameters$estimate[1]
      sigma <- sw_model_params$fit_parameters$estimate[2]
      if (n_sapwood > sw_model_params$range[3]) {
-          warning(paste0("--> ", n_sapwood,
-                         " is a very high no. of sapwood rings.
-                         Is this correct?"))
+          warning(paste0(
+"--> ", n_sapwood," lies outside the range of the observed number of sapwood rings
+for the ", sw_data, " data set.
+Is this a correct value?")
+                  )
      }
 
      swr_n <- seq(n_sapwood, n_sapwood + 100, by = 1)
@@ -93,10 +95,15 @@ sw_interval <- function(n_sapwood = NA,
      pdf <- data.frame(year, swr_n, p)
      colnames(pdf) <- c("year", "n_sapwood", "p")
 
-     # filter extreme low p values (e.g. when a very high no. of swr is observed)
-     pdf <- subset(pdf, p > 0.0000001)
-
-     # pdf$p[pdf$p < 0.000001] <- 0
+     # Filter extreme low p values (e.g. when a very high no. of swr is observed).
+     # If not filtered, a hdi is computed based on extremely low p-values.
+     # 0.001 is an arbitrarily chosen threshold value.
+     if (sum(pdf$p) < 0.001) {
+             stop(paste0(
+"--> Sapwood numbers of >= ", n_sapwood, " are very unlikely (p < .001).
+This value falls outside the range of the chosen sapwood model.")
+             )
+     }
 
      # scale density function to 1
      pdf$p <- pdf$p/sum(pdf$p)
