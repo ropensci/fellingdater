@@ -70,6 +70,10 @@ sw_interval <- function(n_sapwood = NA,
                   defaults to 'Hollstein_1980'.")
      }
 
+     if (!densfun %in% c('lognormal', 'normal', 'weibull', 'gamma')) {
+          stop(sprintf(" --> '%s' is not a supported distribution", densfun))
+     }
+
      if (is.na(credMass) || credMass <= 0 || credMass >= 1)
           stop(" --> credMass must be between 0 and 1")
 
@@ -177,6 +181,11 @@ d.dens <- function(densfun = densfun,
                    param2 = 1,
                    log = FALSE,
                    n = 1) {
+
+     if (!densfun %in% c('lognormal', 'normal', 'weibull', 'gamma')) {
+          stop(sprintf("!!! '%s' is not a supported distribution !!!", densfun))
+     }
+
      if (densfun == "lognormal") {
           stats::dlnorm(
                x = x,
@@ -205,9 +214,6 @@ d.dens <- function(densfun = densfun,
                rate = param2,
                log = log
           )
-     } else {
-          stop(paste0("!!! '", densfun,
-                      "' is not a supported distribution !!!"))
      }
 }
 
