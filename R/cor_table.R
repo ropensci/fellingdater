@@ -37,7 +37,7 @@ cor_table <-
               sort_by = "t_Ho") #c("glk", "t_St", "t_BP", "t_Ho", "r_pearson"))
      {
           # to avoid notes in CMD check
-          pnorm <- lag <- cor <- select <- series <- reference <- NULL
+          pnorm <- cor <- select <- series <- reference <- NULL
 
           ### checks
           x_ori <- x
@@ -183,10 +183,10 @@ cor_table <-
           colnames(tHo_mat) <- names(y)
 
           if ("t_Ho" %in% values) {
-               wuch_x <- apply(x, 2, function(x) {x / lag(x)} )
+               wuch_x <- apply(x, 2, function(x) {x / c(NA, x[-length(x)])} )
                wuch_x <- 100 * log10(wuch_x)
 
-               wuch_y <- apply(y, 2, function(x) {x / lag(x)} )
+               wuch_y <- apply(y, 2, function(x) {x / c(NA, x[-length(x)])} )
                wuch_y <- 100 * log10(wuch_y)
 
                r <-
