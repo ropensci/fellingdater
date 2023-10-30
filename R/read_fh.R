@@ -1,8 +1,8 @@
-#' read_fh: read a .fh/Heidelberg format file
+#' read_fh: read a Heidelberg format (.fh) tree-ring file
 #'
 #' @description
-#' This function reads in a .fh/Heidelberg format file of ring widths AND lists
-#'   HEADER fields as attributes.
+#' This function reads in a Heidelberg format file (.fh) of ring widths and
+#'  returns HEADER fields as attributes.
 #'
 #' @param fname A `character` vector giving the name of the file name of
 #'   the fh file.
@@ -12,23 +12,32 @@
 #' @param header A `logical`. if `TRUE` the HEADER fields are returned as
 #'   a `data.frame`, if `FALSE` the measurement data are returned.
 #'
-#' @references This function is an extension of the `read.fh()` function from
-#'   the **dplR package**, developped by Andy Bunn (Bunn 2008, Bunn 2010,
-#'     Bunn et al. 2022).
+#' @references This function is an extension of `read.fh()` from
+#'   the **dplR package** (<https://github.com/opendendro/dplR>), developed and
+#'   maintained by Prof. dr. Andy Bunn (Bunn 2008, Bunn 2010, Bunn et al. 2022)
+#'   on <https://opendendro.org/>.
 #'
 #' @details This reads in a fh-file with ring widths in blocks (decadal format)
-#'  or in columns (e.g., as with comment flags) as used by TSAP program.
-#'  Chronologies or half-chronos in fh-format are ALSO supported. The
+#'  or in columns (e.g., with comment flags) as used by TSAP program.
+#'  Chronologies or half-chronos in block format are also supported. The
 #'  `read_fh()` function is case insensitive. Information found in the HEADER
 #'  fields are listed as attributes.
 #'
-#' @return a `data.frame` containing ring-width measurements with calendar
+#'  The header fields harvested from the .fh file include:
+#'
+#'  "Project" "FirstMeasurementDate" "Location" "Town" "Street" "Client"
+#'  "Longitude" "Latitude" "DateOfSampling" "FirstMeasurementDate" "SapWoodRings"
+#'  "Comment" "MissingRingsAfter" "InvalidRingsAfter" "MissingringsBefore"
+#'  "DeltaMissingringsBefgore" "ChronoMemberKeycodes" "PersId"
+#'
+#' @return A `data.frame` with ring-width measurements in columns, (calendar)
 #'   years as `row.names` and header fields as `attributes.`
 #'
 #' @author The original `read.fh()` function is part of the **dplR package**
-#'  and was developped by Christian Zang, with new features and patches by Mikko
-#'  Korpela and Ronald Visser. This `read_fh()` function expands the
-#'  functionalities of the original [dplR::read.fh()] function.
+#'  (<https://github.com/opendendro/dplR>) and was developped by Christian Zang,
+#'  with new features and patches by Mikko Korpela and Ronald Visser.
+#'  This `read_fh()` function expands the functionalities of the original
+#'  [dplR::read.fh()].
 #'
 #' @export
 
@@ -39,7 +48,7 @@ read_fh <- function(
           header = FALSE) {
      # NEW: verbose = TRUE, header = FALSE
      inp <- readLines(fname, ok=TRUE, warn=FALSE)
-     # removes empty lines in .fh file
+     # NEW: removes empty lines in .fh file
      inp <- inp[nchar(inp)!=0]
      ## Get start and end positions of headers and data blocks
      header.begin <- grep("^HEADER:$", inp)
@@ -94,13 +103,14 @@ read_fh <- function(
      radius.vec <- rep(NA_real_, n)
      stemdisk.vec <- rep(NA_real_, n)
      pith.offset <- rep(NA_real_, n)
-     ## NEW: data_type added
-     data_type <- character(n)
      ## NEW: extra header fields added
+     pith_offset_delta <- rep(NA_real_, n)
+     data_type <- character(n)
      species <- rep(NA_character_, n)
      sapwoodrings <- numeric(n)
-     sapwoodrings_note <- rep(NA_character_, n)
-     unmeasuredRings <- numeric(n)
+     sapwoodrings_chr <- rep(NA_character_, n)
+     unmeasured_rings <- numeric(n)
+     invalid_rings <- numeric(n)
      status <- rep(NA_character_, n)
      waneyedge <- rep(NA_character_, n)
      bark <- rep(NA_character_, n)
@@ -113,6 +123,7 @@ read_fh <- function(
      street <- rep(NA_character_, n)
      personal_id <- rep(NA_character_, n)
      sampling_date <- rep(NA_character_, n)
+     measuring_date <- rep(NA_character_, n)
      client_id <- rep(NA_character_, n)
      longitude <- rep(NA_character_, n)
      latitude <- rep(NA_character_, n)
@@ -270,7 +281,17 @@ read_fh <- function(
                     pith.offset[i] <- tmp + 1
                }
           }
-          ## TODO: When Header field 'DeltaMissingRingsBefore' has a value, length(this.missing) > 1
+          ## NEW: get pith offset uncertainty (delta missing rings before start of series)
+          this.missing.delta <-
+                  sub("DELTAMISSINGRINGSBEFORE=", "", ignore.case = TRUE,
+                      x=grep("^DELTAMISSINGRINGSBEFORE=", this.header, value=TRUE,
+                             ignore.case = TRUE))
+          if (length(this.missing.delta) == 1) {
+                  tmp <- suppressWarnings(as.numeric(this.missing.delta))
+                  if (identical(tmp, round(tmp)) && tmp >= 0 && !is.na(tmp)) { #new !is.na() when text input
+                          pith_offset_delta[i] <- tmp
+                  }
+          }
 
           ## NEW: get Species code
           this.species <- sub("SPECIES=", "", ignore.case=TRUE,
@@ -314,7 +335,7 @@ read_fh <- function(
           if (length(this.swr) == 1){
                if (is.na(suppressWarnings(as.numeric(this.swr)))) {
                     tmp <- suppressWarnings(as.character(this.swr))
-                    sapwoodrings_note[i] <- tmp
+                    sapwoodrings_chr[i] <- tmp
                }
           }
 
@@ -346,27 +367,33 @@ read_fh <- function(
           this.missing <- sub("MISSINGRINGSAFTER=", "", ignore.case = TRUE,
                               x = grep("^MISSINGRINGSAFTER=", this.header,
                                        value = TRUE,ignore.case = TRUE))
+
           ### when no missing rings are present NA instead of zero
           if (identical(this.missing, character(0))) {
-               unmeasuredRings[i] <- NA
+               unmeasured_rings[i] <- NA
           }
           if (length(this.missing) == 1) {
                tmp <- suppressWarnings(as.numeric(this.missing))
                if (identical(tmp, round(tmp))) {
-                    unmeasuredRings[i] <- tmp
+                    unmeasured_rings[i] <- tmp
                }
           }
 
-          ## NEW: get unmeasured, but observed rings (InvalidRingsAfter)
-          ### usually instead of MissingRingsAfter
-          this.missing <- sub("INVALIDRINGSAFTER=", "", ignore.case = TRUE,
+          ## NEW: get unreliable measurements at end - e.g. deformed rings (InvalidRingsAfter)
+          ### sometimes this field is used instead of MissingRingsAfter
+          this.invalid <- sub("INVALIDRINGSAFTER=", "", ignore.case = TRUE,
                               x = grep("^INVALIDRINGSAFTER=", this.header,
                                        value = TRUE, ignore.case = TRUE))
-          if (length(this.missing) == 1) {
-               tmp <- suppressWarnings(as.numeric(this.missing))
-               if (identical(tmp, round(tmp)) && tmp > 0) {
-                    unmeasuredRings[i] <- tmp
-               }
+
+          ### when no invalid rings are present NA instead of zero
+          if (identical(this.invalid, character(0))) {
+                  invalid_rings[i] <- NA
+          }
+          if (length(this.invalid) == 1) {
+                  tmp <- suppressWarnings(as.numeric(this.invalid))
+                  if (identical(tmp, round(tmp))) {
+                          invalid_rings[i] <- tmp
+                  }
           }
 
           ## NEW: get project name
@@ -417,11 +444,19 @@ read_fh <- function(
           }
 
           ## NEW: get sampling date
-          this.date <- sub("DATEOFSAMPLING=", "", ignore.case=TRUE,
+          this.date.sampling <- sub("DATEOFSAMPLING=", "", ignore.case=TRUE,
                            x = grep("^DATEOFSAMPLING=", this.header, value = TRUE,
                                     ignore.case = TRUE))
-          if (length(this.date) == 1) {
-               sampling_date[i] <- this.date
+          if (length(this.date.sampling) == 1) {
+               sampling_date[i] <- this.date.sampling
+          }
+
+          ## NEW: get first measurement date
+          this.date.measuring <- sub("FIRSTMEASUREMENTDATE=", "", ignore.case=TRUE,
+                           x = grep("^FIRSTMEASUREMENTDATE=", this.header, value = TRUE,
+                                    ignore.case = TRUE))
+          if (length(this.date.measuring) == 1) {
+               measuring_date[i] <- this.date.measuring
           }
 
           ## NEW: get client id
@@ -592,7 +627,7 @@ read_fh <- function(
                                "There is %d series\n",
                                "There are %d series\n",
                                domain="R-dplR"), n
-          )
+                      )
           )
           start.years.char <- format(start.years, scientific=FALSE, trim=TRUE)
           end.years.char <- format(end.years, scientific=FALSE, trim=TRUE)
@@ -700,14 +735,16 @@ read_fh <- function(
      attr(rwl, "first") <- start.years
      attr(rwl, "last") <- end.years
      attr(rwl, "length") <- lengths
-     attr(rwl, "swr") <- sapwoodrings
-     attr(rwl, "swr_note") <- sapwoodrings_note
-     attr(rwl, "unmeasuredRings") <- unmeasuredRings
+     attr(rwl, "n_sapwood") <- sapwoodrings
+     attr(rwl, "n_sapwood_chr") <- sapwoodrings_chr
+     attr(rwl, "unmeasured_rings") <- unmeasured_rings
+     attr(rwl, "invalid_rings") <- invalid_rings
      attr(rwl, "status") <- status
      attr(rwl, "waneyedge") <- waneyedge
      attr(rwl, "bark") <- bark
      attr(rwl, "pith") <- pith
      attr(rwl, "pith_offset") <- pith.offset
+     attr(rwl, "pith_offset_delta") <- pith_offset_delta
      attr(rwl, "comments") <- comments
      attr(rwl, "project") <- project
      attr(rwl, "location") <- location
@@ -715,6 +752,7 @@ read_fh <- function(
      attr(rwl, "zip") <- town_zip
      attr(rwl, "street") <- street
      attr(rwl, "sampling_date") <- sampling_date
+     attr(rwl, "measuring_date") <- measuring_date
      attr(rwl, "personal_id") <- personal_id
      attr(rwl, "client_id") <- client_id
      attr(rwl, "longitude") <- longitude

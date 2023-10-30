@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_header.R
 \name{get_header}
 \alias{get_header}
-\title{get_header: retrieves the attributes of a .fh/Heidelberg format file}
+\title{get_header: retrieve the HEADER fields of a Heidelberg format (.fh) file}
 \usage{
 get_header(rwl)
 }
@@ -11,11 +11,11 @@ get_header(rwl)
 a \code{data.frame} of class \code{rwl}.}
 }
 \value{
-A \code{data.frame} with 26 header fields.
+A \code{data.frame} with 29 header fields.
 }
 \description{
-This function reports the HEADER fields from a .fh/Heidelberg
-format file. The header fields are harvested from the .fh file by the
-\code{read_fh()} function, which stores the HEADER fields in the .fh file as
-attributes of the \code{data.frame} it returns.
+This function reports the HEADER fields from a Heidelberg
+format (.fh) ring-width file. The header fields are harvested from the
+.fh-file by the \code{read_fh()} function, which stores the HEADER fields from
+the .fh file as attributes of the \code{data.frame} it returns.
 }
