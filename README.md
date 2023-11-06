@@ -80,7 +80,7 @@ sw_interval(n_sapwood = 10,
             sw_data = "Wazny_1990", 
             densfun = "lognormal")
 #>   lower upper         p
-#> 1  1234  1250 0.9611797
+#> 1  1234  1250 0.9611793
 ```
 
 When `hdi = FALSE` a matrix is returned with scaled p values for each number of observed sapwood rings.
@@ -98,7 +98,7 @@ sw_interval(n_sapwood = 10,
             plot = T)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%"/>
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%"/><img src="man/figures/README-unnamed-chunk-2-2.png" width="100%"/>
 
 ### fd_report
 
@@ -114,10 +114,10 @@ fd_report(tmp,
          n_sapwood = "swr",
          last = "end",
          sw_data = "Wazny_1990")
-#>   series last n_sapwood waneyedge lower upper        felling_date
-#> 1    aaa  123        10     FALSE   123   139 between 123 and 139
-#> 2    bbb  456        11     FALSE   456   471 between 456 and 471
-#> 3    ccc 1789        12      TRUE    NA  1789             in 1789
+#>   series last n_sapwood waneyedge lower upper        felling_date sapwood_model
+#> 1    aaa  123        10     FALSE   123   139 between 123 and 139    Wazny_1990
+#> 2    bbb  456        11     FALSE   456   471 between 456 and 471    Wazny_1990
+#> 3    ccc 1789        12      TRUE    NA  1789             in 1789    Wazny_1990
 ```
 
 ### sw_combine
@@ -374,6 +374,7 @@ The credible interval should be a value between 0 and 1.
 
 ``` r
 sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
+#> Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
 ```
 
 <img src="man/figures/README-sw_model_plot2-1.png" width="100%"/>
@@ -416,59 +417,59 @@ When `header = TRUE`, the `get_header()` function is triggered and HEADER fields
 
 ``` r
 read_fh(Doel1, verbose = FALSE, header = TRUE)
-#>     series data_type         chrono_members species first last length swr
-#> 1   K1_091    Single                   <NA>    QUSP  1158 1292    135  15
-#> 2   S38-BB    Single                   <NA>    QUSP  1193 1306    114   0
-#> 3  GD3-1BB    Single                   <NA>    QUSP  1222 1310     89   5
-#> 4   GR1mBB    Quadro K1_001,K1_004x,GR1-3BB    QUSP  1220 1310     91   3
-#> 5   GQ1mBB    Quadro  GQ1-2BB,K1_007,K1_009    QUSP  1150 1314    165   7
-#> 6   K1_095    Single                   <NA>    QUSP  1207 1320    114  21
-#> 7  GG1-1BB    Single                   <NA>    QUSP  1240 1322     83  13
-#> 8   S13mSB    Quadro          S1-3SB,K1_076    QUSP  1164 1322    159  20
-#> 9  S13A-BB    Single                   <NA>    QUSP  1232 1324     93  19
-#> 10   S6-SB    Single                   <NA>    QUSP  1221 1324    104  14
-#>    swr_note unmeasuredRings status waneyedge bark pith pith_offset
-#> 1      <NA>              NA  Dated      <NA> <NA>    -          NA
-#> 2      <NA>              NA  Dated      <NA> <NA>    -          NA
-#> 3      <NA>              NA  Dated      <NA> <NA>    -          NA
-#> 4      <NA>              NA  Dated       ---    -    -          NA
-#> 5      <NA>              NA  Dated       ---    -    -          NA
-#> 6      <NA>              NA  Dated      <NA>    -    -          NA
-#> 7      <NA>              NA  Dated      <NA> <NA> <NA>          NA
-#> 8      <NA>              NA  Dated       --- <NA>    -          NA
-#> 9      <NA>               1  Dated       WKE <NA> <NA>          NA
-#> 10     <NA>               1  Dated       WKE <NA> <NA>          NA
-#>                                     comments             project
-#> 1                                  keelplank Ship timbers DOEL 1
-#> 2   HW/SW boundary | K1_281 | framing timber Ship timbers DOEL 1
-#> 3                        K1_370 | hull plank Ship timbers DOEL 1
-#> 4                                 hull plank Ship timbers DOEL 1
-#> 5                                 hull plank Ship timbers DOEL 1
-#> 6                                 inner stem Ship timbers DOEL 1
-#> 7                                 hull plank                <NA>
-#> 8  average of S1-3SB,K1_076 | framing timber Ship timbers DOEL 1
-#> 9                             framing timber Ship timbers DOEL 1
-#> 10                            framing timber                <NA>
-#>                   location town  zip       street sampling_date    personal_id
-#> 1        Doel_Deurganckdok <NA> <NA>         <NA>          <NA>           <NA>
-#> 2        Doel_Deurganckdok <NA> <NA>         <NA>          <NA>           <NA>
-#> 3        Doel_Deurganckdok <NA> <NA>         <NA>          <NA>           <NA>
-#> 4        Doel_Deurganckdok Doel <NA> Deurganckdok          <NA> Kristof Haneca
-#> 5        Doel_Deurganckdok Doel <NA> Deurganckdok          <NA> Kristof Haneca
-#> 6        Doel_Deurganckdok Doel <NA> Deurganckdok          <NA> Kristof Haneca
-#> 7  KOGGE ANTWERPEN GG1-1BB <NA> <NA>         <NA>          <NA>             EH
-#> 8        Doel_Deurganckdok <NA> <NA>         <NA>          <NA>           <NA>
-#> 9        Doel_Deurganckdok <NA> <NA>         <NA>          <NA>             KH
-#> 10   KOGGE ANTWERPEN S6-SB <NA> <NA>         <NA>          <NA>             EH
-#>    client_id longitude latitude
-#> 1       <NA>      <NA>     <NA>
-#> 2       <NA>      <NA>     <NA>
-#> 3       <NA>      <NA>     <NA>
-#> 4       <NA>      <NA>     <NA>
-#> 5       <NA>      <NA>     <NA>
-#> 6       <NA>      <NA>     <NA>
-#> 7       <NA>      <NA>     <NA>
-#> 8       <NA>      <NA>     <NA>
-#> 9       <NA>      <NA>     <NA>
-#> 10      <NA>      <NA>     <NA>
+#>     series data_type         chrono_members species first last length n_sapwood
+#> 1   K1_091    Single                   <NA>    QUSP  1158 1292    135        15
+#> 2   S38-BB    Single                   <NA>    QUSP  1193 1306    114         0
+#> 3  GD3-1BB    Single                   <NA>    QUSP  1222 1310     89         5
+#> 4   GR1mBB    Quadro K1_001,K1_004x,GR1-3BB    QUSP  1220 1310     91         3
+#> 5   GQ1mBB    Quadro  GQ1-2BB,K1_007,K1_009    QUSP  1150 1314    165         7
+#> 6   K1_095    Single                   <NA>    QUSP  1207 1320    114        21
+#> 7  GG1-1BB    Single                   <NA>    QUSP  1240 1322     83        13
+#> 8   S13mSB    Quadro          S1-3SB,K1_076    QUSP  1164 1322    159        20
+#> 9  S13A-BB    Single                   <NA>    QUSP  1232 1324     93        19
+#> 10   S6-SB    Single                   <NA>    QUSP  1221 1324    104        14
+#>    n_sapwood_chr unmeasured_rings invalid_rings status waneyedge bark pith
+#> 1           <NA>               NA            NA  Dated      <NA> <NA>    -
+#> 2           <NA>               NA            NA  Dated      <NA> <NA>    -
+#> 3           <NA>               NA            NA  Dated      <NA> <NA>    -
+#> 4           <NA>               NA            NA  Dated       ---    -    -
+#> 5           <NA>               NA            NA  Dated       ---    -    -
+#> 6           <NA>               NA            NA  Dated      <NA>    -    -
+#> 7           <NA>               NA            NA  Dated      <NA> <NA> <NA>
+#> 8           <NA>               NA            NA  Dated       --- <NA>    -
+#> 9           <NA>               NA             1  Dated       WKE <NA> <NA>
+#> 10          <NA>               NA             1  Dated       WKE <NA> <NA>
+#>    pith_offset pith_offset_delta                                  comments
+#> 1           NA                NA                                 keelplank
+#> 2           NA                NA  HW/SW boundary | K1_281 | framing timber
+#> 3           NA                NA                       K1_370 | hull plank
+#> 4           NA                NA                                hull plank
+#> 5           NA                NA                                hull plank
+#> 6           NA                NA                                inner stem
+#> 7           NA                NA                                hull plank
+#> 8           NA                NA average of S1-3SB,K1_076 | framing timber
+#> 9           NA                NA                            framing timber
+#> 10          NA                NA                            framing timber
+#>                project                location town  zip       street
+#> 1  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
+#> 2  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
+#> 3  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
+#> 4  Ship timbers DOEL 1       Doel_Deurganckdok Doel <NA> Deurganckdok
+#> 5  Ship timbers DOEL 1       Doel_Deurganckdok Doel <NA> Deurganckdok
+#> 6  Ship timbers DOEL 1       Doel_Deurganckdok Doel <NA> Deurganckdok
+#> 7                 <NA> KOGGE ANTWERPEN GG1-1BB <NA> <NA>         <NA>
+#> 8  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
+#> 9  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
+#> 10                <NA>   KOGGE ANTWERPEN S6-SB <NA> <NA>         <NA>
+#>    sampling_date measuring_date    personal_id client_id longitude latitude
+#> 1           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
+#> 2           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
+#> 3           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
+#> 4           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
+#> 5           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
+#> 6           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
+#> 7           <NA>           <NA>             EH      <NA>      <NA>     <NA>
+#> 8           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
+#> 9           <NA>           <NA>             KH      <NA>      <NA>     <NA>
+#> 10          <NA>           <NA>             EH      <NA>      <NA>     <NA>
 ```
