@@ -2,20 +2,19 @@
 % Please edit documentation in R/sw_data_overview.R
 \name{sw_data_overview}
 \alias{sw_data_overview}
-\title{sw_data_overview: provides an overview all sapwood data sets that are
-available within the \code{fellingdateR} package}
+\title{Overview of available sapwood data sets in the \code{fellingdateR} package}
 \usage{
 sw_data_overview()
 }
 \value{
 A \code{character} vector with the names of all available data sets
-with sapwood counts.
+with sapwood counts in the \code{fellingdateR} package.
 }
 \description{
-This function provides an overview of available sapwood data
-and models in the \code{fellingdateR} package.
+This function provides an overview of the available sapwood data sets and models within the \code{fellingdateR} package.
 }
 \examples{
+# Get an overview of available sapwood data sets
 sw_data_overview()
 
 }

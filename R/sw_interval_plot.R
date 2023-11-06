@@ -1,24 +1,27 @@
-#' sw_interval_plot
+#' Plot function for the output of [sw_interval()]
+#'
+#' Returns a ggplot-style graph of the probability density function for the felling date range, as computed by [sw_interval()].
 #'
 #' @param x Output of [sw_interval()].
-#' @param credMass A `scalar` `[0, 1]` specifying the mass within the credible
-#'  interval (default = .954).
 #'
-#' @return  ggplot style graph.
+#' @return  A ggplot-style graph.
 #' @export
 #'
-sw_interval_plot <- function(x, credMass = .954) {
+sw_interval_plot <- function(x) {
         # to avoid notes in CMD check
         p.x <- upper <- year <- NULL
 
         sw_data.p <- attributes(x)$sapwood_data
         densfun.p <- attributes(x)$model
         hdi.p <- attributes(x)$hdi
+        credMass.p <- attributes(x)$credMass
+        sep.p <- attributes(x)$sep
 
         p_model <- sw_model(
                 sw_data = sw_data.p,
                 densfun = densfun.p,
-                credMass = credMass,
+                credMass = credMass.p,
+                sep = sep.p,
                 plot = FALSE)$sapwood_model
 
         lower <- x[[1, 1]]
@@ -31,6 +34,8 @@ sw_interval_plot <- function(x, credMass = .954) {
         years <- seq(start, end, 1)
         df[, "year"] <- years
         range <- range(df$year)
+
+        if (grepl("\\.csv$", sw_data.p)) sw_data.p <- basename(sw_data.p)
 
         p <- ggplot2::ggplot(data = df) +
 
@@ -68,7 +73,7 @@ sw_interval_plot <- function(x, credMass = .954) {
                                 y = 0,
                                 yend = 0
                         ),
-                        size = .8
+                        linewidth = .8
                 ) +
                 ggplot2::annotate(
                         "text",
@@ -88,7 +93,7 @@ sw_interval_plot <- function(x, credMass = .954) {
                                 " - ",
                                 hdi.p[[2]],
                                 "\ncredMass: ",
-                                100 * credMass,
+                                100 * credMass.p,
                                 "%"
                         ),
                         hjust = 1,
@@ -97,9 +102,6 @@ sw_interval_plot <- function(x, credMass = .954) {
 
                 ggplot2::theme(
                         axis.text = ggplot2::element_text(size = 10),
-                        # axis.title.x = ggplot2::element_blank(),
-                        # axis.title.y = ggplot2::element_blank(),
-                        # axis.text.y = ggplot2::element_blank(),
                         panel.grid.minor.y = ggplot2::element_blank(),
                         panel.grid.major.y = ggplot2::element_blank(),
                         legend.position = "none",
@@ -108,8 +110,6 @@ sw_interval_plot <- function(x, credMass = .954) {
                 ) +
                 ggplot2::ylab("p") +
                 ggplot2::xlab("calendar year")
-        # { if(lower == 0) ggplot2::xlab("sapwood rings") }
 
-
-        return(p)
+        suppressWarnings(print(p))
 }

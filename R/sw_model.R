@@ -1,4 +1,4 @@
-#' sw_model: modelling of sapwood data
+#' Model sapwood data and compute the highest posterior density interval
 #'
 #' @description
 #' This function fits a distribution to a data set of observed sapwood numbers
@@ -6,25 +6,24 @@
 #'   credibility mass.
 #'
 #' @param sw_data The name of the sapwood data set to use for modelling.
-#'  Should be one of [sw_data_overview()], or the path to a .csv file with
+#'  It should be one of the data sets listed in [sw_data_overview()], or the path to a .csv file with
 #'  columns `n_sapwood` and `count`.
-#' @param densfun Name of the density function fitted to the sapwood data set.
-#'   Should be one of:
+#' @param densfun Name of the density function to fit to the sapwood data set.
+#'   Supported values are:
 #'   * "lognormal" (the default value),
 #'   * "normal",
 #'   * "weibull",
 #'   * "gamma".
-#' @param credMass A `scalar [0, 1]` specifying the mass within the credible
+#' @param credMass A `scalar` in the range of `[0, 1]` specifying the mass within the credible
 #'   interval (default = .954).
-#' @param plot `Logical.` If `TRUE` a plot is returned of the fitted density
-#' function. When `FALSE` a list with numeric output of the modelling process
-#' is returned.
+#' @param plot A `logical`. If `TRUE` a plot of the fitted density function is returned.
+#' When `FALSE`, a list with numeric output of the modelling process is returned.
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
-#'   sapwood data set is provided from user-defined .csv-file.
+#'   sapwood data set is provided from a user-defined .csv-file.
 #'
-#' @return Depends on the `plot` parameter.
-#'   * `plot = TRUE`: a ggplot-style graph.
-#'   * `plot = FALSE`: a list with the numeric output of the modelling process.
+#' @return The return value depends on the `plot` parameter.
+#'   * if `plot` is TRUE, a ggplot-style graph is returned.
+#'   * if `plot` is FALSE, a list with the numeric output of the modelling process is returned.
 #'
 #' @export
 #'
@@ -35,24 +34,28 @@ sw_model <-
               sep = ";",
               plot = TRUE) {
      if (is.na(credMass) || credMass <= 0 || credMass >= 1) {
-	stop(" --> credMass must be between 0 and 1")
+	stop(" \n--> credMass must be between 0 and 1")
      }
      if (!densfun %in% c('lognormal', 'normal', 'weibull', 'gamma')) {
-	stop(sprintf("!!! '%s' is not a supported distribution !!!", densfun))
+	stop(sprintf("\n'%s' is not a supported distribution. \n`densfun` must be one of c('lognormal', 'normal', 'weibull', 'gamma')", densfun))
+     }
+     if (!is.logical(plot)) {
+	stop(sprintf("\n--> 'plot' should be TRUE or FALSE, not '%s'", plot))
      }
      if (sw_data %in% sw_data_overview()) {
           observed <- get(sw_data)
      } else if (grepl("\\.csv$", sw_data)) {
           observed <- utils::read.csv(sw_data, sep = sep)
           if (!all(c("n_sapwood", "count") %in% names(observed))) {
-               stop("--> .csv file should have columns `n_sapwood` and `count`.)")
+               stop("\n--> .csv file doesn't have columns `n_sapwood` and `count`.")
           } else {
                observed <- observed[, c("n_sapwood", "count")]
+               sw_data <- basename(sw_data)
           }
      } else {
           stop(
-               "--> sw_data should be one of sw_data_overview()
-or path to a .csv file with columns `n_sapwood` and `count`.)"
+               "\n--> sw_data should be one of `sw_data_overview()`
+or the path to a .csv file with columns `n_sapwood` and `count`.)"
           )
      }
      observed <- observed[, "count" != 0]

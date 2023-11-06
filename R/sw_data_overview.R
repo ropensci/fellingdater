@@ -1,15 +1,14 @@
-#' sw_data_overview: provides an overview all sapwood data sets that are
-#'   available within the `fellingdateR` package
+#' Overview of available sapwood data sets in the `fellingdateR` package
 #'
-#' @description This function provides an overview of available sapwood data
-#'  and models in the `fellingdateR` package.
+#' @description This function provides an overview of the available sapwood data sets and models within the `fellingdateR` package.
 #'
 #' @return A `character` vector with the names of all available data sets
-#'  with sapwood counts.
+#'  with sapwood counts in the `fellingdateR` package.
 #'
 #' @export
 #'
 #' @examples
+#' # Get an overview of available sapwood data sets
 #' sw_data_overview()
 #'
 sw_data_overview <- function() {

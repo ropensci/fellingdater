@@ -2,7 +2,7 @@
 % Please edit documentation in R/sw_sum.R
 \name{sw_sum}
 \alias{sw_sum}
-\title{sw_sum: summed probabilities of felling date ranges.}
+\title{Compute the summed probability of multiple felling date ranges}
 \usage{
 sw_sum(
   x,
@@ -18,17 +18,17 @@ sw_sum(
 )
 }
 \arguments{
-\item{x}{data.frame containing columns c("series", "swr", "waneyedge" , "last"),
+\item{x}{A \code{data.frame} containing columns c("series", "swr", "waneyedge" , "last"),
 Column "sw_model" is optional. Could be the output of read_fh(x, header = TRUE)}
 
-\item{series}{Name of the column containing the id's}
+\item{series}{Name of the column in \code{x} containing the ID's of the series.}
 
-\item{last}{Name of the column containing the calendar year assigned to the last measured ring. Should be numeric.}
+\item{last}{Name of the column in \code{x}containing the calendar year assigned to the last measured ring (should be \code{numeric}).}
 
 \item{n_sapwood}{Name of the column in \code{x} where the number of observed
-sapwood rings are listed. This variable should be \code{numeric}.}
+sapwood rings are listed (should be \code{numeric}).}
 
-\item{waneyedge}{Name of the column indicating the presence (TRUE)/absence (FALSE) of waney edge. Should be logical}
+\item{waneyedge}{Name of the column in \code{x} indicating the presence (TRUE)/absence (FALSE) of waney edge (should be a \code{logical} vector).}
 
 \item{sw_data}{The name of the sapwood data set to use for modelling.
 Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
@@ -46,12 +46,17 @@ Should be one of:
 \item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
-\item{plot}{logical, indicates whether a plot of the summed probability  distribution (SPD) should be returned.}
+\item{plot}{A \code{logical}.
+\itemize{
+\item If \code{TRUE}, \code{\link[=sw_sum_plot]{sw_sum_plot()}} is triggered and a ggplot-style graph is
+returned with the summed probability density (SPD).
+\item If \code{FALSE}, a list with the numeric output of the modelling process is returned.
+}}
 
-\item{scale_p}{logical, TRUE or FALSE.}
+\item{scale_p}{A \code{logical}. If \code{TRUE} the summed probability density is scaled to 1.}
 }
 \value{
-a data.frame
+Depends on the value of \code{plot.}
 }
 \description{
 Computes the summed probability density (SPD) for a set of felling date ranges.
@@ -67,4 +72,7 @@ waneyedge = c(FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE)
 
 sw_sum(dummy7, plot = TRUE)
 
+}
+\seealso{
+\code{\link[=sw_sum_plot]{sw_sum_plot()}}
 }

@@ -2,11 +2,11 @@
 % Please edit documentation in R/sw_interval.R
 \name{sw_interval}
 \alias{sw_interval}
-\title{sw_interval: computes the limits of the felling date range}
+\title{Computes the limits of the felling date range}
 \usage{
 sw_interval(
   n_sapwood = NA,
-  last = 0,
+  last = 1,
   hdi = FALSE,
   credMass = 0.954,
   sw_data = "Hollstein_1980",
@@ -16,21 +16,21 @@ sw_interval(
 )
 }
 \arguments{
-\item{n_sapwood}{A \code{numeric}. The number of sapwood rings observed/measured.}
+\item{n_sapwood}{A \code{numeric}. The number of observed sapwood rings.}
 
 \item{last}{A \code{numeric}. The calendar year assigned to the outermost
 sapwood ring (optional, default = 0).}
 
-\item{hdi}{A \code{logical.} If \code{TRUE}: the lower and upper limit of the
-highest density interval (credible interval) is given. When \code{FALSE}: a matrix
-is returned with scaled p values for each number of observed sapwood rings.}
+\item{hdi}{A \code{logical.} If \code{TRUE}, the lower and upper limit of the
+highest density interval (credible interval) are returned. When \code{FALSE}, a matrix
+is returned with scaled p-values for each number of observed sapwood rings.}
 
-\item{credMass}{A \code{scalar} \verb{[0, 1]} specifying the mass within the credible
-interval (default = .954).}
+\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass within the credible
+interval (default = .954)}
 
 \item{sw_data}{The name of the sapwood data set to use for modelling.
-Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns ´n_sapwood´ and ´count´.}
+It should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
+columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
@@ -42,25 +42,28 @@ Should be one of:
 }}
 
 \item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.}
+sapwood data set is provided from a user-defined .csv-file.}
 
-\item{plot}{A \code{logical}. If \code{TRUE} a plot is returned of the individual
+\item{plot}{A \code{logical}.
+\itemize{
+\item If \code{TRUE}, a ggplot-style graph is returned of the individual
 sapwood model and estimate of the felling date range.
-If \code{FALSE} a list with numeric output of the modelling process is returned.}
+\item If \code{FALSE}, a list with the numeric output of the modelling process is returned.
+}}
 }
 \value{
 Depends on the value of \code{hdi}.
 \itemize{
-\item \code{hdi = TRUE}: a \verb{numeric vector} reporting the upper and lower limit
+\item If \code{hdi = TRUE}, a \verb{numeric vector} reporting the upper and lower limit
 of the hdi (attributes provide more detail on \code{credMass} and the applied
 sapwood model (\code{sw_data})).
-\item \code{hdi = FALSE}: a \code{matrix} with scaled p values for each number of
-observed sapwood rings.
+\item If \code{hdi = FALSE}, a \code{matrix} with scaled p values for each number of
+observed sapwood rings. This matrix
 }
 }
 \description{
 This function computes the probability density function (PDF)
-and highest probability density interval (hdi) of the felling date range
-based on the observed number of sapwood rings, their chronological dating
+and the highest posterior density interval (hdi) of the felling date range
+based on the observed number of sapwood rings, their chronological dating,
 and the selected sapwood data and model.
 }

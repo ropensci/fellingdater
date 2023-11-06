@@ -2,19 +2,16 @@
 % Please edit documentation in R/sw_interval_plot.R
 \name{sw_interval_plot}
 \alias{sw_interval_plot}
-\title{sw_interval_plot}
+\title{Plot function for the output of \code{\link[=sw_interval]{sw_interval()}}}
 \usage{
-sw_interval_plot(x, credMass = 0.954)
+sw_interval_plot(x)
 }
 \arguments{
 \item{x}{Output of \code{\link[=sw_interval]{sw_interval()}}.}
-
-\item{credMass}{A \code{scalar} \verb{[0, 1]} specifying the mass within the credible
-interval (default = .954).}
 }
 \value{
-ggplot style graph.
+A ggplot-style graph.
 }
 \description{
-sw_interval_plot
+Returns a ggplot-style graph of the probability density function for the felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 }

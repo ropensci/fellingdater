@@ -1,21 +1,21 @@
-#' sw_interval: computes the limits of the felling date range
+#' Computes the limits of the felling date range
 #'
 #' @description This function computes the probability density function (PDF)
-#'   and highest probability density interval (hdi) of the felling date range
-#'   based on the observed number of sapwood rings, their chronological dating
+#'   and the highest posterior density interval (hdi) of the felling date range
+#'   based on the observed number of sapwood rings, their chronological dating,
 #'   and the selected sapwood data and model.
 #'
-#' @param n_sapwood A `numeric`. The number of sapwood rings observed/measured.
+#' @param n_sapwood A `numeric`. The number of observed sapwood rings.
 #' @param last A `numeric`. The calendar year assigned to the outermost
 #'   sapwood ring (optional, default = 0).
-#' @param hdi A `logical.` If `TRUE`: the lower and upper limit of the
-#' highest density interval (credible interval) is given. When `FALSE`: a matrix
-#' is returned with scaled p values for each number of observed sapwood rings.
-#' @param credMass  A `scalar` `[0, 1]` specifying the mass within the credible
-#' interval (default = .954).
+#' @param hdi A `logical.` If `TRUE`, the lower and upper limit of the
+#' highest density interval (credible interval) are returned. When `FALSE`, a matrix
+#' is returned with scaled p-values for each number of observed sapwood rings.
+#' @param credMass  A `scalar` in the range of `[0, 1]` specifying the mass within the credible
+#'   interval (default = .954)
 #' @param sw_data The name of the sapwood data set to use for modelling.
-#' Should be one of [sw_data_overview()], or the path to a .csv file with
-#' columns ´n_sapwood´ and ´count´.
+#'  It should be one of the data sets listed in [sw_data_overview()], or the path to a .csv file with
+#'  columns `n_sapwood` and `count`.
 #' @param densfun Name of the density function fitted to the sapwood data set.
 #'   Should be one of:
 #'   * _lognormal_ (the default value),
@@ -23,61 +23,61 @@
 #'   * _weibull_,
 #'   * _gammma_.
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
-#'   sapwood data set is provided from user-defined .csv-file.
-#' @param plot A `logical`. If `TRUE` a plot is returned of the individual
+#'   sapwood data set is provided from a user-defined .csv-file.
+#' @param plot A `logical`.
+#'   * If `TRUE`, a ggplot-style graph is returned of the individual
 #'   sapwood model and estimate of the felling date range.
-#'   If `FALSE` a list with numeric output of the modelling process is returned.
+#'   * If `FALSE`, a list with the numeric output of the modelling process is returned.
 #'
 #' @export
 #'
 #' @return Depends on the value of `hdi`.
 #'
-#'  * `hdi = TRUE`: a `numeric vector` reporting the upper and lower limit
+#'  * If `hdi = TRUE`, a `numeric vector` reporting the upper and lower limit
 #'  of the hdi (attributes provide more detail on `credMass` and the applied
 #'  sapwood model (`sw_data`)).
-#'  * `hdi = FALSE`: a `matrix` with scaled p values for each number of
-#'  observed sapwood rings.
+#'  * If `hdi = FALSE`, a `matrix` with scaled p values for each number of
+#'  observed sapwood rings. This matrix
 
 sw_interval <- function(n_sapwood = NA,
-                        last = 0,
+                        last = 1,
                         hdi = FALSE,
                         credMass = 0.954,
                         sw_data = "Hollstein_1980",
                         densfun = "lognormal",
                         sep = ";",
                         plot = FALSE) {
-     # check input
+     # Check input of `n_sapwood` and `last`. Other parameters are checked by sw_model()
      if (is.na(n_sapwood)) {
-          message(" --> no pdf/hdi can be returend when n_sapwood = NA")
+          message("\n--> no pdf/hdi can be returend when n_sapwood = NA")
           return(NA_integer_)
      }
 
      if (!is.numeric(n_sapwood)) {
-          stop("\n --> n_sapwood must be a numeric value")
+          stop("\n--> n_sapwood must be a numeric value")
      }
 
      if (n_sapwood < 0) {
-          stop("\n --> n_sapwood must be a positive number")
+          stop("\n--> n_sapwood must be a positive number")
      }
 
      if (isTRUE(n_sapwood%%1 != 0)) {
-          stop("\n --> n_sapwood must be an integer (no decimals allowed!)")
+          stop("\n--> n_sapwood must be an integer (no decimals allowed!)")
      }
 
-     if (!sw_data %in% sw_data_overview()){
-          sw_data <- "Hollstein_1980"
-          message(" --> No sapwood data set specified,
-                  defaults to 'Hollstein_1980'.")
+     if (!is.numeric(last)) {
+                stop("\n--> `last` must be a numeric value")
+        }
+
+     if (!is.logical(plot)) {
+	stop(sprintf("\n--> 'plot' should be TRUE or FALSE, not '%s'", plot))
      }
 
-     if (!densfun %in% c('lognormal', 'normal', 'weibull', 'gamma')) {
-          stop(sprintf(" --> '%s' is not a supported distribution", densfun))
-     }
-
-     if (is.na(credMass) || credMass <= 0 || credMass >= 1)
-          stop(" --> credMass must be between 0 and 1")
-
-     sw_model_params <- sw_model(sw_data, densfun = densfun, plot = FALSE)
+     sw_model_params <- sw_model(sw_data,
+                                 densfun = densfun,
+                                 credMass = credMass,
+                                 sep = sep,
+                                 plot = FALSE)
      a <- sw_model_params$fit_parameters$estimate[1]
      sigma <- sw_model_params$fit_parameters$estimate[2]
      if (n_sapwood > sw_model_params$range[3]) {
@@ -117,21 +117,22 @@ This value falls outside the range of the chosen sapwood model.")
                 credMass = credMass)
 
      # Add calendar years to output when y is provided
-     if (last == 0) {
-             attr(hdi_int, "credMass") <- credMass
-             attr(hdi_int, "sapwood_data") <- sw_data
-             attr(hdi_int, "model") <- densfun
-        }
-     if (last != 0) {
+     # if (last == 0) {
+     #         attr(hdi_int, "credMass") <- credMass
+     #         attr(hdi_int, "sapwood_data") <- sw_data
+     #         attr(hdi_int, "model") <- densfun
+     #    }
+     # if (last != 0) {
 
-             hdi_int[1] <- hdi_int[[1]] - n_sapwood + last
-             hdi_int[2] <- hdi_int[[2]] - n_sapwood + last
-        }
+        hdi_int[1] <- hdi_int[[1]] - n_sapwood + last
+        hdi_int[2] <- hdi_int[[2]] - n_sapwood + last
+        # }
 
      attr(pdf, "sapwood_data") <- sw_data
      attr(pdf, "model") <- densfun
      attr(pdf, "credMass") <- credMass
      attr(pdf, "hdi") <- hdi_int
+     attr(pdf, "sep") <- sep
 
      if (hdi == FALSE & plot == FALSE){
 
@@ -157,7 +158,7 @@ This value falls outside the range of the chosen sapwood model.")
 
      } else if (plot == TRUE) {
 
-        int_plot <- sw_interval_plot(x = pdf, credMass = credMass)
+        int_plot <- sw_interval_plot(x = pdf)
         suppressWarnings(print(int_plot))
 
 

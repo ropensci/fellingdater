@@ -2,9 +2,14 @@
 % Please edit documentation in R/sw_sum_plot.R
 \name{sw_sum_plot}
 \alias{sw_sum_plot}
-\title{sw_sum_plot: plot the output of \code{sw_sum()}}
+\title{Plot the output of \code{\link[=sw_sum]{sw_sum()}}}
 \usage{
-sw_sum_plot(x, bar_col = "darkblue", spline_col = "red3", dot_col = "darkblue")
+sw_sum_plot(
+  x,
+  bar_col = "steelblue",
+  spline_col = "red3",
+  dot_col = "steelblue4"
+)
 }
 \arguments{
 \item{x}{The output of \code{sw_sum()}.}

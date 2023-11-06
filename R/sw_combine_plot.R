@@ -1,12 +1,12 @@
-#' sw_combine_plot: plot the output of `sw_combine()`
+#' Plot the output of [sw_combine()]
 #'
 #' @description This function plots the result of `sw_combine()` and the
-#'   interval for, or the exact felling date of a group of tree-ring series,
+#'   interval for, or the exact felling date of, a group of tree-ring series,
 #'   with agreement indices for the global model.
 #'
-#' @param x Output of `sw_combine()`.
+#' @param x Output of [sw_combine()].
 
-#' @return A ggplot style graph.
+#' @return A ggplot-style graph.
 #' @export
 #'
 #'
@@ -78,9 +78,13 @@ sw_combine_plot <- function(x) {
 
           # plot the pdf for each series with swr or exact felling date
           { if (length(tpq) < nrow(summary))
-               ggplot2::geom_area(fill = "grey90", alpha = 0.7) } +
+               ggplot2::geom_area(fill = "grey90",
+                                  alpha = 0.7,
+                                  na.rm = T) } +
           { if (length(tpq) < nrow(summary))
-               ggplot2::geom_line(color = "grey40", linewidth = 0.5) } +
+               ggplot2::geom_line(color = "grey40",
+                                  linewidth = 0.5,
+                                  na.rm = T) } +
 
           # plot tpq as arrow pointing away from end date
           { if (length(tpq) > 0)
@@ -90,7 +94,8 @@ sw_combine_plot <- function(x) {
                                         dplyr::group_by(series) |>
                                         dplyr::summarize(max = max(year)),
                                    ggplot2::aes(x = max + 1, y = .7),
-                                   size = 2, fill = "darkblue")
+                                   size = 2, fill = "darkblue",
+                                   na.rm = T)
           } +
           { if (length(tpq) > 0)
                ggplot2::geom_segment(data = pdf |>
@@ -101,31 +106,37 @@ sw_combine_plot <- function(x) {
                                      ggplot2::aes(
                                           x = max + 1, xend = max + tpq_min + 1,
                                           y = .7, yend = .7, group = series),
-                                     arrow = ggplot2::arrow(length = ggplot2::unit(0.08, "npc")))
+                                     arrow = ggplot2::arrow(length = ggplot2::unit(0.08, "npc")),
+                                     na.rm = T)
           } +
           # # draw a line delimiting the hdi of the individual felling date estimate (credMass)
           ggplot2::geom_segment(data = summary,
                                 ggplot2::aes(
                                      x = lower, xend = upper,
                                      y = -.05, yend = -.05),
-                                colour = "tomato3", size = .8,linetype = "dotted") +
+                                colour = "tomato3",
+                                linewidth = .8, linetype = "dotted",
+                                na.rm = T) +
 
           # # add the combined felling date estimate as background
           { if (!is.na(hdi[[2]]))
                ggplot2::geom_area(data = combo,
                                   ggplot2::aes(x = year, y = COMB),
-                                  fill = "grey50", alpha = 0.5) } +
+                                  fill = "grey50", alpha = 0.5,
+                                  na.rm = T) } +
           { if (!is.na(hdi[[2]]))
                ggplot2::geom_line(data = combo,
                                   ggplot2::aes(x = year, y = COMB),
-                                  color = "grey30") } +
+                                  color = "grey30",
+                                  na.rm = T) } +
 
           # draw a line delimiting the hdi of the combined felling date estimate (credMass)
           { if (!is.na(hdi[[2]]))
                ggplot2::geom_segment(
                     ggplot2::aes(x = hdi[[1]], xend = hdi[[2]],
                                  y = -0.1, yend = -0.1),
-                    color = "black", size = 1)
+                    color = "black", linewidth = 1,
+                    na.rm = T)
           } +
 
           # add summary text
@@ -143,10 +154,23 @@ sw_combine_plot <- function(x) {
                     ifelse(is.na(A_i),
                            "",
                            paste0("A_i = ", round(as.numeric(A_i), 1), "%"))),
-               hjust = 1)) +
+               hjust = 1),
+               na.rm = T) +
 
-          { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
-               ggplot2::geom_text(data = summary |>  dplyr::filter(agreement == "poor"),
+
+     # NEXT LINE TRIGGERS WARNING
+      # Warning message:
+      # Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
+      # ℹ Please use one dimensional logical vectors instead.
+      # ℹ The deprecated feature was likely used in the fellingdateR package.
+      # Please report the issue to the authors.
+          # { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
+      # replaced by:
+          { if (nrow(summary[summary$agreement == "poor",]) != 0)
+
+               # ggplot2::geom_text(data = summary |>  dplyr::filter(agreement == "poor"),
+               ggplot2::geom_text(data = summary[summary$agreement == "poor",],
+
                                   ggplot2::aes(x = plyr::round_any(range[2] + 20, 10, ceiling),
                                                y = 0.15,
                                                label = "poor agreement",
@@ -176,8 +200,11 @@ sw_combine_plot <- function(x) {
 
           ggplot2::labs(title = x$model_summary,
                         subtitle = paste0(if(!is.na(x$A_comb)) paste("A_model = ", x$A_comb, "% (Ac = 60%)"),
-                                          if(!is.na(x$A_comb) & x$A_comb <60) " model fails (A_model < Ac)"),
+                                          if(!is.na(x$A_comb) & x$A_comb <60) " model fails (A_model < Ac)",
+                                          if(grepl(pattern = "multiple", x$model_summary)) "(unable to combine)"),
                         caption = paste0(100*credMass, "% credible interval (hdi)")) +
-          { if(x$A_comb < 60 & !is.na(x$A_comb)) ggplot2::theme(plot.subtitle = ggplot2::element_text(color = "tomato3")) }
+             { if((x$A_comb < 60 & !is.na(x$A_comb)) |
+                  grepl(pattern = "multiple", x$model_summary))
+                     ggplot2::theme(plot.subtitle = ggplot2::element_text(color = "tomato3")) }
 
 }

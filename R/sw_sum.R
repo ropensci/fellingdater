@@ -1,12 +1,12 @@
-#' sw_sum: summed probabilities of felling date ranges.
+#' Compute the summed probability of multiple felling date ranges
 #'
-#' @param x data.frame containing columns c("series", "swr", "waneyedge" , "last"),
+#' @param x A `data.frame` containing columns c("series", "swr", "waneyedge" , "last"),
 #'  Column "sw_model" is optional. Could be the output of read_fh(x, header = TRUE)
-#' @param series Name of the column containing the id's
-#' @param last Name of the column containing the calendar year assigned to the last measured ring. Should be numeric.
+#' @param series Name of the column in `x` containing the ID's of the series.
+#' @param last Name of the column in `x`containing the calendar year assigned to the last measured ring (should be `numeric`).
 #' @param n_sapwood Name of the column in `x` where the number of observed
-#'  sapwood rings are listed. This variable should be `numeric`.
-#' @param waneyedge Name of the column indicating the presence (TRUE)/absence (FALSE) of waney edge. Should be logical
+#'  sapwood rings are listed (should be `numeric`).
+#' @param waneyedge Name of the column in `x` indicating the presence (TRUE)/absence (FALSE) of waney edge (should be a `logical` vector).
 #' @param credMass A `scalar [0, 1]` specifying the mass within the credible
 #'  interval (default = .954).
 #' @param sw_data The name of the sapwood data set to use for modelling.
@@ -18,13 +18,17 @@
 #'   * "normal",
 #'   * "weibull",
 #'   * "gammma".
-#' @param plot logical, indicates whether a plot of the summed probability  distribution (SPD) should be returned.
-#' @param scale_p logical, TRUE or FALSE.
+#' @param plot A `logical`.
+#'   * If `TRUE`, [sw_sum_plot()] is triggered and a ggplot-style graph is
+#'   returned with the summed probability density (SPD).
+#'   * If `FALSE`, a list with the numeric output of the modelling process is returned.
+#' @param scale_p A `logical`. If `TRUE` the summed probability density is scaled to 1.
 #'
 #' @description Computes the summed probability density (SPD) for a set of felling date ranges.
 #'
-#' @return a data.frame
+#' @return Depends on the value of `plot.`
 #' @export
+#' @seealso [sw_sum_plot()]
 #' @examples
 #' dummy7 <- data.frame(
 #' series = c("trs_40", "trs_41", "trs_42", "trs_43", "trs_44", "trs_45",
@@ -53,7 +57,7 @@ sw_sum <- function (x,
         cambium <- df[[waneyedge]]
         if (!is.logical(cambium)) {
                 warning("Column 'waneyedge' in data.frame should be a logical vector (TRUE/FALSE), indicating the presence of waney edge.\n",
-                        "  --> Converted to TRUE/FALSE based on presence of string 'wK'.")
+                        "--> Converted to TRUE/FALSE based on presence of string 'wK'.")
                 cambium <- ifelse(grepl("wk", cambium, ignore.case = TRUE), TRUE, FALSE)
         }
 

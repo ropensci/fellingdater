@@ -2,36 +2,35 @@
 % Please edit documentation in R/movAv.R
 \name{movAv}
 \alias{movAv}
-\title{movAV: computes a running mean on a time series}
+\title{Compute a running mean on a time series}
 \usage{
 movAv(x, w = 11, align = "center", edges = "fill")
 }
 \arguments{
-\item{x}{A \code{numeric} vector of \code{length(x)}.}
+\item{x}{A \code{numeric} vector of \code{length(x)}, containing the time series data.}
 
-\item{w}{The width of the window. When w is even, one more value from the
+\item{w}{The width of the moving average window. When \code{w}is even, one more value from the
 future is included.}
 
-\item{align}{Should be "center (default), "left" or "right".
+\item{align}{The alignment of the window relative to the current data point. It can be one of:
 \itemize{
-\item \code{align = "center"}: average assigned to the center of the window.
-\item \code{align = "left"}: average of current value and next (w-1) values.
-\item \code{align = "right"}: average of current value and previous (w-1) values
+\item \code{align = "center"}: The average is assigned to the center of the window (default).
+\item \code{align = "left"}: The average includes the current value and the next (w-1) values.
+\item \code{align = "right"}: The average includes the current value and the previous (w-1) values.
 }}
 
 \item{edges}{Defines how values are computed at the start and end of the
-series:
+series. Options are:
 \itemize{
-\item \code{edges = "fill"}: average of reducing number of values near the edges of
-the vector
-(this is the default setting).
-\item \code{edges = "nofill"}: fill with \code{NA} when window does not include w values.
+\item \code{edges = "fill"}: The average is calculated with a decreasing number of values near the edges of
+the vector (default).
+\item \code{edges = "nofill"}: The result includes \code{NA} values when the window does not cover w values.
 }}
 }
 \value{
-A \code{numeric} vector of \code{length(x)}.
+A \code{numeric} vector of the same length of \code{x} with the computed running mean values.
 }
 \description{
-This is a vectorized function that computes a running mean/moving average
-over a window width \code{w} on a continuous (time) series.
+This vectorized function computes a running mean/moving average
+over a continuous (time) series with a specified window width.
 }

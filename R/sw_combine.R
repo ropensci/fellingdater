@@ -1,30 +1,34 @@
-#' sw_combine: compute a felling date range by combining multiple sapwood estimates
+#' Compute a single felling date range by combining multiple sapwood estimates
 #'
-#' @param x Name of a `data.frame` with at least four columns, providing
-#'   information on the id's of the tree-ring series, the number of sapwood
-#'   rings observed, the presence of waney edge and the date assigned to the
+#' @description
+#' This function assesses whether it is possible to combine multiple sapwood
+#' estimates into a single felling date range.
+#'
+#' @param x A `data.frame` with at least four columns, providing
+#'   information on the ID's of the tree-ring series, the number of sapwood
+#'   rings observed, the presence of waney edge and the calendar date assigned to the
 #'   last measured ring. A column describing the sapwood data set to be used
 #'   for modelling and the computation of the hdi can be provided as well.
-#' @param series Name of the column in `x` where id's of the tree-ring series
+#' @param series Name of the column in `x` where ID's of the tree-ring series
 #'   are listed as `character` values.
-#' @param last Name of the column in `x` which lists the calendar year assigned
-#'   to the last measured ring. Should be `numeric`.
+#' @param last Name of the column in `x` where calendar years assigned
+#'   to the last measured ring are listed (should be `numeric`).
 #' @param n_sapwood Name of the column in `x` where the number of observed
-#'   sapwood rings are listed. This variable should be `numeric`.
+#'   sapwood rings are listed (should be `numeric`).
 #' @param waneyedge Name of the column in `x` indicating the presence
-#'  (`TRUE`)/absence (`FALSE`) of waney edge. Should be a `logical` vector.
+#'  (`TRUE`)/absence (`FALSE`) of waney edge (should be a `logical` vector).
 #' @param sw_data The name of the sapwood data set to use for modelling.
 #'  Should be one of [sw_data_overview()], or the path to a .csv file with
 #'  columns ´n_sapwood´ and ´count´.
 #' @param credMass A `scalar [0, 1]` specifying the mass within the credible
 #'   interval (default = .954).
-#' @param hdi A `logical.` If `TRUE`: the lower and upper limit of the
-#'   highest density interval (credible interval) is given for the felling date.
-#'   When `FALSE`: a matrix is returned with scaled p values for calendar years
+#' @param hdi A `logical` parameter. If `TRUE`, the lower and upper limit of the
+#'   highest density interval (credible interval) is given for the combined felling date.
+#'   When `FALSE`, a matrix is returned with scaled p values for calendar years
 #'   covering the combined estimate of the felling date range.
-#' @param plot A `logical`. If `TRUE` a plot is returned of the individual and
+#' @param plot A `logical` parameter. If `TRUE` a ggplot-plot style graph is returned of the individual and
 #'   combined estimate of the felling date.
-#'   If `FALSE` a list with numeric output of the modelling process is returned.
+#'   If `FALSE`, a list with numeric output of the modelling process is returned.
 #' @param densfun Name of the density function fitted to the sapwood data set.
 #'   Should be one of:
 #'   * "lognormal" (the default value),
@@ -34,33 +38,25 @@
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
 #'   sapwood data set is provided from user-defined .csv-file.
 #'
-#' @description Combine multiple estimates of the felling date for a single event.
-#' @return Depends on the value of plot. If TRUE a ggplot style
-#'   When `FALSE` a `data.frame` with the combined probability and modelling parameters
+#' @return Depends on the value of plot. If `TRUE` a ggplot-style is returned,
+#'   when `FALSE` a `data.frame` with the combined probability and modelling parameters
 #' @export
+#'
+#' @seealso [sw_combine_plot()]
 #'
 #' @examples
 #' # a data set in which all series have preserved sapwood
-#'
-#' dummy1 <- data.frame(
-#' series = c("trs_06", "trs_07", "trs_08", "trs_09", "trs_10"),
-#' last = c(1000, 1009, 1007, 1005, 1010),
-#' n_sapwood = c(5, 10, 15, 16, 8),
-#' waneyedge = c(FALSE, FALSE, FALSE, FALSE, FALSE)
-#' )
+#' dummy1
+#' sw_combine(dummy1, plot = FALSE)
 #' sw_combine(dummy1, plot = TRUE)
 #'
 #' # a data set in which one series has an exact felling date (= waney edge preserved)
-#'
-#' dummy2 <- data.frame(
-#' series = c("trs_11", "trs_12", "trs_13", "trs_14", "trs_15"),
-#' last = c(1000, 1005, 1008, 1000, 1010),
-#' n_sapwood = c(5, 10, NA, 1, 3),
-#' waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE)
-#' )
+#' dummy2
 #' sw_combine(dummy2, plot = TRUE)
 #'
-#' sw_combine(fellingdateR:::dummy4, plot= FALSE)
+#' # a data set in which multiples series have an exact felling date
+#' dummy3
+#' sw_combine(fellingdateR:::dummy3, plot= FALSE)
 #'
 sw_combine <- function(x,
                        series = "series",
@@ -90,13 +86,14 @@ Some values are possibly missing or the values are not numeric")
      cambium <- x[, waneyedge]
      if (!is.logical(cambium)) {
           warning(
-" --> Column 'waneyedge' should be logical (TRUE/FALSE), indicating
+"--> Column 'waneyedge' should be logical (TRUE/FALSE), indicating
 the presence of waney edge.\n",
-" --> Converted to TRUE/FALSE based on presence of string 'wK'.")
-          cambium <- ifelse(grepl("wk", cambium, ignore.case = TRUE),
+"--> Converted to TRUE/FALSE based on presence of string 'wK'.")
+          x[, waneyedge] <- ifelse(grepl("wk", x[, waneyedge], ignore.case = TRUE),
                             TRUE,
                             FALSE)
      }
+     cambium <- x[, waneyedge]
 
      timeAxis <- seq(min(endDate) - 3, max(endDate) + 100, by = 1)
 
@@ -158,7 +155,7 @@ the presence of waney edge.\n",
                                sw_data = sw_data,
                                credMass = 0.954,
                                densfun = densfun,
-                               sep = ";")[, 1:6]
+                               sep = sep)[, 1:6]
           summary$A_i <- NA
           rownames(summary) <- NULL
           A_c <- NA
@@ -222,7 +219,7 @@ the presence of waney edge.\n",
                pdf_matrix$COMB <- apply(pdf_matrix[, -1], 1,
                                         FUN=function(x) prod(x, na.rm = TRUE))
 
-               if (any(pdf_matrix[, 2:length(keycodes) +1] == 1, na.rm = TRUE)) {
+               if (any(pdf_matrix[, 2:length(keycodes) + 1] == 1, na.rm = TRUE)) {
                     # when multiple exact felling dates are listed that do no correspond
                     # --> COMB = 0 and after scaling NaN (division by 0)
                     # check rowwise if there is any p-value == 1,
@@ -256,7 +253,7 @@ the presence of waney edge.\n",
                                     sw_data = sw_data,
                                     credMass = 0.954,
                                     densfun = densfun,
-                                    sep = ";")[, 1:6]
+                                    sep = sep)[, 1:6]
                summary$A_i <- NA
                rownames(summary) <- NULL
 
@@ -281,7 +278,7 @@ the presence of waney edge.\n",
                                     sw_data = sw_data,
                                     credMass = 0.954,
                                     densfun = densfun,
-                                    sep = ";")[, 1: 6]
+                                    sep = sep)[, 1: 6]
                summary$A_i <- NA
                rownames(summary) <- NULL
 
@@ -293,8 +290,6 @@ the presence of waney edge.\n",
 
                hdi <- hdi(pdf_matrix, a = "year", b = "COMB",
                              credMass = credMass)
-               # hdi <- hdi(pdf_matrix[, c("year", "COMB")],
-               #            credMass = credMass)
 
                if (hdi[1] == hdi[2]){
                     message <- paste("exact felling date: ", hdi[2])
@@ -338,7 +333,7 @@ the presence of waney edge.\n",
                                     sw_data = sw_data,
                                     credMass = 0.954,
                                     densfun = densfun,
-                                    sep = ";")[, 1: 6]
+                                    sep = sep)[, 1: 6]
                summary$A_i <- round(A_i, 1)
                rownames(summary) <- NULL
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/hdi.R
 \name{hdi}
 \alias{hdi}
-\title{hdi: computes the highest posterior density interval (hdi)}
+\title{Compute the highest posterior density interval (hdi)}
 \usage{
 hdi(x, a = "n_sapwood", b = "p", credMass = 0.954)
 }

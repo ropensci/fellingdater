@@ -1,4 +1,4 @@
-#' sw_sum_plot: plot the output of `sw_sum()`
+#' Plot the output of [sw_sum()]
 #'
 #' @description This function plots the result of `sw_sum()` - both the SPD and
 #'   the occurrence of exact felling dates - and adds a smoothing spline to the SPD.
@@ -18,9 +18,9 @@
 #' sw_sum_plot(tmp, bar_col = "burlywood1")
 #'
 sw_sum_plot <- function(x,
-                        bar_col = "darkblue",
+                        bar_col = "steelblue",
                         spline_col = "red3",
-                        dot_col = "darkblue") {
+                        dot_col = "steelblue4") {
 
         # to avoid notes in CMD check
         spline <- SPD_wk <- year <- y <- SPD <- SPD_movAv <- NULL

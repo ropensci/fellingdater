@@ -1,46 +1,52 @@
-#' read_fh: read a Heidelberg format (.fh) tree-ring file
+#'  Read a Heidelberg format (.fh) tree-ring file
 #'
 #' @description
-#' This function reads in a Heidelberg format file (.fh) of ring widths and
-#'  returns HEADER fields as attributes.
+#' This function reads a Heidelberg format file (.fh) containing ring width data and
+#'  returns the HEADER fields as attributes of the `data.frame`´with the measurement data.
 #'
-#' @param fname A `character` vector giving the name of the file name of
-#'   the fh file.
+#' @param fname A `character` vector specifying the name of the .fh file to read.
 #' @param BC_correction A `logical`. If `TRUE` the correction moves BC-dates
 #'   one year forward.
-#' @param verbose A `logical`. `FALSE` suppresses messages from being printed.
-#' @param header A `logical`. if `TRUE` the HEADER fields are returned as
-#'   a `data.frame`, if `FALSE` the measurement data are returned.
+#' @param verbose A `logical`. If `FALSE`, messages are suppressed during the reading process.
+#' @param header A `logical`. If `TRUE` the HEADER fields are returned as
+#'   a `data.frame`; if `FALSE`, the measurement data is returned.
 #'
 #' @references This function is an extension of `read.fh()` from
 #'   the **dplR package** (<https://github.com/opendendro/dplR>), developed and
 #'   maintained by Prof. dr. Andy Bunn (Bunn 2008, Bunn 2010, Bunn et al. 2022)
 #'   on <https://opendendro.org/>.
 #'
-#' @details This reads in a fh-file with ring widths in blocks (decadal format)
-#'  or in columns (e.g., with comment flags) as used by TSAP program.
-#'  Chronologies or half-chronos in block format are also supported. The
-#'  `read_fh()` function is case insensitive. Information found in the HEADER
-#'  fields are listed as attributes.
+#' @details This function reads .fh file with ring width data in either block (decadal format)
+#'  or column format (e.g., with comment flags) as used by TSAP program. The function is also
+#'  capable of reading chronologies or half-chronos in decadal format. The
+#'  `read_fh` function is case-insensitive. Information found in the HEADER
+#'  fields is listed as attributes of the `data.frame`´with the measurement data. .
 #'
 #'  The header fields harvested from the .fh file include:
 #'
-#'  "Project" "FirstMeasurementDate" "Location" "Town" "Street" "Client"
-#'  "Longitude" "Latitude" "DateOfSampling" "FirstMeasurementDate" "SapWoodRings"
-#'  "Comment" "MissingRingsAfter" "InvalidRingsAfter" "MissingringsBefore"
-#'  "DeltaMissingringsBefgore" "ChronoMemberKeycodes" "PersId"
+#'  "Project", "FirstMeasurementDate", "Location", "Town", "Street", "Client",
+#'  "Longitude", "Latitude", "DateOfSampling", "FirstMeasurementDate", "SapWoodRings",
+#'  "Comment", "MissingRingsAfter", "InvalidRingsAfter", "MissingringsBefore",
+#'  "DeltaMissingringsBefore", "ChronoMemberKeycodes", "PersId"
 #'
-#' @return A `data.frame` with ring-width measurements in columns, (calendar)
-#'   years as `row.names` and header fields as `attributes.`
+#' @return If `header` is TRUE, a data.frame is returned with HEADER fields as attributes.
+#' If `header` is FALSE, a `data.frame` of class `rwl` with ring-width measurements in columns is returned, with (calendar) years as row names.`
 #'
 #' @author The original `read.fh()` function is part of the **dplR package**
-#'  (<https://github.com/opendendro/dplR>) and was developped by Christian Zang,
-#'  with new features and patches by Mikko Korpela and Ronald Visser.
+#'  (<https://github.com/opendendro/dplR>) and was developed by Christian Zang,
+#'  with new features and patches contributed by Mikko Korpela and Ronald Visser.
 #'  This `read_fh()` function expands the functionalities of the original
 #'  [dplR::read.fh()].
 #'
 #' @export
-
+#' @examples
+#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+#' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+#' head(Doel1_trs, 10)
+#'
+#' Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
+#' Doel1_header
+#'
 read_fh <- function(
           fname,
           BC_correction = FALSE,

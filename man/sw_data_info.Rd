@@ -2,32 +2,33 @@
 % Please edit documentation in R/sw_data_info.R
 \name{sw_data_info}
 \alias{sw_data_info}
-\title{sw_data_info: returns more detailed information on a sapwood data set}
+\title{Detailed information on a sapwood data set}
 \usage{
 sw_data_info(x = NULL)
 }
 \arguments{
-\item{x}{The name of a sapwood data set (see \code{\link[=sw_data_overview]{sw_data_overview()}} for
-an overview).}
+\item{x}{The name of a sapwood data set. you can use \code{\link[=sw_data_overview]{sw_data_overview()}} to get an overview of available data sets.}
 }
 \value{
-A \code{list} with:
+A \code{list} with the following components:
 \itemize{
 \item \code{data}: the name of the data set,
 \item \code{citation}: the correct citation for the data set,
 \item \code{area}: the area represented by the data set,
-\item \code{n_observations}: the no. of observations in the data set and,
+\item \code{n_observations}: the number of observations in the data set and,
 \item \code{summary_raw_data}: summary stats of the raw data.
 }
 }
 \description{
 This function returns more information on a sapwdood data set. It lists the
 correct citation for the data set, the area the data set is supposed to
-cover, the number of observations and summary stats of the raw data.
+represent, the number of observations and summary stats of the raw data.
 }
 \examples{
+# Get detailed information on a sapwood data set
 sw_data_info("Hollstein_1980")
 
+# Retrieve the citation for a specific data set
 sw_data_info("Sohar_2012_FWE_c")$citation
 
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_header.R
 \name{get_header}
 \alias{get_header}
-\title{get_header: retrieve the HEADER fields of a Heidelberg format (.fh) file}
+\title{Retrieve the HEADER fields of a Heidelberg format (.fh) file}
 \usage{
 get_header(rwl)
 }
@@ -17,5 +17,5 @@ A \code{data.frame} with 29 header fields.
 This function reports the HEADER fields from a Heidelberg
 format (.fh) ring-width file. The header fields are harvested from the
 .fh-file by the \code{read_fh()} function, which stores the HEADER fields from
-the .fh file as attributes of the \code{data.frame} it returns.
+the .fh file as attributes of the \code{data.frame} with the measurement data it returns.
 }

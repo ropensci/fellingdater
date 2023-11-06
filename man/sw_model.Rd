@@ -2,7 +2,7 @@
 % Please edit documentation in R/sw_model.R
 \name{sw_model}
 \alias{sw_model}
-\title{sw_model: modelling of sapwood data}
+\title{Model sapwood data and compute the highest posterior density interval}
 \usage{
 sw_model(
   sw_data = "Hollstein_1980",
@@ -14,11 +14,11 @@ sw_model(
 }
 \arguments{
 \item{sw_data}{The name of the sapwood data set to use for modelling.
-Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
+It should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
 columns \code{n_sapwood} and \code{count}.}
 
-\item{densfun}{Name of the density function fitted to the sapwood data set.
-Should be one of:
+\item{densfun}{Name of the density function to fit to the sapwood data set.
+Supported values are:
 \itemize{
 \item "lognormal" (the default value),
 \item "normal",
@@ -26,21 +26,20 @@ Should be one of:
 \item "gamma".
 }}
 
-\item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
+\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
 \item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.}
+sapwood data set is provided from a user-defined .csv-file.}
 
-\item{plot}{\code{Logical.} If \code{TRUE} a plot is returned of the fitted density
-function. When \code{FALSE} a list with numeric output of the modelling process
-is returned.}
+\item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is returned.
+When \code{FALSE}, a list with numeric output of the modelling process is returned.}
 }
 \value{
-Depends on the \code{plot} parameter.
+The return value depends on the \code{plot} parameter.
 \itemize{
-\item \code{plot = TRUE}: a ggplot-style graph.
-\item \code{plot = FALSE}: a list with the numeric output of the modelling process.
+\item if \code{plot} is TRUE, a ggplot-style graph is returned.
+\item if \code{plot} is FALSE, a list with the numeric output of the modelling process is returned.
 }
 }
 \description{

@@ -1,31 +1,69 @@
-#' cor_table: calculates correlation values between tree-ring series
+#' Calculate correlation values between tree-ring series
 #'
-#' @param x Name of a `data.frame` (of class ´rwl´) with tree-ring data,
-#'   where each column represents a measurement series, and calendar years
-#'   are listed as rownames.
-#' @param y Name of a `data.frame` (of class ´rwl´) with tree-ring data,
-#'   where each column represents a measurement series, and years are listed
-#'   as rownames.
-#'   x is compared to this series (y = reference).
-#'   If `NULL` (default) x is compared to itself (y = x).
-#' @param min_overlap A `numeric` specifying the minimal overlap between series.
-#' @param remove.duplicates Logical. If `TRUE` identical pairs of series and
-#'   references are removed from the output.
-#' @param output Should be one of `matrix` or `table` (default).
-#' @param values A character vector listing all correlation values that
-#'   should be computed. Defaults to all possible values:
-#'   c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho")
-#' @param sort_by Correlation value by which the output is sorted for each
-#'   series in x.
+#' This function computes various correlation values between tree-ring series in a `data.frame` `x` and a set of reference chronologies in a `data.frame` `y`. If `y` is not provided, it compares each series in `x` to all other series in `x.
 #'
-#' @return Depends on the value of `output`. If `matrix` a list of correlation
-#'   matrices is returned. If  `table` a data.frame is returned with all
-#'   correlation values listed by `values.`
+#' @param x A `data.frame` of class ´rwl' with tree-ring data. Each column represents a measurement series, and row names correspond to (calendar) years.
+#' @param y A `data.frame` of class 'rwl' with tree-ring data. Each column represents a measurement series or chronology, and row names correspond to (calendar) years. If NULL (default), `x` is compared to itself (y = x).
+#' @param min_overlap A `numeric` value specifying the minimum overlap required between series for correlation calculation.
+#' @param remove.duplicates A logical value. If `TRUE`, identical pairs of series and references are removed from the output.
+#' @param output The desired output format, either "matrix" or "table" (default).
+#' @param values A character vector listing correlation values to be computed. Defaults to all possible values: c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho").
+#' @param sort_by The correlation value by which the output is sorted for each series in `x`.
+#'
+#' @return The function returns a list of correlation matrices if `output` is set to "matrix." If `output` is set to "table," it returns a `data.frame` containing correlation values listed by the specified `values`.
 #' @export
+#' @references
+#'   - Baillie, M.G.L., Pilcher, J.R. (1973) A simple crossdating program for
+#'    tree-ring research. _Tree-Ring Bulletin_ **33**, 7–14.
+#'    <http://hdl.handle.net/10150/260029>
+#'
+#'   - Buras, A. and Wilmking, M. (2015) Correcting the calculation of
+#'    Gleichläufigkeit, _Dendrochronologia_ **34**, 29-30.
+#'    <https://doi.org/10.1016/j.dendro.2015.03.003>
+#'
+#'   - Eckstein, D. and Bauch, J. (1969) Beitrag zur Rationalisierung eines
+#'    dendrochronologischen Verfahrens und zur Analyse seiner Aussagesicherheit.
+#'    _Forstwissenschaftliches Centralblatt_, **88**(1), 230-250.
+#'
+#'   - Huber, B. (1943) Über die Sicherheit jahrringchronologischer Datierung.
+#'    _Holz als Roh- und Werkstoff_ **6**, 263-268. <https://doi.org/10.1007/BF02603303>
+#'
+#'   - Hollstein E. (1980) Mitteleuropäische Eichenchronologie. Trierer
+#'    dendrochronologische Forschungen zur Archäologie und Kunstgeschichte,
+#'    Trierer Grabungen und Forschungen **11**, Mainz am Rhein.
+#'
+#'   - Jansma, E. (1995) RemembeRINGs; The development and application of local
+#'    and regional tree-ring chronologies of oak for the purposes of archaeological
+#'    and historical research in the Netherlands, Nederlandse Archeologische
+#'    Rapporten **19**, Rijksdienst voor het Oudheidkundig Bodemonderzoek, Amersfoort. <https://dspace.library.uu.nl/handle/1874/45149>
+#'
+#'   - Schweingruber, F. H. (1988) Tree rings: basics and applications of
+#'    dendrochronology, Kluwer Academic Publishers, Dordrecht, Netherlands, 276
+#'    p.
+#'
+#'   - Visser, R.M. (2020) On the similarity of tree-ring patterns: Assessing
+#'    the influence of semi-synchronous growth changes on the
+#'    Gleichläufigkeit for big tree-ring data sets, _Archaeometry_ **63**,
+#'    204-215. <https://doi.org/10.1111/arcm.12600>
+#'
 #' @description This function calculates common correlation values between dated
 #'   tree-ring series (`x`) and a set of reference chronologies (`y`).
 #'   When no master chronologies are provided, each series in x is compared to all
 #'   other series in x.
+#'
+#'   Only values are reported for pairs of series with a common overlap >= min_overlap.
+#'
+#'   The correlation values computed include:
+#'   - glk: 'Gleichläufigkeit' or 'percentage of parallel variation' (Buras & Wilmking 2015; Eckstein & Bauch 1969; Huber 1942; Visser 2020)
+#'   - glk_p: significance level associated with the glk-value (Jansma 1995)
+#'   - r_pearson: the Pearson's correlation coefficient
+#'   - t_St: Student's t-value
+#'   - t_BP: t-values according to the Baillie & Pilcher (1973) algorithm
+#'   - t_Ho: t-values according to the Hollstein (1980) algorithm
+#'
+#' @examples
+#' Example usage:
+#' cor_table(x = tree_rings_data, y = reference_chronologies, min_overlap = 50)
 #'
 cor_table <-
      function(x,
@@ -80,19 +118,20 @@ cor_table <-
           if (min_overlap < 50) {
                warning(
                     "The minimum number of overlap (`min_overlap = `) is lower than 50.
-                    This might lead to statistically insignificant matches."
+          This might lead to statistically insignificant correlation values."
                )
           }
 
           if (output == "table" & !(sort_by %in% values)) {
                warning(paste0(
-                    "Results are sorted by ",
-                    values[1],
-                    " instead of ",
                     sort_by,
+                    " is not one of the computed crossdating parameters. ",
+                    "Results are sorted by ",
+                    tail(values, n = 1),
                     "."
-               ))
-               sort_by <- values[1]
+                    )
+               )
+               sort_by <- tail(values, n = 1)
 
           }
 
@@ -138,6 +177,9 @@ cor_table <-
                OVL[OVL == 0] <- NA
                overlap[i, ] <- OVL
           }
+          overlap_min <- overlap
+          overlap_min[overlap_min < min_overlap] <- NA
+          overlap_min[overlap_min >= min_overlap] <- 1
 
           ### parallel variation (%PV | GLK)
           GLK_mat <- matrix(NA_real_, nrow = n, ncol = m)
@@ -170,7 +212,7 @@ cor_table <-
                z_normcdf <-
                     apply(z_df, 2, function(z) pnorm(z, mean = 0, sd = 1))
                GLK_p <- 2 * (1 - z_normcdf)
-               # when dim(x) == 1 +> apply returns vector instead of matrix
+               # when dim(x) == 1 +> apply returns a vector instead of a matrix
                dim(GLK_p) <- c(dim(x)[2], dim(y)[2])
                rownames(GLK_p) <- colnames(x)
                colnames(GLK_p) <- colnames(y)
@@ -205,7 +247,6 @@ cor_table <-
           }
 
           ### t-values according to the Baillie & Pilcher 1973 algorithm
-
           tBP_mat <- matrix(NA_real_, nrow = n, ncol = m)
           rownames(tBP_mat) <- names(x)
           colnames(tBP_mat) <- names(y)
@@ -240,7 +281,7 @@ cor_table <-
                              )
 
                }
-               # if r <0, r is set to zero (Baillie & Pilcher 1973)
+               # if r < 0, r is set to zero (Baillie & Pilcher 1973)
                r[r < 0] <- 0
 
                tBP_mat <- # overlap - 4 to compensate for reduced overlap after movAv near both edges
@@ -276,12 +317,12 @@ cor_table <-
           corr_table <-
                list(
                     overlap = overlap,
-                    glk = round(100 * GLK_mat, 1),
-                    glk_p = GLK_p,
-                    r_pearson = r_pearson,
-                    t_St = t_St,
-                    t_Ho = tHo_mat,
-                    t_BP = tBP_mat
+                    glk = round(100 * GLK_mat, 1) * overlap_min,
+                    glk_p = GLK_p * overlap_min,
+                    r_pearson = r_pearson * overlap_min,
+                    t_St = t_St * overlap_min,
+                    t_Ho = tHo_mat * overlap_min,
+                    t_BP = tBP_mat * overlap_min
                )
 
           if (output == "table") {
@@ -367,7 +408,7 @@ cor_table <-
                                               -corr_table[[sort_by]]), ]
 
           }
-
+          corr_table <- subset(corr_table, overlap >= min_overlap)
           return(corr_table)
 
      }

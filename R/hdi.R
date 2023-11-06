@@ -1,4 +1,4 @@
-#' hdi: computes the highest posterior density interval (hdi)
+#' Compute the highest posterior density interval (hdi)
 #'
 #' @description This function returns a matrix with 'upper' and 'lower' limits
 #'  of the hdi (*highest density interval*), and the associated probability 'p'.

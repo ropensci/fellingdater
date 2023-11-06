@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_report.R
 \name{fd_report}
 \alias{fd_report}
-\title{fd_report: a function the reports felling dates}
+\title{Report felling dates of individual tree-ring series}
 \usage{
 fd_report(
   x,
@@ -18,31 +18,41 @@ fd_report(
 }
 \arguments{
 \item{x}{Name of a \code{data.frame} with at least four columms, providing
-information on the id's of the tree-ring series, the number of sapwood
-rings observed, the presence of waney edge and the date assigned to the
-last measured ring. A column describing the sapwood data set to be used
+information on
+\itemize{
+\item the id's of the tree-ring series
+\item the number of sapwood rings observed
+\item the presence of waney edge
+\item the date assigned to the last measured ring.
+}
+
+A column describing the sapwood data set to be used
 for modelling and the computation of the hdi can be provided as well.}
 
 \item{series}{Name of the column in \code{x} where id's of the tree-ring series
 are listed as \code{character} values.}
 
 \item{last}{Name of the column in \code{x} which lists
-the calendar year assigned to the last measured ring. Should be \code{numeric.}}
+the calendar year assigned to the last measured ring (should be a \code{numeric} vector).}
 
 \item{n_sapwood}{Name of the column in \code{x} where the number of observed sapwood
-rings are listed. This variable should be \code{numeric}.}
+rings are listed (should be \code{numeric} vector).}
 
 \item{waneyedge}{Name of the column in \code{x} indicating the presence
-(\code{TRUE})/absence (\code{FALSE}) of waney edge. Should be a \code{logical} vector.}
+(\code{TRUE})/absence (\code{FALSE}) of waney edge (should be a \code{logical} vector).}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling.
+\item{sw_data}{There are two options:
+\itemize{
+\item A \code{character} string providing the name of the sapwood data set to use for modelling.
 Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns ´n_sapwood´ and ´count´.}
+columns ´n_sapwood´ and ´count´. This variable will be used for all individual series in \code{x}, or
+\item the name of the column in \code{x}that lists for each series one of the sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns ´n_sapwood´ and ´count´.
+}}
 
 \item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
-\item{densfun}{Name of the density function fitted to the sapwood data set.
+\item{densfun}{Name of the density function to fit to the sapwood data set.
 Should be one of:
 \itemize{
 \item "lognormal" (the default value),
@@ -55,22 +65,21 @@ Should be one of:
 sapwood data set is provided from user-defined .csv-file.}
 }
 \value{
-data.frame
+A data.frame reporting the estimate of the felling date for each tree-ring series?
 }
 \description{
-This function reports the individual felling date of tree-ring series, based
-on the presence/absence of sapwood and/or waney edge. This can take three
-modes:
+This function reports the felling date estimate of individual tree-ring series, based
+on the presence/absence of sapwood and/or waney edge. There are three possible modes of reporting:
 \itemize{
-\item a \emph{terminus post quem} or \emph{earliest possible felling date}, when only
-heartwood rings were recorded.
-\item a felling date range or interval: when sapwood rings were recorded, but
+\item a \emph{terminus post quem} or \emph{earliest possible felling date}: when only
+heartwood rings have been observed and measured
+\item a felling date range or interval: when sapwood rings have been recorded, but
 no bark or waney edge is present.
 \item an exact felling date: when bark or waney edge is present on the
 measured sample.
 }
 
-Reports the lower and upper boundaries of a felling date range.
+Reports the lower and upper boundaries of a felling date range for individual tree-ring series.
 }
 \examples{
 tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
@@ -83,4 +92,22 @@ fd_report(tmp,
           last = "end",
           sw_data = "Wazny_1990")
 
+dummy2
+fd_report(dummy2,
+          sw_data = "Sohar_2012_ELL_c")
+
+# Example with different sw_model for individual series
+
+dummy2
+sw_models_for_indiv_series <- c("Sohar_2012_ELL_c", "Wazny_1990", "Hollstein_1980", "vanDaalen_Norway", "vanDaalen_Norway")
+
+dummy2_edit <- cbind(dummy2, sw_models_for_indiv_series)
+
+fd_report(dummy2_edit,
+          sw_data = sw_models_for_indiv_series
+          )
+
+}
+\seealso{
+\code{\link[=sw_interval]{sw_interval()}}, \code{\link[=sw_data_overview]{sw_data_overview()}}, \code{\link[=sw_interval_plot]{sw_interval_plot()}}
 }

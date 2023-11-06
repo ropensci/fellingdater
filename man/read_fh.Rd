@@ -2,43 +2,51 @@
 % Please edit documentation in R/read_fh.R
 \name{read_fh}
 \alias{read_fh}
-\title{read_fh: read a Heidelberg format (.fh) tree-ring file}
+\title{Read a Heidelberg format (.fh) tree-ring file}
 \usage{
 read_fh(fname, BC_correction = FALSE, verbose = TRUE, header = FALSE)
 }
 \arguments{
-\item{fname}{A \code{character} vector giving the name of the file name of
-the fh file.}
+\item{fname}{A \code{character} vector specifying the name of the .fh file to read.}
 
 \item{BC_correction}{A \code{logical}. If \code{TRUE} the correction moves BC-dates
 one year forward.}
 
-\item{verbose}{A \code{logical}. \code{FALSE} suppresses messages from being printed.}
+\item{verbose}{A \code{logical}. If \code{FALSE}, messages are suppressed during the reading process.}
 
-\item{header}{A \code{logical}. if \code{TRUE} the HEADER fields are returned as
-a \code{data.frame}, if \code{FALSE} the measurement data are returned.}
+\item{header}{A \code{logical}. If \code{TRUE} the HEADER fields are returned as
+a \code{data.frame}; if \code{FALSE}, the measurement data is returned.}
 }
 \value{
-A \code{data.frame} with ring-width measurements in columns, (calendar)
-years as \code{row.names} and header fields as \code{attributes.}
+If \code{header} is TRUE, a data.frame is returned with HEADER fields as attributes.
+If \code{header} is FALSE, a \code{data.frame} of class \code{rwl} with ring-width measurements in columns is returned, with (calendar) years as row names.`
 }
 \description{
-This function reads in a Heidelberg format file (.fh) of ring widths and
-returns HEADER fields as attributes.
+This function reads a Heidelberg format file (.fh) containing ring width data and
+returns the HEADER fields as attributes of the \code{data.frame}´with the measurement data.
 }
 \details{
-This reads in a fh-file with ring widths in blocks (decadal format)
-or in columns (e.g., with comment flags) as used by TSAP program.
-Chronologies or half-chronos in block format are also supported. The
-\code{read_fh()} function is case insensitive. Information found in the HEADER
-fields are listed as attributes.
+This function reads .fh file with ring width data in either block (decadal format)
+or column format (e.g., with comment flags) as used by TSAP program. The function is also
+capable of reading chronologies or half-chronos in decadal format. The
+\code{read_fh} function is case-insensitive. Information found in the HEADER
+fields is listed as attributes of the \code{data.frame}´with the measurement data. .
 
 The header fields harvested from the .fh file include:
 
-"Project" "FirstMeasurementDate" "Location" "Town" "Street" "Client"
-"Longitude" "Latitude" "DateOfSampling" "FirstMeasurementDate" "SapWoodRings"
-"Comment" "MissingRingsAfter" "InvalidRingsAfter" "MissingringsBefore"
-"DeltaMissingringsBefgore" "ChronoMemberKeycodes" "PersId"
+"Project", "FirstMeasurementDate", "Location", "Town", "Street", "Client",
+"Longitude", "Latitude", "DateOfSampling", "FirstMeasurementDate", "SapWoodRings",
+"Comment", "MissingRingsAfter", "InvalidRingsAfter", "MissingringsBefore",
+"DeltaMissingringsBefore", "ChronoMemberKeycodes", "PersId"
+}
+\examples{
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+head(Doel1_trs, 10)
+
+Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
+Doel1_header
+
 }
 \references{
 This function is an extension of \code{read.fh()} from
@@ -48,8 +56,8 @@ on \url{https://opendendro.org/}.
 }
 \author{
 The original \code{read.fh()} function is part of the \strong{dplR package}
-(\url{https://github.com/opendendro/dplR}) and was developped by Christian Zang,
-with new features and patches by Mikko Korpela and Ronald Visser.
+(\url{https://github.com/opendendro/dplR}) and was developed by Christian Zang,
+with new features and patches contributed by Mikko Korpela and Ronald Visser.
 This \code{read_fh()} function expands the functionalities of the original
 \code{\link[dplR:read.fh]{dplR::read.fh()}}.
 }
