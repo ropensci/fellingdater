@@ -1,15 +1,15 @@
 #' Report felling dates of individual tree-ring series
 #'
-#' @description
-#' This function reports the felling date estimate of individual tree-ring series, based
-#'   on the presence/absence of sapwood and/or waney edge. There are three possible modes of reporting:
+#' @description This function reports the felling date estimate of individual
+#'   tree-ring series, based on the presence/absence of sapwood and/or waney
+#'   edge. There are three possible modes of reporting:
 #'
 #'   -  a _terminus post quem_ or _earliest possible felling date_: when only
-#'    heartwood rings have been observed and measured
+#'   heartwood rings have been observed and measured
 #'    - a felling date range or interval: when sapwood rings have been recorded, but
-#'    no bark or waney edge is present.
+#'   no bark or waney edge is present.
 #'    - an exact felling date: when bark or waney edge is present on the
-#'    measured sample.
+#'   measured sample.
 #'
 #' @param x Name of a `data.frame` with at least four columms, providing
 #'   information on
@@ -19,22 +19,25 @@
 #'   * the presence of waney edge
 #'   * the date assigned to the last measured ring.
 #'
-#'   A column describing the sapwood data set to be used
-#'   for modelling and the computation of the hdi can be provided as well.
+#'   A column describing the sapwood data set to be used for modelling and the
+#'   computation of the hdi can be provided as well.
 #' @param series Name of the column in `x` where id's of the tree-ring series
 #'   are listed as `character` values.
-#' @param n_sapwood Name of the column in `x` where the number of observed sapwood
-#'  rings are listed (should be `numeric` vector).
+#' @param n_sapwood Name of the column in `x` where the number of observed
+#'   sapwood rings are listed (should be `numeric` vector).
 #' @param waneyedge Name of the column in `x` indicating the presence
-#'  (`TRUE`)/absence (`FALSE`) of waney edge (should be a `logical` vector).
-#' @param last Name of the column in `x` which lists
-#'  the calendar year assigned to the last measured ring (should be a `numeric` vector).
+#'   (`TRUE`)/absence (`FALSE`) of waney edge (should be a `logical` vector).
+#' @param last Name of the column in `x` which lists the calendar year assigned
+#'   to the last measured ring (should be a `numeric` vector).
 #' @param sw_data There are two options:
-#'    * A `character` string providing the name of the sapwood data set to use for modelling.
-#'  Should be one of [sw_data_overview()], or the path to a .csv file with
-#'  columns ´n_sapwood´ and ´count´. This variable will be used for all individual series in `x`, or
+#'    * A `character` string providing the name of the sapwood data set to use
+#'   for modelling. Should be one of [sw_data_overview()], or the path to a .csv
+#'   file with columns ´n_sapwood´ and ´count´. This variable will be used for
+#'   all individual series in `x`, or
 #'
-#'    * the name of the column in `x`that lists for each series one of the sapwood data sets given by [sw_data_overview()], or the path to a .csv file with columns ´n_sapwood´ and ´count´.
+#'    * the name of the column in `x`that lists for each series one of the
+#'   sapwood data sets given by [sw_data_overview()], or the path to a .csv file
+#'   with columns ´n_sapwood´ and ´count´.
 #' @param credMass A `scalar [0, 1]` specifying the mass within the credible
 #'   interval (default = .954).
 #' @param densfun Name of the density function to fit to the sapwood data set.
@@ -46,9 +49,11 @@
 #' @param sep Should be "," (comma)  or ";" (semi-colon) and is used when a
 #'   sapwood data set is provided from user-defined .csv-file.
 #'
-#' @description Reports the lower and upper boundaries of a felling date range for individual tree-ring series.
+#' @description Reports the lower and upper boundaries of a felling date range
+#'   for individual tree-ring series.
 #'
-#' @return A data.frame reporting the estimate of the felling date for each tree-ring series?
+#' @return A data.frame reporting the estimate of the felling date for each
+#'   tree-ring series?
 #'
 #' @examples
 #' tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
@@ -77,8 +82,7 @@
 #'           )
 #'
 #' @export
-#' @seealso
-#' [sw_interval()], [sw_data_overview()], [sw_interval_plot()]
+#' @seealso [sw_interval()], [sw_data_overview()], [sw_interval_plot()]
 
 fd_report <- function(
           x,
@@ -141,7 +145,7 @@ indicating the presence of waney edge.\n",
      else if (sw_data %in% colnames(df)) {
           sw_data <- df[[sw_data]]
           sw_OK <- which(sw_data %in% sw_data_overview() | file.exists(sw_data))
-          if (length(sw_OK) < length(sw_data)){ stop(sprintf("'%s' is not a supported sapwood model of file doesn't exist\n", sw_data[-sw_OK]))}
+          if (length(sw_OK) < length(sw_data)){ stop(sprintf("'%s' is not a supported sapwood model, or file doesn't exist\n", sw_data[-sw_OK]))}
      } else {
              stop(sprintf(
                      "--> sw_data should be one of `sw_data_overview()`

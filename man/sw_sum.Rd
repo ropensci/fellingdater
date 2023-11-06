@@ -14,25 +14,29 @@ sw_sum(
   densfun = "lognormal",
   credMass = 0.954,
   plot = FALSE,
-  scale_p = FALSE
+  scale_p = FALSE,
+  sep = ";"
 )
 }
 \arguments{
-\item{x}{A \code{data.frame} containing columns c("series", "swr", "waneyedge" , "last"),
-Column "sw_model" is optional. Could be the output of read_fh(x, header = TRUE)}
+\item{x}{A \code{data.frame} containing columns c("series", "swr", "waneyedge" ,
+"last"), Column "sw_model" is optional. Could be the output of read_fh(x,
+header = TRUE)}
 
 \item{series}{Name of the column in \code{x} containing the ID's of the series.}
 
-\item{last}{Name of the column in \code{x}containing the calendar year assigned to the last measured ring (should be \code{numeric}).}
+\item{last}{Name of the column in \code{x}containing the calendar year assigned to
+the last measured ring (should be \code{numeric}).}
 
 \item{n_sapwood}{Name of the column in \code{x} where the number of observed
 sapwood rings are listed (should be \code{numeric}).}
 
-\item{waneyedge}{Name of the column in \code{x} indicating the presence (TRUE)/absence (FALSE) of waney edge (should be a \code{logical} vector).}
+\item{waneyedge}{Name of the column in \code{x} indicating the presence
+(TRUE)/absence (FALSE) of waney edge (should be a \code{logical} vector).}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling.
-Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns ´n_sapwood´ and ´count´.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. Should
+be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns
+´n_sapwood´ and ´count´.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
@@ -53,13 +57,18 @@ returned with the summed probability density (SPD).
 \item If \code{FALSE}, a list with the numeric output of the modelling process is returned.
 }}
 
-\item{scale_p}{A \code{logical}. If \code{TRUE} the summed probability density is scaled to 1.}
+\item{scale_p}{A \code{logical}. If \code{TRUE} the summed probability density is
+scaled to 1.}
+
+\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
+sapwood data set is provided from user-defined .csv-file.}
 }
 \value{
 Depends on the value of \code{plot.}
 }
 \description{
-Computes the summed probability density (SPD) for a set of felling date ranges.
+Computes the summed probability density (SPD) for a set of
+felling date ranges.
 }
 \examples{
 dummy7 <- data.frame(

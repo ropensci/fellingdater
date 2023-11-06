@@ -64,16 +64,19 @@ p <-
         ggplot2::ggplot() +
         ggplot2::geom_col(ggplot2::aes(x = year, y = SPD),
                           fill = bar_col,
-                          alpha = 0.8) +
+                          alpha = 0.8,
+                          na.rm = T) +
         ggplot2::geom_line(data = spline_int,
                            ggplot2::aes(x = x, y = y),
                            color = spline_col,
                            linewidth = 1.5,
-                           alpha = .8) +
+                           alpha = .8,
+                           na.rm = T) +
         { if (nrow(fd) > 0) ggplot2::geom_point(data = fd,
                             ggplot2::aes(x = year, y = SPD + y * p_max/20),
                             size = 2,
-                            colour = dot_col) } +
+                            colour = dot_col,
+                            na.rm = T) } +
         ggplot2::scale_x_continuous(
                 limits = c(plyr::round_any(plot_range[1], 10, floor),
                            plyr::round_any(plot_range[2], 10, ceiling)),

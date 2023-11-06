@@ -34,27 +34,27 @@ sw_model <-
               sep = ";",
               plot = TRUE) {
      if (is.na(credMass) || credMass <= 0 || credMass >= 1) {
-	stop(" \n--> credMass must be between 0 and 1")
+	stop("--> credMass must be between 0 and 1")
      }
      if (!densfun %in% c('lognormal', 'normal', 'weibull', 'gamma')) {
 	stop(sprintf("\n'%s' is not a supported distribution. \n`densfun` must be one of c('lognormal', 'normal', 'weibull', 'gamma')", densfun))
      }
      if (!is.logical(plot)) {
-	stop(sprintf("\n--> 'plot' should be TRUE or FALSE, not '%s'", plot))
+	stop(sprintf("--> 'plot' should be TRUE or FALSE, not '%s'", plot))
      }
      if (sw_data %in% sw_data_overview()) {
           observed <- get(sw_data)
      } else if (grepl("\\.csv$", sw_data)) {
           observed <- utils::read.csv(sw_data, sep = sep)
           if (!all(c("n_sapwood", "count") %in% names(observed))) {
-               stop("\n--> .csv file doesn't have columns `n_sapwood` and `count`.")
+               stop("--> .csv file doesn't have columns `n_sapwood` and `count`.")
           } else {
                observed <- observed[, c("n_sapwood", "count")]
                sw_data <- basename(sw_data)
           }
      } else {
           stop(
-               "\n--> sw_data should be one of `sw_data_overview()`
+               "--> sw_data should be one of `sw_data_overview()`
 or the path to a .csv file with columns `n_sapwood` and `count`.)"
           )
      }

@@ -26,27 +26,30 @@ information on
 \item the date assigned to the last measured ring.
 }
 
-A column describing the sapwood data set to be used
-for modelling and the computation of the hdi can be provided as well.}
+A column describing the sapwood data set to be used for modelling and the
+computation of the hdi can be provided as well.}
 
 \item{series}{Name of the column in \code{x} where id's of the tree-ring series
 are listed as \code{character} values.}
 
-\item{last}{Name of the column in \code{x} which lists
-the calendar year assigned to the last measured ring (should be a \code{numeric} vector).}
+\item{last}{Name of the column in \code{x} which lists the calendar year assigned
+to the last measured ring (should be a \code{numeric} vector).}
 
-\item{n_sapwood}{Name of the column in \code{x} where the number of observed sapwood
-rings are listed (should be \code{numeric} vector).}
+\item{n_sapwood}{Name of the column in \code{x} where the number of observed
+sapwood rings are listed (should be \code{numeric} vector).}
 
 \item{waneyedge}{Name of the column in \code{x} indicating the presence
 (\code{TRUE})/absence (\code{FALSE}) of waney edge (should be a \code{logical} vector).}
 
 \item{sw_data}{There are two options:
 \itemize{
-\item A \code{character} string providing the name of the sapwood data set to use for modelling.
-Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns ´n_sapwood´ and ´count´. This variable will be used for all individual series in \code{x}, or
-\item the name of the column in \code{x}that lists for each series one of the sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns ´n_sapwood´ and ´count´.
+\item A \code{character} string providing the name of the sapwood data set to use
+for modelling. Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv
+file with columns ´n_sapwood´ and ´count´. This variable will be used for
+all individual series in \code{x}, or
+\item the name of the column in \code{x}that lists for each series one of the
+sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file
+with columns ´n_sapwood´ and ´count´.
 }}
 
 \item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
@@ -65,11 +68,13 @@ Should be one of:
 sapwood data set is provided from user-defined .csv-file.}
 }
 \value{
-A data.frame reporting the estimate of the felling date for each tree-ring series?
+A data.frame reporting the estimate of the felling date for each
+tree-ring series?
 }
 \description{
-This function reports the felling date estimate of individual tree-ring series, based
-on the presence/absence of sapwood and/or waney edge. There are three possible modes of reporting:
+This function reports the felling date estimate of individual
+tree-ring series, based on the presence/absence of sapwood and/or waney
+edge. There are three possible modes of reporting:
 \itemize{
 \item a \emph{terminus post quem} or \emph{earliest possible felling date}: when only
 heartwood rings have been observed and measured
@@ -79,7 +84,8 @@ no bark or waney edge is present.
 measured sample.
 }
 
-Reports the lower and upper boundaries of a felling date range for individual tree-ring series.
+Reports the lower and upper boundaries of a felling date range
+for individual tree-ring series.
 }
 \examples{
 tmp <- data.frame(id = c("aaa", "bbb", "ccc"),

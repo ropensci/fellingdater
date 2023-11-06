@@ -49,28 +49,28 @@ sw_interval <- function(n_sapwood = NA,
                         plot = FALSE) {
      # Check input of `n_sapwood` and `last`. Other parameters are checked by sw_model()
      if (is.na(n_sapwood)) {
-          message("\n--> no pdf/hdi can be returend when n_sapwood = NA")
+          message("--> No pdf/hdi can be returend when n_sapwood = NA")
           return(NA_integer_)
      }
 
      if (!is.numeric(n_sapwood)) {
-          stop("\n--> n_sapwood must be a numeric value")
+          stop("--> n_sapwood must be a numeric value")
      }
 
      if (n_sapwood < 0) {
-          stop("\n--> n_sapwood must be a positive number")
+          stop("--> n_sapwood must be a positive number")
      }
 
      if (isTRUE(n_sapwood%%1 != 0)) {
-          stop("\n--> n_sapwood must be an integer (no decimals allowed!)")
+          stop("--> n_sapwood must be an integer (no decimals allowed!)")
      }
 
      if (!is.numeric(last)) {
-                stop("\n--> `last` must be a numeric value")
+                stop("--> `last` must be a numeric value")
         }
 
      if (!is.logical(plot)) {
-	stop(sprintf("\n--> 'plot' should be TRUE or FALSE, not '%s'", plot))
+	stop(sprintf("--> 'plot' should be TRUE or FALSE, not '%s'", plot))
      }
 
      sw_model_params <- sw_model(sw_data,
@@ -138,7 +138,7 @@ This value falls outside the range of the chosen sapwood model.")
 
           if (nrow(pdf) <= 1) {
                pdf[1,] <- c(last, n_sapwood, NA)
-               warning("\n --> No upper limit for the hdi could be computed.")
+               warning("--> No upper limit for the hdi could be computed.")
           }
 
         return(pdf)
@@ -152,7 +152,7 @@ This value falls outside the range of the chosen sapwood model.")
           attr(hdi_int, "sapwood_data") <- sw_data
           attr(hdi_int, "model") <- densfun
 
-          warning("\n --> No upper limit for the hdi could be computed.")
+          warning("--> No upper limit for the hdi could be computed.")
 
           return(hdi_int)
 
