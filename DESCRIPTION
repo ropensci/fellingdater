@@ -2,7 +2,7 @@ Package: fellingdateR
 Title: `fellingdateR` is an R package that aims to facilitate the organisation, 
   analysis and interpretation of tree-ring data from wooden heritage objects 
   and structures
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be",role = c("aut", "cre"),
         comment = c(ORCID = "0000-0002-7719-8305")),
