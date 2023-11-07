@@ -7,15 +7,15 @@
 get_header(rwl)
 }
 \arguments{
-\item{rwl}{The output of \code{read_fh(x, header = TRUE)},
-a \code{data.frame} of class \code{rwl}.}
+\item{rwl}{The output of \code{read_fh(x, header = TRUE)}, a \code{data.frame} of class
+\code{rwl}.}
 }
 \value{
 A \code{data.frame} with 29 header fields.
 }
 \description{
-This function reports the HEADER fields from a Heidelberg
-format (.fh) ring-width file. The header fields are harvested from the
-.fh-file by the \code{read_fh()} function, which stores the HEADER fields from
-the .fh file as attributes of the \code{data.frame} with the measurement data it returns.
+This function reports the HEADER fields from a Heidelberg format
+(.fh) ring-width file. The header fields are harvested from the .fh-file by
+the \code{read_fh()} function, which stores the HEADER fields from the .fh file
+as attributes of the \code{data.frame} with the measurement data it returns.
 }

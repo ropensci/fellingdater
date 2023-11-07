@@ -37,9 +37,9 @@
 #' @export
 #' @seealso [sw_sum_plot()]
 #' @examples
-#' dummy7
+#' fellingdateR:::dummy7
 #'
-#' sw_sum(dummy7, plot = TRUE)
+#' sw_sum(fellingdateR:::dummy7, plot = TRUE)
 #'
 sw_sum <- function (x,
                     series = "series",
@@ -66,12 +66,23 @@ sw_sum <- function (x,
                 warning(
                         paste0(
                                 "Column 'waneyedge' in data.frame should be:\n",
-                                "a logical vector (TRUE/FALSE), indicating the presence of waney edge.\n")
+                                "a logical vector (TRUE/FALSE), indicating the presence of waney edge.\n"
                         )
-                warning(sprintf("'%s' --> Converted to TRUE based on presence of string 'wK'.\n", converted_T))
-                warning(sprintf("'%s' --> Converted to FALSE based on absence of string 'wK'.\n", converted_F))
+                )
+                warning(
+                        sprintf(
+                                "'%s' --> Converted to TRUE based on presence of string 'wK'.\n",
+                                converted_T
+                        )
+                )
+                warning(
+                        sprintf(
+                                "'%s' --> Converted to FALSE based on absence of string 'wK'.\n",
+                                converted_F
+                        )
+                )
 
-                }
+        }
 
         swr <- df[[n_sapwood]]
         if (is.character(swr)) {
@@ -80,7 +91,7 @@ sw_sum <- function (x,
 
         which.nna <- which(is.na(swr) & !cambium)
         if (length(which.nna) > 0) {
-                df <- df[-which.nna, ]
+                df <- df[-which.nna,]
                 swr <- df[[n_sapwood]]
                 cambium <- df[[waneyedge]]
                 if (!is.logical(cambium)) {
@@ -122,7 +133,8 @@ sw_sum <- function (x,
         else if (sw_model %in% colnames(df)) {
                 sw_data <- df[[sw_data]]
                 sw_OK <-
-                        which(sw_data %in% sw_data_overview() | file.exists(sw_data))
+                        which(sw_data %in% sw_data_overview() |
+                                      file.exists(sw_data))
                 if (length(sw_OK) < length(sw_data)) {
                         stop(
                                 sprintf(

@@ -71,15 +71,9 @@ Computes the summed probability density (SPD) for a set of
 felling date ranges.
 }
 \examples{
-dummy7 <- data.frame(
-series = c("trs_40", "trs_41", "trs_42", "trs_43", "trs_44", "trs_45",
- "trs_46", "trs_47", "trs_48"),
-last = c(1000, 1009, 1007, 1007, 1010, 1020, 1025, 1050, 1035),
-n_sapwood = c(5, 10, 15, 16, 8, 0, 10, NA, 1),
-waneyedge = c(FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE)
-)
+fellingdateR:::dummy7
 
-sw_sum(dummy7, plot = TRUE)
+sw_sum(fellingdateR:::dummy7, plot = TRUE)
 
 }
 \seealso{

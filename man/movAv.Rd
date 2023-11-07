@@ -9,10 +9,11 @@ movAv(x, w = 11, align = "center", edges = "fill")
 \arguments{
 \item{x}{A \code{numeric} vector of \code{length(x)}, containing the time series data.}
 
-\item{w}{The width of the moving average window. When \code{w}is even, one more value from the
-future is included.}
+\item{w}{The width of the moving average window. When \code{w}is even, one more
+value from the future is included.}
 
-\item{align}{The alignment of the window relative to the current data point. It can be one of:
+\item{align}{The alignment of the window relative to the current data point.
+It can be one of:
 \itemize{
 \item \code{align = "center"}: The average is assigned to the center of the window (default).
 \item \code{align = "left"}: The average includes the current value and the next (w-1) values.
@@ -22,13 +23,16 @@ future is included.}
 \item{edges}{Defines how values are computed at the start and end of the
 series. Options are:
 \itemize{
-\item \code{edges = "fill"}: The average is calculated with a decreasing number of values near the edges of
+\item \code{edges = "fill"}: The average is calculated with a decreasing number of
+values near the edges of
 the vector (default).
-\item \code{edges = "nofill"}: The result includes \code{NA} values when the window does not cover w values.
+\item \code{edges = "nofill"}: The result includes \code{NA} values when the window does
+not cover w values.
 }}
 }
 \value{
-A \code{numeric} vector of the same length of \code{x} with the computed running mean values.
+A \code{numeric} vector of the same length of \code{x} with the computed
+running mean values.
 }
 \description{
 This vectorized function computes a running mean/moving average

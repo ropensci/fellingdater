@@ -13,9 +13,9 @@ sw_model(
 )
 }
 \arguments{
-\item{sw_data}{The name of the sapwood data set to use for modelling.
-It should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns \code{n_sapwood} and \code{count}.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. It
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path
+to a .csv file with columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function to fit to the sapwood data set.
 Supported values are:
@@ -26,24 +26,26 @@ Supported values are:
 \item "gamma".
 }}
 
-\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass within the credible
-interval (default = .954).}
+\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
+within the credible interval (default = .954).}
 
 \item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
 sapwood data set is provided from a user-defined .csv-file.}
 
-\item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is returned.
-When \code{FALSE}, a list with numeric output of the modelling process is returned.}
+\item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is
+returned. When \code{FALSE}, a list with numeric output of the modelling process
+is returned.}
 }
 \value{
 The return value depends on the \code{plot} parameter.
 \itemize{
 \item if \code{plot} is TRUE, a ggplot-style graph is returned.
-\item if \code{plot} is FALSE, a list with the numeric output of the modelling process is returned.
+\item if \code{plot} is FALSE, a list with the numeric output of the modelling
+process is returned.
 }
 }
 \description{
-This function fits a distribution to a data set of observed sapwood numbers
-and computes the highest posterior density interval (hdi) for a given
-credibility mass.
+This function fits a distribution to a data set of observed
+sapwood numbers and computes the highest posterior density interval (hdi)
+for a given credibility mass.
 }

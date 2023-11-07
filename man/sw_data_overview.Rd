@@ -7,11 +7,12 @@
 sw_data_overview()
 }
 \value{
-A \code{character} vector with the names of all available data sets
-with sapwood counts in the \code{fellingdateR} package.
+A \code{character} vector with the names of all available data sets with
+sapwood counts in the \code{fellingdateR} package.
 }
 \description{
-This function provides an overview of the available sapwood data sets and models within the \code{fellingdateR} package.
+This function provides an overview of the available sapwood data
+sets and models within the \code{fellingdateR} package.
 }
 \examples{
 # Get an overview of available sapwood data sets

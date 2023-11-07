@@ -18,19 +18,19 @@ sw_interval(
 \arguments{
 \item{n_sapwood}{A \code{numeric}. The number of observed sapwood rings.}
 
-\item{last}{A \code{numeric}. The calendar year assigned to the outermost
-sapwood ring (optional, default = 0).}
+\item{last}{A \code{numeric}. The calendar year assigned to the outermost sapwood
+ring (optional, default = 0).}
 
-\item{hdi}{A \code{logical.} If \code{TRUE}, the lower and upper limit of the
-highest density interval (credible interval) are returned. When \code{FALSE}, a matrix
+\item{hdi}{A \code{logical.} If \code{TRUE}, the lower and upper limit of the highest
+density interval (credible interval) are returned. When \code{FALSE}, a matrix
 is returned with scaled p-values for each number of observed sapwood rings.}
 
-\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass within the credible
-interval (default = .954)}
+\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
+within the credible interval (default = .954)}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling.
-It should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns \code{n_sapwood} and \code{count}.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. It
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path
+to a .csv file with columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:

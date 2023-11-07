@@ -25,6 +25,12 @@ You can install the development version of fellingddateR from [GitHub](https://g
 devtools::install_github("hanecakr/fellingdateR")
 ```
 
+or
+
+``` r
+pak::pak("hanecakr/fellingdateR")
+```
+
 ## Basic example
 
 In the following example the combined felling date range for a set of four dated tree-ring series is computed:

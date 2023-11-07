@@ -25,7 +25,8 @@ A ggplot style graph.
 }
 \description{
 This function plots the result of \code{sw_sum()} - both the SPD and
-the occurrence of exact felling dates - and adds a smoothing spline to the SPD.
+the occurrence of exact felling dates - and adds a smoothing spline to the
+SPD.
 }
 \examples{
 dummy6 <- fellingdateR:::dummy6

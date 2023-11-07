@@ -19,17 +19,17 @@ sw_combine(
 )
 }
 \arguments{
-\item{x}{A \code{data.frame} with at least four columns, providing
-information on the ID's of the tree-ring series, the number of sapwood
-rings observed, the presence of waney edge and the calendar date assigned to the
-last measured ring. A column describing the sapwood data set to be used
-for modelling and the computation of the hdi can be provided as well.}
+\item{x}{A \code{data.frame} with at least four columns, providing information on
+the ID's of the tree-ring series, the number of sapwood rings observed, the
+presence of waney edge and the calendar date assigned to the last measured
+ring. A column describing the sapwood data set to be used for modelling and
+the computation of the hdi can be provided as well.}
 
 \item{series}{Name of the column in \code{x} where ID's of the tree-ring series
 are listed as \code{character} values.}
 
-\item{last}{Name of the column in \code{x} where calendar years assigned
-to the last measured ring are listed (should be \code{numeric}).}
+\item{last}{Name of the column in \code{x} where calendar years assigned to the
+last measured ring are listed (should be \code{numeric}).}
 
 \item{n_sapwood}{Name of the column in \code{x} where the number of observed
 sapwood rings are listed (should be \code{numeric}).}
@@ -37,9 +37,9 @@ sapwood rings are listed (should be \code{numeric}).}
 \item{waneyedge}{Name of the column in \code{x} indicating the presence
 (\code{TRUE})/absence (\code{FALSE}) of waney edge (should be a \code{logical} vector).}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling.
-Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with
-columns ´n_sapwood´ and ´count´.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. Should
+be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns
+´n_sapwood´ and ´count´.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
@@ -57,34 +57,38 @@ sapwood data set is provided from user-defined .csv-file.}
 interval (default = .954).}
 
 \item{hdi}{A \code{logical} parameter. If \code{TRUE}, the lower and upper limit of the
-highest density interval (credible interval) is given for the combined felling date.
-When \code{FALSE}, a matrix is returned with scaled p values for calendar years
-covering the combined estimate of the felling date range.}
+highest density interval (credible interval) is given for the combined
+felling date. When \code{FALSE}, a matrix is returned with scaled p values for
+calendar years covering the combined estimate of the felling date range.}
 
-\item{plot}{A \code{logical} parameter. If \code{TRUE} a ggplot-plot style graph is returned of the individual and
-combined estimate of the felling date.
-If \code{FALSE}, a list with numeric output of the modelling process is returned.}
+\item{plot}{A \code{logical} parameter. If \code{TRUE} a ggplot-plot style graph is
+returned of the individual and combined estimate of the felling date. If
+\code{FALSE}, a list with numeric output of the modelling process is returned.}
 }
 \value{
 Depends on the value of plot. If \code{TRUE} a ggplot-style is returned,
-when \code{FALSE} a \code{data.frame} with the combined probability and modelling parameters
+when \code{FALSE} a \code{data.frame} with the combined probability and modelling
+parameters
 }
 \description{
-This function assesses whether it is possible to combine multiple sapwood
-estimates into a single felling date range.
+This function assesses whether it is possible to combine
+multiple sapwood estimates into a single felling date range.
 }
 \examples{
 # a data set in which all series have preserved sapwood
-dummy1
-sw_combine(dummy1, plot = FALSE)
-sw_combine(dummy1, plot = TRUE)
+
+fellingdateR:::dummy1
+sw_combine(fellingdateR:::dummy1, plot = FALSE)
+sw_combine(fellingdateR:::dummy1, plot = TRUE)
 
 # a data set in which one series has an exact felling date (= waney edge preserved)
-dummy2
-sw_combine(dummy2, plot = TRUE)
+
+fellingdateR:::dummy2
+sw_combine(fellingdateR:::dummy2, plot = TRUE)
 
 # a data set in which multiples series have an exact felling date
-dummy3
+
+fellingdateR:::dummy3
 sw_combine(fellingdateR:::dummy3, plot= FALSE)
 
 }

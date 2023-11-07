@@ -98,19 +98,19 @@ fd_report(tmp,
           last = "end",
           sw_data = "Wazny_1990")
 
-dummy2
-fd_report(dummy2,
-          sw_data = "Sohar_2012_ELL_c")
-
 # Example with different sw_model for individual series
 
-dummy2
-sw_models_for_indiv_series <- c("Sohar_2012_ELL_c", "Wazny_1990", "Hollstein_1980", "vanDaalen_Norway", "vanDaalen_Norway")
+fellingdateR:::dummy2
+sw_models_for_indiv_series <- c("Sohar_2012_ELL_c",
+                                "Wazny_1990",
+                                "Hollstein_1980",
+                                "vanDaalen_Norway",
+                                "vanDaalen_Norway")
 
-dummy2_edit <- cbind(dummy2, sw_models_for_indiv_series)
+dummy2_edit <- cbind(fellingdateR:::dummy2, sw_models_for_indiv_series)
 
 fd_report(dummy2_edit,
-          sw_data = sw_models_for_indiv_series
+          sw_data = "sw_models_for_indiv_series"
           )
 
 }

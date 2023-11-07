@@ -36,6 +36,11 @@ You can install the development version of fellingddateR from [GitHub](https://g
 #install.packages("devtools")
 devtools::install_github("hanecakr/fellingdateR")
 ```
+or
+
+```r
+pak::pak("hanecakr/fellingdateR")
+```
 
 ## Basic example
 

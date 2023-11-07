@@ -13,5 +13,6 @@ sw_interval_plot(x)
 A ggplot-style graph.
 }
 \description{
-Returns a ggplot-style graph of the probability density function for the felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
+Returns a ggplot-style graph of the probability density function for the
+felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 }

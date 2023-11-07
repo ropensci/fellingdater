@@ -1,7 +1,8 @@
 #' Plot the output of [sw_sum()]
 #'
 #' @description This function plots the result of `sw_sum()` - both the SPD and
-#'   the occurrence of exact felling dates - and adds a smoothing spline to the SPD.
+#'   the occurrence of exact felling dates - and adds a smoothing spline to the
+#'   SPD.
 #'
 #' @param x The output of `sw_sum()`.
 #' @param bar_col The fill color for the bars.

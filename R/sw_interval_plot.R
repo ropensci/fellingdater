@@ -1,6 +1,7 @@
 #' Plot function for the output of [sw_interval()]
 #'
-#' Returns a ggplot-style graph of the probability density function for the felling date range, as computed by [sw_interval()].
+#' Returns a ggplot-style graph of the probability density function for the
+#' felling date range, as computed by [sw_interval()].
 #'
 #' @param x Output of [sw_interval()].
 #'
@@ -22,7 +23,8 @@ sw_interval_plot <- function(x) {
                 densfun = densfun.p,
                 credMass = credMass.p,
                 sep = sep.p,
-                plot = FALSE)$sapwood_model
+                plot = FALSE
+        )$sapwood_model
 
         lower <- x[[1, 1]]
         n_sapwood <- x[[1, 2]]
@@ -35,13 +37,16 @@ sw_interval_plot <- function(x) {
         df[, "year"] <- years
         range <- range(df$year)
 
-        if (grepl("\\.csv$", sw_data.p)) sw_data.p <- basename(sw_data.p)
+        if (grepl("\\.csv$", sw_data.p))
+                sw_data.p <- basename(sw_data.p)
 
         p <- ggplot2::ggplot(data = df) +
 
-                ggplot2::geom_line(ggplot2::aes(x = year, y = p.x),
-                                   color = "grey40",
-                                   linewidth = 0.05) +
+                ggplot2::geom_line(
+                        ggplot2::aes(x = year, y = p.x),
+                        color = "grey40",
+                        linewidth = 0.05
+                ) +
                 ggplot2::geom_area(
                         ggplot2::aes(x = ifelse(year >= lower, year, NA),
                                      y = p.x),

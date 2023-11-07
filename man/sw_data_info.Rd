@@ -7,7 +7,8 @@
 sw_data_info(x = NULL)
 }
 \arguments{
-\item{x}{The name of a sapwood data set. you can use \code{\link[=sw_data_overview]{sw_data_overview()}} to get an overview of available data sets.}
+\item{x}{The name of a sapwood data set. you can use \code{\link[=sw_data_overview]{sw_data_overview()}} to
+get an overview of available data sets.}
 }
 \value{
 A \code{list} with the following components:
@@ -20,9 +21,9 @@ A \code{list} with the following components:
 }
 }
 \description{
-This function returns more information on a sapwdood data set. It lists the
-correct citation for the data set, the area the data set is supposed to
-represent, the number of observations and summary stats of the raw data.
+This function returns more information on a sapwdood data set. It
+lists the correct citation for the data set, the area the data set is supposed
+to represent, the number of observations and summary stats of the raw data.
 }
 \examples{
 # Get detailed information on a sapwood data set

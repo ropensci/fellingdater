@@ -15,34 +15,48 @@ cor_table(
 )
 }
 \arguments{
-\item{x}{A \code{data.frame} of class ´rwl' with tree-ring data. Each column represents a measurement series, and row names correspond to (calendar) years.}
+\item{x}{A \code{data.frame} of class ´rwl' with tree-ring data. Each column
+represents a measurement series, and row names correspond to (calendar)
+years.}
 
-\item{y}{A \code{data.frame} of class 'rwl' with tree-ring data. Each column represents a measurement series or chronology, and row names correspond to (calendar) years. If NULL (default), \code{x} is compared to itself (y = x).}
+\item{y}{A \code{data.frame} of class 'rwl' with tree-ring data. Each column
+represents a measurement series or chronology, and row names correspond to
+(calendar) years. If NULL (default), \code{x} is compared to itself (y = x).}
 
-\item{min_overlap}{A \code{numeric} value specifying the minimum overlap required between series for correlation calculation.}
+\item{min_overlap}{A \code{numeric} value specifying the minimum overlap required
+between series for correlation calculation.}
 
-\item{remove.duplicates}{A logical value. If \code{TRUE}, identical pairs of series and references are removed from the output.}
+\item{remove.duplicates}{A logical value. If \code{TRUE}, identical pairs of
+series and references are removed from the output.}
 
-\item{output}{The desired output format, either "matrix" or "table" (default).}
+\item{output}{The desired output format, either "matrix" or "table"
+(default).}
 
-\item{values}{A character vector listing correlation values to be computed. Defaults to all possible values: c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho").}
+\item{values}{A character vector listing correlation values to be computed.
+Defaults to all possible values: c("r_pearson", "t_St", "glk", "glk_p",
+"t_BP", "t_Ho").}
 
-\item{sort_by}{The correlation value by which the output is sorted for each series in \code{x}.}
+\item{sort_by}{The correlation value by which the output is sorted for each
+series in \code{x}.}
 }
 \value{
-The function returns a list of correlation matrices if \code{output} is set to "matrix." If \code{output} is set to "table," it returns a \code{data.frame} containing correlation values listed by the specified \code{values}.
+The function returns a list of correlation matrices if \code{output} is
+set to "matrix." If \code{output} is set to "table," it returns a \code{data.frame}
+containing correlation values listed by the specified \code{values}.
 }
 \description{
 This function calculates common correlation values between dated
-tree-ring series (\code{x}) and a set of reference chronologies (\code{y}).
-When no master chronologies are provided, each series in x is compared to all
-other series in x.
+tree-ring series (\code{x}) and a set of reference chronologies (\code{y}). When no
+master chronologies are provided, each series in x is compared to all other
+series in x.
 
-Only values are reported for pairs of series with a common overlap >= min_overlap.
+Only values are reported for pairs of series with a common overlap >=
+min_overlap.
 
 The correlation values computed include:
 \itemize{
-\item glk: 'Gleichläufigkeit' or 'percentage of parallel variation' (Buras & Wilmking 2015; Eckstein & Bauch 1969; Huber 1942; Visser 2020)
+\item glk: 'Gleichläufigkeit' or 'percentage of parallel variation'
+(Buras & Wilmking 2015; Eckstein & Bauch 1969; Huber 1942; Visser 2020)
 \item glk_p: significance level associated with the glk-value (Jansma 1995)
 \item r_pearson: the Pearson's correlation coefficient
 \item t_St: Student's t-value
@@ -51,12 +65,10 @@ The correlation values computed include:
 }
 }
 \details{
-This function computes various correlation values between tree-ring series in a \code{data.frame} \code{x} and a set of reference chronologies in a \code{data.frame} \code{y}. If \code{y} is not provided, it compares each series in \code{x} to all other series in `x.
-}
-\examples{
-Example usage:
-cor_table(x = tree_rings_data, y = reference_chronologies, min_overlap = 50)
-
+This function computes various correlation values between tree-ring series in
+a \code{data.frame} \code{x} and a set of reference chronologies in a \code{data.frame} \code{y}.
+If \code{y} is not provided, it compares each series in \code{x} to all other series in
+`x.
 }
 \references{
 \itemize{
@@ -70,20 +82,21 @@ Gleichläufigkeit, \emph{Dendrochronologia} \strong{34}, 29-30.
 dendrochronologischen Verfahrens und zur Analyse seiner Aussagesicherheit.
 \emph{Forstwissenschaftliches Centralblatt}, \strong{88}(1), 230-250.
 \item Huber, B. (1943) Über die Sicherheit jahrringchronologischer Datierung.
-\emph{Holz als Roh- und Werkstoff} \strong{6}, 263-268. \url{https://doi.org/10.1007/BF02603303}
+\emph{Holz als Roh- und Werkstoff} \strong{6}, 263-268.
+\url{https://doi.org/10.1007/BF02603303}
 \item Hollstein E. (1980) Mitteleuropäische Eichenchronologie. Trierer
-dendrochronologische Forschungen zur Archäologie und Kunstgeschichte,
-Trierer Grabungen und Forschungen \strong{11}, Mainz am Rhein.
+dendrochronologische Forschungen zur Archäologie und Kunstgeschichte, Trierer
+Grabungen und Forschungen \strong{11}, Mainz am Rhein.
 \item Jansma, E. (1995) RemembeRINGs; The development and application of local
 and regional tree-ring chronologies of oak for the purposes of archaeological
 and historical research in the Netherlands, Nederlandse Archeologische
-Rapporten \strong{19}, Rijksdienst voor het Oudheidkundig Bodemonderzoek, Amersfoort. \url{https://dspace.library.uu.nl/handle/1874/45149}
+Rapporten \strong{19}, Rijksdienst voor het Oudheidkundig Bodemonderzoek,
+Amersfoort. \url{https://dspace.library.uu.nl/handle/1874/45149}
 \item Schweingruber, F. H. (1988) Tree rings: basics and applications of
-dendrochronology, Kluwer Academic Publishers, Dordrecht, Netherlands, 276
-p.
+dendrochronology, Kluwer Academic Publishers, Dordrecht, Netherlands, 276 p.
 \item Visser, R.M. (2020) On the similarity of tree-ring patterns: Assessing
-the influence of semi-synchronous growth changes on the
-Gleichläufigkeit for big tree-ring data sets, \emph{Archaeometry} \strong{63},
-204-215. \url{https://doi.org/10.1111/arcm.12600}
+the influence of semi-synchronous growth changes on the Gleichläufigkeit for
+big tree-ring data sets, \emph{Archaeometry} \strong{63}, 204-215.
+\url{https://doi.org/10.1111/arcm.12600}
 }
 }

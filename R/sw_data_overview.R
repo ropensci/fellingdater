@@ -1,9 +1,10 @@
 #' Overview of available sapwood data sets in the `fellingdateR` package
 #'
-#' @description This function provides an overview of the available sapwood data sets and models within the `fellingdateR` package.
+#' @description This function provides an overview of the available sapwood data
+#'   sets and models within the `fellingdateR` package.
 #'
-#' @return A `character` vector with the names of all available data sets
-#'  with sapwood counts in the `fellingdateR` package.
+#' @return A `character` vector with the names of all available data sets with
+#'   sapwood counts in the `fellingdateR` package.
 #'
 #' @export
 #'

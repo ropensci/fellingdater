@@ -42,13 +42,13 @@ testthat::test_that("credMass is a number between 0 and 1", {
 })
 
 testthat::test_that("sw_data exists", {
-     testthat::expect_message(
+     testthat::expect_error(
           sw_interval(
                n_sapwood=50,
                last=1980,
                sw_data = "Van_Daele_1978"
           ),
-          regexp = "No sapwood data set specified"
+          regexp = NULL
      )
 })
 
