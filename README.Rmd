@@ -24,7 +24,7 @@ This R-package offers a set of functions that can assist you to infer felling da
 
 ![](man/figures/roof_cores.png)
 
-Where it can be assumed that a group of historical timbers were all felled at the same time (i.e. the same year), but due to the absence of the bark/cambial zone (waney edge) and the last formed tree ring this cannot be assessed, the preserved sapwood rings can be used to infer a date range for the felling date.
+Where it can be assumed that a group of historical timbers were all felled at the same time (i.e. in the same year), but due to the absence of the bark/cambial zone (waney edge) and the last formed tree ring this cannot be assessed, the preserved sapwood rings can be used to infer a date range for the felling date.
 
 Taking into account the observed number of sapwood rings on all samples and combining them into a single estimate, is likely to provide a more accurate and precise estimate of the felling date year for the group of timbers under study.
 
@@ -44,7 +44,7 @@ pak::pak("hanecakr/fellingdateR")
 
 ## Basic example
 
-In the following example the combined felling date range for a set of four dated tree-ring series is computed:
+In the following example the combined felling date range for a set of five dated tree-ring series is computed:
 
 ```{r basic-example}
 library(fellingdateR)
@@ -58,8 +58,9 @@ dummy1
 sw_combine(dummy1, plot = TRUE)
 
 ```
+The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date. 
 
-The sapwood data used in the example above was published by Hollstein in 1980:
+The sapwood data used in the example above to estimate the felling date range, was published by Hollstein in 1980:
 
 ```{r model_sapwood_counts, dpi=200}
 sw_model("Hollstein_1980")

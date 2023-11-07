@@ -186,9 +186,8 @@ This value falls outside the range of the chosen sapwood model."
                 return(hdi_int)
 
         } else if (plot == TRUE) {
-                int_plot <- sw_interval_plot(x = pdf)
-                suppressWarnings(print(int_plot))
 
+                sw_interval_plot(x = pdf)
 
         } else {
                 attr(hdi_int, "credMass") <- credMass
