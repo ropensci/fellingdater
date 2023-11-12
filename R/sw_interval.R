@@ -73,7 +73,7 @@ sw_interval <- function(n_sapwood = NA,
               file.exists(sw_data))) {
                 stop(
                         sprintf(
-                                "'%s' is not a supported sapwood model, or file doesn't exist\n",
+                                "'%s' is not a supported sapwood model, or file does not exist\n",
                                 sw_data
                         )
                 )

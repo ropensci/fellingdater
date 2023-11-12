@@ -264,6 +264,9 @@ This function also works with ring-width data in CHRONO and HALF-CHRONO format.
 
 Furthermore, the `read_fh()` function is case insensitive.
 
+
+In the example below, an .fh file with dated tree-ring series from a medieval ship DOEL1 is read with `read_fh()`. The ring width measurement, in different formats, are converted to a `data.frame`. 
+
 ```{r}
 Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
 
@@ -273,9 +276,40 @@ head(Doel1_trs, 15)
 
 ```
 
-When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`.
+When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`, instead of the ring width measurements.
 
 ```{r}
 read_fh(Doel1, verbose = FALSE, header = TRUE)
 
 ```
+
+The `data.frame` with the HEADER fields can then be used as input for the sw_functions:
+
+```{r}
+Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
+
+Doel1_header |> 
+   # first convert column 'waneyedge' to a logical vector (in the original .fh file header fields the presence of waney edge is indicated by "WK" - a character string - in the corresponding HEADER field)
+   dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
+                               TRUE, FALSE)
+   ) |> 
+   sw_combine(plot = TRUE)
+   
+```
+
+The attempt to combine the dated tree-ring series from DOEL1 into a single felling-date range fails. These tree-ring series cannot represent a single event.
+
+However, leaving out the tree-ring series of the keelplank (series "K1_091") of this medieval ship shows that the hull planking and some frame elements could share a common felling date:
+
+```{r}
+Doel1_header |> 
+   dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
+                               TRUE, FALSE)
+   ) |> 
+   dplyr::filter(series != "K1_091") |> 
+   sw_combine(plot = TRUE)
+```
+
+For more details see: Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. _International Journal of Nautical Archaeology_ 43, 87–102. https://doi.org/10.1111/1095-9270.12037
+
+

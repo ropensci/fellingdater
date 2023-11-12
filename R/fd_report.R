@@ -122,15 +122,8 @@ fd_report <- function(x,
         }
         waneyedge <- df[[waneyedge]] # check is.logical
         if (!is.logical(waneyedge)) {
-                warning(
-                        "--> 'waneyedge' should be a logical vector (TRUE/FALSE),
-indicating the presence of waney edge.\n",
-"--> Converted to TRUE/FALSE based on presence of string 'wK'."
-                )
-                waneyedge <-
-                        ifelse(grepl("wk", waneyedge, ignore.case = TRUE),
-                               TRUE,
-                               FALSE)
+                stop("--> 'waneyedge' should be a logical vector (TRUE/FALSE),
+indicating the presence of waney edge.\n")
         }
         if (is.na(credMass) || credMass <= 0 || credMass >= 1)
                 stop("--> credMass must be between 0 and 1")
@@ -148,7 +141,7 @@ indicating the presence of waney edge.\n",
                 if (length(sw_OK) < length(sw_data)) {
                         stop(
                                 sprintf(
-                                        "'%s' is not a supported sapwood model, or file doesn't exist\n",
+                                        "'%s' is not a supported sapwood model, or file does not exist\n",
                                         sw_data[-sw_OK]
                                 )
                         )

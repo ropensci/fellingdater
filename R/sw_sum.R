@@ -56,32 +56,8 @@ sw_sum <- function (x,
 
         cambium <- df[[waneyedge]]
         if (!is.logical(cambium)) {
-                which_wk <- which(grepl("wk", cambium, ignore.case = TRUE))
-                converted_T <- cambium[which_wk]
-                converted_F <- cambium[-which_wk]
-                cambium <-
-                        ifelse(grepl("wk", cambium, ignore.case = TRUE),
-                               TRUE,
-                               FALSE)
-                warning(
-                        paste0(
-                                "Column 'waneyedge' in data.frame should be:\n",
-                                "a logical vector (TRUE/FALSE), indicating the presence of waney edge.\n"
-                        )
-                )
-                warning(
-                        sprintf(
-                                "'%s' --> Converted to TRUE based on presence of string 'wK'.\n",
-                                converted_T
-                        )
-                )
-                warning(
-                        sprintf(
-                                "'%s' --> Converted to FALSE based on absence of string 'wK'.\n",
-                                converted_F
-                        )
-                )
-
+                stop("--> 'waneyedge' should be logical vector (TRUE/FALSE), indicating
+the presence of waney edge.\n")
         }
 
         swr <- df[[n_sapwood]]

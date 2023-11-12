@@ -88,17 +88,9 @@ Some values are possibly missing or the values are not numeric"
 
         cambium <- x[, waneyedge]
         if (!is.logical(cambium)) {
-                warning(
-                        "--> Column 'waneyedge' should be logical (TRUE/FALSE), indicating
-the presence of waney edge.\n",
-"--> Converted to TRUE/FALSE based on presence of string 'wK'."
-                )
-                x[, waneyedge] <-
-                        ifelse(grepl("wk", x[, waneyedge], ignore.case = TRUE),
-                               TRUE,
-                               FALSE)
+                stop("--> 'waneyedge' should be logical vector (TRUE/FALSE), indicating
+the presence of waney edge.\n")
         }
-        cambium <- x[, waneyedge]
 
         timeAxis <- seq(min(endDate) - 3, max(endDate) + 100, by = 1)
 

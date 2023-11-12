@@ -72,7 +72,7 @@ testthat::test_that("waneyedge must be boolean", {
                             n_sapwood = c(10, 11, 12),
                             waneyedge = c("ja", "nee", 345),
                             last = c(123, 456, 1789))
-     testthat::expect_warning(
+     testthat::expect_error(
           fd_report(testdata
           ),
           regexp = "waneyedge"
