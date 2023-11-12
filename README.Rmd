@@ -276,7 +276,7 @@ head(Doel1_trs, 15)
 
 ```
 
-When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`, instead of the ring width measurements.
+When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`, instead of the ring-width measurements.
 
 ```{r}
 read_fh(Doel1, verbose = FALSE, header = TRUE)
@@ -285,11 +285,13 @@ read_fh(Doel1, verbose = FALSE, header = TRUE)
 
 The `data.frame` with the HEADER fields can then be used as input for the sw_functions:
 
-```{r}
+```{r fig.asp=1}
 Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
 
 Doel1_header |> 
-   # first convert column 'waneyedge' to a logical vector (in the original .fh file header fields the presence of waney edge is indicated by "WK" - a character string - in the corresponding HEADER field)
+   # first convert column 'waneyedge' to a logical vector 
+   # (in the original .fh file header fields the presence of waney edge is
+   # indicated by "WK" - a character string - in the corresponding HEADER field)
    dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
                                TRUE, FALSE)
    ) |> 
@@ -301,7 +303,7 @@ The attempt to combine the dated tree-ring series from DOEL1 into a single felli
 
 However, leaving out the tree-ring series of the keelplank (series "K1_091") of this medieval ship shows that the hull planking and some frame elements could share a common felling date:
 
-```{r}
+```{r fig.asp=1}
 Doel1_header |> 
    dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
                                TRUE, FALSE)
