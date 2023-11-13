@@ -30,7 +30,7 @@ Taking into account the observed number of sapwood rings on all samples and comb
 
 ## Installation
 
-You can install the development version of fellingddateR from [GitHub](https://github.com/) with:
+You can install the development version of fellingdateR from [GitHub](https://github.com/) with:
 
 ``` r
 #install.packages("devtools")
@@ -256,6 +256,8 @@ sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 
 When `plot = FALSE`, a list with the numeric output of the modelling process is returned.
 
+
+
 ### read_fh and get_header
 
 The `read_fh()` function is an extension to the `dplR::read.fh()` function from the [**dplR package**](https://github.com/AndyBunn/dplR) ([Bunn 2008](https://doi.org/10.1016/j.dendro.2008.01.002), [Bunn 2010](https://doi.org/10.1016/j.dendro.2009.12.001), [Bunn *et al.* 2022](https://github.com/AndyBunn/dplR)). It allows to read .fh (format Heidelberg) files of ring widths AND additional information found in the HEADER fields are listed as attributes.
@@ -314,4 +316,34 @@ Doel1_header |>
 
 For more details see: Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. _International Journal of Nautical Archaeology_ 43, 87–102. https://doi.org/10.1111/1095-9270.12037
 
+
+### cor_table
+
+The `cor_table()` function computes common correlation values between dated tree-ring series (x) and a set of reference chronologies (y). This function assists in checking the end date of the series against absolutely dated reference chronologies, but also to select the most appropriate sapwood model for your data according to the provenance of the wood (by running it against chronologies that represent a geographically confined region).
+
+The correlation values computed are:
+
+-   glk: 'Gleichläufigkeit' or 'percentage of parallel variation' (Buras & Wilmking 2015; Eckstein & Bauch 1969; Huber 1942; Visser 2020)
+
+-   glk_p: significance level associated with the glk-value (Jansma 1995)
+
+-   r_pearson: the Pearson's correlation coefficient
+
+-   t_St: Student's t-value
+
+-   t_BP: t-values according to the Baillie & Pilcher (1973) algorithm
+
+-   t_Ho: t-values according to the Hollstein (1980) algorithm
+
+
+```{r}
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+
+Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+
+# crossdating ring-width series from Doel 1 against each other:
+cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80)
+head(cor_results, 20)
+
+```
 

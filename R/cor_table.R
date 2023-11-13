@@ -439,8 +439,9 @@ cor_table <-
                     corr_table[order(corr_table[["series"]],
                                      -corr_table[[sort_by]]),]
 
-          }
           corr_table <- subset(corr_table, overlap >= min_overlap)
+
+          }
           return(corr_table)
 
      }
