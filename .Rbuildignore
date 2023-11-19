@@ -8,3 +8,4 @@
 ^playground\.Rmd$
 ^inst/paper$
 ^codecov\.yml$
+^codemeta\.json$
