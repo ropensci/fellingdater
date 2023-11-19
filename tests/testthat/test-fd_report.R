@@ -140,7 +140,7 @@ testthat::test_that("Waneyedge gives exact date", {
      )
 })
 
-testthat::test_that("No Waneyedge gives bewteen date", {
+testthat::test_that("No Waneyedge gives between date", {
      x <- fd_report(testdata
      )
      testthat::expect_equal(

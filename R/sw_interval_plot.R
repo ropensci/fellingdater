@@ -19,6 +19,14 @@
 #' @export
 #'
 sw_interval_plot <- function(x) {
+
+        if (all(
+                !(attributes(x)$names) %in% c(
+                        "year",
+                        "n_sapwood",
+                        "p")
+        ))
+        stop("Input differs from output sw_interval()")
         # to avoid notes in CMD check
         p.x <- upper <- year <- NULL
 
