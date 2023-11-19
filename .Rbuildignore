@@ -7,3 +7,4 @@
 ^notes\.Rmd$
 ^playground\.Rmd$
 ^inst/paper$
+^codecov\.yml$

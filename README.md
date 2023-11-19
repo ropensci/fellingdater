@@ -15,6 +15,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/hanecakr/fellingDateR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingDateR?branch=master)
 <!-- badges: end -->
 
 This R-package offers a set of functions that can assist you to infer
