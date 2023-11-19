@@ -8,7 +8,9 @@ sw_sum_plot(
   x,
   bar_col = "steelblue",
   spline_col = "red3",
-  dot_col = "steelblue4"
+  dot_col = "steelblue4",
+  dot_size = 2,
+  dot_shape = 21
 )
 }
 \arguments{
@@ -18,7 +20,11 @@ sw_sum_plot(
 
 \item{spline_col}{The line color of the fitted smoothing spline.}
 
-\item{dot_col}{The color of the dots that represent exact felling dates.}
+\item{dot_col}{The color of the shapes that represent exact felling dates.}
+
+\item{dot_size}{A size argument for the shapes that represent exact felling dates.}
+
+\item{dot_shape}{Number corresponding to the point symbol available in R for the shapes that represent exact felling dates.}
 }
 \value{
 A ggplot style graph.
