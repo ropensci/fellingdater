@@ -6,3 +6,4 @@
 ^\.github$
 ^notes\.Rmd$
 ^playground\.Rmd$
+^inst/paper$

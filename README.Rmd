@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `fellingdateR`: estimating felling dates from historical tree-ring series
+# `fellingdateR`: Estimate, report and combine felling dates of historical tree-ring series
 
 <!-- badges: start -->
 
@@ -97,7 +97,7 @@ When `hdi = FALSE` a matrix is returned with scaled p values for each number of 
 
 The results of this procedure can be visualized by setting `plot = TRUE`.
 
-```{r}
+```{r out.width='60%', align='center'}
 # 10 sapwood rings observed and the Wazny 1990 sapwood model:
 sw_interval(n_sapwood = 10,
             last = 1234,
