@@ -240,7 +240,7 @@ dummy2
 #> 2 trs_12 1005        10     FALSE
 #> 3 trs_13 1008        NA     FALSE
 #> 4 trs_14 1000         1     FALSE
-#> 5 trs_15 1010         3      TRUE
+#> 5 trs_15 1010        15      TRUE
 sw_combine(dummy2, plot = TRUE)
 ```
 
@@ -476,17 +476,17 @@ read_fh(Doel1, verbose = FALSE, header = TRUE)
 #> 8  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
 #> 9  Ship timbers DOEL 1       Doel_Deurganckdok <NA> <NA>         <NA>
 #> 10                <NA>   KOGGE ANTWERPEN S6-SB <NA> <NA>         <NA>
-#>    sampling_date measuring_date    personal_id client_id longitude latitude
-#> 1           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
-#> 2           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
-#> 3           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
-#> 4           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
-#> 5           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
-#> 6           <NA>           <NA> Kristof Haneca      <NA>      <NA>     <NA>
-#> 7           <NA>           <NA>             EH      <NA>      <NA>     <NA>
-#> 8           <NA>           <NA>           <NA>      <NA>      <NA>     <NA>
-#> 9           <NA>           <NA>             KH      <NA>      <NA>     <NA>
-#> 10          <NA>           <NA>             EH      <NA>      <NA>     <NA>
+#>    sampling_date measuring_date personal_id client_id longitude  latitude
+#> 1           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 2           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 3           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 4           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 5           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 6           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 7           <NA>           <NA>        <NA>      <NA>  4.269711 51.298236
+#> 8           <NA>           <NA>          KH      <NA>  4.269711 51.298236
+#> 9           <NA>           <NA>        <NA>      <NA>  4.269711 51.298236
+#> 10          <NA>           <NA>        <NA>      <NA>  4.269711 51.298236
 ```
 
 The `data.frame` with the HEADER fields can then be used as input for the sw_functions:
