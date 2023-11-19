@@ -38,3 +38,8 @@ running mean values.
 This vectorized function computes a running mean/moving average
 over a continuous (time) series with a specified window width.
 }
+\examples{
+num_vec <- rnorm(100)
+movAv(num_vec, w = 20)
+
+}

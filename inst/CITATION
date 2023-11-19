@@ -5,7 +5,7 @@ citEntry(
   title    = "fellingdateR: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures" ,
   author   = "Kristof Haneca",
   year     = "2023",
-  note     = "R package version 0.0.0.9000",
+  note     = "R package version 0.0.0.9003",
   url      = "https://github.com/hanecakr/fellingDateR",
   textVersion = paste(
 

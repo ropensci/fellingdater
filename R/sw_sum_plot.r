@@ -7,7 +7,9 @@
 #' @param x The output of `sw_sum()`.
 #' @param bar_col The fill color for the bars.
 #' @param spline_col The line color of the fitted smoothing spline.
-#' @param dot_col The color of the dots that represent exact felling dates.
+#' @param dot_col The color of the shapes that represent exact felling dates.
+#' @param dot_size A size argument for the shapes that represent exact felling dates.
+#' @param dot_shape Number corresponding to the point symbol available in R for the shapes that represent exact felling dates.
 #'
 #' @return A ggplot style graph.
 #' @export
@@ -21,7 +23,9 @@
 sw_sum_plot <- function(x,
                         bar_col = "steelblue",
                         spline_col = "red3",
-                        dot_col = "steelblue4") {
+                        dot_col = "steelblue4",
+                        dot_size = 2,
+                        dot_shape = 21) {
 
         # to avoid notes in CMD check
         spline <- SPD_wk <- year <- y <- SPD <- SPD_movAv <- NULL
@@ -75,8 +79,10 @@ p <-
                            na.rm = T) +
         { if (nrow(fd) > 0) ggplot2::geom_point(data = fd,
                             ggplot2::aes(x = year, y = SPD + y * p_max/20),
-                            size = 2,
-                            colour = dot_col,
+                            size = dot_size,
+                            fill = dot_col,
+                            color = dot_col,
+                            shape = dot_shape,
                             na.rm = T) } +
         ggplot2::scale_x_continuous(
                 limits = c(plyr::round_any(plot_range[1], 10, floor),

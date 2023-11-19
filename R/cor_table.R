@@ -78,6 +78,14 @@
 #'   - t_St: Student's t-value
 #'   - t_BP: t-values according to the Baillie & Pilcher (1973) algorithm
 #'   - t_Ho: t-values according to the Hollstein (1980) algorithm
+#' @examples
+#' # example code
+#'
+#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+#' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+#' # crossdating ring-width series from Doel 1 against each other:
+#'
+#' cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80)
 #'
 cor_table <-
      function(x,

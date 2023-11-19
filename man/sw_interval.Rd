@@ -67,3 +67,22 @@ and the highest posterior density interval (hdi) of the felling date range
 based on the observed number of sapwood rings, their chronological dating,
 and the selected sapwood data and model.
 }
+\examples{
+# 10 sapwood rings observed and the Wazny 1990 sapwood model:
+sw_interval(n_sapwood = 10,
+            last = 1234,
+            hdi = TRUE,
+            credMass = .95,
+            sw_data = "Wazny_1990",
+            densfun = "lognormal",
+            plot = FALSE)
+ # same example as above, but with numerical output (hdi = FALSE):
+sw_interval(n_sapwood = 10,
+            last = 1234,
+            hdi = FALSE,
+            credMass = .95,
+            sw_data = "Wazny_1990",
+            densfun = "lognormal",
+            plot = FALSE)
+
+}

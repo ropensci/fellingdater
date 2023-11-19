@@ -19,7 +19,7 @@ dummy1 <- data.frame(
 dummy2 <- data.frame(
      series = c("trs_11", "trs_12", "trs_13", "trs_14", "trs_15"),
      last = c(1000, 1005, 1008, 1000, 1010),
-     n_sapwood = c(5, 10, NA, 1, 3),
+     n_sapwood = c(5, 10, NA, 1, 15),
      waneyedge = c(FALSE, FALSE, FALSE, FALSE, TRUE))
 
 ## a dataset with multiple exact felling dates

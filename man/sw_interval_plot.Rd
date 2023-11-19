@@ -16,3 +16,14 @@ A ggplot-style graph.
 Returns a ggplot-style graph of the probability density function for the
 felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 }
+\examples{
+tmp <- sw_interval(n_sapwood = 10,
+            last = 1000,
+            hdi = FALSE,
+            credMass = .95,
+            sw_data = "Hollstein_1980",
+            densfun = "lognormal",
+            plot = FALSE)
+sw_interval_plot(tmp)
+
+}

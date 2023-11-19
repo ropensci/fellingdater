@@ -8,6 +8,10 @@
 
 #' @return A ggplot-style graph.
 #' @export
+#' @examples
+#' fellingdateR:::dummy2
+#' combo <- sw_combine(fellingdateR:::dummy2)
+#' sw_combine_plot(combo)
 #'
 #'
 sw_combine_plot <- function(x) {

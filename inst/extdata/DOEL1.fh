@@ -21,6 +21,9 @@ BibliographyCount=0
 KeyNo=K1_091
 SapWoodRings=15
 Comment=keelplank
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 DATA:Single
    250   273   227   144   147   229   283   269   141   136
    222   105   124   106   152   162   188   144   143    86
@@ -59,6 +62,9 @@ DateEnd=1306
 KeyNo=S38-BB
 Comment=HW/SW boundary | K1_281 | framing timber
 SapWoodRings=0
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 DATA:Single
    130   105   108    92    51    90    64    80    82    69
     71    70    69    57    67    76    57    96    76    46
@@ -84,6 +90,9 @@ Country=Belgium
 Pith=-
 SpeciesName=Quercus spp.
 Location=Doel_Deurganckdok
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 Species=QUSP
 DataFormat=Tree
 SapWoodRings=5
@@ -118,11 +127,13 @@ Country=Belgium
 Pith=-
 SpeciesName=Quercus spp.
 Location=Doel_Deurganckdok
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 Species=QUSP
 DataFormat=Chrono
 Town=Doel
 Street=Deurganckdok
-PersId=Kristof Haneca
 Bark=-
 GlobalMathCommentCount=0
 ImageCount=0
@@ -177,7 +188,9 @@ DataFormat=Chrono
 SapWoodRings=7
 Town=Doel
 Street=Deurganckdok
-PersId=Kristof Haneca
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 Bark=-
 SeriesType=Single curve
 GlobalMathCommentCount=0
@@ -250,7 +263,9 @@ DataFormat=Tree
 SapWoodRings=21
 Town=Doel
 Street=Deurganckdok
-PersId=Kristof Haneca
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 Bark=-
 SeriesType=Single curve
 GlobalMathCommentCount=0
@@ -291,6 +306,9 @@ ImageCount=0
 CommentCount=0
 BibliographyCount=0
 SpeciesName=Quercus spp.
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 DataType=Ringwidth
 DATA:Single
    327   191   236   243   236   215   304   310   219   325
@@ -315,6 +333,9 @@ Country=Belgium
 Pith=-
 SpeciesName=Quercus spp.
 Location=Doel_Deurganckdok
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 Species=QUSP
 DataFormat=Chrono
 SeriesType=Single curve
@@ -390,6 +411,9 @@ CommentCount=0
 BibliographyCount=0
 Project=Ship timbers DOEL 1
 SpeciesName=Quercus spp.
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 DataType=Ringwidth
 DATA:Single
    115   194   159   193   150   178   170   139   106    58
@@ -423,6 +447,9 @@ CommentCount=0
 BibliographyCount=0
 Comment=framing timber
 SpeciesName=Quercus spp.
+Longitude=4.269711
+Latitude=51.298236
+PersId=KH
 DataType=Ringwidth
 DATA:Single
    100    84    38    23    83    57    97   137   172   161

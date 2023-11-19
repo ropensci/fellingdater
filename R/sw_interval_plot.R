@@ -6,6 +6,16 @@
 #' @param x Output of [sw_interval()].
 #'
 #' @return  A ggplot-style graph.
+#' @examples
+#' tmp <- sw_interval(n_sapwood = 10,
+#'             last = 1000,
+#'             hdi = FALSE,
+#'             credMass = .95,
+#'             sw_data = "Hollstein_1980",
+#'             densfun = "lognormal",
+#'             plot = FALSE)
+#' sw_interval_plot(tmp)
+#'
 #' @export
 #'
 sw_interval_plot <- function(x) {

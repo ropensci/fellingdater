@@ -70,6 +70,16 @@ a \code{data.frame} \code{x} and a set of reference chronologies in a \code{data
 If \code{y} is not provided, it compares each series in \code{x} to all other series in
 `x.
 }
+\examples{
+# example code
+
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+# crossdating ring-width series from Doel 1 against each other:
+
+cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80)
+
+}
 \references{
 \itemize{
 \item Baillie, M.G.L., Pilcher, J.R. (1973) A simple crossdating program for

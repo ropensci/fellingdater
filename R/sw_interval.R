@@ -28,6 +28,23 @@
 #'   * If `TRUE`, a ggplot-style graph is returned of the individual
 #'   sapwood model and estimate of the felling date range.
 #'   * If `FALSE`, a list with the numeric output of the modelling process is returned.
+#' @examples
+#' # 10 sapwood rings observed and the Wazny 1990 sapwood model:
+#' sw_interval(n_sapwood = 10,
+#'             last = 1234,
+#'             hdi = TRUE,
+#'             credMass = .95,
+#'             sw_data = "Wazny_1990",
+#'             densfun = "lognormal",
+#'             plot = FALSE)
+#'  # same example as above, but with numerical output (hdi = FALSE):
+#' sw_interval(n_sapwood = 10,
+#'             last = 1234,
+#'             hdi = FALSE,
+#'             credMass = .95,
+#'             sw_data = "Wazny_1990",
+#'             densfun = "lognormal",
+#'             plot = FALSE)
 #'
 #' @export
 #'

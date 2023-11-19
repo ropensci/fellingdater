@@ -23,6 +23,10 @@
 #'
 #' @return A `numeric` vector of the same length of `x` with the computed
 #'   running mean values.
+#' @examples
+#' num_vec <- rnorm(100)
+#' movAv(num_vec, w = 20)
+#'
 #' @export
 
 movAv <- function(x,

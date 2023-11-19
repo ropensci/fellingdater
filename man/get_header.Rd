@@ -19,3 +19,9 @@ This function reports the HEADER fields from a Heidelberg format
 the \code{read_fh()} function, which stores the HEADER fields from the .fh file
 as attributes of the \code{data.frame} with the measurement data it returns.
 }
+\examples{
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1_trs <- read_fh(Doel1, verbose = FALSE)
+get_header(Doel1_trs)
+
+}

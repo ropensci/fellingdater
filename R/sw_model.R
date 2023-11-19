@@ -27,6 +27,10 @@
 #'   process is returned.
 #'
 #' @export
+#' @examples
+#' sw_model("Sohar_2012_ELL_c")
+#'
+#' sw_model("Hollstein_1980")
 #'
 sw_model <-
         function(sw_data = "Hollstein_1980",
