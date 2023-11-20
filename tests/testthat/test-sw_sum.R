@@ -28,3 +28,18 @@ testthat::test_that("sw_sum does not work with invalid credMass", {
           )
      )
 })
+
+
+testthat::test_that("sw_sum warning series without waney edge removed", {
+     testthat::expect_warning(
+          sw_sum(
+               fellingdateR:::dummy4)
+     )
+})
+
+testthat::test_that("sw_sum warning no series wtih sapwood or waney edge removed", {
+     testthat::expect_error(
+          suppressWarnings(sw_sum(
+               fellingdateR:::dummy5))
+     )
+})

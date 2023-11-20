@@ -113,3 +113,16 @@ testthat::test_that("output is list", {
         testthat::expect_type(x, "list")
         testthat::expect_equal(length(x), 3)
 })
+
+
+testthat::test_that("output is data.frame", {
+        testthat::expect_s3_class(
+                sw_interval(
+                n_sapwood = 0,
+                last = 1234,
+                hdi = FALSE,
+                credMass = .95,
+                sw_data = "Wazny_1990",
+                densfun = "lognormal"
+                ), "data.frame")
+})

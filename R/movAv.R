@@ -43,7 +43,7 @@ movAv <- function(x,
                 before <- 0
                 after  <- w - 1
         } else {
-                print("'align' should be 'center', 'left' or 'right'")
+                stop("'align' should be 'center', 'left' or 'right'")
         }
 
         run_mean <- matrix(NA, nrow = length(x), ncol = 1)
