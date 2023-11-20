@@ -9,3 +9,10 @@ testthat::test_that("Output is a list", {
 })
 
 
+testthat::test_that("Does not work with random name", {
+     testthat::expect_error(sw_data_info("Hollstein_2050"))
+})
+
+testthat::test_that("Does not work with no input variable", {
+     testthat::expect_error(sw_data_info())
+})
