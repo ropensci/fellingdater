@@ -146,13 +146,13 @@ or the path to a .csv file with columns `n_sapwood` and `count`.)"
                                                 yend = 0
                                         ),
                                         colour = "grey30",
-                                        size = .8,
+                                        linewidth = .8,
                                         alpha = 0.8
                                 ) +
                                 ggplot2::geom_line(
                                         data = spline_int,
                                         ggplot2::aes(x = x, y = y),
-                                        size = 1,
+                                        linewidth = 1,
                                         color = "red3"
                                 ) +
                                 ggplot2::theme_minimal() +
