@@ -77,3 +77,10 @@ testthat::test_that("d.dens does not work with invalid density function", {
           regexp = "not a supported distribution"
      )
 })
+
+# Test if the function returns a ggplot object
+testthat::test_that("sw_model(plot =TRUE) returns a ggplot object", {
+        p <- sw_model("Hollstein_1980",
+                        plot = TRUE)
+        testthat::expect_true("ggproto" %in% class(p$layers[[1]]$stat))
+})
