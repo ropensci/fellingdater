@@ -52,16 +52,6 @@ testthat::test_that("sw_data exists", {
      )
 })
 
-# testthat::test_that("hdi with very large n_sapwood gives warning", {
-#      testthat::expect_warning(
-#           sw_interval(
-#                n_sapwood = 12345,
-#                last = 1234,
-#                hdi = TRUE,
-#           ),
-#           regexp = "n_sapwood"
-#      )
-# })
 
 testthat::test_that("hdi works with lognormal density function", {
      hdi <- sw_interval(
@@ -109,4 +99,17 @@ testthat::test_that("d.dens does not work with invalid density function", {
           ),
           regexp = "not a supported distribution"
      )
+})
+
+testthat::test_that("output is list", {
+        x <- sw_interval(
+                n_sapwood = 10,
+                last = 1234,
+                hdi = TRUE,
+                credMass = .95,
+                sw_data = "Wazny_1990",
+                densfun = "normal"
+        )
+        testthat::expect_type(x, "list")
+        testthat::expect_equal(length(x), 3)
 })
