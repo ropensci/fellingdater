@@ -77,19 +77,19 @@ multiple sapwood estimates into a single felling date range.
 \examples{
 # a data set in which all series have preserved sapwood
 
-fellingdateR:::dummy1
-sw_combine(fellingdateR:::dummy1, plot = FALSE)
-sw_combine(fellingdateR:::dummy1, plot = TRUE)
+fellingdateR:::trs_example1
+sw_combine(fellingdateR:::trs_example1, plot = FALSE)
+sw_combine(fellingdateR:::trs_example1, plot = TRUE)
 
 # a data set in which one series has an exact felling date (= waney edge preserved)
 
-fellingdateR:::dummy2
-sw_combine(fellingdateR:::dummy2, plot = TRUE)
+fellingdateR:::trs_example2
+sw_combine(fellingdateR:::trs_example2, plot = TRUE)
 
 # a data set in which multiples series have an exact felling date
 
-fellingdateR:::dummy3
-sw_combine(fellingdateR:::dummy3, plot= FALSE)
+fellingdateR:::trs_example3
+sw_combine(fellingdateR:::trs_example3, plot= FALSE)
 
 }
 \seealso{

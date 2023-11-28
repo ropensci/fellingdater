@@ -37,9 +37,9 @@
 #' @export
 #' @seealso [sw_sum_plot()]
 #' @examples
-#' fellingdateR:::dummy7
+#' fellingdateR:::trs_example7
 #'
-#' sw_sum(fellingdateR:::dummy7, plot = TRUE)
+#' sw_sum(fellingdateR:::trs_example7, plot = TRUE)
 #'
 sw_sum <- function (x,
                     series = "series",

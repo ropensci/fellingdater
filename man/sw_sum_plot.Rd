@@ -35,9 +35,9 @@ the occurrence of exact felling dates - and adds a smoothing spline to the
 SPD.
 }
 \examples{
-dummy6 <- fellingdateR:::dummy6
-dummy6
-tmp <- sw_sum(dummy6)
+trs_example6 <- fellingdateR:::trs_example6
+trs_example6
+tmp <- sw_sum(trs_example6)
 sw_sum_plot(tmp, bar_col = "burlywood1")
 
 }

@@ -4,7 +4,7 @@ testthat::test_that("Data must be present", {
 })
 
 testthat::test_that("Series must be present", {
-        testthat::expect_error(fd_report(dummy2,
+        testthat::expect_error(fd_report(trs_example2,
                                          series = "bestaat_niet"),
                                regexp = "series")
         testdata <- data.frame(
@@ -18,7 +18,7 @@ testthat::test_that("Series must be present", {
 })
 
 testthat::test_that("n_sapwood must be numeric", {
-        testthat::expect_error(fd_report(dummy1,
+        testthat::expect_error(fd_report(trs_example1,
                                          n_sapwood = "bestaat_niet"),
                                regexp = "n_sapwood")
         testdata <- data.frame(
@@ -32,7 +32,7 @@ testthat::test_that("n_sapwood must be numeric", {
 })
 
 testthat::test_that("last must be numeric", {
-        testthat::expect_error(fd_report(dummy2,
+        testthat::expect_error(fd_report(trs_example2,
                                          last = "bestaat_niet"),
                                regexp = "last")
         testdata <- data.frame(
@@ -46,7 +46,7 @@ testthat::test_that("last must be numeric", {
 })
 
 testthat::test_that("waneyedge must be boolean", {
-        testthat::expect_error(fd_report(dummy3,
+        testthat::expect_error(fd_report(trs_example3,
                                          waneyedge = "waynesedge"),
                                regexp = "waneyedge")
         testdata <- data.frame(
@@ -60,25 +60,25 @@ testthat::test_that("waneyedge must be boolean", {
 })
 
 testthat::test_that("credMass must be between 0 and 1", {
-        testthat::expect_error(fd_report(dummy4,
+        testthat::expect_error(fd_report(trs_example4,
                                          "credMass" = "lots"),
                                regexp = "credMass")
-        testthat::expect_error(fd_report(dummy5,
+        testthat::expect_error(fd_report(trs_example5,
                                          "credMass" = -145),
                                regexp = "credMass")
-        testthat::expect_error(fd_report(dummy6,
+        testthat::expect_error(fd_report(trs_example6,
                                          "credMass" = 1.01),
                                regexp = "credMass")
 })
 
 testthat::test_that("Output is a data.frame", {
-        x <- fd_report(dummy7)
+        x <- fd_report(trs_example7)
         testthat::expect_s3_class(x, "data.frame")
 })
 
 
 testthat::test_that("Waneyedge gives exact date", {
-        x <- fd_report(dummy3)
+        x <- fd_report(trs_example3)
         testthat::expect_equal(x$lower[3],
                                NA_real_)
         testthat::expect_equal(x$upper[3],
@@ -88,7 +88,7 @@ testthat::test_that("Waneyedge gives exact date", {
 })
 
 testthat::test_that("No Waneyedge gives between date", {
-        x <- fd_report(dummy1)
+        x <- fd_report(trs_example1)
         testthat::expect_equal(x$lower[2],
                                x$last[2])
         testthat::expect_gte(x$upper[1],

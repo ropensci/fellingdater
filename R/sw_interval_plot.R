@@ -132,6 +132,5 @@ sw_interval_plot <- function(x) {
                 ggplot2::ylab("p") +
                 ggplot2::xlab("calendar year")
 
-        # suppressWarnings(print(p))
-        print(p)
+        suppressWarnings(print(p))
 }

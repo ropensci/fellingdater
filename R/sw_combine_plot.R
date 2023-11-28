@@ -9,8 +9,8 @@
 #' @return A ggplot-style graph.
 #' @export
 #' @examples
-#' fellingdateR:::dummy2
-#' combo <- sw_combine(fellingdateR:::dummy2)
+#' fellingdateR:::trs_example2
+#' combo <- sw_combine(fellingdateR:::trs_example2)
 #' sw_combine_plot(combo)
 #'
 #'

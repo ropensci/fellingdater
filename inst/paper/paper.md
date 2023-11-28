@@ -451,7 +451,7 @@ agreement indexes of all individual series and the overall model are
 high and above the critical threshold of 60%.
 
 ``` r
-fellingdateR:::dummy2
+fellingdateR:::trs_example2
 #>   series last n_sapwood waneyedge
 #> 1 trs_11 1000         5     FALSE
 #> 2 trs_12 1005        10     FALSE
@@ -459,7 +459,7 @@ fellingdateR:::dummy2
 #> 4 trs_14 1000         1     FALSE
 #> 5 trs_15 1010         3      TRUE
 
-sw_combine_plot <- sw_combine(dummy2, plot = TRUE)
+sw_combine_plot <- sw_combine(trs_example2, plot = TRUE)
 ```
 
 ![Graphical output of `sw_combine()`. The sapwood model for the
@@ -482,7 +482,7 @@ particular example, probably two or three separate felling events are
 present.
 
 ``` r
-fellingdateR:::dummy4
+fellingdateR:::trs_example4
 #>   series last n_sapwood waneyedge
 #> 1 trs_21 1000         5     FALSE
 #> 2 trs_22 1005        10     FALSE
@@ -490,7 +490,7 @@ fellingdateR:::dummy4
 #> 4 trs_24 1020         1     FALSE
 #> 5 trs_25 1040         0     FALSE
 
-sw_combine_plot <- sw_combine(dummy4, plot = TRUE)
+sw_combine_plot <- sw_combine(trs_example4, plot = TRUE)
 ```
 
 ## Sum felling dates
@@ -523,7 +523,7 @@ wider time range. Therefore exact felling dates are plotted separately
 on top of the SPD ([Fig. 6](#fig-sw_sum)).
 
 ``` r
-sum_output <- sw_sum(fellingdateR:::dummy7)
+sum_output <- sw_sum(fellingdateR:::trs_example7)
 
 sw_sum_plot(suw_output, dot_size = 2, dot_shape = 25)
 ```

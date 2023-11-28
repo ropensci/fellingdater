@@ -36,7 +36,6 @@ You can install the development version of fellingdateR from [GitHub](https://gi
 
 ```r
 #install.packages("pak")
-
 pak::pak("hanecakr/fellingdateR")
 ```
 
@@ -49,11 +48,11 @@ library(fellingdateR)
 
 ## a data set where all series have partially preserved sapwood:
 load("R/sysdata.rda")
-dummy1
+trs_example1
 ```
 
 ```{r example}
-sw_combine(dummy1, plot = TRUE)
+sw_combine(trs_example1, plot = TRUE)
 
 ```
 
@@ -68,8 +67,9 @@ sw_model("Hollstein_1980")
 
 ## Getting started
 
-An overview of the main functions and datasets included within the package can be found here <getting_started>.
-Some examples are provided in the 'getting started' vignette.
+An overview of the main functions and sapwood datasets included within the package can be found [here](https://hanecakr.github.io/fellingdateR/reference/).
+
+Some examples are provided in the [`getting started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html) vignette.
 
 
 ## Motivation

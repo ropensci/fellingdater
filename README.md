@@ -40,7 +40,6 @@ You can install the development version of fellingdateR from
 
 ``` r
 #install.packages("pak")
-
 pak::pak("hanecakr/fellingdateR")
 ```
 
@@ -54,17 +53,17 @@ library(fellingdateR)
 
 ## a data set where all series have partially preserved sapwood:
 load("R/sysdata.rda")
-dummy1
+trs_example1
 #>   series last n_sapwood waneyedge
-#> 1 trs_06 1000         5     FALSE
-#> 2 trs_07 1009        10     FALSE
-#> 3 trs_08 1007        15     FALSE
-#> 4 trs_09 1005        16     FALSE
-#> 5 trs_10 1010         8     FALSE
+#> 1 trs_01 1000         5     FALSE
+#> 2 trs_02 1009        10     FALSE
+#> 3 trs_03 1007        15     FALSE
+#> 4 trs_04 1005        16     FALSE
+#> 5 trs_05 1010         8     FALSE
 ```
 
 ``` r
-sw_combine(dummy1, plot = TRUE)
+sw_combine(trs_example1, plot = TRUE)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -84,9 +83,13 @@ sw_model("Hollstein_1980")
 
 ## Getting started
 
-An overview of the main functions and datasets included within the
-package can be found here <getting_started>. Some examples are provided
-in the ‘getting started’ vignette.
+An overview of the main functions and sapwood datasets included within
+the package can be found
+[here](https://hanecakr.github.io/fellingdateR/reference/).
+
+Some examples are provided in the
+[`getting started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html)
+vignette.
 
 ## Motivation
 
