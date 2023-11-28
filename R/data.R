@@ -13,8 +13,8 @@
 #' @details
 #'     sample size = 69 observations
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Brathen_1982")
+#'
 #' sw_model("Brathen_1982")
 #'
 "Brathen_1982"
@@ -35,8 +35,8 @@
 #' @details
 #'     sample size = 490 observations
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Hollstein_1980")
+#'
 #' sw_model("Hollstein_1980")
 #'
 "Hollstein_1980"
@@ -55,10 +55,10 @@
 #'   }
 #' @details
 #'     sample size = 295 observations
-#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563.
+#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. <https://doi.org/10.1179/030554797786050563>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Miles_1997_NM")
+#'
 #' sw_model("Miles_1997_NM")
 #'
 "Miles_1997_NM"
@@ -77,10 +77,10 @@
 #'   }
 #' @details
 #'     sample size = 406 observations
-#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563.
+#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. <https://doi.org/10.1179/030554797786050563>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Miles_1997_SC")
+#'
 #' sw_model("Miles_1997_SC")
 #'
 "Miles_1997_SC"
@@ -99,10 +99,10 @@
 #'   }
 #' @details
 #'     sample size = 219 observations
-#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563.
+#' @source Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. <https://doi.org/10.1179/030554797786050563>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Miles_1997_WBC")
+#'
 #' sw_model("Miles_1997_WBC")
 #'
 "Miles_1997_WBC"
@@ -123,8 +123,8 @@
 #'     sample size = 219 observations
 #' @source Pilcher J.R. 1987. A 700 year dating chronology for northern France. Applications of tree-ring studies. Current research in dendrochronology and related subjects. BAR International Series 333, 127–139.
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Pilcher_1987")
+#'
 #' sw_model("Pilcher_1987")
 #'
 "Pilcher_1987"
@@ -143,11 +143,11 @@
 #'   }
 #' @details
 #'     sample size = 562 observations
-#'     !!! sapwood determined by *color*
-#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (**Quercus robur** L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001
+#'     !!! sapwood determined by _color_
+#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (*Quercus robur* L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. <https://doi.org/10.1016/j.dendro.2011.08.001>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Sohar_2012_ELL_c")
+#'
 #' sw_model("Sohar_2012_ELL_c")
 #'
 "Sohar_2012_ELL_c"
@@ -166,11 +166,11 @@
 #'   }
 #' @details
 #'     sample size = 533 observations
-#'     !!! sapwood determined by presence of *tyloses*
-#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (**Quercus robur** L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001
+#'     !!! sapwood determined by presence of _tyloses_
+#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (*Quercus robur* L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. <https://doi.org/10.1016/j.dendro.2011.08.001>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Sohar_2012_ELL_t")
+#'
 #' sw_model("Sohar_2012_ELL_t")
 #'
 "Sohar_2012_ELL_t"
@@ -189,11 +189,11 @@
 #'   }
 #' @details
 #'     sample size = 98 observations
-#'     !!! sapwood determined by *color*
-#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (**Quercus robur** L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001
+#'     !!! sapwood determined by _color_
+#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (*Quercus robur* L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. <https://doi.org/10.1016/j.dendro.2011.08.001>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Sohar_2012_FWE_c")
+#'
 #' sw_model("Sohar_2012_FWE_c")
 #'
 "Sohar_2012_FWE_c"
@@ -212,11 +212,11 @@
 #'   }
 #' @details
 #'     sample size = 97 observations
-#'     !!! sapwood determined by the presence of *tyloses*
-#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (**Quercus robur** L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001
+#'     !!! sapwood determined by the presence of _tyloses_
+#' @source Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (*Quercus robur* L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. <https://doi.org/10.1016/j.dendro.2011.08.001>
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Sohar_2012_FWE_t")
+#'
 #' sw_model("Sohar_2012_FWE_t")
 #'
 "Sohar_2012_FWE_t"
@@ -237,8 +237,8 @@
 #'     sample size = 206 observations
 #' @source Wazny T. 1990. Aufbau und Anwendung der Dendrochronologie für Eichenholz in Polen (PhD dissertation). Hamburg University, Hamburg.
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("Wazny_1990")
+#'
 #' sw_model("Wazny_1990")
 #'
 "Wazny_1990"
@@ -248,8 +248,8 @@
 #'
 #' Sapwood data set for historical timbers found in the Netherlands that were
 #'   imported from Norway.
-#'   Unpublished data by van Daalen (version 19 Dec 2022, by Sjoerd van Daalen -
-#'   www.dendro.nl).
+#'   Unpublished data by S. van Daalen (version 19 Dec 2022, Van Daalen Dendrochronologie -
+#'   <www.dendro.nl>).
 #'
 #' @name vanDaalen_Norway
 #' @docType data
@@ -262,8 +262,8 @@
 #'     sample size = 104 observations
 #' @source S. van Daalen, unpublished dataset (version: 19 Dec 2022).
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("vanDaalen_Norway")
+#'
 #' sw_model("vanDaalen_Norway")
 #'
 "vanDaalen_Norway"
@@ -272,8 +272,8 @@
 #'
 #' Sapwood data set for historical timbers found in the Netherlands en Belgium,
 #'   with a local provenance.
-#'   Unpublished data by van Daalen (version 19 Dec 2022, by Sjoerd van Daalen -
-#'   www.dendro.nl).
+#'   Unpublished data by S. van Daalen (version 19 Dec 2022, Van Daalen Dendrochronologie -
+#'   <www.dendro.nl>).
 #'
 #' @name vanDaalen_NLBE
 #' @docType data
@@ -286,8 +286,8 @@
 #'     sample size = 644 observations
 #' @source S. van Daalen, unpublished dataset (version: 19 Dec 2022).
 #' @examples
-#' sw_data_overview()
 #' sw_data_info("vanDaalen_NLBE")
+#'
 #' sw_model("vanDaalen_NLBE")
 #'
 "vanDaalen_NLBE"
