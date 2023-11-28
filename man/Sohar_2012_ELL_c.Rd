@@ -12,7 +12,7 @@ A tibble of 2 variables:
 }
 }
 \source{
-Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (\strong{Quercus robur} L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. DOI: https://doi.org/10.1016/j.dendro.2011.08.001
+Sohar K., Vitas A. & Läänelaid A. 2012. Sapwood estimates of pedunculate oak (\emph{Quercus robur} L.) in eastern Baltic, Dendrochronologia 30.1, 49–56. \url{https://doi.org/10.1016/j.dendro.2011.08.001}
 }
 \usage{
 Sohar_2012_ELL_c
@@ -22,12 +22,12 @@ Sapwood data set for Eastern Estonia, Latvia, Lithuania, published by Sohar et a
 }
 \details{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{sample size = 562 observations
-!!! sapwood determined by *color*
+!!! sapwood determined by _color_
 }\if{html}{\out{</div>}}
 }
 \examples{
-sw_data_overview()
 sw_data_info("Sohar_2012_ELL_c")
+
 sw_model("Sohar_2012_ELL_c")
 
 }

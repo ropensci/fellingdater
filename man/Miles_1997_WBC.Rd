@@ -12,7 +12,7 @@ A tibble of 2 variables:
 }
 }
 \source{
-Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. DOI: https://doi.org/10.1179/030554797786050563.
+Miles D. 1997. The interpretation, presentation and use of tree-ring dates. Vernacular architecture 28, 40–56. \url{https://doi.org/10.1179/030554797786050563}
 }
 \usage{
 Miles_1997_WBC
@@ -25,8 +25,8 @@ Sapwood data set for Wales and border counties (U.K.), Shropshire, Hereford and 
 }\if{html}{\out{</div>}}
 }
 \examples{
-sw_data_overview()
 sw_data_info("Miles_1997_WBC")
+
 sw_model("Miles_1997_WBC")
 
 }

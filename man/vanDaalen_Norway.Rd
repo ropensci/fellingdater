@@ -20,16 +20,16 @@ vanDaalen_Norway
 \description{
 Sapwood data set for historical timbers found in the Netherlands that were
 imported from Norway.
-Unpublished data by van Daalen (version 19 Dec 2022, by Sjoerd van Daalen -
-www.dendro.nl).
+Unpublished data by S. van Daalen (version 19 Dec 2022, Van Daalen Dendrochronologie -
+<www.dendro.nl>).
 }
 \details{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{sample size = 104 observations
 }\if{html}{\out{</div>}}
 }
 \examples{
-sw_data_overview()
 sw_data_info("vanDaalen_Norway")
+
 sw_model("vanDaalen_Norway")
 
 }

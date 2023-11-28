@@ -20,16 +20,16 @@ vanDaalen_NLBE
 \description{
 Sapwood data set for historical timbers found in the Netherlands en Belgium,
 with a local provenance.
-Unpublished data by van Daalen (version 19 Dec 2022, by Sjoerd van Daalen -
-www.dendro.nl).
+Unpublished data by S. van Daalen (version 19 Dec 2022, Van Daalen Dendrochronologie -
+<www.dendro.nl>).
 }
 \details{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{sample size = 644 observations
 }\if{html}{\out{</div>}}
 }
 \examples{
-sw_data_overview()
 sw_data_info("vanDaalen_NLBE")
+
 sw_model("vanDaalen_NLBE")
 
 }

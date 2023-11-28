@@ -25,8 +25,8 @@ Sapwood data set for South and Central Germany published by Hollstein in 1980.
 }\if{html}{\out{</div>}}
 }
 \examples{
-sw_data_overview()
 sw_data_info("Hollstein_1980")
+
 sw_model("Hollstein_1980")
 
 }
