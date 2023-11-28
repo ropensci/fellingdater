@@ -125,9 +125,9 @@ five dated tree-ring series is computed:</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hanecakr/fellingdateR" class="external-link">fellingdateR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## a data set where all series have partially preserved sapwood:</span></span>
-<span><span class="va">dummy1</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy1</span></span>
+<span><span class="va">trs_example1</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example1</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/example-1.png" width="700"></p>
 <p>The light grey distributions represent the probability density
 function of the felling date range for each individual series. The dark
@@ -179,9 +179,7 @@ values for each number of observed sapwood rings.</p>
 <span>            credMass <span class="op">=</span> <span class="fl">.95</span>, </span>
 <span>            sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>, </span>
 <span>            densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
-<span>            plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 88 rows containing non-finite values (`stat_align()`).</span></span>
-<span><span class="co">#&gt; Warning: Removed 79 rows containing missing values (`geom_line()`).</span></span></code></pre></div>
+<span>            plot <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 <div class="section level4">
@@ -226,7 +224,7 @@ around 100%, and not lower than the critical threshold A_c = 60%)
 (A_i) to the combined model.</p></li>
 </ul>
 <div class="section level5">
-<h5 id="dummy0">dummy0<a class="anchor" aria-label="anchor" href="#dummy0"></a>
+<h5 id="trs_example0">trs_example0<a class="anchor" aria-label="anchor" href="#trs_example0"></a>
 </h5>
 <p>A data set with dated tree-ring series which all have partially
 preserved sapwood. The names of the variables in the data set are mapped
@@ -234,9 +232,10 @@ to the parameters of the <code><a href="../reference/sw_combine.html">sw_combine
 example below, the numeric output is returned:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">dummy0</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy0</span></span>
+<span><span class="va">trs_example0</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example0</span></span>
+<span><span class="co"># In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.</span></span>
 <span></span>
-<span><span class="va">output_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy0</span>,</span>
+<span><span class="va">output_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example0</span>,</span>
 <span>   series <span class="op">=</span> <span class="st">"trs"</span>,</span>
 <span>   last <span class="op">=</span> <span class="st">"end"</span>,</span>
 <span>   n_sapwood <span class="op">=</span> <span class="st">"swr"</span>,</span>
@@ -306,33 +305,33 @@ example below, the numeric output is returned:</p>
 <span><span class="co">#&gt; [1] "felling date range:  1010  -  1018"</span></span></code></pre></div>
 </div>
 <div class="section level5">
-<h5 id="dummy2">dummy2<a class="anchor" aria-label="anchor" href="#dummy2"></a>
+<h5 id="trs_example2">trs_example2<a class="anchor" aria-label="anchor" href="#trs_example2"></a>
 </h5>
 <p>A data set with 5 tree-ring series of which one has an exact felling
 date:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dummy2</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy2</span></span>
-<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">trs_example2</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example2</span></span>
+<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div class="section level5">
-<h5 id="dummy3">dummy3<a class="anchor" aria-label="anchor" href="#dummy3"></a>
+<h5 id="trs_example3">trs_example3<a class="anchor" aria-label="anchor" href="#trs_example3"></a>
 </h5>
 <p>A data set where all tree-ring series have been measured up to the
 waney edge:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dummy3</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy3</span></span>
-<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy3</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">trs_example3</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example3</span></span>
+<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example3</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 <div class="section level5">
-<h5 id="dummy4">dummy4<a class="anchor" aria-label="anchor" href="#dummy4"></a>
+<h5 id="trs_example4">trs_example4<a class="anchor" aria-label="anchor" href="#trs_example4"></a>
 </h5>
 <p>An attempt to compute a common felling date for a group of tree-ring
 series. All series include partially preserved sapwood:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dummy4</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy4</span></span>
-<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">trs_example4</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example4</span></span>
+<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-9-1.png" width="700">
 No common felling date can be computed for this particular data set. The
 model fails (agreement index of the model is below the critical
@@ -340,14 +339,14 @@ threshold value (A_c) of 60%). Three series have an individual agreement
 index below 60%.</p>
 </div>
 <div class="section level5">
-<h5 id="dummy5">dummy5<a class="anchor" aria-label="anchor" href="#dummy5"></a>
+<h5 id="trs_example5">trs_example5<a class="anchor" aria-label="anchor" href="#trs_example5"></a>
 </h5>
 <p>When no sapwood rings are observed and measured, only an
 <code>earliest possible felling date</code> (<em>terminus post
 quem</em>) can be determined:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dummy5</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy5</span></span>
-<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy5</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">trs_example5</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example5</span></span>
+<span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example5</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
 </div>
@@ -357,7 +356,7 @@ quem</em>) can be determined:</p>
 <p>The <code><a href="../reference/sw_sum.html">sw_sum()</a></code> function computes the the summed
 probability density (SPD) for a set of felling date ranges.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy7</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
 </div>

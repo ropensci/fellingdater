@@ -92,7 +92,6 @@
 <p>You can install the development version of fellingdateR from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("pak")</span></span>
-<span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"hanecakr/fellingdateR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -104,15 +103,15 @@
 <span></span>
 <span><span class="co">## a data set where all series have partially preserved sapwood:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"R/sysdata.rda"</span><span class="op">)</span></span>
-<span><span class="va">dummy1</span></span>
+<span><span class="va">trs_example1</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
-<span><span class="co">#&gt; 1 trs_06 1000         5     FALSE</span></span>
-<span><span class="co">#&gt; 2 trs_07 1009        10     FALSE</span></span>
-<span><span class="co">#&gt; 3 trs_08 1007        15     FALSE</span></span>
-<span><span class="co">#&gt; 4 trs_09 1005        16     FALSE</span></span>
-<span><span class="co">#&gt; 5 trs_10 1010         8     FALSE</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 trs_01 1000         5     FALSE</span></span>
+<span><span class="co">#&gt; 2 trs_02 1009        10     FALSE</span></span>
+<span><span class="co">#&gt; 3 trs_03 1007        15     FALSE</span></span>
+<span><span class="co">#&gt; 4 trs_04 1005        16     FALSE</span></span>
+<span><span class="co">#&gt; 5 trs_05 1010         8     FALSE</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">dummy1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.</p>
 <p>The sapwood data used in the example above to estimate the felling date range, was published by Hollstein in 1980:</p>
@@ -123,7 +122,8 @@
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>An overview of the main functions and datasets included within the package can be found here <getting_started>. Some examples are provided in the ‘getting started’ vignette.</getting_started></p>
+<p>An overview of the main functions and sapwood datasets included within the package can be found <a href="https://hanecakr.github.io/fellingdateR/reference/">here</a>.</p>
+<p>Some examples are provided in the <a href="https://hanecakr.github.io/fellingdateR/articles/getting_started.html"><code>getting started</code></a> vignette.</p>
 </div>
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>

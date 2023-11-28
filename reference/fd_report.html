@@ -195,24 +195,24 @@ tree-ring series?</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example with different sw_model for individual series</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dummy2</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">dummy2</span></span></span>
+<span class="r-in"><span><span class="va">trs_example2</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example2</span></span></span>
 <span class="r-in"><span><span class="va">sw_models_for_indiv_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sohar_2012_ELL_c"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"Wazny_1990"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"Hollstein_1980"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dummy2_edit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">dummy2</span>, <span class="va">sw_models_for_indiv_series</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">trs_example2_edit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">trs_example2</span>, <span class="va">sw_models_for_indiv_series</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">dummy2_edit</span>,</span></span>
+<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">trs_example2_edit</span>,</span></span>
 <span class="r-in"><span>          sw_data <span class="op">=</span> <span class="st">"sw_models_for_indiv_series"</span></span></span>
 <span class="r-in"><span>          <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge lower upper          felling_date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_11 1000         5     FALSE  1002  1013 between 1002 and 1013</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 trs_12 1005        10     FALSE  1005  1021 between 1005 and 1021</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 trs_13 1008        NA     FALSE  1014    NA            after 1014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 trs_14 1000         1     FALSE  1009  1031 between 1009 and 1031</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 trs_15 1010        15      TRUE    NA  1010               in 1010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_06 1000         5     FALSE  1002  1013 between 1002 and 1013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 trs_07 1005        10     FALSE  1005  1021 between 1005 and 1021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 trs_08 1008        NA     FALSE  1014    NA            after 1014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 trs_09 1000         1     FALSE  1009  1031 between 1009 and 1031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 trs_10 1010        15      TRUE    NA  1010               in 1010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      sapwood_model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 Sohar_2012_ELL_c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2       Wazny_1990</span>
