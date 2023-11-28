@@ -427,7 +427,8 @@ the presence of waney edge.\n")
 
         if (plot) {
                 p <- sw_combine_plot(model_summary)
-                suppressWarnings(print(p))
+                print(p)
+                # suppressWarnings(print(p))
 
         } else {
                 return(model_summary)

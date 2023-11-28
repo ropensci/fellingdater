@@ -19,7 +19,7 @@ felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 \examples{
 tmp <- sw_interval(n_sapwood = 10,
             last = 1000,
-            hdi = FALSE,
+           hdi = FALSE,
             credMass = .95,
             sw_data = "Hollstein_1980",
             densfun = "lognormal",

@@ -9,7 +9,7 @@
 #' @examples
 #' tmp <- sw_interval(n_sapwood = 10,
 #'             last = 1000,
-#'             hdi = FALSE,
+#'            hdi = FALSE,
 #'             credMass = .95,
 #'             sw_data = "Hollstein_1980",
 #'             densfun = "lognormal",
@@ -78,14 +78,12 @@ sw_interval_plot <- function(x) {
 
                 ggplot2::scale_x_continuous(
                         limits = c(
-                                plyr::round_any(range[1], 10, floor),
-                                plyr::round_any(range[2], 10, ceiling)
-                        ),
+                                floor(range[[1]]/10)*10,
+                                ceiling(range[[2]]/10)*10),
                         breaks = seq(
-                                plyr::round_any(range[1], 10, floor),
-                                plyr::round_any(range[2], 10, ceiling),
-                                10
-                        )
+                                floor(range[[1]]/10)*10,
+                                ceiling(range[[2]]/10)*10,
+                                10)
                 ) +
 
                 ggplot2::geom_segment(
@@ -134,5 +132,6 @@ sw_interval_plot <- function(x) {
                 ggplot2::ylab("p") +
                 ggplot2::xlab("calendar year")
 
-        suppressWarnings(print(p))
+        # suppressWarnings(print(p))
+        print(p)
 }

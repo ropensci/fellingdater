@@ -204,7 +204,7 @@ sw_combine_plot <- function(x) {
       ggplot2::geom_text(
          data = summary,
          ggplot2::aes(
-            x = plyr::round_any(range[2] + 40, 10, ceiling),
+            x = ceiling((range[2] + 40)/10)*10,
             y = 0.6,
             label = paste0(
                series,
@@ -237,12 +237,11 @@ sw_combine_plot <- function(x) {
       {
          if (nrow(summary[summary$agreement == "poor", ]) != 0)
 
-            # ggplot2::geom_text(data = summary |>  dplyr::filter(agreement == "poor"),
             ggplot2::geom_text(
                data = summary[summary$agreement == "poor", ],
 
                ggplot2::aes(
-                  x = plyr::round_any(range[2] + 20, 10, ceiling),
+                  x = ceiling((range[2] + 20)/10)*10,
                   y = 0.15,
                   label = "poor agreement",
                   color = "tomato3",
@@ -256,12 +255,12 @@ sw_combine_plot <- function(x) {
 
       ggplot2::scale_x_continuous(
          limits = c(
-            plyr::round_any(range[1], 10, floor),
-            plyr::round_any(range[2] + 40, 10, ceiling)
+            floor(range[1]/10)*10,
+            ceiling((range[2] + 40)/10)*10
          ),
          breaks = seq(
-            plyr::round_any(range[1], 10, floor),
-            plyr::round_any(range[2] + 40, 10, ceiling),
+            floor(range[1]/10)*10,
+            ceiling((range[2] + 40)/10)*10,
             10
          )
       ) +

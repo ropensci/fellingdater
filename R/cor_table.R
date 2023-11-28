@@ -114,21 +114,24 @@ cor_table <-
 
           }
 
-          if (!("rwl" %in% class(x))) {
+          if (!inherits(x, "rwl"))  {
                warning("'x' is not class rwl")
           }
-          if (!("rwl" %in% class(y))) {
-               warning("'x' is not class rwl")
+          if (!inherits(y, "rwl"))  {
+               warning("'y' is not class rwl")
           }
 
-          if (!all(diff(as.numeric(row.names(x))) == 1)) {
+          increasing_consecutive_years <- all(diff(as.numeric(row.names(x))) == 1)
+          if (!increasing_consecutive_years) {
                stop(
-                    "The tree-ring series 'x' have/has no consecutive years in increasing order as rownames"
+                    "The tree-ring series 'x' have/has no consecutive years in increasing order as rownames."
                )
           }
-          if (!all(diff(as.numeric(row.names(y))) == 1)) {
+
+          increasing_consecutive_years <- all(diff(as.numeric(row.names(y))) == 1)
+          if (!increasing_consecutive_years) {
                stop(
-                    "The master series 'y' have/has no consecutive years in increasing order as rownames"
+                    "The master series 'y' have/has no consecutive years in increasing order as rownames."
                )
           }
           if (any(
@@ -205,7 +208,7 @@ cor_table <-
                OVL <- x[, i] - y
                OVL <- colSums(!is.na(OVL))
                OVL[OVL == 0] <- NA
-               overlap[i,] <- OVL
+               overlap[i, ] <- OVL
           }
           overlap_min <- overlap
           overlap_min[overlap_min < min_overlap] <- NA
@@ -229,8 +232,8 @@ cor_table <-
                     treering_GC <-
                          abs(treering_sign_x[, i] - treering_sign_y)
                     GLK_values <-
-                         1 - (colSums(treering_GC, na.rm = TRUE) / (2 * (overlap[i,] - 1)))
-                    GLK_mat[i, ] <- GLK_values
+                         1 - (colSums(treering_GC, na.rm = TRUE) / (2 * (overlap[i, ] - 1)))
+                    GLK_mat[i,] <- GLK_values
                }
 
                if (noRef == TRUE) {
@@ -371,16 +374,18 @@ cor_table <-
                for (i in names(corr_table)) {
                     if (i == names(corr_table)[1]) {
                          corr_table_i <- corr_table[[i]]
-                         corr_table_i <- as.data.frame(as.table(corr_table_i),
-                                                       stringsAsFactors = FALSE)
+                         corr_table_i <-
+                              as.data.frame(as.table(corr_table_i),
+                                            stringsAsFactors = FALSE)
                          names(corr_table_i) <-
                               c("series", "reference", i)
                          corr_df <- corr_table_i
 
                     } else {
                          corr_table_i <- corr_table[[i]]
-                         corr_table_i <- as.data.frame(as.table(corr_table_i),
-                                                       stringsAsFactors = FALSE)
+                         corr_table_i <-
+                              as.data.frame(as.table(corr_table_i),
+                                            stringsAsFactors = FALSE)
                          names(corr_table_i) <-
                               c("series", "reference", i)
 
@@ -445,9 +450,10 @@ cor_table <-
                ### sort by series, then by tHo (or sort_by argument)
                corr_table <-
                     corr_table[order(corr_table[["series"]],
-                                     -corr_table[[sort_by]]),]
+                                     -corr_table[[sort_by]]), ]
 
-          corr_table <- subset(corr_table, overlap >= min_overlap)
+               corr_table <-
+                    subset(corr_table, overlap >= min_overlap)
 
           }
           return(corr_table)

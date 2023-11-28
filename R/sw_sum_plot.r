@@ -85,10 +85,10 @@ p <-
                             shape = dot_shape,
                             na.rm = T) } +
         ggplot2::scale_x_continuous(
-                limits = c(plyr::round_any(plot_range[1], 10, floor),
-                           plyr::round_any(plot_range[2], 10, ceiling)),
-                breaks = seq(plyr::round_any(plot_range[1], 10, floor),
-                             plyr::round_any(plot_range[2], 10, ceiling),
+                limits = c(floor(plot_range[1]/10)*10,
+                           ceiling(plot_range[2]/10)*10),
+                breaks = seq(floor(plot_range[1]/10)*10,
+                             ceiling(plot_range[2]/10)*10,
                              20)) +
         ggplot2::theme_minimal()  +
         ggplot2::xlab("calendar year") +

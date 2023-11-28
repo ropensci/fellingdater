@@ -1,0 +1,43 @@
+url: https://hanecakr.github.io/fellingdateR/
+template:
+  bootstrap: 5
+reference:
+- title: Main functions
+  contents:
+  - sw_model
+  - sw_interval
+  - sw_interval_plot
+  - fd_report
+  - sw_combine
+  - sw_combine_plot
+  - sw_sum
+  - sw_sum_plot
+
+- title: Helper functions
+  contents:
+  - read_fh
+  - get_header
+  - cor_table
+  - sw_data_overview
+  - sw_data_info
+  - hdi
+  - movAv
+
+- title: Datasets
+  contents:
+  - Brathen_1982
+  - Hollstein_1980
+  - Miles_1997_NM
+  - Miles_1997_SC
+  - Miles_1997_WBC
+  - Pilcher_1987
+  - Sohar_2012_ELL_c
+  - Sohar_2012_ELL_t
+  - Sohar_2012_FWE_c
+  - Sohar_2012_FWE_t
+  - vanDaalen_NLBE
+  - vanDaalen_Norway
+  - Wazny_1990
+
+
+

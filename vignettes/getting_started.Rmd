@@ -1,11 +1,11 @@
 ---
-title: "overview"
+title: "getting started"
 output: 
   rmarkdown::html_vignette:
     fig_width: 8
     fig_height: 5
 vignette: >
-  %\VignetteIndexEntry{overview}
+  %\VignetteIndexEntry{getting_started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -39,6 +39,7 @@ devtools::install_github("hanecakr/fellingdateR")
 or
 
 ```{r eval=FALSE}
+# install.packages("pak")
 pak::pak("hanecakr/fellingdateR")
 ```
 
@@ -68,12 +69,6 @@ The sapwood data used in the example above to estimate the felling date range, w
 sw_model("Hollstein_1980")
 ```
 
-## Motivation
-
-This package was developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study were published in [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
-
-> Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
-> <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ## Main functions
 
