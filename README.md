@@ -9,6 +9,8 @@
 [![Codecov test
 coverage](https://codecov.io/gh/hanecakr/fellingDateR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingDateR?branch=master)
 [![pkgcheck](https://github.com/hanecakr/fellingDateR/workflows/pkgcheck/badge.svg)](https://github.com/hanecakr/fellingDateR/actions?query=workflow%3Apkgcheck)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 <!-- badges: end -->
 
 This R-package offers a set of functions that can assist you to infer
@@ -83,11 +85,11 @@ sw_model("Hollstein_1980")
 
 ## Getting started
 
-An overview of the main functions and sapwood datasets included within
-the package can be found
-[here](https://hanecakr.github.io/fellingdateR/reference/).
+You can find an overview of the **main functions** and **sapwood
+datasets** distributed with the package in the
+[documentation](https://hanecakr.github.io/fellingdateR/reference/).
 
-Some examples are provided in the
+Some practical examples are provided in the
 [`getting started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html)
 vignette.
 
