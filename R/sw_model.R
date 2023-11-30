@@ -167,7 +167,7 @@ or the path to a .csv file with columns `n_sapwood` and `count`.)"
                     <span style='color:red3'>red line</span>: fitted ",
                     densfun,
                     " distribution <br>
-                    <span style='color:grey30'>shaded area</span>: highest probability density interval (",
+                    <span style='color:grey30'>shaded area</span>: hdi (",
                     credMass * 100,
                     "%) =
                     __between ",
