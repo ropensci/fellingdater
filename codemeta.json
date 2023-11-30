@@ -120,7 +120,7 @@
       "description": "R package version 0.0.0.9003"
     }
   ],
-  "readme": "https://github.com/hanecakr/fellingdateR/blob/master/README.md",
+  "readme": "https://github.com/hanecakr/fellingdateR/blob/main/README.md",
   "contIntegration": "https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml",
   "keywords": ["tree-rings", "dendrochronology", "sapwood", "r", "r-package", "rstats"]
 }

@@ -7,7 +7,7 @@
 
 [![R-CMD-check](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/hanecakr/fellingDateR/branch/master/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingDateR?branch=master)
+coverage](https://codecov.io/gh/hanecakr/fellingDateR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingDateR?branch=master)
 [![pkgcheck](https://github.com/hanecakr/fellingDateR/workflows/pkgcheck/badge.svg)](https://github.com/hanecakr/fellingDateR/actions?query=workflow%3Apkgcheck)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
