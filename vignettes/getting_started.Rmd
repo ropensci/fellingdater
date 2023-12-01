@@ -55,8 +55,6 @@ library(fellingdateR)
 
 ```{r example}
 ## a data set where all series have partially preserved sapwood:
-trs_example1 <- fellingdateR:::trs_example1
-
 sw_combine(trs_example1, plot = TRUE)
 
 ```
@@ -137,7 +135,6 @@ A data set with dated tree-ring series which all have partially preserved sapwoo
 
 ```{r}
 
-trs_example0 <- fellingdateR:::trs_example0
 # In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.
 
 output_comb <- sw_combine(trs_example0,
@@ -161,7 +158,6 @@ output_comb[-1]
 A data set with 5 tree-ring series of which one has an exact felling date:
 
 ```{r}
-trs_example2 <- fellingdateR:::trs_example2
 sw_combine(trs_example2, plot = TRUE)
 
 ```
@@ -171,7 +167,6 @@ sw_combine(trs_example2, plot = TRUE)
 A data set where all tree-ring series have been measured up to the waney edge:  
 
 ```{r }
-trs_example3 <- fellingdateR:::trs_example3
 sw_combine(trs_example3, plot = TRUE)
 ```
 
@@ -180,7 +175,6 @@ sw_combine(trs_example3, plot = TRUE)
 An attempt to compute a common felling date for a group of tree-ring series. All series include partially preserved sapwood:
 
 ```{r }
-trs_example4 <- fellingdateR:::trs_example4
 sw_combine(trs_example4, plot = TRUE)
 ```
 No common felling date can be computed for this particular data set. The model fails (agreement index of the model is  below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
@@ -190,7 +184,6 @@ No common felling date can be computed for this particular data set. The model f
 When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined: 
 
 ```{r }
-trs_example5 <- fellingdateR:::trs_example5
 sw_combine(trs_example5, plot = TRUE)
 ```
 
@@ -199,7 +192,7 @@ sw_combine(trs_example5, plot = TRUE)
 The `sw_sum()` function computes the the summed probability density (SPD) for a set of felling date ranges.
 
 ```{r }
-sw_sum(fellingdateR:::trs_example7, plot = TRUE)
+sw_sum(trs_example7, plot = TRUE)
 ```
 
 

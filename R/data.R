@@ -291,3 +291,116 @@
 #' sw_model("vanDaalen_NLBE")
 #'
 "vanDaalen_NLBE"
+
+#' Example dataset 0
+#'
+#' A dataset in which all series have preserved sapwood.
+#'   Unconventional variable names.
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{trs}{unique ID of the tree-ring series}
+#'   \item{end}{calendar year assigned to the last measured ring}
+#'   \item{swr}{number of observed sapwood rings}
+#'   \item{bark}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example0"
+
+#' Example dataset 1
+#'
+#' A dataset in which all series have preserved sapwood rings.
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example1"
+
+#' Example dataset 2
+#'
+#' A dataset in which one series has an exact felling date (= waney edge present).
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example2"
+
+#' Example dataset 3
+#'
+#' A dataset with multiple exact felling dates.
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example3"
+
+#' Example dataset 4
+#'
+#' A combination of series with and without sapwood rings.
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example4"
+
+#' Example dataset 5
+#'
+#' None of the series in this dataset have preserved sapwood rings.
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example5"
+
+#' Example dataset 6
+#'
+#' A test dataset for sw_sum().
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example6"
+
+#' Example dataset 7
+#'
+#' A test dataset for sw_sum().
+#'
+#' @format A tibble of 4 variables:
+#' \describe{
+#'   \item{series}{unique ID of the tree-ring series}
+#'   \item{last}{calendar year assigned to the last measured ring}
+#'   \item{n_sapwood}{number of observed sapwood rings}
+#'   \item{waneyedge}{waney edge present TRUE/FALSE}
+#'   }
+#'
+"trs_example7"

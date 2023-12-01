@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' trs_example6 <- fellingdateR:::trs_example6
+#' trs_example6 <- trs_example6
 #' trs_example6
 #' tmp <- sw_sum(trs_example6)
 #' sw_sum_plot(tmp, bar_col = "burlywood1")

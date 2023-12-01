@@ -451,7 +451,7 @@ agreement indexes of all individual series and the overall model are
 high and above the critical threshold of 60%.
 
 ``` r
-fellingdateR:::trs_example2
+trs_example2
 #>   series last n_sapwood waneyedge
 #> 1 trs_11 1000         5     FALSE
 #> 2 trs_12 1005        10     FALSE
@@ -482,7 +482,7 @@ particular example, probably two or three separate felling events are
 present.
 
 ``` r
-fellingdateR:::trs_example4
+trs_example4
 #>   series last n_sapwood waneyedge
 #> 1 trs_21 1000         5     FALSE
 #> 2 trs_22 1005        10     FALSE
@@ -523,7 +523,7 @@ wider time range. Therefore exact felling dates are plotted separately
 on top of the SPD ([Fig. 6](#fig-sw_sum)).
 
 ``` r
-sum_output <- sw_sum(fellingdateR:::trs_example7)
+sum_output <- sw_sum(trs_example7)
 
 sw_sum_plot(suw_output, dot_size = 2, dot_shape = 25)
 ```

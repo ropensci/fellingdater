@@ -47,19 +47,19 @@
 #' @examples
 #' # a data set in which all series have preserved sapwood
 #'
-#' fellingdateR:::trs_example1
-#' sw_combine(fellingdateR:::trs_example1, plot = FALSE)
-#' sw_combine(fellingdateR:::trs_example1, plot = TRUE)
+#' trs_example1
+#' sw_combine(trs_example1, plot = FALSE)
+#' sw_combine(trs_example1, plot = TRUE)
 #'
 #' # a data set in which one series has an exact felling date (= waney edge preserved)
 #'
-#' fellingdateR:::trs_example2
-#' sw_combine(fellingdateR:::trs_example2, plot = TRUE)
+#' trs_example2
+#' sw_combine(trs_example2, plot = TRUE)
 #'
 #' # a data set in which multiples series have an exact felling date
 #'
-#' fellingdateR:::trs_example3
-#' sw_combine(fellingdateR:::trs_example3, plot= FALSE)
+#' trs_example3
+#' sw_combine(trs_example3, plot= FALSE)
 #'
 sw_combine <- function(x,
                        series = "series",

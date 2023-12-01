@@ -68,7 +68,6 @@
 #'
 #' # Example with different sw_model for individual series
 #'
-#' trs_example2 <- fellingdateR:::trs_example2
 #' sw_models_for_indiv_series <- c("Sohar_2012_ELL_c",
 #'                                 "Wazny_1990",
 #'                                 "Hollstein_1980",

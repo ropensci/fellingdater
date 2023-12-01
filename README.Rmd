@@ -48,7 +48,6 @@ In the following example the combined felling date range for a set of five dated
 library(fellingdateR)
 
 ## a data set where all series have partially preserved sapwood:
-load("R/sysdata.rda")
 trs_example1
 ```
 

@@ -71,9 +71,9 @@ Computes the summed probability density (SPD) for a set of
 felling date ranges.
 }
 \examples{
-fellingdateR:::trs_example7
+trs_example7
 
-sw_sum(fellingdateR:::trs_example7, plot = TRUE)
+sw_sum(trs_example7, plot = TRUE)
 
 }
 \seealso{
