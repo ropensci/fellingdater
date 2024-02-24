@@ -10,7 +10,6 @@ cor_table(
   min_overlap = 50,
   remove.duplicates = TRUE,
   output = "table",
-  values = c("r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho"),
   sort_by = "t_Ho"
 )
 }
@@ -32,17 +31,13 @@ series and references are removed from the output.}
 \item{output}{The desired output format, either "matrix" or "table"
 (default).}
 
-\item{values}{A character vector listing correlation values to be computed.
-Defaults to all possible values: c("r_pearson", "t_St", "glk", "glk_p",
-"t_BP", "t_Ho").}
-
 \item{sort_by}{The correlation value by which the output is sorted for each
 series in \code{x}.}
 }
 \value{
 The function returns a list of correlation matrices if \code{output} is
 set to "matrix." If \code{output} is set to "table," it returns a \code{data.frame}
-containing correlation values listed by the specified \code{values}.
+reporting all correlation values.
 }
 \description{
 This function calculates common correlation values between dated

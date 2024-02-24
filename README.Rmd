@@ -78,3 +78,12 @@ This package was developed during the analysis of a large data set of tree-ring 
 
 > Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
 > <https://doi.org/10.1016/j.dendro.2020.125773>
+
+
+## Comments and contributions
+
+- Please report any issues or bugs here: <https://github.com/hanecakr/fellingdateR/issues>.
+
+- Get citation information for `fellingdater` in R typing `citation(package = 'fellingdater')`.
+
+- Please note that the `fellingdateR` package is released with a [Contributor Code of Conduct](https://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md). By contributing to this project, you agree to abide by its terms.

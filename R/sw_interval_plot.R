@@ -47,7 +47,7 @@ sw_interval_plot <- function(x) {
         lower <- x[[1, 1]]
         n_sapwood <- x[[1, 2]]
 
-        df <- merge(p_model, x, by = "n_sapwood", all = T)
+        df <- merge(p_model, x, by = "n_sapwood", all = TRUE)
         max_p <- max(df$p.x, na.rm = TRUE)
         end <- max(df$year, na.rm = TRUE)
         start <- end - nrow(df) + 1

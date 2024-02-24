@@ -97,7 +97,7 @@ sw_interval(n_sapwood = 10,
             credMass = .95, 
             sw_data = "Wazny_1990", 
             densfun = "lognormal",
-            plot = T)
+            plot = TRUE)
 ```
 
 ### fd_report

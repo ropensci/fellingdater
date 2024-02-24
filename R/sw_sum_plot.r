@@ -70,20 +70,20 @@ p <-
         ggplot2::geom_col(ggplot2::aes(x = year, y = SPD),
                           fill = bar_col,
                           alpha = 0.8,
-                          na.rm = T) +
+                          na.rm = TRUE) +
         ggplot2::geom_line(data = spline_int,
                            ggplot2::aes(x = x, y = y),
                            color = spline_col,
                            linewidth = 1.5,
                            alpha = .8,
-                           na.rm = T) +
+                           na.rm = TRUE) +
         { if (nrow(fd) > 0) ggplot2::geom_point(data = fd,
                             ggplot2::aes(x = year, y = SPD + y * p_max/20),
                             size = dot_size,
                             fill = dot_col,
                             color = dot_col,
                             shape = dot_shape,
-                            na.rm = T) } +
+                            na.rm = TRUE) } +
         ggplot2::scale_x_continuous(
                 limits = c(floor(plot_range[1]/10)*10,
                            ceiling(plot_range[2]/10)*10),

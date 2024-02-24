@@ -60,7 +60,7 @@ read_fh <- function(fname,
         # NEW: verbose = TRUE, header = FALSE
         inp <- readLines(fname, ok = TRUE, warn = FALSE)
         # NEW: removes empty lines in .fh file
-        inp <- inp[nchar(inp) != 0]
+        inp <- inp[length(inp) != 0]
         ## Get start and end positions of headers and data blocks
         header.begin <- grep("^HEADER:$", inp)
         # NEW: Quadro => chrono
