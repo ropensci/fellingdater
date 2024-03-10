@@ -25,11 +25,11 @@
 #'   running mean values.
 #' @examples
 #' num_vec <- rnorm(100)
-#' movAv(num_vec, w = 20)
+#' mov_av(num_vec, w = 20)
 #'
 #' @export
 
-movAv <- function(x,
+mov_av <- function(x,
                   w = 11,
                   align = "center",
                   edges = "fill") {

@@ -89,8 +89,8 @@ cor_table <-
            y = NULL,
            min_overlap = 50,
            remove.duplicates = TRUE,
-           output = "table", # c("matrix", "table")
-           sort_by = "t_Ho") # c("glk", "t_St", "t_BP", "t_Ho", "r_pearson"))
+           output = "table",
+           sort_by = "t_Ho")
   {
     # to avoid notes in CMD check
     pnorm <- cor <- select <- series <- reference <- NULL
@@ -100,9 +100,9 @@ cor_table <-
 
     if (is.null(y)) {
       y <- x
-      noRef <- TRUE
+      no_ref <- TRUE
     } else {
-      noRef <- FALSE
+      no_ref <- FALSE
       y_ori <- y
     }
 
@@ -184,51 +184,51 @@ cor_table <-
 
     for (i in 1:n) {
       # substract single column from each matrix column => NA when no overlap!
-      OVL <- x[, i] - y
-      OVL <- colSums(!is.na(OVL))
-      OVL[OVL == 0] <- NA
-      overlap[i, ] <- OVL
+      ovl <- x[, i] - y
+      ovl <- colSums(!is.na(ovl))
+      ovl[ovl == 0] <- NA
+      overlap[i, ] <- ovl
     }
     overlap_min <- overlap
     overlap_min[overlap_min < min_overlap] <- NA
     overlap_min[overlap_min >= min_overlap] <- 1
 
     ### parallel variation (%PV | GLK)
-    GLK_mat <- matrix(NA_real_, nrow = n, ncol = m)
-    rownames(GLK_mat) <- names(x)
-    colnames(GLK_mat) <- names(y)
+    glk_mat <- matrix(NA_real_, nrow = n, ncol = m)
+    rownames(glk_mat) <- names(x)
+    colnames(glk_mat) <- names(y)
 
-    GLK_p <- matrix(NA_real_, nrow = n, ncol = m)
-    rownames(GLK_mat) <- names(x)
-    colnames(GLK_mat) <- names(y)
+    glk_p <- matrix(NA_real_, nrow = n, ncol = m)
+    rownames(glk_mat) <- names(x)
+    colnames(glk_mat) <- names(y)
 
     treering_sign_x <- apply(x, 2, diff)
     treering_sign_x <- sign(treering_sign_x)
     treering_sign_y <- apply(y, 2, diff)
     treering_sign_y <- sign(treering_sign_y)
     for (i in 1:n) {
-      treering_GC <-
+      treering_gc <-
         abs(treering_sign_x[, i] - treering_sign_y)
-      GLK_values <-
-        1 - (colSums(treering_GC, na.rm = TRUE) / (2 * (overlap[i, ] - 1)))
-      GLK_mat[i, ] <- GLK_values
+      glk_values <-
+        1 - (colSums(treering_gc, na.rm = TRUE) / (2 * (overlap[i, ] - 1)))
+      glk_mat[i, ] <- glk_values
     }
 
-    if (noRef == TRUE) {
-      diag(GLK_mat) <- 1
+    if (no_ref == TRUE) {
+      diag(glk_mat) <- 1
     }
     ### probability associated with %PV | GLK
     s_df <- 1 / (2 * sqrt(overlap))
-    z_df <- (GLK_mat - .5) / s_df
+    z_df <- (glk_mat - .5) / s_df
     z_normcdf <-
       apply(z_df, 2, function(z) {
         pnorm(z, mean = 0, sd = 1)
       })
-    GLK_p <- 2 * (1 - z_normcdf)
+    glk_p <- 2 * (1 - z_normcdf)
     # when dim(x) == 1 +> apply returns a vector instead of a matrix
-    dim(GLK_p) <- c(dim(x)[2], dim(y)[2])
-    rownames(GLK_p) <- colnames(x)
-    colnames(GLK_p) <- colnames(y)
+    dim(glk_p) <- c(dim(x)[2], dim(y)[2])
+    rownames(glk_p) <- colnames(x)
+    colnames(glk_p) <- colnames(y)
 
     ### t-values according to the Hollstein 1980 algorithm
     tHo_mat <- matrix(NA_real_, nrow = n, ncol = m)
@@ -268,14 +268,14 @@ cor_table <-
     colnames(tBP_mat) <- names(y)
 
     movav5_x <- apply(x, 2, function(x) {
-      movAv(x, w = 5)
+      mov_av(x, w = 5)
     })
     rownames(movav5_x) <- rownames(x)
     movav5_x <- 100 * x / movav5_x
     movav5_x <- log(movav5_x)
-    if (noRef == FALSE) {
+    if (no_ref == FALSE) {
       movav5_y <- apply(y, 2, function(x) {
-        movAv(x, w = 5)
+        mov_av(x, w = 5)
       })
       rownames(movav5_y) <- rownames(y)
       movav5_y <- 100 * y / movav5_y
@@ -301,7 +301,7 @@ cor_table <-
     r[r < 0] <- 0
 
     tBP_mat <-
-      # overlap - 4 to compensate for reduced overlap after movAv
+      # overlap - 4 to compensate for reduced overlap after mov_av
       round(r * sqrt((overlap - 4) - 2) / sqrt(1 - r^2), 2)
 
 
@@ -330,8 +330,8 @@ cor_table <-
     corr_table <-
       list(
         overlap = overlap,
-        glk = round(100 * GLK_mat, 1) * overlap_min,
-        glk_p = GLK_p * overlap_min,
+        glk = round(100 * glk_mat, 1) * overlap_min,
+        glk_p = glk_p * overlap_min,
         r_pearson = r_pearson * overlap_min,
         t_St = t_St * overlap_min,
         t_Ho = tHo_mat * overlap_min,
@@ -390,7 +390,7 @@ cor_table <-
 
 
       ### remove duplicates (not possible when y != NULL)
-      if (remove.duplicates == TRUE && noRef == TRUE) {
+      if (remove.duplicates == TRUE && no_ref == TRUE) {
         corr_table <- subset(corr_table, series < reference)
       }
 

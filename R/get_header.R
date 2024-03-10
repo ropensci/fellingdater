@@ -18,17 +18,17 @@
 
 get_header <-
   function(rwl) {
-    if (identical(class(rwl), c("rwl", "data.frame"))) {
-      attr(rwl, "row.names") <- NULL
-      attr(rwl, "po") <- NULL
-      attr(rwl, "class") <- NULL
-      attr(rwl, "names") <- NULL
-
-      tmp <- attributes(rwl)
-      tmp <- data.frame(tmp)
-
-      return(tmp)
-    } else {
-      cat(gettext('Object should be a data.frame of class "rwl"\n'))
+    if (!is.data.frame(rwl) || !inherits(rwl, "rwl")) {
+      stop("Input should be a data.frame of class 'rwl'")
     }
+
+    attr(rwl, "row.names") <- NULL
+    attr(rwl, "po") <- NULL
+    attr(rwl, "class") <- NULL
+    attr(rwl, "names") <- NULL
+
+    tmp <- attributes(rwl)
+    tmp <- data.frame(tmp)
+
+    return(tmp)
   }

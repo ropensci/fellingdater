@@ -72,12 +72,19 @@ You can find an overview of the **main functions** and **sapwood datasets** dist
 Some practical examples are provided in the [`getting started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html) vignette.
 
 
-## Motivation
+## Motivation & citation
 
 This package was developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study were published in [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
+Please cite this paper when using the `fellingdateR` package:
+
 > Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
 > <https://doi.org/10.1016/j.dendro.2020.125773>
+
+To refer to the current version of the package:
+
+> Haneca K (2023). _fellingdateR: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures_. R package, version 0.0.0.9003,\ <https://github.com/hanecakr/fellingDateR>.
+
 
 
 ## Comments and contributions

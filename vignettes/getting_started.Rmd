@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 # `fellingdateR`: Estimate, report and combine felling dates of historical tree-ring series
 
 This R-package offers a set of functions that can assist you to infer felling date estimates from dated tree-ring series. The presence of (partially) preserved sapwood or waney edge allows to estimate a range for the actual felling date, for individual series as well as for a group of timbers. Furthermore, an additional function provides a tool to sum sapwood probability distributions, comparable to 'summed probability densities' commonly applied to sets of radiocarbon (^14^C) dates.
@@ -32,17 +31,17 @@ This vignette provides a quick overview of the package main functions.
 
 You can install the development version of fellingdateR from [GitHub](https://github.com/) with:
 
-``` {r eval=FALSE}
+```{r eval=FALSE}
 #install.packages("devtools")
 devtools::install_github("hanecakr/fellingdateR")
 ```
+
 or
 
 ```{r eval=FALSE}
 # install.packages("pak")
 pak::pak("hanecakr/fellingdateR")
 ```
-
 
 ## Basic example
 
@@ -59,14 +58,13 @@ sw_combine(trs_example1, plot = TRUE)
 
 ```
 
-The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date. 
+The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.
 
-The sapwood data used in the example above to estimate the felling date range, was published by Hollstein in 1980:
+The sapwood data used in the example above to estimate the felling date range, was published by [Hollstein (1980)](https://search.worldcat.org/nl/title/6391864) :
 
 ```{r model_sapwood_counts}
 sw_model("Hollstein_1980")
 ```
-
 
 ## Main functions
 
@@ -74,7 +72,7 @@ sw_model("Hollstein_1980")
 
 This function computes the probability density function (PDF) and highest probability density interval (hdi) of the felling date range based on the observed number of sapwood rings, their chronological dating and the selected sapwood data and model.
 
-In the example below, 10 sapwood rings were observed on a sample (last ring dated to 1234 AD) that is supposed to have a provenance in the Southern Baltic region (sapwood model published by Wazny, 1990). The hdi delineates an interval in which the actual felling date is most likely situated. It is the shortest interval within a probability distribution for a given probability mass or credible interval. The hdi summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, as such that every point inside the interval has higher credibility than any point outside the interval.
+In the example below, 10 sapwood rings were observed on a sample (last ring dated to 1234 AD) that is supposed to have a provenance in the Southern Baltic region (sapwood model published by [Wazny, 1990](https://www.academia.edu/3486096/Aufbau_und_Anwendung_der_Dendrochronologie_f%C3%BCr_Eichenholz_in_Polen). The hdi delineates an interval in which the actual felling date is most likely situated. It is the shortest interval within a probability distribution for a given probability mass or credible interval. The hdi summarizes the distribution by specifying an interval that spans most of the distribution, say 95% of it, as such that every point inside the interval has higher credibility than any point outside the interval.
 
 ```{r interval-individual}
 sw_interval(n_sapwood = 10,
@@ -128,7 +126,6 @@ The procedure to combine felling dates of a group of related, individual series 
 
 -   an overview of the felling date range for the individual series (`$individual_series`), and their *Agreement index* (A_i) to the combined model.
 
-
 #### trs_example0
 
 A data set with dated tree-ring series which all have partially preserved sapwood. The names of the variables in the data set are mapped to the parameters of the `sw_combine()` function. In the example below, the numeric output is returned:
@@ -151,8 +148,6 @@ head(output_comb$rawData, 20)
 output_comb[-1]
 ```
 
-
-
 #### trs_example2
 
 A data set with 5 tree-ring series of which one has an exact felling date:
@@ -164,7 +159,7 @@ sw_combine(trs_example2, plot = TRUE)
 
 #### trs_example3
 
-A data set where all tree-ring series have been measured up to the waney edge:  
+A data set where all tree-ring series have been measured up to the waney edge:
 
 ```{r }
 sw_combine(trs_example3, plot = TRUE)
@@ -177,11 +172,12 @@ An attempt to compute a common felling date for a group of tree-ring series. All
 ```{r }
 sw_combine(trs_example4, plot = TRUE)
 ```
-No common felling date can be computed for this particular data set. The model fails (agreement index of the model is  below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
+
+No common felling date can be computed for this particular data set. The model fails (agreement index of the model is below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
 
 #### trs_example5
 
-When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined: 
+When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined:
 
 ```{r }
 sw_combine(trs_example5, plot = TRUE)
@@ -194,8 +190,6 @@ The `sw_sum()` function computes the the summed probability density (SPD) for a 
 ```{r }
 sw_sum(trs_example7, plot = TRUE)
 ```
-
-
 
 ## Helper functions
 
@@ -247,8 +241,6 @@ sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
 
 When `plot = FALSE`, a list with the numeric output of the modelling process is returned.
 
-
-
 ### read_fh and get_header
 
 The `read_fh()` function is an extension to the `dplR::read.fh()` function from the [**dplR package**](https://github.com/AndyBunn/dplR) ([Bunn 2008](https://doi.org/10.1016/j.dendro.2008.01.002), [Bunn 2010](https://doi.org/10.1016/j.dendro.2009.12.001), [Bunn *et al.* 2022](https://github.com/AndyBunn/dplR)). It allows to read .fh (format Heidelberg) files of ring widths AND additional information found in the HEADER fields are listed as attributes.
@@ -257,8 +249,7 @@ This function also works with ring-width data in CHRONO and HALF-CHRONO format.
 
 Furthermore, the `read_fh()` function is case insensitive.
 
-
-In the example below, an .fh file with dated tree-ring series from a medieval ship DOEL1 is read with `read_fh()`. The ring width measurement, in different formats, are converted to a `data.frame`. 
+In the example below, an .fh file with dated tree-ring series from a medieval ship DOEL1 is read with `read_fh()`. The ring width measurement, in different formats, are converted to a `data.frame`.
 
 ```{r}
 Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
@@ -305,8 +296,7 @@ Doel1_header |>
    sw_combine(plot = TRUE)
 ```
 
-For more details see: Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. _International Journal of Nautical Archaeology_ 43, 87–102. https://doi.org/10.1111/1095-9270.12037
-
+For more details see: [Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. *International Journal of Nautical Archaeology* 43, 87--102.]( https://doi.org/10.1111/1095-9270.12037)
 
 ### cor_table
 
@@ -314,18 +304,17 @@ The `cor_table()` function computes common correlation values between dated tree
 
 The correlation values computed are:
 
--   glk: 'Gleichläufigkeit' or 'percentage of parallel variation' (Buras & Wilmking 2015; Eckstein & Bauch 1969; Huber 1942; Visser 2020)
+-   glk: 'Gleichläufigkeit' or 'percentage of parallel variation' ([Buras & Wilmking 2015](https://doi.org/10.1016/j.dendro.2015.03.003); [Eckstein & Bauch 1969](https://doi.org/10.1007/BF02741777); [Huber 1943](https://doi.org/10.1007/BF02603303); [Visser 2020](https://doi.org/10.1111/arcm.12600))
 
--   glk_p: significance level associated with the glk-value (Jansma 1995)
+-   glk_p: significance level associated with the glk-value ([Jansma 1995](https://dspace.library.uu.nl/handle/1874/45149))
 
 -   r_pearson: the Pearson's correlation coefficient
 
 -   t_St: Student's t-value
 
--   t_BP: t-values according to the Baillie & Pilcher (1973) algorithm
+-   t_BP: t-values according to the [Baillie & Pilcher (1973)](https://repository.arizona.edu/handle/10150/260029) algorithm
 
--   t_Ho: t-values according to the Hollstein (1980) algorithm
-
+-   t_Ho: t-values according to the [Hollstein (1980)](https://search.worldcat.org/nl/title/6391864) algorithm
 
 ```{r}
 Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
@@ -337,4 +326,3 @@ cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80)
 head(cor_results, 20)
 
 ```
-
