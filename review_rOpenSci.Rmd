@@ -105,16 +105,30 @@ editor_options:
 >
 >     -   Please consider to use lowercase name as indicated by 1.1.1
 >         point of the packaging guidelines
+>
+>         ***snake_case and lowercase naming has been implemented
+>         now.***
+>
 >     -   Not all the functions follow the object_verb() naming scheme.
 >         For instance, the functions read_fh and get_header. I would
 >         suggest to author rename them to fh_read and fh_header
+>
+>         ***Changed get_header to fh_header, but to highlight the close
+>         similarity to the original read.fh() function in the dplR
+>         package, I would like to keep read_fh as the function name.***
+>
 >     -   The movAv function's name deviates from the consistent use of
 >         snake_case observed in the rest of the functions. To maintain
 >         uniformity, it would be preferable to rename it in accordance
 >         with the snake_case as indicated in the packaging guidelines
+>
+>         ***Changed to mov_av()***
+>
 >     -   In the get_header, movAv, read_fh functions please consider
 >         change cat() or print() for message or warning, as packaging
 >         guidelines indicated.
+>
+>         *cat() no longer used in any of the functions*
 >
 > Estimated hours spent reviewing: 13
 >
@@ -397,7 +411,9 @@ editor_options:
 > -   The nomenclature of arguments exhibits a mix of snake_case and
 >     dot.case. Let's ensure consistency in the naming convention.
 >
-> -   Remove code comments in the argument section, eg.
+> -   Remove code comments in the argument section, eg***.***
+>
+>     ***Removed***
 >
 > ```         
 > ...
@@ -414,8 +430,13 @@ editor_options:
 > #'   series in `x`. One of "r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho". Default to "t_Ho"
 > ```
 >
+> ***Added to the documentation***
+>
 > -   Ensure uniformity in assignment by using the same operator
 >     consistently---avoid mixing `<-` and `=`
+>
+>     ***= no longer ues as assignment operator***
+>
 > -   Consider avoid the use of sapply. See this
 >     <https://adv-r.hadley.nz/functionals.html>. For instance, consider
 >
@@ -431,11 +452,16 @@ editor_options:
 >                     sum(!is.na(col))) > 3, drop = FALSE]
 > ```
 >
+> ***sapply no longer used in this function***
+>
 > #### `sw_model.R`
 >
 > -   Ensure uniformity in assignment by using the same operator
 >     consistently---avoid mixing `<-` and `=`. eg.
 >     `n_obs = sum(observed$count)`
+>
+>     ***'=' no longer used as assignment operator***
+>
 > -   I'm not sure if incorporating the reading of a csv is optimal in a
 >     function. What if a user wants to input a dataframe that isn't
 >     from a CSV file? I propose modifying the function to accept a
@@ -445,6 +471,11 @@ editor_options:
 >     simply utilizing utils::read.csv(). This also reduce the size of
 >     the sw_model function. Please consider this for all those
 >     functions with the same issue.
+>
+>     ***You are right. I might have overcomplicated the sw-functions
+>     with this. So I removed it from this and all other
+>     sw_functions.***
+>
 > -   I think it is better to have a separate function for plotting,
 >     which could be called after the computation is completed by
 >     sw_model, for instance, sw_model_plot. This also allow to user
@@ -454,7 +485,7 @@ editor_options:
 >
 > ```         
 > s <- sw_model("Hollstein_1980", plot  = TRUE)
-> s + theme(panel.grid = element_blank())
+> s + theme()panel.grid = element_blank()
 > ```
 >
 > So if there is an specific function to plot the data, this function

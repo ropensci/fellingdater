@@ -1233,7 +1233,7 @@ read_fh <- function(fname,
   class(rwl) <- c("rwl", "data.frame")
 
   if (header) {
-    get_header(rwl)
+    fh_header(rwl)
   } else {
     return(rwl)
   }

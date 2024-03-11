@@ -12,11 +12,11 @@
 #' @examples
 #' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
 #' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
-#' get_header(Doel1_trs)
+#' fh_header(Doel1_trs)
 #'
 #' @export
 
-get_header <-
+fh_header <-
   function(rwl) {
     if (!is.data.frame(rwl) || !inherits(rwl, "rwl")) {
       stop("Input should be a data.frame of class 'rwl'")

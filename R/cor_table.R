@@ -18,7 +18,8 @@
 #' @param output The desired output format, either "matrix" or "table"
 #'   (default).
 #' @param sort_by The correlation value by which the output is sorted for each
-#'   series in `x`.
+#'   series in `x`. One of "r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho".
+#'   Default to "t_Ho"
 #'
 #' @return The function returns a list of correlation matrices if `output` is
 #'   set to "matrix." If `output` is set to "table," it returns a `data.frame`
@@ -165,15 +166,8 @@ cor_table <-
     y <- y[rownames(y) %in% interval, , drop = FALSE]
 
     # remove empty columns
-    x <-
-      x[, sapply(x, function(col) {
-        sum(!is.na(col))
-      }) > 3, drop = FALSE]
-    y <-
-      y[, sapply(y, function(col) {
-        sum(!is.na(col))
-      }) > 3, drop = FALSE]
-
+    x <-  x[, apply(!is.na(x), 2, sum) > 3, drop = FALSE]
+    y <-  y[, apply(!is.na(y), 2, sum) > 3, drop = FALSE]
 
     ### overlap
     n <- dim(x)[2]
@@ -231,9 +225,9 @@ cor_table <-
     colnames(glk_p) <- colnames(y)
 
     ### t-values according to the Hollstein 1980 algorithm
-    tHo_mat <- matrix(NA_real_, nrow = n, ncol = m)
-    rownames(tHo_mat) <- names(x)
-    colnames(tHo_mat) <- names(y)
+    tho_mat <- matrix(NA_real_, nrow = n, ncol = m)
+    rownames(tho_mat) <- names(x)
+    colnames(tho_mat) <- names(y)
 
     wuch_x <- apply(x, 2, function(x) {
       x / c(NA, x[-length(x)])
@@ -257,15 +251,15 @@ cor_table <-
     # if r < 0, r is set to zero
     r[r < 0] <- 0
 
-    tHo_mat <-
+    tho_mat <-
       # overlap - 1 to compensate for reduced overlap after lag(x)
       round(r * sqrt((overlap - 1) - 2) / sqrt(1 - r^2), 2)
 
 
     ### t-values according to the Baillie & Pilcher 1973 algorithm
-    tBP_mat <- matrix(NA_real_, nrow = n, ncol = m)
-    rownames(tBP_mat) <- names(x)
-    colnames(tBP_mat) <- names(y)
+    tbp_mat <- matrix(NA_real_, nrow = n, ncol = m)
+    rownames(tbp_mat) <- names(x)
+    colnames(tbp_mat) <- names(y)
 
     movav5_x <- apply(x, 2, function(x) {
       mov_av(x, w = 5)
@@ -300,7 +294,7 @@ cor_table <-
     # if r < 0, r is set to zero (Baillie & Pilcher 1973)
     r[r < 0] <- 0
 
-    tBP_mat <-
+    tbp_mat <-
       # overlap - 4 to compensate for reduced overlap after mov_av
       round(r * sqrt((overlap - 4) - 2) / sqrt(1 - r^2), 2)
 
@@ -334,8 +328,8 @@ cor_table <-
         glk_p = glk_p * overlap_min,
         r_pearson = r_pearson * overlap_min,
         t_St = t_St * overlap_min,
-        t_Ho = tHo_mat * overlap_min,
-        t_BP = tBP_mat * overlap_min
+        t_Ho = tho_mat * overlap_min,
+        t_BP = tbp_mat * overlap_min
       )
 
     if (output == "table") {

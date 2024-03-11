@@ -296,7 +296,7 @@ Doel1_header |>
    sw_combine(plot = TRUE)
 ```
 
-For more details see: [Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. *International Journal of Nautical Archaeology* 43, 87--102.]( https://doi.org/10.1111/1095-9270.12037)
+For more details see: [Haneca K. & Daly A. (2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of the 14th-century cog, Doel 1. *International Journal of Nautical Archaeology* 43, 87--102.](https://doi.org/10.1111/1095-9270.12037)
 
 ### cor_table
 

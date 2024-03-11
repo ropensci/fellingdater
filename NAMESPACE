@@ -2,7 +2,7 @@
 
 export(cor_table)
 export(fd_report)
-export(get_header)
+export(fh_header)
 export(hdi)
 export(mov_av)
 export(read_fh)
