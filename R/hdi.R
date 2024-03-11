@@ -5,7 +5,7 @@
 #'  The function first sorts the input `data.frame` - with columns 'n_sapwood´
 #'  and 'p' (the associated probability) - by column 'p' in decreasing order
 #'  and then it calculates the HDI by finding the first value of the sorted
-#'  probabilities higher than the specified `credMass.` It then finds the
+#'  probabilities higher than the specified `cred_mass.` It then finds the
 #'  indices of the values that are greater than or equal to this threshold, and
 #'  uses these indices to find the 'upper' and 'lower' limits of the hdi.
 #'  The function also calculates the probability of the interval. The final
@@ -19,7 +19,7 @@
 #' @param a The name of the column in x that lists the number of sapwood rings.
 #' @param b The name of the column in x that lists the the associated
 #'   probability of having n sapwood rings.
-#' @param credMass A `scalar [0, 1]` specifying the mass within the credible
+#' @param cred_mass A `scalar [0, 1]` specifying the mass within the credible
 #'  interval (default = .954).
 #'
 #' @return A `matrix` with ´upper´ and ´lower´ limits of the hdi, and the
@@ -28,22 +28,22 @@
 #' @examples
 #' tmp <- data.frame(n_sapwood = seq(1,30, 1),
 #'                   p = dnorm(seq(1,30, 1), 15, 5))
-#' hdi(tmp, credMass = 0.954)
+#' hdi(tmp, cred_mass = 0.954)
 #'
 #' @export
 
 hdi <- function(x,
                 a = "n_sapwood",
                 b = "p",
-                credMass = 0.954) {
+                cred_mass = 0.954) {
      hdi_interval <- c(NA_real_, NA_real_, NA_real_)
      df <- data.frame(n = as.numeric(x[, a]),
                       p = as.numeric(x[, b]))
      df <- df[df$p > 0, ]
      # a vector with sorted probabilities
      df_sorted <- sort(df$p, decreasing = TRUE)
-     # index of (first value) df_sorted higher than credMass
-     outside_idx <- which(cumsum(df_sorted) >= sum(df$p) * credMass)
+     # index of (first value) df_sorted higher than cred_mass
+     outside_idx <- which(cumsum(df_sorted) >= sum(df$p) * cred_mass)
      outside_idx <- min(outside_idx)
      upper = df_sorted[outside_idx]
      indices = which(df$p >= upper)

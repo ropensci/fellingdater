@@ -38,7 +38,7 @@ sw_model <-
            densfun = "lognormal",
            cred_mass = 0.954,
            source = NA,
-           plot = TRUE) {
+           plot = FALSE) {
     if (is.na(cred_mass) || cred_mass <= 0 || cred_mass >= 1) {
       stop("--> cred_mass must be between 0 and 1")
     }
@@ -72,18 +72,17 @@ sw_model <-
 
     if (!is.character(sw_data)) {
       stop("--> sw_data should be one of `sw_data_overview()`
-or a data.frame with numeric values in columns `n_sapwood` and `count`.)")
+or the name a data.frame with numeric values in columns `n_sapwood` and `count`.)")
     }
 
     if (!all(c("n_sapwood", "count") %in% names(observed))) {
-      stop("--> sw_data should be one of `sw_data_overview()`
-or a data.frame with numeric values in columns `n_sapwood` and `count`.)")
+      stop("--> sw_data should be a data.frame with numeric values in columns
+           `n_sapwood` and `count`.)")
     }
 
     if (!(is.numeric(observed$n_sapwood) && is.numeric(observed$count))) {
       stop(
-        "--> sw_data should be one of `sw_data_overview()`
-or a data.frame with numeric values in columns `n_sapwood` and `count`.)"
+        "--> sw_data should have numeric values in columns `n_sapwood` and `count`.)"
       )
     }
 
@@ -104,7 +103,7 @@ or a data.frame with numeric values in columns `n_sapwood` and `count`.)"
       MASS::fitdistr(df |> dplyr::pull(n_sapwood), densfun)
 
     sw_model <- data.frame(
-      model_fit = d.count(
+      model_fit = d_count(
         densfun = densfun,
         x = rep(1:max(df$n_sapwood), 1),
         param1 = fit_params$estimate[[1]],
@@ -125,7 +124,7 @@ or a data.frame with numeric values in columns `n_sapwood` and `count`.)"
     hdi_model <-
       hdi(
         x = sw_model,
-        credMass = cred_mass
+        cred_mass = cred_mass
       )
 
     spline_int <-
@@ -156,7 +155,7 @@ or a data.frame with numeric values in columns `n_sapwood` and `count`.)"
 # helper function to scale a Prob. Density Function (PDF) to a
 # Prob. Frequency Function.
 
-d.count <- function(densfun = densfun,
+d_count <- function(densfun = densfun,
                     x = x,
                     param1 = 0,
                     param2 = 1,

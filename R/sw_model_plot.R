@@ -21,7 +21,12 @@
 #' @export
 #'
 
-sw_model_plot <- function(x, bar_fill = "steelblue3", bar_color = "grey60", line_color = "red3", ...) {
+sw_model_plot <-
+        function(x,
+                 bar_fill = "steelblue3",
+                 bar_color = "grey60",
+                 line_color = "red3",
+                 ...) {
   if (!all(names(x) %in% c(
     "sapwood_data",
     "n",
