@@ -60,19 +60,19 @@ sw_model <-
       ))
     }
 
-    if (is.character(sw_data) && sw_data %in% sw_data_overview()) {
+    if (!is.character(sw_data)) {
+      stop("--> sw_data should be one of `sw_data_overview()`
+or the name a data.frame with numeric values in columns `n_sapwood` and `count`.)")
+    }
+
+    if (sw_data %in% sw_data_overview()) {
       observed <- get(sw_data)
       sw_source <- if (!is.na(source)) source else sw_data
     }
 
-    if (is.character(sw_data) && !sw_data %in% sw_data_overview()) {
+    if (!sw_data %in% sw_data_overview()) {
       observed <- get(sw_data)
       sw_source <- if (!is.na(source)) source else "user defined"
-    }
-
-    if (!is.character(sw_data)) {
-      stop("--> sw_data should be one of `sw_data_overview()`
-or the name a data.frame with numeric values in columns `n_sapwood` and `count`.)")
     }
 
     if (!all(c("n_sapwood", "count") %in% names(observed))) {
@@ -103,9 +103,9 @@ or the name a data.frame with numeric values in columns `n_sapwood` and `count`.
       MASS::fitdistr(df |> dplyr::pull(n_sapwood), densfun)
 
     sw_model <- data.frame(
-      model_fit = d_count(
+      model_fit = d_dens(
         densfun = densfun,
-        x = rep(1:max(df$n_sapwood), 1),
+        x = rep(1:100, 1),
         param1 = fit_params$estimate[[1]],
         param2 = fit_params$estimate[[2]],
         n = n_obs
@@ -131,7 +131,7 @@ or the name a data.frame with numeric values in columns `n_sapwood` and `count`.
       as.data.frame(stats::spline(
         sw_model$n_sapwood,
         sw_model$model_fit,
-        xout = seq(1, max, 0.2)
+        xout = seq(1, 100, 0.2)
       ))
 
     output <- list(
@@ -149,51 +149,3 @@ or the name a data.frame with numeric values in columns `n_sapwood` and `count`.
       output
     }
   }
-
-
-################################################################################
-# helper function to scale a Prob. Density Function (PDF) to a
-# Prob. Frequency Function.
-
-d_count <- function(densfun = densfun,
-                    x = x,
-                    param1 = 0,
-                    param2 = 1,
-                    log = FALSE,
-                    n = 1) {
-  if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
-    stop(sprintf(
-      "!!! '%s' is not a supported distribution !!!",
-      densfun
-    ))
-  }
-  if (densfun == "lognormal") {
-    n * stats::dlnorm(
-      x = x,
-      meanlog = param1,
-      sdlog = param2,
-      log = log
-    )
-  } else if (densfun == "normal") {
-    n * stats::dnorm(
-      x = x,
-      mean = param1,
-      sd = param2,
-      log = log
-    )
-  } else if (densfun == "weibull") {
-    n * stats::dweibull(
-      x = x,
-      shape = param1,
-      scale = param2,
-      log = log
-    )
-  } else if (densfun == "gamma") {
-    n * stats::dgamma(
-      x = x,
-      shape = param1,
-      rate = param2,
-      log = log
-    )
-  }
-}
