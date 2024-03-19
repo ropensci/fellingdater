@@ -26,7 +26,7 @@ felling date ranges."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">getting started</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
   </div>
 </li>
 <li class="nav-item">
@@ -68,56 +68,56 @@ felling date ranges.</p>
 <span>  waneyedge <span class="op">=</span> <span class="st">"waneyedge"</span>,</span>
 <span>  sw_data <span class="op">=</span> <span class="st">"Hollstein_1980"</span>,</span>
 <span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
-<span>  credMass <span class="op">=</span> <span class="fl">0.954</span>,</span>
+<span>  cred_mass <span class="op">=</span> <span class="fl">0.954</span>,</span>
 <span>  plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  scale_p <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  sep <span class="op">=</span> <span class="st">";"</span></span>
+<span>  scale_p <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
-<dd><p>A <code>data.frame</code> containing columns c("series", "swr", "waneyedge" ,
+<dd><p>A <code>data.frame</code> with columns c("series", "swr", "waneyedge" ,
 "last"), Column "sw_model" is optional. Could be the output of read_fh(x,
 header = TRUE)</p></dd>
 
 
 <dt>series</dt>
-<dd><p>Name of the column in <code>x</code> containing the ID's of the series.</p></dd>
+<dd><p>Name of the column in <code>x</code> where ID's of the tree-ring series
+are listed as <code>character</code> values.</p></dd>
 
 
 <dt>last</dt>
-<dd><p>Name of the column in <code>x</code>containing the calendar year assigned to
-the last measured ring (should be <code>numeric</code>).</p></dd>
+<dd><p>Name of the column in <code>x</code> where calendar years assigned to the
+last measured ring are listed (should be <code>numeric</code>).</p></dd>
 
 
 <dt>n_sapwood</dt>
 <dd><p>Name of the column in <code>x</code> where the number of observed
-sapwood rings are listed (should be <code>numeric</code>).</p></dd>
+sapwood rings are listed (should be <code>numeric</code>)</p></dd>
 
 
 <dt>waneyedge</dt>
 <dd><p>Name of the column in <code>x</code> indicating the presence
-(TRUE)/absence (FALSE) of waney edge (should be a <code>logical</code> vector).</p></dd>
+(<code>TRUE</code>)/absence (<code>FALSE</code>) of waney edge (should be a <code>logical</code>).</p></dd>
 
 
 <dt>sw_data</dt>
-<dd><p>The name of the sapwood data set to use for modelling. Should
-be one of <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the path to a .csv file with columns
-´n_sapwood´ and ´count´.</p></dd>
+<dd><p>The name of the sapwood data set to use for modelling. It
+should be one of the data sets listed in <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the name
+of a <code>data.frame</code> with sapwood data in columns <code>n_sapwood</code> and <code>count</code>.</p></dd>
 
 
 <dt>densfun</dt>
 <dd><p>Name of the density function fitted to the sapwood data set.
-Should be one of:</p><ul><li><p>"lognormal" (the default value),</p></li>
-<li><p>"normal",</p></li>
-<li><p>"weibull",</p></li>
-<li><p>"gammma".</p></li>
+Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
+<li><p><em>normal</em>,</p></li>
+<li><p><em>weibull</em>,</p></li>
+<li><p><em>gammma</em>.</p></li>
 </ul></dd>
 
 
-<dt>credMass</dt>
+<dt>cred_mass</dt>
 <dd><p>A <code>scalar [0, 1]</code> specifying the mass within the credible
 interval (default = .954).</p></dd>
 
@@ -125,18 +125,14 @@ interval (default = .954).</p></dd>
 <dt>plot</dt>
 <dd><p>A <code>logical</code>.</p><ul><li><p>If <code>TRUE</code>, <code><a href="sw_sum_plot.html">sw_sum_plot()</a></code> is triggered and a ggplot-style graph is
 returned with the summed probability density (SPD).</p></li>
-<li><p>If <code>FALSE</code>, a list with the numeric output of the modelling process is returned.</p></li>
+<li><p>If <code>FALSE</code>, a <code>list</code> with the numeric output of the modelling process is
+returned.</p></li>
 </ul></dd>
 
 
 <dt>scale_p</dt>
 <dd><p>A <code>logical</code>. If <code>TRUE</code> the summed probability density is
-scaled to 1.</p></dd>
-
-
-<dt>sep</dt>
-<dd><p>Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.</p></dd>
+scaled to 1 (default).</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -154,7 +150,7 @@ sapwood data set is provided from user-defined .csv-file.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example7</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">trs_example7</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_34 1000         5     FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 trs_35 1009        10     FALSE</span>
@@ -166,7 +162,9 @@ sapwood data set is provided from user-defined .csv-file.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8 trs_41 1050        NA      TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9 trs_42 1035         1     FALSE</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">sw_sum</span><span class="op">(</span><span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sw_sum</span><span class="op">(</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>--&gt; 1 series without sapwood rings or waney edge detected</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>         and removed from the data set</span>
 <span class="r-plt img"><img src="sw_sum-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

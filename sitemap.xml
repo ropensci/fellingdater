@@ -64,7 +64,10 @@
     <loc>https://hanecakr.github.io/fellingdateR/reference/fd_report.html</loc>
   </url>
   <url>
-    <loc>https://hanecakr.github.io/fellingdateR/reference/get_header.html</loc>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/fellingdateR.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/fh_header.html</loc>
   </url>
   <url>
     <loc>https://hanecakr.github.io/fellingdateR/reference/hdi.html</loc>
@@ -73,7 +76,7 @@
     <loc>https://hanecakr.github.io/fellingdateR/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://hanecakr.github.io/fellingdateR/reference/movAv.html</loc>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/mov_av.html</loc>
   </url>
   <url>
     <loc>https://hanecakr.github.io/fellingdateR/reference/read_fh.html</loc>
@@ -100,10 +103,37 @@
     <loc>https://hanecakr.github.io/fellingdateR/reference/sw_model.html</loc>
   </url>
   <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/sw_model_plot.html</loc>
+  </url>
+  <url>
     <loc>https://hanecakr.github.io/fellingdateR/reference/sw_sum.html</loc>
   </url>
   <url>
     <loc>https://hanecakr.github.io/fellingdateR/reference/sw_sum_plot.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example0.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example1.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example2.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example3.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example4.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example5.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example6.html</loc>
+  </url>
+  <url>
+    <loc>https://hanecakr.github.io/fellingdateR/reference/trs_example7.html</loc>
   </url>
   <url>
     <loc>https://hanecakr.github.io/fellingdateR/reference/vanDaalen_NLBE.html</loc>

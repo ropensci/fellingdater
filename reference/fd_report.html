@@ -48,7 +48,7 @@ for individual tree-ring series."><!-- mathjax --><script src="https://cdnjs.clo
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">getting started</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
   </div>
 </li>
 <li class="nav-item">
@@ -97,9 +97,8 @@ for individual tree-ring series.</p>
 <span>  n_sapwood <span class="op">=</span> <span class="st">"n_sapwood"</span>,</span>
 <span>  waneyedge <span class="op">=</span> <span class="st">"waneyedge"</span>,</span>
 <span>  sw_data <span class="op">=</span> <span class="st">"Hollstein_1980"</span>,</span>
-<span>  credMass <span class="op">=</span> <span class="fl">0.954</span>,</span>
-<span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
-<span>  sep <span class="op">=</span> <span class="st">";"</span></span>
+<span>  cred_mass <span class="op">=</span> <span class="fl">0.954</span>,</span>
+<span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -137,32 +136,26 @@ sapwood rings are listed (should be <code>numeric</code> vector).</p></dd>
 
 <dt>sw_data</dt>
 <dd><p>There are two options:</p><ul><li><p>A <code>character</code> string providing the name of the sapwood data set to use
-for modelling. Should be one of <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the path to a .csv
-file with columns ´n_sapwood´ and ´count´. This variable will be used for
-all individual series in <code>x</code>, or</p></li>
+for modelling. It should be one of the data sets listed in
+<code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the name of a <code>data.frame</code> with sapwood data
+in columns <code>n_sapwood</code> and <code>count</code>, or</p></li>
 <li><p>the name of the column in <code>x</code>that lists for each series one of the
-sapwood data sets given by <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the path to a .csv file
-with columns ´n_sapwood´ and ´count´.</p></li>
+sapwood data sets given by <code><a href="sw_data_overview.html">sw_data_overview()</a></code>.</p></li>
 </ul></dd>
 
 
-<dt>credMass</dt>
+<dt>cred_mass</dt>
 <dd><p>A <code>scalar [0, 1]</code> specifying the mass within the credible
 interval (default = .954).</p></dd>
 
 
 <dt>densfun</dt>
-<dd><p>Name of the density function to fit to the sapwood data set.
-Should be one of:</p><ul><li><p>"lognormal" (the default value),</p></li>
-<li><p>"normal",</p></li>
-<li><p>"weibull",</p></li>
-<li><p>"gammma".</p></li>
+<dd><p>Name of the density function fitted to the sapwood data set.
+Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
+<li><p><em>normal</em>,</p></li>
+<li><p><em>weibull</em>,</p></li>
+<li><p><em>gammma</em>.</p></li>
 </ul></dd>
-
-
-<dt>sep</dt>
-<dd><p>Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -195,17 +188,16 @@ tree-ring series?</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example with different sw_model for individual series</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">trs_example2</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example2</span></span></span>
 <span class="r-in"><span><span class="va">sw_models_for_indiv_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sohar_2012_ELL_c"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"Wazny_1990"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"Hollstein_1980"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span>,</span></span>
 <span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">trs_example2_edit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">trs_example2</span>, <span class="va">sw_models_for_indiv_series</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">trs_example2_edit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">trs_example2</span>, <span class="st">"sw_models"</span> <span class="op">=</span> <span class="va">sw_models_for_indiv_series</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">trs_example2_edit</span>,</span></span>
-<span class="r-in"><span>          sw_data <span class="op">=</span> <span class="st">"sw_models_for_indiv_series"</span></span></span>
+<span class="r-in"><span>          sw_data <span class="op">=</span> <span class="st">"sw_models"</span></span></span>
 <span class="r-in"><span>          <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge lower upper          felling_date</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_06 1000         5     FALSE  1002  1013 between 1002 and 1013</span>

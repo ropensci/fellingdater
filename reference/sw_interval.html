@@ -30,7 +30,7 @@ and the selected sapwood data and model."><!-- mathjax --><script src="https://c
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">getting started</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
   </div>
 </li>
 <li class="nav-item">
@@ -70,10 +70,9 @@ and the selected sapwood data and model.</p>
 <span>  n_sapwood <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  last <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  hdi <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  credMass <span class="op">=</span> <span class="fl">0.954</span>,</span>
+<span>  cred_mass <span class="op">=</span> <span class="fl">0.954</span>,</span>
 <span>  sw_data <span class="op">=</span> <span class="st">"Hollstein_1980"</span>,</span>
 <span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
-<span>  sep <span class="op">=</span> <span class="st">";"</span>,</span>
 <span>  plot <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -95,15 +94,15 @@ density interval (credible interval) are returned. When <code>FALSE</code>, a ma
 is returned with scaled p-values for each number of observed sapwood rings.</p></dd>
 
 
-<dt>credMass</dt>
+<dt>cred_mass</dt>
 <dd><p>A <code>scalar</code> in the range of <code>[0, 1]</code> specifying the mass
 within the credible interval (default = .954)</p></dd>
 
 
 <dt>sw_data</dt>
 <dd><p>The name of the sapwood data set to use for modelling. It
-should be one of the data sets listed in <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the path
-to a .csv file with columns <code>n_sapwood</code> and <code>count</code>.</p></dd>
+should be one of the data sets listed in <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the name
+of a <code>data.frame</code> with sapwood data in columns <code>n_sapwood</code> and <code>count</code>.</p></dd>
 
 
 <dt>densfun</dt>
@@ -115,15 +114,10 @@ Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
 </ul></dd>
 
 
-<dt>sep</dt>
-<dd><p>Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from a user-defined .csv-file.</p></dd>
-
-
 <dt>plot</dt>
 <dd><p>A <code>logical</code>.</p><ul><li><p>If <code>TRUE</code>, a ggplot-style graph is returned of the individual
 sapwood model and estimate of the felling date range.</p></li>
-<li><p>If <code>FALSE</code>, a list with the numeric output of the modelling process is returned.</p></li>
+<li><p>If <code>FALSE</code>, a <code>list</code> with the numeric output of the modelling process is returned.</p></li>
 </ul></dd>
 
 </dl></div>
@@ -132,32 +126,36 @@ sapwood model and estimate of the felling date range.</p></li>
     
 
 <p>Depends on the value of <code>hdi</code>.</p><ul><li><p>If <code>hdi = TRUE</code>, a <code>numeric vector</code> reporting the upper and lower limit
-of the hdi (attributes provide more detail on <code>credMass</code> and the applied
+of the hdi (attributes provide more detail on <code>cred_mass</code> and the applied
 sapwood model (<code>sw_data</code>)).</p></li>
-<li><p>If <code>hdi = FALSE</code>, a <code>matrix</code> with scaled p values for each number of
-observed sapwood rings. This matrix</p></li>
+<li><p>If <code>hdi = FALSE</code>, a <code>data.frame</code> with scaled p values for each number of
+observed sapwood rings.</p></li>
 </ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 10 sapwood rings observed and the Wazny 1990 sapwood model:</span></span></span>
-<span class="r-in"><span><span class="fu">sw_interval</span><span class="op">(</span>n_sapwood <span class="op">=</span> <span class="fl">10</span>,</span></span>
-<span class="r-in"><span>            last <span class="op">=</span> <span class="fl">1234</span>,</span></span>
-<span class="r-in"><span>            hdi <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
-<span class="r-in"><span>            credMass <span class="op">=</span> <span class="fl">.95</span>,</span></span>
-<span class="r-in"><span>            sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>,</span></span>
-<span class="r-in"><span>            densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
-<span class="r-in"><span>            plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">sw_interval</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n_sapwood <span class="op">=</span> <span class="fl">10</span>,</span></span>
+<span class="r-in"><span>  last <span class="op">=</span> <span class="fl">1234</span>,</span></span>
+<span class="r-in"><span>  hdi <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  cred_mass <span class="op">=</span> <span class="fl">.95</span>,</span></span>
+<span class="r-in"><span>  sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>,</span></span>
+<span class="r-in"><span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
+<span class="r-in"><span>  plot <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   lower upper         p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  1234  1250 0.9611793</span>
-<span class="r-in"><span> <span class="co"># same example as above, but with numerical output (hdi = FALSE):</span></span></span>
-<span class="r-in"><span><span class="fu">sw_interval</span><span class="op">(</span>n_sapwood <span class="op">=</span> <span class="fl">10</span>,</span></span>
-<span class="r-in"><span>            last <span class="op">=</span> <span class="fl">1234</span>,</span></span>
-<span class="r-in"><span>            hdi <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
-<span class="r-in"><span>            credMass <span class="op">=</span> <span class="fl">.95</span>,</span></span>
-<span class="r-in"><span>            sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>,</span></span>
-<span class="r-in"><span>            densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
-<span class="r-in"><span>            plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># same example as above, but with numerical output (hdi = FALSE):</span></span></span>
+<span class="r-in"><span><span class="fu">sw_interval</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n_sapwood <span class="op">=</span> <span class="fl">10</span>,</span></span>
+<span class="r-in"><span>  last <span class="op">=</span> <span class="fl">1234</span>,</span></span>
+<span class="r-in"><span>  hdi <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>  cred_mass <span class="op">=</span> <span class="fl">.95</span>,</span></span>
+<span class="r-in"><span>  sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>,</span></span>
+<span class="r-in"><span>  densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
+<span class="r-in"><span>  plot <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     year n_sapwood            p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1234        10 4.387611e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   1235        11 6.219097e-02</span>

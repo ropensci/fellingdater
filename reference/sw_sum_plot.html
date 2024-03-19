@@ -28,7 +28,7 @@ SPD."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathja
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">getting started</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
   </div>
 </li>
 <li class="nav-item">
@@ -51,7 +51,7 @@ SPD."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathja
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Plot the output of <code><a href="sw_sum.html">sw_sum()</a></code></h1>
-      <small class="dont-index">Source: <a href="https://github.com/hanecakr/fellingdateR/blob/HEAD/R/sw_sum_plot.R" class="external-link"><code>R/sw_sum_plot.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/hanecakr/fellingdateR/blob/HEAD/R/sw_sum_plot.r" class="external-link"><code>R/sw_sum_plot.r</code></a></small>
       <div class="d-none name"><code>sw_sum_plot.Rd</code></div>
     </div>
 
@@ -66,10 +66,11 @@ SPD.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sw_sum_plot</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  bar_col <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
-<span>  spline_col <span class="op">=</span> <span class="st">"red3"</span>,</span>
+<span>  trend_col <span class="op">=</span> <span class="st">"red3"</span>,</span>
 <span>  dot_col <span class="op">=</span> <span class="st">"steelblue4"</span>,</span>
 <span>  dot_size <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  dot_shape <span class="op">=</span> <span class="fl">21</span></span>
+<span>  dot_shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>  window_smooth <span class="op">=</span> <span class="fl">11</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -83,7 +84,7 @@ SPD.</p>
 <dd><p>The fill color for the bars.</p></dd>
 
 
-<dt>spline_col</dt>
+<dt>trend_col</dt>
 <dd><p>The line color of the fitted smoothing spline.</p></dd>
 
 
@@ -92,23 +93,30 @@ SPD.</p>
 
 
 <dt>dot_size</dt>
-<dd><p>A size argument for the shapes that represent exact felling dates.</p></dd>
+<dd><p>A size argument for the shapes that represent exact felling
+dates.</p></dd>
 
 
 <dt>dot_shape</dt>
-<dd><p>Number corresponding to the point symbol available in R for the shapes that represent exact felling dates.</p></dd>
+<dd><p>Number corresponding to the point symbol available in R for
+the shapes that represent exact felling dates.</p></dd>
+
+
+<dt>window_smooth</dt>
+<dd><p>A numeric value for the window width of the trend line</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A ggplot style graph.</p>
+<p>A ggplot style graph, with calendar years on the X-axis and the
+probability (p) on the Y-axis.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">trs_example6</span> <span class="op">&lt;-</span> <span class="fu">fellingdateR</span><span class="fu">:::</span><span class="va">trs_example6</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">trs_example6</span> <span class="op">&lt;-</span> <span class="va">trs_example6</span></span></span>
 <span class="r-in"><span><span class="va">trs_example6</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_25 1000         5     FALSE</span>

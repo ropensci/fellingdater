@@ -54,7 +54,7 @@ t_Ho: t-values according to the Hollstein (1980) algorithm
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">getting started</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
   </div>
 </li>
 <li class="nav-item">
@@ -103,9 +103,8 @@ min_overlap.</p>
 <span>  <span class="va">x</span>,</span>
 <span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  min_overlap <span class="op">=</span> <span class="fl">50</span>,</span>
-<span>  remove.duplicates <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  remove_duplicates <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  output <span class="op">=</span> <span class="st">"table"</span>,</span>
-<span>  values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r_pearson"</span>, <span class="st">"t_St"</span>, <span class="st">"glk"</span>, <span class="st">"glk_p"</span>, <span class="st">"t_BP"</span>, <span class="st">"t_Ho"</span><span class="op">)</span>,</span>
 <span>  sort_by <span class="op">=</span> <span class="st">"t_Ho"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -129,7 +128,7 @@ represents a measurement series or chronology, and row names correspond to
 between series for correlation calculation.</p></dd>
 
 
-<dt>remove.duplicates</dt>
+<dt>remove_duplicates</dt>
 <dd><p>A logical value. If <code>TRUE</code>, identical pairs of
 series and references are removed from the output.</p></dd>
 
@@ -139,15 +138,10 @@ series and references are removed from the output.</p></dd>
 (default).</p></dd>
 
 
-<dt>values</dt>
-<dd><p>A character vector listing correlation values to be computed.
-Defaults to all possible values: c("r_pearson", "t_St", "glk", "glk_p",
-"t_BP", "t_Ho").</p></dd>
-
-
 <dt>sort_by</dt>
 <dd><p>The correlation value by which the output is sorted for each
-series in <code>x</code>.</p></dd>
+series in <code>x</code>. One of "r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho".
+Default to "t_Ho"</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -158,7 +152,7 @@ series in <code>x</code>.</p></dd>
 set to "matrix." If <code>output</code> is set to "table," it returns a <code>data.frame</code></p>
 
 
-<p>containing correlation values listed by the specified <code>values</code>.</p>
+<p>reporting all correlation values.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
