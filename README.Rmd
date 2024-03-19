@@ -65,7 +65,7 @@ The light grey distributions represent the probability density function of the f
 The sapwood data used in the example above to estimate the felling date range, was published by Hollstein in 1980:
 
 ```{r model_sapwood_counts, dpi=200}
-sw_model("Hollstein_1980")
+sw_model("Hollstein_1980", plot = TRUE)
 ```
 
 
