@@ -24,3 +24,5 @@ notes.Rmd
 inst/doc
 docs
 review_rOpenSci.Rmd
+/doc/
+/Meta/

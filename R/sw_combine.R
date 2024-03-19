@@ -36,8 +36,11 @@
 #'   * _gammma_.
 #'
 #' @return Depends on the value of plot. If `TRUE` a ggplot-style is returned,
-#'   when `FALSE` a `data.frame` with the combined probability and modelling
-#'   parameters
+#'   when `FALSE` a `data.frame` with the combined probability ($raw_data$comb),
+#'   the modelling parameters ($sapwood_data, $sapwood_model, $cred_mass),
+#'   the Highest Posterior Density Interval for combined combined felling date
+#'   interval ($hdi_combine), and the Agreement indices for the model ($A_model)
+#'   and individual series ($individual_series$agr_index).
 #' @export
 #'
 #' @seealso [sw_combine_plot()]
@@ -112,7 +115,7 @@ sw_combine <- function(x,
 
     message <- paste0("earliest possible felling date: ", tpq)
 
-    for (i in 1:length(keycodes)) {
+    for (i in seq_len(length(keycodes))) {
       keycode_i <- keycodes[i]
       pdf <- matrix(NA,
         nrow = length(time_axis),
@@ -168,7 +171,7 @@ sw_combine <- function(x,
     pdf_matrix[, 1] <- time_axis
     colnames(pdf_matrix) <- "year"
 
-    for (i in 1:length(keycodes)) {
+    for (i in seq_len(length(keycodes))) {
       keycode_i <- keycodes[i]
       swr_i <- swr[i]
       end_date_i <- end_date[i]
@@ -346,7 +349,7 @@ sw_combine <- function(x,
       )
       dimnames(agr_index) <- list(keycodes, "agr_index")
 
-      for (i in 1:length(keycodes)) {
+      for (i in seq_len(length(keycodes))) {
         if (is.na(swr[i]) & cambium[i] == FALSE) {
           agr_index[i, 1] <- NA
         } else {

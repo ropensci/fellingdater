@@ -6,12 +6,13 @@
 #'
 #' @param x Output of [sw_combine()].
 
-#' @return A ggplot-style graph.
+#' @return A ggplot-style graph, with calendar years on the X-axis and the
+#' probability (p) on the Y-axis. Dots represent exact felling dates.
 #' @export
 #' @examples
 #' trs_example2
-#' combo <- sw_combine(trs_example2)
-#' sw_combine_plot(combo)
+#' tmp <- sw_combine(trs_example2)
+#' sw_combine_plot(tmp)
 #'
 sw_combine_plot <- function(x, ...) {
 
@@ -97,7 +98,7 @@ sw_combine_plot <- function(x, ...) {
         ggplot2::geom_area(
           fill = "grey90",
           alpha = 0.7,
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -106,7 +107,7 @@ sw_combine_plot <- function(x, ...) {
         ggplot2::geom_line(
           color = "grey40",
           linewidth = 0.5,
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -123,7 +124,7 @@ sw_combine_plot <- function(x, ...) {
           ggplot2::aes(x = max + 1, y = .7),
           size = 2,
           fill = "darkblue",
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -143,7 +144,7 @@ sw_combine_plot <- function(x, ...) {
             group = series
           ),
           arrow = ggplot2::arrow(length = ggplot2::unit(0.08, "npc")),
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -159,7 +160,7 @@ sw_combine_plot <- function(x, ...) {
       colour = "tomato3",
       linewidth = .8,
       linetype = "dotted",
-      na.rm = T
+      na.rm = TRUE
     ) +
 
     # # add the combined felling date estimate as background
@@ -170,7 +171,7 @@ sw_combine_plot <- function(x, ...) {
           ggplot2::aes(x = year, y = comb),
           fill = "grey50",
           alpha = 0.5,
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -180,7 +181,7 @@ sw_combine_plot <- function(x, ...) {
           data = combo,
           ggplot2::aes(x = year, y = comb),
           color = "grey30",
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -197,7 +198,7 @@ sw_combine_plot <- function(x, ...) {
           ),
           color = "black",
           linewidth = 1,
-          na.rm = T
+          na.rm = TRUE
         )
       }
     } +
@@ -225,7 +226,7 @@ sw_combine_plot <- function(x, ...) {
         ),
         hjust = 1
       ),
-      na.rm = T
+      na.rm = TRUE
     ) +
     ggplot2::geom_text(
       data = summary,
@@ -234,28 +235,14 @@ sw_combine_plot <- function(x, ...) {
         y = 0.40,
         label = ifelse(is.na(agr_index),
                              "",
-                             paste0("A_i = ", round(
+                             paste0("A[i]", "==", round(
                                as.numeric(agr_index), 1
-                             ), "%")),
+                             ),"*\'%'")),
         color = ifelse(agr_index < 60, "poor", "good")
       ),
-      hjust = 1
+      hjust = 1, parse = TRUE
     ) +
     ggplot2::scale_color_manual(values = c("good" = "black" ,"poor" = "tomato3")) +
-    # {
-    #   if (nrow(summary[summary$agreement == "poor", ]) != 0) {
-    #     ggplot2::geom_text(
-    #       data = summary[summary$agreement == "poor", ],
-    #       ggplot2::aes(
-    #         x = ceiling((range[2] + 20) / 10) * 10,
-    #         y = 0.15,
-    #         label = "poor agreement",
-    #         color = "tomato3",
-    #         hjust = 1
-    #       )
-    #     )
-    #   }
-    # } +
     ggplot2::facet_grid(dplyr::vars(as.factor(series)), ) +
     ggplot2::theme_minimal() +
     ggplot2::scale_x_continuous(

@@ -131,7 +131,7 @@ The procedure to combine felling dates of a group of related, individual series 
 A data set with dated tree-ring series which all have partially preserved sapwood. The names of the variables in the data set are mapped to the parameters of the `sw_combine()` function. In the example below, the numeric output is returned:
 
 ```{r}
-
+trs_example0
 # In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.
 
 output_comb <- sw_combine(trs_example0,
@@ -153,6 +153,8 @@ output_comb[-1]
 A data set with 5 tree-ring series of which one has an exact felling date:
 
 ```{r}
+trs_example2
+
 sw_combine(trs_example2, plot = TRUE)
 
 ```

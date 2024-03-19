@@ -54,7 +54,7 @@ rescale <- function(x,
     x
   } else {
     (x - min(x, na.rm = TRUE)) * (ceiling - floor) /
-                  (max(x, na.rm = TRUE) - min(x, na.rm = T))
+                  (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
   }
 }
 

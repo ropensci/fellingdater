@@ -51,7 +51,7 @@ hdi <- function(x,
      starts <- indices[c(1, gaps + 1)]
      ends <- indices[c(gaps, length(indices))]
      p_interval <- as.integer(length(starts))
-     for (j in 1:length(starts))
+     for (j in seq_len(length(starts)))
      {
           p_interval[j] <- sum(df$p[starts[j]:ends[j]])
      }

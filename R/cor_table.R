@@ -13,7 +13,7 @@
 #'   (calendar) years. If NULL (default), `x` is compared to itself (y = x).
 #' @param min_overlap A `numeric` value specifying the minimum overlap required
 #'   between series for correlation calculation.
-#' @param remove.duplicates A logical value. If `TRUE`, identical pairs of
+#' @param remove_duplicates A logical value. If `TRUE`, identical pairs of
 #'   series and references are removed from the output.
 #' @param output The desired output format, either "matrix" or "table"
 #'   (default).
@@ -89,7 +89,7 @@ cor_table <-
   function(x,
            y = NULL,
            min_overlap = 50,
-           remove.duplicates = TRUE,
+           remove_duplicates = TRUE,
            output = "table",
            sort_by = "t_Ho")
   {
@@ -384,7 +384,7 @@ cor_table <-
 
 
       ### remove duplicates (not possible when y != NULL)
-      if (remove.duplicates == TRUE && no_ref == TRUE) {
+      if (remove_duplicates == TRUE && no_ref == TRUE) {
         corr_table <- subset(corr_table, series < reference)
       }
 

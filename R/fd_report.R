@@ -115,7 +115,7 @@ fd_report <- function(x,
         interval_matrix <- matrix(nrow = nrow(x),
                                   ncol = 8)
 
-        for (i in 1:length(series)) {
+        for (i in seq_len(length(series))) {
                 series_i <- series[i]
                 n_sapwood_i <- n_sapwood[i]
                 last_i <- last[i]

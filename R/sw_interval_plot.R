@@ -7,7 +7,8 @@
 #' @param area_fill Fill color for the area under fitted distribution.
 #' @param line_color Line color for the fitted distribution.
 #'
-#' @return  A ggplot-style graph.
+#' @return  A ggplot-style graph, with calendar years on the X-axis and the
+#' probability (p) on the Y-axis.
 #' @examples
 #' tmp <- sw_interval(
 #'   n_sapwood = 10,

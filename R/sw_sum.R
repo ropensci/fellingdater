@@ -1,6 +1,6 @@
 #' Compute the summed probability of multiple felling date ranges
 #'
-#' @param x A `data.frame` containing columns c("series", "swr", "waneyedge" ,
+#' @param x A `data.frame` with columns c("series", "swr", "waneyedge" ,
 #'   "last"), Column "sw_model" is optional. Could be the output of read_fh(x,
 #'   header = TRUE)
 #' @param series Name of the column in `x` where ID's of the tree-ring series
@@ -92,34 +92,6 @@ sw_sum <- function(x,
   } else if (sw_data %in% colnames(x)) {
     sw_data <- x[, sw_data]
   }
-  # sw_model fixed for all series
-  # if (sw_data %in% sw_data_overview()){
-  #   sw_data <- rep(sw_data, nrow(x))
-  # }
-  # sw_model might differ between series and is provided in a separate column
-#   else if (sw_model %in% colnames(x)) {
-#     sw_data <- x[, sw_data]
-#     sw_OK <-
-#       which(sw_data %in% sw_data_overview() |
-#         file.exists(sw_data))
-#     if (length(sw_OK) < length(sw_data)) {
-#       stop(
-#         sprintf(
-#           "'%s' is not a supported sapwood model of file doesn't exist\n",
-#           sw_data[-sw_OK]
-#         )
-#       )
-#     }
-#   } else {
-#     stop(
-#       sprintf(
-#         "--> sw_data should be one of `sw_data_overview()`
-# or the path to a .csv file with columns `n_sapwood` and `count`,\n
-# not '%s'.",
-#         sw_data
-#       )
-#     )
-#   }
 
   wk_true <- which(cambium)
   wk_true <- keycodes[wk_true]
@@ -133,7 +105,7 @@ sw_sum <- function(x,
   pdf_matrix[, 1] <- time_axis
   colnames(pdf_matrix) <- "year"
 
-  for (i in 1:length(keycodes)) {
+  for (i in seq_len(length(keycodes))) {
     keycode_i <- keycodes[i]
     swr_i <- swr[i]
     yr <- end_date[i]

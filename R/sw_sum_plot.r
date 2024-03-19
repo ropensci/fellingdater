@@ -6,12 +6,16 @@
 #'
 #' @param x The output of `sw_sum()`.
 #' @param bar_col The fill color for the bars.
-#' @param spline_col The line color of the fitted smoothing spline.
+#' @param trend_col The line color of the fitted smoothing spline.
 #' @param dot_col The color of the shapes that represent exact felling dates.
-#' @param dot_size A size argument for the shapes that represent exact felling dates.
-#' @param dot_shape Number corresponding to the point symbol available in R for the shapes that represent exact felling dates.
+#' @param dot_size A size argument for the shapes that represent exact felling
+#' dates.
+#' @param dot_shape Number corresponding to the point symbol available in R for
+#' the shapes that represent exact felling dates.
+#' @param window_smooth A numeric value for the window width of the trend line
 #'
-#' @return A ggplot style graph.
+#' @return A ggplot style graph, with calendar years on the X-axis and the
+#' probability (p) on the Y-axis.
 #' @export
 #'
 #' @examples
@@ -22,10 +26,11 @@
 #'
 sw_sum_plot <- function(x,
                         bar_col = "steelblue",
-                        spline_col = "red3",
+                        trend_col = "red3",
                         dot_col = "steelblue4",
                         dot_size = 2,
-                        dot_shape = 21) {
+                        dot_shape = 21,
+                        window_smooth = 11) {
   # to avoid notes in CMD check
   spline <- spd_wk <- year <- y <- spd <- spd_mov_av <- NULL
 
@@ -34,7 +39,7 @@ sw_sum_plot <- function(x,
 
   smooth <-
     as.data.frame(
-      mov_av(pdf_matrix$spd, 11, align = "center", edges = "fill")
+      mov_av(pdf_matrix$spd, window_smooth, align = "center", edges = "fill")
     )
   names(smooth) <- "spd_mov_av"
 
@@ -74,7 +79,7 @@ sw_sum_plot <- function(x,
     ggplot2::geom_line(
       data = spline_int,
       ggplot2::aes(x = x, y = y),
-      color = spline_col,
+      color = trend_col,
       linewidth = 1.5,
       alpha = .8,
       na.rm = TRUE

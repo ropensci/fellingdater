@@ -68,7 +68,7 @@ mov_av <- function(x,
       }
     }
   } else {
-    print("Take care of the edges! 'Edges' should be 'nofill' or 'fill'.")
+    stop("Take care of the edges! 'Edges' should be 'nofill' or 'fill'.")
   }
 
   return(run_mean)
