@@ -25,15 +25,11 @@
 sw_interval_plot <-
         function(x,
                  area_fill = "tomato3",
-                 line_color = "tomato3") {
-  if (all(
-    !(attributes(x)$names) %in% c(
-      "year",
-      "n_sapwood",
-      "p"
-    )
-  )) {
-    stop("Input differs from output sw_interval()")
+                 line_color = "tomato3",
+                 ...) {
+
+  if (!all(c("year", "n_sapwood", "p") %in% names(x))) {
+       stop("Input structure differs from the expected output of sw_interval()")
   }
   # to avoid notes in CMD check
   p.x <- upper <- year <- NULL
@@ -69,7 +65,7 @@ sw_interval_plot <-
     ) +
     ggplot2::geom_area(
       ggplot2::aes(
-        x = ifelse(year >= lower, year, NA),
+        x = ifelse(year >= hdi_p$lower , year, NA),
         y = p.x
       ),
       fill = area_fill,
