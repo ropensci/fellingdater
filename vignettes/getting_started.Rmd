@@ -78,7 +78,7 @@ In the example below, 10 sapwood rings were observed on a sample (last ring date
 sw_interval(n_sapwood = 10,
             last = 1234,
             hdi = TRUE,
-            credMass = .95, 
+            cred_mass = .95, 
             sw_data = "Wazny_1990", 
             densfun = "lognormal")
 ```
@@ -92,7 +92,7 @@ The results of this procedure can be visualized by setting `plot = TRUE`.
 sw_interval(n_sapwood = 10,
             last = 1234,
             hdi = TRUE,
-            credMass = .95, 
+            cred_mass = .95, 
             sw_data = "Wazny_1990", 
             densfun = "lognormal",
             plot = TRUE)
@@ -139,7 +139,7 @@ output_comb <- sw_combine(trs_example0,
    last = "end",
    n_sapwood = "swr",
    waneyedge = "bark",
-   credMass = .954,
+   cred_mass = .954,
    plot = FALSE
 )
 
@@ -235,7 +235,7 @@ The `sw_model()` function allows to fit a distribution to a data set of observed
 The credible interval should be a value between 0 and 1.
 
 ```{r sw_model_plot2}
-sw_model("Wazny_1990", densfun = "gamma", credMass= .90, plot = TRUE)
+sw_model("Wazny_1990", densfun = "gamma", cred_mass= .90, plot = TRUE)
 
 ```
 
