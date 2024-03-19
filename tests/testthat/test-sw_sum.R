@@ -1,13 +1,13 @@
 testthat::test_that("Output is a data.frame", {
-        x <- sw_sum(trs_example7, plot = FALSE)
+        x <- sw_sum(trs_example1, plot = FALSE)
         testthat::expect_s3_class(x, "data.frame")
-        testthat::expect_true('SPD' %in% names(x))
+        testthat::expect_true('spd' %in% names(x))
 })
 
 testthat::test_that("Output is a data.frame", {
         x <- sw_sum(trs_example6, plot = FALSE)
         testthat::expect_s3_class(x, "data.frame")
-        testthat::expect_true('SPD' %in% names(x))
+        testthat::expect_true('spd' %in% names(x))
 })
 
 testthat::test_that("sw_sum does not work with invalid density function", {
@@ -16,9 +16,9 @@ testthat::test_that("sw_sum does not work with invalid density function", {
                                regexp = "not a supported distribution")
 })
 
-testthat::test_that("sw_sum does not work with invalid credMass", {
+testthat::test_that("sw_sum does not work with invalid cred_mass", {
         testthat::expect_error(sw_sum(trs_example7,
-                                      credMass = "ninety percent"))
+                                      cred_mass = "ninety percent"))
 })
 
 

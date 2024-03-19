@@ -4,7 +4,7 @@
 \alias{hdi}
 \title{Compute the highest posterior density interval (hdi)}
 \usage{
-hdi(x, a = "n_sapwood", b = "p", credMass = 0.954)
+hdi(x, a = "n_sapwood", b = "p", cred_mass = 0.954)
 }
 \arguments{
 \item{x}{A \code{data.frame} with columns ´n_sapwood´ and 'p' (the associated
@@ -16,7 +16,7 @@ and \link{sw_combine}.}
 \item{b}{The name of the column in x that lists the the associated
 probability of having n sapwood rings.}
 
-\item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
+\item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 }
 \value{
@@ -29,7 +29,7 @@ of the hdi (\emph{highest density interval}), and the associated probability 'p'
 The function first sorts the input \code{data.frame} - with columns 'n_sapwood´
 and 'p' (the associated probability) - by column 'p' in decreasing order
 and then it calculates the HDI by finding the first value of the sorted
-probabilities higher than the specified \code{credMass.} It then finds the
+probabilities higher than the specified \code{cred_mass.} It then finds the
 indices of the values that are greater than or equal to this threshold, and
 uses these indices to find the 'upper' and 'lower' limits of the hdi.
 The function also calculates the probability of the interval. The final
@@ -40,6 +40,6 @@ This function is applied in functions \link{sw_model} and \link{sw_interval}.
 \examples{
 tmp <- data.frame(n_sapwood = seq(1,30, 1),
                   p = dnorm(seq(1,30, 1), 15, 5))
-hdi(tmp, credMass = 0.954)
+hdi(tmp, cred_mass = 0.954)
 
 }

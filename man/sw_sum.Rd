@@ -12,10 +12,9 @@ sw_sum(
   waneyedge = "waneyedge",
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  credMass = 0.954,
+  cred_mass = 0.954,
   plot = FALSE,
-  scale_p = FALSE,
-  sep = ";"
+  scale_p = FALSE
 )
 }
 \arguments{
@@ -23,45 +22,44 @@ sw_sum(
 "last"), Column "sw_model" is optional. Could be the output of read_fh(x,
 header = TRUE)}
 
-\item{series}{Name of the column in \code{x} containing the ID's of the series.}
+\item{series}{Name of the column in \code{x} where ID's of the tree-ring series
+are listed as \code{character} values.}
 
-\item{last}{Name of the column in \code{x}containing the calendar year assigned to
-the last measured ring (should be \code{numeric}).}
+\item{last}{Name of the column in \code{x} where calendar years assigned to the
+last measured ring are listed (should be \code{numeric}).}
 
 \item{n_sapwood}{Name of the column in \code{x} where the number of observed
-sapwood rings are listed (should be \code{numeric}).}
+sapwood rings are listed (should be \code{numeric})}
 
 \item{waneyedge}{Name of the column in \code{x} indicating the presence
-(TRUE)/absence (FALSE) of waney edge (should be a \code{logical} vector).}
+(\code{TRUE})/absence (\code{FALSE}) of waney edge (should be a \code{logical}).}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling. Should
-be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns
-´n_sapwood´ and ´count´.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. It
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the name
+of a \code{data.frame} with sapwood data in columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
 \itemize{
-\item "lognormal" (the default value),
-\item "normal",
-\item "weibull",
-\item "gammma".
+\item \emph{lognormal} (the default value),
+\item \emph{normal},
+\item \emph{weibull},
+\item \emph{gammma}.
 }}
 
-\item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
+\item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
 \item{plot}{A \code{logical}.
 \itemize{
 \item If \code{TRUE}, \code{\link[=sw_sum_plot]{sw_sum_plot()}} is triggered and a ggplot-style graph is
 returned with the summed probability density (SPD).
-\item If \code{FALSE}, a list with the numeric output of the modelling process is returned.
+\item If \code{FALSE}, a list with the numeric output of the modelling process is
+returned.
 }}
 
 \item{scale_p}{A \code{logical}. If \code{TRUE} the summed probability density is
-scaled to 1.}
-
-\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.}
+scaled to 1 (default).}
 }
 \value{
 Depends on the value of \code{plot.}

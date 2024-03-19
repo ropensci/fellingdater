@@ -29,6 +29,9 @@ row names.`
 This function reads a Heidelberg format file (.fh) containing
 ring width data and returns the HEADER fields as attributes of the
 \code{data.frame}´with the measurement data.
+
+The Heidelberg file format is described in detail here:
+https://www.treeringsociety.org/resources/SOM/Brewer_Murphy_SupplementaryMaterial.pdf
 }
 \details{
 This function reads .fh file with ring width data in either block
