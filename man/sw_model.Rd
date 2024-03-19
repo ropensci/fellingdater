@@ -7,30 +7,31 @@
 sw_model(
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  credMass = 0.954,
-  sep = ";",
-  plot = TRUE
+  cred_mass = 0.954,
+  source = NA,
+  plot = FALSE
 )
 }
 \arguments{
 \item{sw_data}{The name of the sapwood data set to use for modelling. It
-should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path
-to a .csv file with columns \code{n_sapwood} and \code{count}.}
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the name
+of a \code{data.frame} with sapwood data in columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function to fit to the sapwood data set.
-Supported values are:
+Should be one of:
 \itemize{
-\item "lognormal" (the default value),
-\item "normal",
-\item "weibull",
-\item "gamma".
+\item \emph{lognormal} (the default value),
+\item \emph{normal},
+\item \emph{weibull},
+\item \emph{gammma}.
 }}
 
-\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
+\item{cred_mass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
 within the credible interval (default = .954).}
 
-\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from a user-defined .csv-file.}
+\item{source}{A character string with info on the data source. This info is
+incorporated in the output when a sapwood data set is provided from a
+user-defined \code{data.frame}.}
 
 \item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is
 returned. When \code{FALSE}, a list with numeric output of the modelling process

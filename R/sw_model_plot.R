@@ -13,7 +13,7 @@
 #' tmp <- sw_model(
 #'   sw_data = "Hollstein_1980",
 #'   densfun = "lognormal",
-#'   credMass = .95,
+#'   cred_mass = .95,
 #'   plot = FALSE
 #' )
 #' sw_model_plot(tmp)
@@ -47,8 +47,10 @@ sw_model_plot <-
     as.data.frame(stats::spline(
       x$sapwood_model$n_sapwood,
       x$sapwood_model$model_fit,
-      xout = seq(1, max, 0.2)
+      # xout = seq(1, max, 0.2)
+      xout = seq(1, 100, 0.2)
     ))
+  spline_int <- subset(spline_int, y > 1e-02)
 
   p <- ggplot2::ggplot() +
     ggplot2::geom_col(

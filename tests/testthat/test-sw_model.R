@@ -1,15 +1,15 @@
-testthat::test_that("credMass is a number between 0 and 1", {
-        testthat::expect_error(sw_model(credMass = -5),
-                               regexp = "credMass")
-        testthat::expect_error(sw_model(credMass = "nulkommadink"),
-                               regexp = "credMass")
-        testthat::expect_error(sw_model(credMass = 34.56),
-                               regexp = "credMass")
+testthat::test_that("cred_mass is a number between 0 and 1", {
+        testthat::expect_error(sw_model(cred_mass = -5),
+                               regexp = "cred_mass")
+        testthat::expect_error(sw_model(cred_mass = "nulkommadink"),
+                               regexp = "cred_mass")
+        testthat::expect_error(sw_model(cred_mass = 34.56),
+                               regexp = "cred_mass")
 })
 
 testthat::test_that("sw_data exists", {
         testthat::expect_error(sw_model(sw_data = "Van_Daele_1978"),
-                               regexp = "sw_data should be")
+                               regexp = "object 'Van_Daele_1978' not found")
 })
 
 testthat::test_that("sw_model does not work with invalid density function", {
@@ -19,7 +19,7 @@ testthat::test_that("sw_model does not work with invalid density function", {
 
 testthat::test_that("sw_model with plot FALSE returns list", {
         model = sw_model(densfun = "normal",
-                         credMass = 0.933,
+                         cred_mass = 0.933,
                          plot = FALSE)
         testthat::expect_type(model,
                               "list")
@@ -35,8 +35,8 @@ testthat::test_that("sw_model with plot FALSE returns list", {
                               "double")
 })
 
-testthat::test_that("d.dens does not work with invalid density function", {
-        testthat::expect_error(d.count(densfun = "nuka-cola", ),
+testthat::test_that("d_dens does not work with invalid density function", {
+        testthat::expect_error(d_dens(densfun = "nuka-cola", ),
                                regexp = "not a supported distribution")
 })
 
