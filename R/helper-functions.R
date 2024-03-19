@@ -1,0 +1,144 @@
+#' Helper function to scale a Probability Density Function (PDF) to a
+#' Probability Frequency Function.
+#' @noRd
+d_dens <- function(densfun = densfun,
+                   x = x,
+                   param1 = 0,
+                   param2 = 1,
+                   log = FALSE,
+                   n = 1) {
+  if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
+    stop(sprintf(
+      "!!! '%s' is not a supported distribution !!!",
+      densfun
+    ))
+  }
+  if (densfun == "lognormal") {
+    n * stats::dlnorm(
+      x = x,
+      meanlog = param1,
+      sdlog = param2,
+      log = log
+    )
+  } else if (densfun == "normal") {
+    n * stats::dnorm(
+      x = x,
+      mean = param1,
+      sd = param2,
+      log = log
+    )
+  } else if (densfun == "weibull") {
+    n * stats::dweibull(
+      x = x,
+      shape = param1,
+      scale = param2,
+      log = log
+    )
+  } else if (densfun == "gamma") {
+    n * stats::dgamma(
+      x = x,
+      shape = param1,
+      rate = param2,
+      log = log
+    )
+  }
+}
+
+
+#' Helper function to rescale probabilities between [0, 1].
+#' @noRd
+rescale <- function(x,
+                    floor = 0,
+                    ceiling = 1) {
+  if (max(x, na.rm = TRUE) == 0) {
+    x
+  } else {
+    (x - min(x, na.rm = TRUE)) * (ceiling - floor) /
+                  (max(x, na.rm = TRUE) - min(x, na.rm = T))
+  }
+}
+
+
+
+#' Helper function to check input for sw_combine, fd_report and sw_sum
+#' @noRd
+
+check_input <- function(x = x,
+                        series = series,
+                        last = last,
+                        n_sapwood = n_sapwood,
+                        waneyedge = waneyedge,
+                        sw_data = sw_data,
+                        cred_mass = cred_mass,
+                        densfun = densfun) {
+  if (!is.data.frame(x)) {
+    stop("Input 'x' must be a dataframe.")
+  }
+
+  # Check columns exist
+  if (!series %in% names(x)) {
+    stop("--> column 'series' does not exist")
+  }
+  if (!last %in% names(x)) {
+    stop("--> column 'last' does not exist")
+  }
+  if (!n_sapwood %in% names(x)) {
+    stop("--> column 'n_sapwood' does not exist")
+  }
+  if (!waneyedge %in% names(x)) {
+    stop("--> column 'waneyedge' does not exist")
+  }
+  series <- x[, series] # check for NA's
+  if (any(is.na(series))) {
+    stop("--> some 'series' have no id")
+  }
+
+  if (is.character(x[, n_sapwood])) {
+    # was !is.numeric !!!
+    stop("--> 'n_sapwood' must be a numeric vector")
+  }
+
+  if (!is.numeric(x[, last])) {
+    stop("--> 'last' must be a numeric vector")
+  }
+
+  if (!is.logical(x[, waneyedge])) {
+    # check is.logical
+    stop("--> 'waneyedge' should be a logical vector (TRUE/FALSE),
+indicating the presence of waney edge.\n")
+  }
+
+  if (is.na(cred_mass) || cred_mass <= 0 || cred_mass >= 1) {
+    stop("--> cred_mass must be between 0 and 1")
+  }
+
+  if (!is.character(sw_data)) {
+    stop("--> sw_data should be one of `sw_data_overview()`
+         or the name a data.frame with numeric values in columns
+         `n_sapwood` and `count`.)")
+  }
+
+  if (all(
+    !sw_data %in% sw_data_overview(),
+    !exists(sw_data),
+    !sw_data %in% colnames(x)
+  )) {
+    stop(
+      sprintf(
+        "--> sw_data should be one of `sw_data_overview()`
+or the name a data.frame with columns `n_sapwood` and `count`, not '%s'.",
+        sw_data
+      )
+    )
+  }
+
+  if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
+    stop(
+      sprintf(
+        "\n'%s' is not a supported distribution.
+          \n`densfun` must be one of c('lognormal', 'normal', 'weibull', 'gamma')",
+        densfun
+      )
+    )
+  }
+}
