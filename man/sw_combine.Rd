@@ -12,8 +12,7 @@ sw_combine(
   waneyedge = "waneyedge",
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  sep = ";",
-  credMass = 0.954,
+  cred_mass = 0.954,
   hdi = TRUE,
   plot = FALSE
 )
@@ -37,23 +36,20 @@ sapwood rings are listed (should be \code{numeric}).}
 \item{waneyedge}{Name of the column in \code{x} indicating the presence
 (\code{TRUE})/absence (\code{FALSE}) of waney edge (should be a \code{logical} vector).}
 
-\item{sw_data}{The name of the sapwood data set to use for modelling. Should
-be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file with columns
-´n_sapwood´ and ´count´.}
+\item{sw_data}{The name of the sapwood data set to use for modelling. It
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the name
+of a \code{data.frame} with sapwood data in columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
 \itemize{
-\item "lognormal" (the default value),
-\item "normal",
-\item "weibull",
-\item "gammma".
+\item \emph{lognormal} (the default value),
+\item \emph{normal},
+\item \emph{weibull},
+\item \emph{gammma}.
 }}
 
-\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.}
-
-\item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
+\item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
 \item{hdi}{A \code{logical} parameter. If \code{TRUE}, the lower and upper limit of the
@@ -77,8 +73,6 @@ multiple sapwood estimates into a single felling date range.
 \examples{
 # a data set in which all series have preserved sapwood
 
-trs_example1
-sw_combine(trs_example1, plot = FALSE)
 sw_combine(trs_example1, plot = TRUE)
 
 # a data set in which one series has an exact felling date (= waney edge preserved)
@@ -89,7 +83,7 @@ sw_combine(trs_example2, plot = TRUE)
 # a data set in which multiples series have an exact felling date
 
 trs_example3
-sw_combine(trs_example3, plot= FALSE)
+sw_combine(trs_example3, plot = FALSE)
 
 }
 \seealso{

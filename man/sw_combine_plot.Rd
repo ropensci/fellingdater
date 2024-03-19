@@ -4,7 +4,7 @@
 \alias{sw_combine_plot}
 \title{Plot the output of \code{\link[=sw_combine]{sw_combine()}}}
 \usage{
-sw_combine_plot(x)
+sw_combine_plot(x, ...)
 }
 \arguments{
 \item{x}{Output of \code{\link[=sw_combine]{sw_combine()}}.}
@@ -21,6 +21,5 @@ with agreement indices for the global model.
 trs_example2
 combo <- sw_combine(trs_example2)
 sw_combine_plot(combo)
-
 
 }
