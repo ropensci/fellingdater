@@ -32,7 +32,8 @@ series and references are removed from the output.}
 (default).}
 
 \item{sort_by}{The correlation value by which the output is sorted for each
-series in \code{x}.}
+series in \code{x}. One of "r_pearson", "t_St", "glk", "glk_p", "t_BP", "t_Ho".
+Default to "t_Ho"}
 }
 \value{
 The function returns a list of correlation matrices if \code{output} is
