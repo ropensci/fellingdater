@@ -14,7 +14,7 @@
 #' tmp <- sw_combine(trs_example2)
 #' sw_combine_plot(tmp)
 #'
-sw_combine_plot <- function(x, ...) {
+sw_combine_plot <- function(x) {
 
   if (all(
     !(attributes(x)$names) %in% c(

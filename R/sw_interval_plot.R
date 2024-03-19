@@ -26,8 +26,8 @@
 sw_interval_plot <-
         function(x,
                  area_fill = "tomato3",
-                 line_color = "tomato3",
-                 ...) {
+                 line_color = "tomato3"
+                 ) {
 
   if (!all(c("year", "n_sapwood", "p") %in% names(x))) {
        stop("Input structure differs from the expected output of sw_interval()")

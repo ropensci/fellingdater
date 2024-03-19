@@ -25,8 +25,8 @@ sw_model_plot <-
         function(x,
                  bar_fill = "steelblue3",
                  bar_color = "grey60",
-                 line_color = "red3",
-                 ...) {
+                 line_color = "red3"
+                 ) {
   if (!all(names(x) %in% c(
     "sapwood_data",
     "n",
@@ -39,6 +39,9 @@ sw_model_plot <-
   ) {
     stop("Input differs from output sw_model()")
   }
+
+  # to avoid notes in CMD check
+  count <- n_sapwood <- y <- NULL
 
   max <- x$range[3]
   hdi_lower <- x$hdi_model[[1]]

@@ -63,8 +63,11 @@ returned of the individual and combined estimate of the felling date. If
 }
 \value{
 Depends on the value of plot. If \code{TRUE} a ggplot-style is returned,
-when \code{FALSE} a \code{data.frame} with the combined probability and modelling
-parameters
+when \code{FALSE} a \code{data.frame} with the combined probability ($raw_data$comb),
+the modelling parameters ($sapwood_data, $sapwood_model, $cred_mass),
+the Highest Posterior Density Interval for combined combined felling date
+interval ($hdi_combine), and the Agreement indices for the model ($A_model)
+and individual series ($individual_series$agr_index).
 }
 \description{
 This function assesses whether it is possible to combine

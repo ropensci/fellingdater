@@ -18,7 +18,7 @@ sw_sum(
 )
 }
 \arguments{
-\item{x}{A \code{data.frame} containing columns c("series", "swr", "waneyedge" ,
+\item{x}{A \code{data.frame} with columns c("series", "swr", "waneyedge" ,
 "last"), Column "sw_model" is optional. Could be the output of read_fh(x,
 header = TRUE)}
 

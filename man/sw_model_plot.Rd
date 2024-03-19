@@ -8,8 +8,7 @@ sw_model_plot(
   x,
   bar_fill = "steelblue3",
   bar_color = "grey60",
-  line_color = "red3",
-  ...
+  line_color = "red3"
 )
 }
 \arguments{
@@ -32,7 +31,7 @@ a data set of observed sapwood numbers, as computed by \code{\link[=sw_model]{sw
 tmp <- sw_model(
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  credMass = .95,
+  cred_mass = .95,
   plot = FALSE
 )
 sw_model_plot(tmp)

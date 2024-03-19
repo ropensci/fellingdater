@@ -4,7 +4,7 @@
 \alias{sw_interval_plot}
 \title{Plot function for the output of \code{\link[=sw_interval]{sw_interval()}}}
 \usage{
-sw_interval_plot(x, area_fill = "tomato3", line_color = "tomato3", ...)
+sw_interval_plot(x, area_fill = "tomato3", line_color = "tomato3")
 }
 \arguments{
 \item{x}{Output of \code{\link[=sw_interval]{sw_interval()}}.}
@@ -14,7 +14,8 @@ sw_interval_plot(x, area_fill = "tomato3", line_color = "tomato3", ...)
 \item{line_color}{Line color for the fitted distribution.}
 }
 \value{
-A ggplot-style graph.
+A ggplot-style graph, with calendar years on the X-axis and the
+probability (p) on the Y-axis.
 }
 \description{
 Returns a ggplot-style graph of the probability density function for the

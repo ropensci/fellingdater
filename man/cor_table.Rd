@@ -8,7 +8,7 @@ cor_table(
   x,
   y = NULL,
   min_overlap = 50,
-  remove.duplicates = TRUE,
+  remove_duplicates = TRUE,
   output = "table",
   sort_by = "t_Ho"
 )
@@ -25,7 +25,7 @@ represents a measurement series or chronology, and row names correspond to
 \item{min_overlap}{A \code{numeric} value specifying the minimum overlap required
 between series for correlation calculation.}
 
-\item{remove.duplicates}{A logical value. If \code{TRUE}, identical pairs of
+\item{remove_duplicates}{A logical value. If \code{TRUE}, identical pairs of
 series and references are removed from the output.}
 
 \item{output}{The desired output format, either "matrix" or "table"

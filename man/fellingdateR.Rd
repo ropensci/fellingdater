@@ -34,6 +34,8 @@ Other contributors:
 \itemize{
   \item Koen Van Daele (\href{https://orcid.org/0000-0002-8153-2978}{ORCID}) [contributor]
   \item Ronald Visser (\href{https://orcid.org/0000-0001-6966-1729}{ORCID}) [contributor]
+  \item Antonio Jesus Pérez-Luque (\href{https://orcid.org/0000-0002-1747-0469}{ORCID}) [reviewer]
+  \item Nicholas John Tierney (\href{https://orcid.org/0000-0003-1460-8722}{ORCID}) [reviewer]
 }
 
 }

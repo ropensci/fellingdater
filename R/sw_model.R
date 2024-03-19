@@ -42,6 +42,9 @@ sw_model <-
     if (is.na(cred_mass) || cred_mass <= 0 || cred_mass >= 1) {
       stop("--> cred_mass must be between 0 and 1")
     }
+    # to avoid notes in CMD check
+    count <- n_sapwood <- model_fit <- p <- NULL
+
 
     if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
       stop(
