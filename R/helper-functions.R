@@ -142,3 +142,19 @@ or the name a data.frame with columns `n_sapwood` and `count`, not '%s'.",
     )
   }
 }
+
+#' Helper function to define a custom theme for plotting in ggplot
+#' @noRd
+theme_fdr <- function(){
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    plot.title = ggtext::element_markdown(),
+    plot.title.position = "plot",
+    axis.text = ggplot2::element_text(size = 10),
+    panel.grid.minor.y = ggplot2::element_blank(),
+    panel.grid.major.y = ggplot2::element_blank(),
+    legend.position = "none",
+    strip.background = ggplot2::element_blank(),
+    strip.text.y = ggplot2::element_blank()
+  )
+}

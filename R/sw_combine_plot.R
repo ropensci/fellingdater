@@ -217,12 +217,6 @@ sw_combine_plot <- function(x) {
           ifelse(is.na(n_sapwood), "- ", as.character(n_sapwood)),
           ")",
           "\n "
-          # ifelse(is.na(agr_index),
-          #   "",
-          #   paste0("A_i = ", round(
-          #     as.numeric(agr_index), 1
-          #   ), "%")
-          # )
         ),
         hjust = 1
       ),
@@ -256,15 +250,10 @@ sw_combine_plot <- function(x) {
         20
       )
     ) +
+    theme_fdr() +
     ggplot2::theme(
-      axis.text = ggplot2::element_text(size = 10),
       axis.title.y = ggplot2::element_blank(),
       axis.text.y = ggplot2::element_blank(),
-      panel.grid.minor.y = ggplot2::element_blank(),
-      panel.grid.major.y = ggplot2::element_blank(),
-      legend.position = "none",
-      strip.background = ggplot2::element_blank(),
-      strip.text.y = ggplot2::element_blank()
     ) +
     ggplot2::xlab("calendar year") +
 

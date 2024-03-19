@@ -111,13 +111,14 @@ sw_sum_plot <- function(x,
         20
       )
     ) +
-    ggplot2::theme_minimal() +
-    ggplot2::xlab("calendar year") +
-    ggplot2::theme(
-      axis.text = ggplot2::element_text(size = 10),
-      panel.grid.minor.y = ggplot2::element_blank(),
-      panel.grid.major.y = ggplot2::element_blank(),
-      legend.position = "none"
-    )
+    theme_fdr() +
+    # ggplot2::theme_minimal() +
+    ggplot2::xlab("calendar year")
+    # ggplot2::theme(
+    #   axis.text = ggplot2::element_text(size = 10),
+    #   panel.grid.minor.y = ggplot2::element_blank(),
+    #   panel.grid.major.y = ggplot2::element_blank(),
+    #   legend.position = "none"
+    # )
   return(p)
 }

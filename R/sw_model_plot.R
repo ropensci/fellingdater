@@ -100,7 +100,6 @@ sw_model_plot <-
       linewidth = 1,
       color = line_color
     ) +
-    ggplot2::theme_minimal() +
     ggplot2::scale_x_continuous(breaks = seq(0, 100, by = 10)) +
     ggplot2::labs(
       subtitle = paste0(
@@ -120,10 +119,11 @@ sw_model_plot <-
     ) +
     ggplot2::xlab("number of sapwood rings") +
     ggplot2::ylab("n\n") +
+    theme_fdr() +
     ggplot2::theme(
-      plot.title = ggtext::element_markdown(),
       plot.subtitle = ggtext::element_markdown(hjust = 0),
-      plot.title.position = "plot"
+      panel.grid.major.y = ggplot2::element_line(),
+      panel.grid.minor.y = ggplot2::element_line()
     )
   suppressWarnings(print(p))
 }
