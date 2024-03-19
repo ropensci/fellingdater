@@ -117,7 +117,10 @@ process is returned.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">sw_model</span><span class="op">(</span><span class="st">"Sohar_2012_ELL_c"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">sw_model</span><span class="op">(</span>sw_data <span class="op">=</span> <span class="st">"Sohar_2012_ELL_c"</span>,</span></span>
+<span class="r-in"><span>          densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span></span>
+<span class="r-in"><span>          cred_mass <span class="op">=</span> <span class="fl">.095</span>,</span></span>
+<span class="r-in"><span>          plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $sapwood_data</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Sohar_2012_ELL_c"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -241,7 +244,7 @@ process is returned.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $hdi_model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   lower upper         p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     7    18 0.9555939</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    11    11 0.1386953</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">sw_model</span><span class="op">(</span><span class="st">"Hollstein_1980"</span><span class="op">)</span></span></span>
