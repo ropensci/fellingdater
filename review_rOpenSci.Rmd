@@ -9,6 +9,8 @@ editor_options:
 
 # Reply to review
 
+# Review by Antonio Pérez-Luque
+
 > Sorry for the slight delay in the review. Here it is.
 >
 > ## Package Review
@@ -521,7 +523,7 @@ editor_options:
 >
 >     ***You are probably right. I might have overcomplicated the
 >     sw-functions with this. So I removed this option from this and all
->     other sw_functions. Now a user-defined custom dataset  -
+>     other sw_functions. Now a user-defined custom dataset -
 >     a`data.frame`*** ***with columns `n_sapwood` and `count` - can be
 >     supplied to the function.***
 >
@@ -970,33 +972,42 @@ this is not an option that would be used frequently., and is certainly
 not required. Removing it from the function allows to shorten the code a
 bit.***
 
-# Reviewer 1
+# Review by Nicholas Tierney
 
-Package Review Please check off boxes as applicable, and elaborate in
-comments below. Your review is not limited to these topics, as described
-in the reviewer guide
+```         
+          ## Package Review
+```
 
-Briefly describe any working relationship you have (had) with the
-package authors. ☒ As the reviewer I confirm that there are no conflicts
-of interest for me to review this work (if you are unsure whether you
-are in conflict, please speak to your editor before starting your
-review). Documentation The package includes all the following forms of
-documentation:
+*Please check off boxes as applicable, and elaborate in comments below.
+Your review is not limited to these topics, as described in the reviewer
+guide*
 
-☐ A statement of need: clearly stating problems the software is designed
-to solve and its target audience in README The opening paragraphs of the
-README are good, and I think that this R package solves a challenging
-problem, so firstly, well done! I think could be made a little bit
-clearer in terms of the problem it solves, and the input it takes. While
-I find the photos useful, it initially made me think that this software
-takes images as input. I would suggest something more like what is in
-the vignette to start:
+-   **Briefly describe any working relationship you have (had) with the
+    package authors.**
+-   [x] As the reviewer I confirm that there are no [conflicts of
+    interest](https://devguide.ropensci.org/policies.html#coi) for me to
+    review this work (if you are unsure whether you are in conflict,
+    please speak to your editor *before* starting your review).
 
-fellingdateR offers a set of functions that assist in inferring felling
-date estimates from dated tree-ring series.
+#### Documentation
+
+The package includes all the following forms of documentation:
+
+-   [ ] **A statement of need:** clearly stating problems the software
+    is designed to solve and its target audience in README
+
+The opening paragraphs of the README are good, and I think that this R
+package solves a challenging problem, so firstly, well done! I think
+could be made a little bit clearer in terms of the problem it solves,
+and the input it takes. While I find the photos useful, it initially
+made me think that this software takes images as input. I would suggest
+something more like what is in the vignette to start:
+
+> `fellingdateR` offers a set of functions that assist in inferring
+> felling date estimates from dated tree-ring series.
 
 Then, describe the problem you want to solve, which I think is
-estimating when the timber was cut down. Then show the data, explain
+estimating *when* the timber was cut down. Then show the data, explain
 what the columns mean, and how this might be a typical example of dated
 tree-ring series data.
 
@@ -1005,12 +1016,12 @@ problem the package solves.
 
 The rest of the first paragraph:
 
-The presence of (partially) preserved sapwood or waney edge allows to
-estimate a range for the actual felling date, for individual series as
-well as for a group of timbers. Furthermore, an additional function
-provides a tool to sum sapwood probability distributions, comparable to
-'summed probability densities' commonly applied to sets of radiocarbon
-(14C) dates.
+> The presence of (partially) preserved sapwood or waney edge allows to
+> estimate a range for the actual felling date, for individual series as
+> well as for a group of timbers. Furthermore, an additional function
+> provides a tool to sum sapwood probability distributions, comparable
+> to 'summed probability densities' commonly applied to sets of
+> radiocarbon (14C) dates.
 
 Is important, but I think could go into more of a methods/general
 introduction part of the README, perhaps further down.
@@ -1021,321 +1032,531 @@ effectively I think they should contain a caption.
 I think the target audience could be more clearly stated in the README.
 Perhaps at the end of the first paragraph.
 
-☒ Installation instructions: for the development version of package and
-any non-standard dependencies in README All installed well for me!
+-   [x] **Installation instructions:** for the development version of
+    package and any non-standard dependencies in README
 
-☒ Vignette(s): demonstrating major functionality that runs successfully
-locally It did run successfully locally! T and F should be specified as
-TRUE and FALSE.
+All installed well for me!
 
-☒ Function Documentation: for all exported functions ☒ Examples: (that
-run successfully locally) for all exported functions The examples ran
-without error, using:
+-   [x] **Vignette(s):** demonstrating major functionality that runs
+    successfully locally
 
-devtools::run_examples() ☐ Community guidelines: including contribution
-guidelines in the README or CONTRIBUTING, and DESCRIPTION with URL,
-BugReports and Maintainer (which may be autogenerated via
-[Authors\@R](mailto:Authors@R){.email}). There are no community
-guidelines in the README, I see them in the file:
-.github/CONTRIBUTING.md, but these are not linked to in the README. Once
-these are linked, e.g., by writing something like:
+It did run successfully locally! `T` and `F` should be specified as
+`TRUE` and `FALSE`.
 
+-   [x] **Function Documentation:** for all exported functions
+-   [x] **Examples:** (that run successfully locally) for all exported
+    functions
+
+The examples ran without error, using:
+
+```         
+devtools::run_examples()
+```
+
+-   [ ] **Community guidelines:** including contribution guidelines in
+    the README or CONTRIBUTING, and DESCRIPTION with `URL`, `BugReports`
+    and `Maintainer` (which may be autogenerated via `Authors@R`).
+
+There are no community guidelines in the README, I see them in the file:
+`.github/CONTRIBUTING.md`, but these are not linked to in the README.
+Once these are linked, e.g., by writing something like:
+
+```         
 ## Code of Conduct
 
-Please note that the visdat project is released with a [Contributor Code
-of
-Conduct](https://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md).
-By contributing to this project, you agree to abide by its terms.
-Functionality ☒ Installation: Installation succeeds as documented. ☒
-Functionality: Any functional claims of the software been confirmed. ☒
-Performance: Any performance claims of the software been confirmed. ☒
-Automated tests: Unit tests cover essential functions of the package and
-a reasonable range of inputs and conditions. All tests pass on the local
-machine. All tests pass - unit tests seem quite good coverage, evaluated
-using devtools::test_coverage().
+Please note that the visdat project is released with a [Contributor Code of Conduct](https://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md). By contributing to this project, you agree to abide by its terms.
+```
 
-☐ Packaging guidelines: The package conforms to the rOpenSci packaging
-guidelines.
+#### Functionality
 
-package name passes checks on available::available("fellingdateR")
+-   [x] **Installation:** Installation succeeds as documented.
+-   [x] **Functionality:** Any functional claims of the software been
+    confirmed.
+-   [x] **Performance:** Any performance claims of the software been
+    confirmed.
+-   [x] **Automated tests:** Unit tests cover essential functions of the
+    package and a reasonable range of inputs and conditions. All tests
+    pass on the local machine.
 
-I think if possible the author should consider renaming the package to
-all lowercase, fellingdater or fellingdatr.
+All tests pass - unit tests seem quite good coverage, evaluated using
+`devtools::test_coverage()`.
 
-There are other considerations that I think mean it does not currently
-conform to the rOpenSci packaging guidelines. Rather than discuss them
-in too much depth here, I will put them in the review section below.
+-   [ ] **Packaging guidelines**: The package conforms to the rOpenSci
+    packaging guidelines.
+
+-   package name passes checks on `available::available("fellingdateR")`
+
+-   I think if possible the author should consider renaming the package
+    to all lowercase, `fellingdater` or `fellingdatr`.
+
+-   There are other considerations that I think mean it does not
+    currently conform to the rOpenSci packaging guidelines. Rather than
+    discuss them in too much depth here, I will put them in the review
+    section below.
 
 Estimated hours spent reviewing: 5
 
-☒ Should the author(s) deem it appropriate, I agree to be acknowledged
-as a package reviewer ("rev" role) in the package DESCRIPTION file.
-Review Comments I wanted to open by saying that while I have a lot of
-feedback, I think that this is a great piece of software that helps
-solve a tough problem, so well done on the author for writing this! I
-hope that the feedback is useful 😄 . Please let me know if something is
-not clear or if you need help implementing these, or further
-information. Thank you for submitting this software, I enjoyed reviewing
-it.
+-   [x] Should the author(s) deem it appropriate, I agree to be
+    acknowledged as a package reviewer ("rev" role) in the package
+    DESCRIPTION file.
 
-General comments There are a fair few examples from the rOpenSci
-packaging guide, which I don't think are followed, I have gone through
-the guide and written some examples here. After the author makes these
-changes, I would recommend they double check the guide.
+------------------------------------------------------------------------
 
-Recommend making sure all functions and objects use snake_case.
+### Review Comments
 
-argument name uses x for most data frame inputs. I would recommend
-considering naming data things data or .data or similar to help
-distinguish them from a vector, x. Not required but worth considering, I
-think.
+I wanted to open by saying that while I have a lot of feedback, I think
+that this is a great piece of software that helps solve a tough problem,
+so well done on the author for writing this! I hope that the feedback is
+useful 😄 . Please let me know if something is not clear or if you need
+help implementing these, or further information. Thank you for
+submitting this software, I enjoyed reviewing it.
 
-There is some use of cat in the package, recommend using cli as
-described in the tidyverse style guide on writing error messages. I
-expand on this below.
+#### General comments
 
-Code style is not consistent, there is mixed use of the number of
-indentations : between 0 and 8 spaces. I would recommend applying the
-tidyverse style guide to the package with styler::style_pkg()
+There are a fair few examples from the [rOpenSci packaging
+guide](https://devguide.ropensci.org/building.html), which I don't think
+are followed, I have gone through the guide and written some examples
+here. After the author makes these changes, I would recommend they
+double check the guide.
 
-Indenting code is important but this 8 space indentation is not
-consistent with other indentation used in your package, and when reading
-the code gives the impression that the code is happening inside
-some/several if/else/for control statements. I would recommend applying
-a style guide such as the tidyverse style guide or similar, to the code,
-so that indentation is consistent.
+-   Recommend making sure all functions and objects use snake_case.
 
-Due to indentation, a lot of lines of code go over 80 characters. I
-think it is worth the time to re-indent, or rewrite some code by using
-explaining variables, so the code doesn't go over 80 characters
+-   argument name uses `x` for most data frame inputs. I would recommend
+    considering naming data things `data` or `.data` or similar to help
+    distinguish them from a vector, `x`. Not required but worth
+    considering, I think.
 
-= is sometimes used over \<- - I recommend using \<- consistently.
+-   There is some use of `cat` in the package, recommend using `cli` as
+    described in the [tidyverse style guide on writing error
+    messages](https://style.tidyverse.org/error-messages.html). I expand
+    on this below.
 
-There is no top level documentation for ?fellingdateR - this could be
-achieved using usethis::use_package_doc().
+-   Code style is not consistent, there is mixed use of the number of
+    indentations : between 0 and 8 spaces. I would recommend applying
+    the tidyverse style guide to the package with `styler::style_pkg()`
 
-package should use a website. See the ropensci guide on building a
-website
+-   Indenting code is important but this 8 space indentation is not
+    consistent with other indentation used in your package, and when
+    reading the code gives the impression that the code is happening
+    inside some/several if/else/for control statements. I would
+    recommend applying a style guide such as the tidyverse style guide
+    or similar, to the code, so that indentation is consistent.
 
-internal functions, like d.dens and d.count should have a \#' @noRd tag
-to mark is as an internal function
+-   Due to indentation, a lot of lines of code go over 80 characters. I
+    think it is worth the time to re-indent, or rewrite some code by
+    using explaining variables, so the code doesn't go over 80
+    characters
 
-examples in code should use all argument parameters
+-   `=` is sometimes used over `<-` - I recommend using `<-`
+    consistently.
 
-Recommend the author reads through the CRAN gotchas
+-   There is no top level documentation for `?fellingdateR` - this could
+    be achieved using `usethis::use_package_doc()`.
 
-What does the sw stand for in things like sw_combine and co?
+-   package should use a website. See the [ropensci guide on building a
+    website](https://devguide.ropensci.org/building.html#website)
 
-Some of the documentation uses reversed backticks, which I haven't seen
-before, e.g.: ´n_sapwood´ and ´count´
+-   internal functions, like `d.dens` and `d.count` should have a
+    `#' @noRd` tag to mark is as an internal function
 
-There are still a few lines of code that don't pass the
-goodpractice::gp() checks. In particular, I think these comments are
-important:
+-   examples in code should use all argument parameters
 
-✖ write short and simple functions. These functions have high cyclomatic
-complexity (\>50): read_fh (150). You can make them easier to reason
-about by encapsulating distinct steps of your function into
-subfunctions. ✖ use '\<-' for assignment instead of '='. '\<-' is the
-standard, and R users and developers are used it and it is easier to
-read your code for them if you use '\<-'. ✖ avoid long code lines, it is
-bad for readability. Also, many people prefer editor windows that are
-about 80 characters wide. Try make your lines shorter than 80 characters
-✖ avoid sapply(), it is not type safe. It might return a vector, or a
-list, depending on the input data. Consider using vapply() instead. ✖
-avoid 1:length(...), 1:nrow(...), 1:ncol(...), 1:NROW(...) and
-1:NCOL(...) expressions. They are error prone and result 1:0 if the
-expression on the right hand side is zero. Use seq_len() or seq_along()
-instead. ✖ avoid 'T' and 'F', as they are just variables which are set
-to the logicals 'TRUE' and 'FALSE' by default, but are not reserved
-words and hence can be overwritten by the user. Hence, one should always
-use 'TRUE' and 'FALSE' for the logicals. You interchange between using =
-and \<- in your code. I would recommend using \<- only. See for example
-in cor_table.R: if (is.null(y)) { y = x noRef = TRUE } else { noRef =
-FALSE y_ori \<- y } Error messages. I would recommend building input
-checking functions to assist in how your write up error messages. There
-are a few key benefits to this:
+-   Recommend the author reads through the [CRAN
+    gotchas](https://devguide.ropensci.org/building.html#crangotchas)
 
-The input checking function then does not get in the way of
-understanding the intent of your function code. You can reuse the input
-checking functions, so you don't need to write them again. using cli to
-build the error messages allows you to use glue strings, so you don't
-have to try and quote or inject other information into the message
-string, it should be easier to add details you care about. Error
-messages are hard to write well, and it's great that you've included
-some good input checking! I think you could make the error functions a
-bit better for the user by following the tidyverse style guide on error
-messages.
+-   What does the `sw` stand for in things like `sw_combine` and co?
 
-explaining variables. I've mention this a few times in the other
-functions in your package, I think it would be worthwhile searching
-through your cases of using if and if there is a long conditional in
-there, e.g.,
+-   Some of the documentation uses reversed backticks, which I haven't
+    seen before, e.g.: `´n_sapwood´ and ´count´`
 
-any(pdf_matrix[, 2:length(keycodes) + 1] == 1, na.rm = TRUE))
+-   There are still a few lines of code that don't pass the
+    `goodpractice::gp()` checks. In particular, I think these comments
+    are important:
 
-Then I think it would be worthwhile either writing a small wrapper
-function to identify this, or wrap that up in an explaining variable.
+<!-- -->
 
-plot = TRUE as a function option.
+```         
+  ✖ write short and simple
+    functions. These functions
+    have high cyclomatic
+    complexity (>50): read_fh
+    (150). You can make them
+    easier to reason about by
+    encapsulating distinct steps
+    of your function into
+    subfunctions.
+  ✖ use '<-' for
+    assignment instead of '='.
+    '<-' is the standard, and R
+    users and developers are used
+    it and it is easier to read
+    your code for them if you use
+    '<-'.
+  ✖ avoid long code lines,
+    it is bad for readability.
+    Also, many people prefer
+    editor windows that are about
+    80 characters wide. Try make
+    your lines shorter than 80
+    characters
+  ✖ avoid sapply(), it is
+    not type safe. It might return
+    a vector, or a list, depending
+    on the input data. Consider
+    using vapply() instead.
+  ✖ avoid 1:length(...),
+    1:nrow(...), 1:ncol(...),
+    1:NROW(...) and 1:NCOL(...)
+    expressions. They are error
+    prone and result 1:0 if the
+    expression on the right hand
+    side is zero. Use seq_len() or
+    seq_along() instead.
+  ✖ avoid 'T' and 'F', as
+    they are just variables which
+    are set to the logicals 'TRUE'
+    and 'FALSE' by default, but
+    are not reserved words and
+    hence can be overwritten by
+    the user.  Hence, one should
+    always use 'TRUE' and 'FALSE'
+    for the logicals.
+```
 
-I believe plotting functions should be separate to statistical
-transformation/operations. You have written these in ggplot, and so you
-can specify an autoplot method or a separate plot\_<function> command.
-The user should be able to reconstruct the plot from the data that you
-give them in these functions. E.g., they should be able to get the key
-information out, such as for sw_interval, the following information
-should be given from the function: n, hdi, and the number of sapwood
-rings. It is not clear to me how to get this information, and I think
-that this is really important that the user doesn't end up locked into a
-plot to get their vital statistics. If they want to be able to generate
-tables or other statistics, then they cannot do this programmatically,
-they would have to physically eyeball a plot and record down the
-numbers, like \`hdi (95.4%) = between 8 and 26 sapwood rings". Which is
-prone to errors. consistent file names. Some of the files have camelCase
-names (movAv.R), others are snake_case. I would recommend sticking to a
-consistent naming scheme, snake_case.
+-   You interchange between using `=` and `<-` in your code. I would
+    recommend using `<-` only. See for example in `cor_table.R`:
 
-I would try and avoid having else statements contain
-errors/stops/warnings/messages. This is because in order to understand
-the message at the end, you need to then walk back up through the
-condition of logic beforehand. The way to avoid this is to clearly state
-the error condition at the top.
+<!-- -->
 
-Input checking I would recommend writing small helpers for input
-checking, and considering using cli to help write error messages, as it
-means you could transform this:
+```         
+if (is.null(y)) {
+     y = x
+     noRef = TRUE
+}
+else {
+     noRef = FALSE
+     y_ori <- y
+}
+```
 
-if (!inherits(x, "rwl")) { warning("'x' is not class rwl") } if
-(!inherits(y, "rwl")) { warning("'y' is not class rwl") } Into:
+-   Error messages. I would recommend building input checking functions
+    to assist in how your write up error messages. There are a few key
+    benefits to this:
 
-warn_if_not_rwl(x) warn_if_not_rwl(y) And that code could look like
-this:
+    -   The input checking function then does not get in the way of
+        understanding the intent of your function code.
+    -   You can reuse the input checking functions, so you don't need to
+        write them again.
+    -   using `cli` to build the error messages allows you to use `glue`
+        strings, so you don't have to try and quote or inject other
+        information into the message string, it should be easier to add
+        details you care about.
 
-warn_if_not_rwl \<- function(x, arg = rlang::caller_arg(x), call =
-rlang::caller_env()){ cli::cli_warn( c("{arg}' is not of class {.cls
-rwl}") ) } Similarly,
+-   Error messages are hard to write well, and it's great that you've
+    included some good input checking! I think you could make the error
+    functions a bit better for the user by following the [tidyverse
+    style guide on error
+    messages](https://style.tidyverse.org/error-messages.html).
 
-increasing_consecutive_years \<- all(diff(as.numeric(row.names(x))) ==
-1) if (!increasing_consecutive_years) { stop( "The tree-ring series 'x'
-have/has no consecutive years in increasing order as rownames." ) }
+-   explaining variables. I've mention this a few times in the other
+    functions in your package, I think it would be worthwhile searching
+    through your cases of using `if` and if there is a long conditional
+    in there, e.g.,
+
+`any(pdf_matrix[, 2:length(keycodes) + 1] == 1, na.rm = TRUE))`
+
+-   Then I think it would be worthwhile either writing a small wrapper
+    function to identify this, or wrap that up in an explaining
+    variable.
+
+-   `plot = TRUE` as a function option.
+
+    -   I believe plotting functions should be separate to statistical
+        transformation/operations. You have written these in `ggplot`,
+        and so you can specify an `autoplot` method or a separate
+        `plot_<function>` command.
+    -   The user should be able to reconstruct the plot from the data
+        that you give them in these functions. E.g., they should be able
+        to get the key information out, such as for `sw_interval`, the
+        following information should be given from the function: `n`,
+        `hdi`, and the number of sapwood rings.
+    -   It is not clear to me how to get this information, and I think
+        that this is really important that the user doesn't end up
+        locked into a plot to get their vital statistics. If they want
+        to be able to generate tables or other statistics, then they
+        cannot do this programmatically, they would have to physically
+        eyeball a plot and record down the numbers, like \`hdi (95.4%) =
+        between 8 and 26 sapwood rings". Which is prone to errors.
+
+-   consistent file names. Some of the files have camelCase names
+    (`movAv.R`), others are snake_case. I would recommend sticking to a
+    consistent naming scheme, snake_case.
+
+-   I would try and avoid having `else` statements contain
+    errors/stops/warnings/messages. This is because in order to
+    understand the message at the end, you need to then walk back up
+    through the condition of logic beforehand. The way to avoid this is
+    to clearly state the error condition at the top.
+
+##### Input checking
+
+I would recommend writing small helpers for input checking, and
+considering using `cli` to help write error messages, as it means you
+could transform this:
+
+```         
+if (!inherits(x, "rwl"))  {
+     warning("'x' is not class rwl")
+}
+if (!inherits(y, "rwl"))  {
+     warning("'y' is not class rwl")
+}
+```
+
+Into:
+
+```         
+warn_if_not_rwl(x)
+warn_if_not_rwl(y)
+```
+
+And that code could look like this:
+
+```         
+warn_if_not_rwl <- function(x,
+                            arg = rlang::caller_arg(x),
+                            call = rlang::caller_env()){
+     cli::cli_warn(
+          c("{arg}' is not of class {.cls rwl}")
+     )
+}
+```
+
+Similarly,
+
+```         
+increasing_consecutive_years <- all(diff(as.numeric(row.names(x))) == 1)
+if (!increasing_consecutive_years) {
+     stop(
+          "The tree-ring series 'x' have/has no consecutive years in increasing order as rownames."
+     )
+}
+```
+
 Could be written as a function:
 
+```         
 check_if_increasing_consecutive_years(x)
-check_if_increasing_consecutive_years(y) Admittedly, I do have a strong
-preference for writing these types of functions, having written about it
-recently, but I do think that at least using explaining variables, which
-you've already done in places like:
+check_if_increasing_consecutive_years(y)
+```
 
-increasing_consecutive_years \<- all(diff(as.numeric(row.names(x))) ==
-1) Are a great idea, and there are a few notable places where that would
+Admittedly, I do have a strong preference for writing these types of
+functions, [having written about it
+recently](https://www.njtierney.com/post/2023/12/06/long-errors-smell/),
+but I do think that at least using explaining variables, which you've
+already done in places like:
+
+```         
+increasing_consecutive_years <- all(diff(as.numeric(row.names(x))) == 1)
+```
+
+Are a great idea, and there are a few notable places where that would
 help make the code a bit easier to read, e.g.,
 
-any( length(min_overlap) != 1 \| !is.numeric(min_overlap) \| min_overlap
-%% 1 != 0 \| min_overlap \< 3 ) cor_table.R Refactoring values argument
-of cor_table. There is a lot of input checking for the values argument.
-I think that things such as :
+```         
+any(
+length(min_overlap) != 1 |
+!is.numeric(min_overlap) |
+min_overlap %% 1 != 0 |
+min_overlap < 3
+)
+```
 
-if ("glk" %in% values) { And so on indicate to me that these could be
-written up as separate functions, which could return a list of their
-inputs, perhaps. These could then be delivered using switch, which I
-often forget how to use, but it would be something like:
+#### cor_table.R
 
-values_output \<- switch(values, "glk" = values_glk(inputs), "pearson" =
-values_pearson(inputs)) Examples should demonstrate all types of the
-inputs for the function arguments.
+Refactoring `values` argument of `cor_table`. There is a lot of input
+checking for the `values` argument. I think that things such as :
 
-data.R I would recommend standardising the dataset names to be all
-lowercase, so that they are easier to remember. E.g., Sohar_2012_FWE_c
-becomes: sohar_2012_fwe_c
+```         
+if ("glk" %in%  values) {
+```
 
-fd_report.R I think that fd_report could be renamed felling_report or
-felling_date_report or similar. While fd is concise, I think it doesn't
-help facilitate discoverability of the functions.
+And so on indicate to me that these could be written up as separate
+functions, which could return a list of their inputs, perhaps. These
+could then be delivered using `switch`, which I often forget how to use,
+but it would be something like:
 
-Similar to cor_table.R, I think that:
+```         
+values_output <- switch(values,
+       "glk" = values_glk(inputs),
+       "pearson" = values_pearson(inputs))
+```
 
-if (!series %in% names(df)) { stop("--\> 'series' does not exist") } if
-(!last %in% names(df)) { stop("--\> 'last' does not exist") } if
-(!n_sapwood %in% names(df)) { stop("--\> 'n_sapwood' does not exist") }
-if (!waneyedge %in% names(df)) { stop("--\> 'waneyedge' does not exist")
-} Could be rewritten as check_if_variable_exists(). Something like:
+Examples should demonstrate all types of the inputs for the function
+arguments.
 
-check_if_variable_exists \<- function(x, df, arg = rlang::caller_arg(x),
-call = rlang::caller_env()){ arg_in_data \<- x %in% names(df) if
-(!arg_in_data) { cli::cli_abort( c("{.arg {arg}} does not exist") ) } }
+#### data.R
 
-example_checker \<- function(x, series = "series", last = "last"){
-check_if_variable_exists(series, x) check_if_variable_exists(last, x) }
+I would recommend standardising the dataset names to be all lowercase,
+so that they are easier to remember. E.g., `Sohar_2012_FWE_c` becomes:
+`sohar_2012_fwe_c`
 
-example_checker(mtcars, series = "wrong")
+#### fd_report.R
+
+I think that `fd_report` could be renamed `felling_report` or
+`felling_date_report` or similar. While `fd` is concise, I think it
+doesn't help facilitate discoverability of the functions.
+
+Similar to `cor_table.R`, I think that:
+
+```         
+if (!series %in% names(df)) {
+      stop("--> 'series' does not exist")
+}
+if (!last %in% names(df)) {
+      stop("--> 'last' does not exist")
+}
+if (!n_sapwood %in% names(df)) {
+      stop("--> 'n_sapwood' does not exist")
+}
+if (!waneyedge %in% names(df)) {
+      stop("--> 'waneyedge' does not exist")
+}
+```
+
+Could be rewritten as `check_if_variable_exists()`. Something like:
+
+```         
+check_if_variable_exists <- function(x,
+                                     df,
+                                     arg = rlang::caller_arg(x),
+                                     call = rlang::caller_env()){
+     arg_in_data <- x %in% names(df)
+     if (!arg_in_data) {
+          cli::cli_abort(
+               c("{.arg {arg}} does not exist")
+          )
+     }
+}
+
+example_checker <- function(x, 
+                            series = "series", 
+                            last = "last"){
+     check_if_variable_exists(series, x)
+     check_if_variable_exists(last, x)
+}
+
+example_checker(mtcars, 
+                series = "wrong")
 
 ## Error in `check_if_variable_exists()`:
-
 ## ! `series` does not exist
+```
 
-get_header.R This function should move the cat message up the top - and
-should not use cat, instead using one of the cli functions, like
-cli_abort.
+#### get_header.R
 
-I think you could use structure instead of setting attributes to NULL:
+This function should move the `cat` message up the top - and should not
+use `cat`, instead using one of the `cli` functions, like `cli_abort`.
 
-attr(rwl, "row.names") \<- NULL attr(rwl, "po") \<- NULL attr(rwl,
-"class") \<- NULL attr(rwl, "names") \<- NULL
+I think you could use `structure` instead of setting attributes to NULL:
+
+```         
+attr(rwl, "row.names") <- NULL
+attr(rwl, "po") <- NULL
+attr(rwl, "class") <- NULL
+attr(rwl, "names") <- NULL
 
 ## becomes
 
-rwl \<- structure( rwl, row.names = NULL, po = NULL, class = NULL, names
-= NULL ) Although I think that they are functionally the same, so feel
-free to ignore!
+rwl <- structure(
+          rwl,
+          row.names = NULL,
+          po = NULL,
+          class = NULL,
+          names = NULL
+     )
+```
 
-hdi This function uses = and \<- - suggest sticking to just \<-
+Although I think that they are functionally the same, so feel free to
+ignore!
 
-movAv I think this starting chunk would be clearer if only if and not
-else is used.
+#### hdi
+
+This function uses `=` and `<-` - suggest sticking to just `<-`
+
+#### movAv
+
+I think this starting chunk would be clearer if only `if` and not `else`
+is used.
 
 The stop error can move to the top of this, so we clearly capture if
-align is not "center" or "right" or "left". This makes it easier to
+`align` is not "center" or "right" or "left". This makes it easier to
 understand the conditions of error.
 
-if (align == "center") { before \<- floor((w - 1) / 2) after \<-
-ceiling((w - 1) / 2) } else if (align == "right") { before \<- w - 1
-after \<- 0 } else if (align == "left") { before \<- 0 after \<- w - 1 }
-else { stop("'align' should be 'center', 'left' or 'right'") } I suggest
-using another explaining variable inside mean:
+```         
+if (align == "center") {
+     before <- floor((w - 1) / 2)
+     after  <- ceiling((w - 1) / 2)
+} else if (align == "right") {
+     before <- w - 1
+     after  <- 0
+} else if (align == "left") {
+     before <- 0
+     after  <- w - 1
+} else {
+     stop("'align' should be 'center', 'left' or 'right'")
+}
+```
 
+I suggest using another explaining variable inside `mean`:
+
+```         
 mean(x[max(0, (i - before)):(i + after)], na.rm = TRUE)
 
 ## to something like:
 
-earliest_to_latest \<- x[max(0, (i - before)):(i + after)]
+earliest_to_latest <- x[max(0, (i - before)):(i + after)]
 mean(earliest_to_latest, na.rm = TRUE)
 
 ## or given that this is repeated later
-
 ## potentially write this up as a function for reuse?
+mean_earliest_latest(x, i, before, after)
+```
 
-mean_earliest_latest(x, i, before, after) As that mean statement is a
-bit involved to unfurl.
+As that `mean` statement is a bit involved to unfurl.
 
-Similarly, the pattern, if (edges == "fill") { and } else if (edges ==
-"nofill") { should be bundled up into a function and applied with switch
+Similarly, the pattern, `if (edges == "fill") {` and
+`} else if (edges == "nofill") {` should be bundled up into a function
+and applied with `switch`
 
-read_fh.R Nice work in the attribution to the other previous work this
-extends. It looks like this is borrowed from dplR directly, and as such
-there are small style changes. I think it is worthwhile updating the
-code style to fit within your package. Be consistent with naming
-variables, header.taken should be header_taken etc. There are a few
-random comments that I'm not sure need to be there: \# NEW: verbose =
-TRUE, header = FALSE inp \<- readLines(fname, ok = TRUE, warn = FALSE)
-\# NEW: removes empty lines in .fh file inp \<- inp[nchar(inp) != 0] \##
-Get start and end positions of headers and data blocks header.begin \<-
-grep("\^HEADER:\$", inp) \# NEW: Quadro =\> chrono \# NEW: Double =\>
-half chrono lengths \<- numeric(n) \# commit Ronald Visser I have found
-that moving comments either into documentation or into issues to help
-track them is helpful, but I appreciate that sometimes it is best to
-leave them in the code, but just something that might be worth thinking
-about :)
+#### read_fh.R
+
+-   Nice work in the attribution to the other previous work this
+    extends. It looks like this is borrowed from `dplR` directly, and as
+    such there are small style changes. I think it is worthwhile
+    updating the code style to fit within your package.
+-   Be consistent with naming variables, `header.taken` should be
+    `header_taken` etc.
+-   There are a few random comments that I'm not sure need to be there:
+
+<!-- -->
+
+```         
+        # NEW: verbose = TRUE, header = FALSE
+        inp <- readLines(fname, ok = TRUE, warn = FALSE)
+        # NEW: removes empty lines in .fh file
+        inp <- inp[nchar(inp) != 0]
+        ## Get start and end positions of headers and data blocks
+        header.begin <- grep("^HEADER:$", inp)
+        # NEW: Quadro => chrono
+        # NEW: Double => half chrono
+lengths <- numeric(n) # commit Ronald Visser
+```
+
+I have found that moving comments either into documentation or into
+issues to help track them is helpful, but I appreciate that sometimes it
+is best to leave them in the code, but just something that might be
+worth thinking about :)
 
 Tidying up the error messages in this function would make some of these
 nested if/else clauses easier to understand.
@@ -1345,458 +1566,143 @@ would recommend breaking down the steps inside this into smaller
 functions, as this will make the code easier to reason with and maintain
 in the future.
 
-sw_combin_plot.R This is the first time I've seen \############ comment
-blocks - I'm all for stylistic choices but I am not sure this is needed,
-especially if this isn't used in other functions.
+#### sw_combin_plot.R
+
+This is the first time I've seen `############` comment blocks - I'm all
+for stylistic choices but I am not sure this is needed, especially if
+this isn't used in other functions.
 
 I've not seen this pattern to avoid R CMD Check notes before
 
-\# to avoid notes in CMD check year \<- p \<- lower \<- upper \<- COMB
-\<- last \<- n_sapwood \<- A_i \<- agreement \<- NULL My tactic has
-always been to have a separate definition of these, as answered by
-Carson Sievert on the posit community paage. I don't think there's
-anything inherently wrong with that, but I could imagine that in some
-cases this could accidentally erase inputs. Something to be aware of,
-perhaps?
+```         
+   # to avoid notes in CMD check
+   year <-
+      p <-
+      lower <-
+      upper <- COMB <- last <- n_sapwood <- A_i <- agreement <- NULL
+```
 
-I am all for using the new base R pipe \|\> - however you need to update
+My tactic has always been to have a separate definition of these, as
+answered by [Carson Sievert on the posit community
+paage](https://community.rstudio.com/t/how-to-solve-no-visible-binding-for-global-variable-note/28887).
+I don't think there's anything inherently wrong with that, but I could
+imagine that in some cases this could accidentally erase inputs.
+Something to be aware of, perhaps?
+
+I am all for using the new base R pipe `|>` - however you need to update
 your Depends in your DESCRIPTION like so in order to use it, since it
 only came out in R 4.1.0:
 
-Depends: R (\>= 4.1.0) This comment should probably live in a github
-issue or just be removed:
-
 ```         
-  # NEXT LINE TRIGGERS WARNING
-  # Warning message:
-  # Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
-  # ℹ Please use one dimensional logical vectors instead.
-  # ℹ The deprecated feature was likely used in the fellingdateR package.
-  # Please report the issue to the authors.
-  # { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
-  # replaced by:
+Depends: 
+    R (>= 4.1.0)
 ```
 
-sw_combine.R This error should check each of the conditions separately -
-either it has missing values, or it is not numeric.
+This comment should probably live in a github issue or just be removed:
 
-if (any(is.na(endDate)) \| !is.numeric(endDate)) { stop( "--\> Please
-check the column with 'end dates'. Some values are possibly missing or
-the values are not numeric" ) } sw_data_info.R I think these error
-messages would benefit from using cli, as discussed above.
+```         
+      # NEXT LINE TRIGGERS WARNING
+      # Warning message:
+      # Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
+      # ℹ Please use one dimensional logical vectors instead.
+      # ℹ The deprecated feature was likely used in the fellingdateR package.
+      # Please report the issue to the authors.
+      # { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
+      # replaced by:
+```
 
-sw_data_overview.R This is a nice function to include to facilitate data
-discovery
+#### sw_combine.R
 
-sw_interval_plot.R This code
+This error should check each of the conditions separately - either it
+has missing values, or it is not numeric.
 
-if (all( !(attributes(x)\$names) %in% c( "year", "n_sapwood", "p") ))
-stop("Input differs from output sw_interval()") Could be rewritten as an
-error function or the condition in if could be expressed as a function.
+```         
+if (any(is.na(endDate)) | !is.numeric(endDate)) {
+     stop(
+          "--> Please check the column with 'end dates'.
+Some values are possibly missing or the values are not numeric"
+     )
+}
+```
 
-sw_interval.R In the final line of documentation for this function there
-is a hanging sentence:
+#### sw_data_info.R
 
-\#' @return Depends on the value of `hdi`. \#' \#' \* If `hdi = TRUE`, a
-`numeric vector` reporting the upper and lower limit \#' of the hdi
-(attributes provide more detail on `credMass` and the applied \#'
-sapwood model (`sw_data`)). \#' \* If `hdi = FALSE`, a `matrix` with
-scaled p values for each number of \#' observed sapwood rings. This
-matrix sw_model.R Great to see input checking at the top of the
-function - I do think these should be rewritten as check input
-functions.
+I think these error messages would benefit from using `cli`, as
+discussed above.
 
-Helper function d.count I think should be put into a separate R file
-called utils.R or helpers.R
+#### sw_data_overview.R
 
-d.count should use switch pattern and pass functions rather than using
-if controls.
+This is a nice function to include to facilitate data discovery
 
-d.count should be d_count
+#### sw_interval_plot.R
 
-sw_sum_plot.R indentation in this code is not consistent - recommend
-applying a style guide.
+This code
+
+```         
+if (all(
+     !(attributes(x)$names) %in% c(
+          "year",
+          "n_sapwood",
+          "p")
+))
+     stop("Input differs from output sw_interval()")
+```
+
+Could be rewritten as an error function or the condition in `if` could
+be expressed as a function.
+
+#### sw_interval.R
+
+In the final line of documentation for this function there is a hanging
+sentence:
+
+```         
+#' @return Depends on the value of `hdi`.
+#'
+#'  * If `hdi = TRUE`, a `numeric vector` reporting the upper and lower limit
+#'   of the hdi (attributes provide more detail on `credMass` and the applied
+#'   sapwood model (`sw_data`)).
+#'  * If `hdi = FALSE`, a `matrix` with scaled p values for each number of
+#'   observed sapwood rings. This matrix
+```
+
+#### sw_model.R
+
+Great to see input checking at the top of the function - I do think
+these should be rewritten as check input functions.
+
+Helper function `d.count` I think should be put into a separate R file
+called `utils.R` or `helpers.R`
+
+`d.count` should use `switch` pattern and pass functions rather than
+using `if` controls.
+
+`d.count` should be `d_count`
+
+#### sw_sum_plot.R
+
+indentation in this code is not consistent - recommend applying a style
+guide.
 
 Examples should show different variations possible for function
-arguments. E.g., bar_col, spline_col, dot_col, and dot_size should all
-be specified in the examples so the user can see what the input
-should/could be.
-
-sw_sum.R See note above on including plots.
-
-tests Do not need to namespace testthat calls, e.g., remove testthat::
-consider using snapshot testing, to capture exact values and shape of
-data that should be stable - rather than always testing for data shape
-and type columns, this should be able to capture those outputs consider
-snapshot error testing to capture exact error messages consider using
-vdiffr for testing ggplot plots. See visdat for examples
-
-# ajpelu
-
-Review Comments Thank you for your contribution with the fellingdateR
-package. It provides a valuable suite of functions for estimating,
-reporting, and combining felling dates of historical tree-ring series.
-The comprehensive set of tools makes it easier to infer felling date
-estimates, considering factors like preserved sapwood or waney edge.
-
-Given my expertise and interest in dendrochronology, I thoroughly
-enjoyed reviewing this package. The functions enable users to estimate
-felling date ranges for both individual series and groups of timbers,
-offering a valuable feature for summing sapwood probability
-distributions.
-
-This being my first software review for Ropensci, I apologize for any
-potential errors or unclear comments. While I've provided various
-comments (a lot of them), feel free to focus on those that are most
-relevant or useful. I commend you for effectively addressing a
-challenging problem with this package. If you need clarification or
-assistance implementing the suggestions, please reach out. Thank you for
-submitting this software; the review process was a pleasure!
-
-General comments The data description lacks a consistent pattern. The
-author occasionally employs country abbreviations while at other times
-refrains from doing so. Let's strive for coherence in this regard.
-
-Some code and documentation overpass the 80 characters (particularly
-data.R). Please consider adjust to this recommended length.
-
-The README file does not contain any information about how to cite. I
-found that one in the CITATION file and also in the website of the
-package. According to Ropensci packaging guidelines the README need to
-include information about how to cite.
-
-Please consider generate a theme for all plots of your package in a
-utils.R function
-
-I found very useful the /paper/paper.md, and I think much of this
-information would improve also the documentation and the website of the
-package. For instance, the fellingdateR_workflow is very useful to
-understand how the package works. Would the author consider include it
-in the REAMDE or in the DESCRIPTION of the package instead of the
-current pictures? I think the former is more informative than the latter
-
-Why is there no auxiliary function to sw_model (eg. sw_model_plot) like
-the rest of the functions in the package (eg. sw_interval and
-sw_interval_plot)? This could lighten the function size and also would
-be coherent with the rest of the package.
-
-The code style isn't consistent. Please consider use the styler package.
-
-I didn't find top-level documentation:
-
-?fellingdateR #No documentation for 'fellingdateR' in specified packages
-and libraries: #you could try
-'??fellingdateR'\`\``Pleas consider generate ?fellingdateR or`?fellingdateR-package\`.
-See <https://devguide.ropensci.org/building.html#general> The package
-has a well-structured website, however I thin much of the information
-included in the paper.md is not in the website. For instance the
-background and Statement of need within the paper.md is very useful and
-I think it would help to the potential users of the pacakge. Please
-consider include in the README or in an specific vignette.
-
-The vignette "getting started" includes some citations (eg. Hollstein
-1980) but not a full reference for this citations. Please include them
-at the end of the vignette.
-
-Please be consistent with the use of = or \<-, but avoid mixed them. For
-instance in hdi.R
-
-spell check: DESCRIPTION does not contain 'Language' field. Defaulting
-to 'en-US'. Please consider to specify.
-
-Is there code duplication in the package that should be reduced? Yes for
-instance the ggthemes within the plot functions
-
-Coverage Please consider review the test coverage of the movAv.R
-function (\~57.14%)
-
-Goodpractices After run the goodpractices::gp() several code lines does
-not pass the check:
-
-✖ write short and simple functions. These functions have high cyclomatic
-complexity (\>50): read_fh (150). You can make them easier to reason
-about by encapsulating distinct steps of your function into
-subfunctions. ✖ use '\<-' for assignment instead of '='. '\<-' is the
-standard, and R users and developers are used it and it is easier to
-read your code for them if you use '\<-'.
-
-R/cor_table.R:108:18 R/cor_table.R:109:22 R/cor_table.R:112:22
-R/hdi.R:48:12 R/hdi.R:49:14 ... and 2 more lines ✖ avoid long code
-lines, it is bad for readability. Also, many people prefer editor
-windows that are about 80 characters wide. Try make your lines shorter
-than 80 characters
-
-data-raw/DATASETS.Rmd:17:81 data-raw/DATASETS.Rmd:19:81
-data-raw/DATASETS.Rmd:35:81 data-raw/DATASETS.Rmd:51:81
-data-raw/DATASETS.Rmd:68:81 ... and 153 more lines ✖ avoid sapply(), it
-is not type safe. It might return a vector, or a list, depending on the
-input data. Consider using vapply() instead.
-
-R/cor_table.R:192:20 R/cor_table.R:195:20 ✖ avoid 1:length(...),
-1:nrow(...), 1:ncol(...), 1:NROW(...) and 1:NCOL(...) expressions. They
-are error prone and result 1:0 if the expression on the right hand side
-is zero. Use seq_len() or seq_along() instead.
-
-R/fd_report.R:162:19 R/hdi.R:54:16 R/sw_combine.R:123:27
-R/sw_combine.R:180:27 R/sw_combine.R:361:35 ... and 1 more lines ✖ fix
-this R CMD check NOTE: Note: found 11 marked UTF-8 strings
-
-✖ avoid 'T' and 'F', as they are just variables which are set to the
-logicals 'TRUE' and 'FALSE' by default, but are not reserved words and
-hence can be overwritten by the user. Hence, one should always use
-'TRUE' and 'FALSE' for the logicals.
-
-R/sw_combine_plot.R:NA:NA R/sw_combine_plot.R:NA:NA
-R/sw_combine_plot.R:NA:NA R/sw_combine_plot.R:NA:NA
-R/sw_combine_plot.R:NA:NA ... and 12 more lines read_fh.R Whats new
-funtionalities include read_fh not covered by dplR::read.fh()? There are
-several code commented that could be removed. eg. \# NEW: verbose =
-TRUE, header = FALSE Please revise them The nomenclature of the objetcs
-exhibits a mix of snake_case and dot.case. Let's ensure consistency in
-the naming convention. The function appears to be extensive. Has the
-author explored the possibility of breaking it down into several
-auxiliary functions to enhance readability and maintainability? In the
-function documentation, the author mentions the Heidelberg format file.
-It would be beneficial to include a link to the specifications of this
-format file for reference, eg.
-<https://www.treeringsociety.org/resources/SOM/Brewer_Murphy_SupplementaryMaterial.pdf>
-get_header.R Please consider include some defensive programming such us:
-if (!is.data.frame(rwl) \|\| !inherits(rwl, "rwl")) { stop("Input should
-be a data.frame of class 'rwl'") } avoid cat as indicated in packaging
-guidelines cor_table.R Very interesting and useful function. Has the
-author contemplated breaking down this function into more modular
-components? For instance, each of the correlation values could
-potentially be extracted as auxiliary functions, providing users with
-the flexibility to call them individually as needed.
-
-The nomenclature of arguments exhibits a mix of snake_case and dot.case.
-Let's ensure consistency in the naming convention.
-
-Remove code comments in the argument section, eg.
-
-... output = "table", #c("matrix", "table") ... In the documentation for
-the argument sort_by, it would be useful to add the choices to avoid
-errors. For instance, \#' @param sort_by The correlation value by which
-the output is sorted for each \#' series in `x`. One of "r_pearson",
-"t_St", "glk", "glk_p", "t_BP", "t_Ho". Default to "t_Ho" Ensure
-uniformity in assignment by using the same operator consistently---avoid
-mixing \<- and =
-
-Consider avoid the use of sapply. See this
-<https://adv-r.hadley.nz/functionals.html>. For instance, consider
-
-y \<- y[, apply(!is.na(y), 2, sum) \> 3, drop = FALSE] instead of
-
-y \<- y[, sapply(y, function(col) sum(!is.na(col))) \> 3, drop = FALSE]
-sw_model.R Ensure uniformity in assignment by using the same operator
-consistently---avoid mixing \<- and =. eg. n_obs = sum(observed\$count)
-
-I'm not sure if incorporating the reading of a csv is optimal in a
-function. What if a user wants to input a dataframe that isn't from a
-CSV file? I propose modifying the function to accept a dataframe or
-tibble with mandatory n_sapwood and count columns. Additionally,
-allowing users to import from a CSV could be achieved by either creating
-a small auxiliary function or simply utilizing utils::read.csv(). This
-also reduce the size of the sw_model function. Please consider this for
-all those functions with the same issue.
-
-I think it is better to have a separate function for plotting, which
-could be called after the computation is completed by sw_model, for
-instance, sw_model_plot. This also allow to user modify the plot
-generated. For instance if the user doesn\`t like the grid within the
-plot. In the current form to do that the user need to type:
-
-s \<- sw_model("Hollstein_1980", plot = TRUE) s + theme(panel.grid =
-element_blank()) So if there is an specific function to plot the data,
-this function would include the ... in the arguments, to allow include
-other ggplot2 arguments.
-
-Anycase, in the plot section would be better to use .data, for instance,
-in ggplot2::geom_segment( data = hdi_model, ggplot2::aes( x =
-hdi_model[[1]], xend = hdi_model[[2]], y = 0, yend = 0 ), colour =
-"grey30", linewidth = .8, alpha = 0.8 ) I suggest to use .data[[1]]
-
-ggplot2::geom_segment( data = hdi_model, ggplot2::aes( x = .data[[1]],
-xend = .data[[2]], y = 0, yend = 0 ), colour = "grey30", linewidth = .8,
-alpha = 0.8 ) In the documentation of sw_model, the values of the
-densfun parameter are not in italics and are enclosed in double
-quotation marks. It doesn't matter, but please maintain consistency with
-the rest of the documentation. For example, in sw_interval.R, they are
-in italics. sw_interval.R Please remove code commented
-
-\# Add calendar years to output when y is provided \# if (last == 0) {
-\# attr(hdi_int, "credMass") \<- credMass \# attr(hdi_int,
-"sapwood_data") \<- sw_data \# attr(hdi_int, "model") \<- densfun \# }
-\# if (last != 0) { In this function, the separation of the plot part
-from the computation one is appreciated. A further step would be to
-remove the plotting option completely from the function, and specified
-in the documentation (and also in the vignette) to use the
-sw_interval_plot function to obtain the plot.
-
-sw_interval_plot.R I would suggest to add the ellipsis argument (i.e.
-...) to allow another ggplot2 arguments. See also ellipsis pkg for more
-info. Consider apply this throughout the plot functions of the package.
-
-Which notes are the author trying to avoid with?
-
-# to avoid notes in CMD check
-
-```         
-    p.x <- upper <- year <- NULL
-```
-
-¿any alternative to solve them?
-
-Please, consider change this code if (all( !(attributes(x)\$names) %in%
-c( "year", "n_sapwood", "p") )) stop("Input differs from output
-sw_interval()") by:
-
-if (!all(c("year", "n_sapwood", "p") %in% names(attributes(x)))) {
-stop("Input structure differs from the expected output of
-sw_interval()") }
-
-You mixed snake_case with dot.case in the naming of objects. I would
-suggest to choose one and be consistent.
-
-What this code snippet do? If I understand correctly, the
-sw_interval_plot requires the output of sw_interval, so is a .csv format
-an output of the sw_interval?
-
-```         
-    if (grepl("\\.csv$", sw_data.p))
-            sw_data.p <- basename(sw_data.p)
-```
-
-Please specify the meaning of the 'p' on the y-axis. sw_combine.R This
-function requires a dataframe, as indicated in the documentation.
-However, there is no check for that; instead, the first line forces x to
-be a data.frame. I would suggest to add a defensive programming line
-such as: if (!is.data.frame(x)) { stop("Input 'x' must be a dataframe.")
-} Camel case and snake_case styles are mixed in the function. Please be
-consistent. There are some duplications in the function, for instance
-pdf_matrix[, 1] \<- timeAxis Please revise the comments within the
-function. Are they all necessary? Example: \# when multiple exact
-felling dates are listed that do no correspond \# --\> COMB = 0 and
-after scaling NaN (division by 0) \# check rowwise if there is any
-p-value == 1, \# and replace COMB at that position with 1 Perhaps this
-function could be modularized into several simpler functions. Initially,
-a function could evaluate whether the dataset contains all series with
-preserved sapwood or if any series has an exact felling date, among
-other conditions (as indicated in the examples of the function).
-Subsequently, based on the initial evaluation, the function could call
-auxiliary functions.
-
-In any case, the function should provide detailed information about the
-approaches used for each case.
-
-Please, see my comment about the data input in csv format for the
-sw_model.R
-
-The elements of the output list generated by this function are not
-described. Please add to the documentation.
-
-sw_combine_plot.R Please consider taking out the rescale function out of
-the sw_combine_plot function.
-
-A lot of mixing T, F with TRUE and FALSE. Please be consistent.
-
-Camel case and snake_case styles are mixed in the function. Please be
-consistent.
-
-I would suggest to allow the user customize the color used. See my
-comment in the below section (Plot functions).
-
-Remove the commented codes inside the function:
-
-```         
-  # NEXT LINE TRIGGERS WARNING
-  # Warning message:
-  # Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
-  # ℹ Please use one dimensional logical vectors instead.
-  # ℹ The deprecated feature was likely used in the fellingdateR package.
-  # Please report the issue to the authors.
-  # { if (nrow(summary |> dplyr::filter(agreement == "poor")) != 0)
-  # replaced by:
-```
-
-The function lacks an axis legend. I presume that the x-axis corresponds
-to calendar time, and the y-axis corresponds to 'p'. Is my understanding
-correct?
-
-Any way to indicate the "A_i" as real subscript? maybe parse = TRUE
-within geom_text?
-
-Please add information in the documentation about the agregation index
-
-In the second example:
-
-combo \<- fellingdateR::sw_combine(trs_example2)
-fellingdateR::sw_combine_plot(combo) What do the arrow and the dot
-refer? Please include in the documentation. sw_sum.R In the
-documentation there is a mistake. In the description of the last
-argument please add a blank space in xcontaining
-
-In the documentation the values of the densfun parameter are not in
-italics and are enclosed in double quotation marks. It doesn't matter,
-but please maintain consistency with the rest of the documentation. For
-example, in sw_interval.R, they are in italics.
-
-Regarding defensive programming idem comment that for sw_combine. This
-function requires a dataframe, as indicated in the documentation.
-However, there is no check for that; instead, the first line forces x to
-be a data.frame. I would suggest to add a defensive programming line
-such as:
-
-if (!is.data.frame(x)) { stop("Input 'x' must be a dataframe.") }
-sw_sum_plot.R Good point here using customizable colors. Let's implement
-this feature consistently across other plot functions for a cohesive and
-customizable user experience.
-
-Can a user change the width of the moving average window used within the
-sw_sum_plot()? It seems that the sw_sum_plot() uses always the same.
-
-Idem with the splines used.
-
-What do the blue dots, blue bars and red line mean? Please indicate in
-the documentation
-
-Other comments I am surprised that different functions (for instance
-sw_combine and sw_sum), that accessing similar subdata within a data
-set, use different approaches: cambium \<- df[[waneyedge]] and
-
-cambium \<- x[, waneyedge] Please be consistent along the package.
-
-Please review the naming conventions, including CamelCase, snake_case,
-and dot.case, used for objects throughout the package. It is recommended
-to choose a consistent style, and I would suggest using snake_case.
-Ensure uniformity across the package for improved clarity and
-maintainability.
-
-I'm not sure if incorporating the reading of a csv is optimal in a
-function. What if a user wants to input a dataframe that isn't from a
-CSV file? I propose modifying the function to accept a dataframe or
-tibble with mandatory n_sapwood and count columns. Additionally,
-allowing users to import from a CSV could be achieved by either creating
-a small auxiliary function or simply utilizing utils::read.csv(). This
-also reduce the size of the sw_model function.
-
-In the different plot functions, the authors uses a common theme. It
-might be useful to create an auxiliary function with a ggplot2::theme()
-specification. Then, each plot function could used this auxiliary
-function by default or also allow to the user to specify a custom theme.
-
-I would suggest changing the specified colors in each plot function to
-custom arguments, allowing users to choose their preferred colors. For
-instance, in th sw_interval_plot the colors of the area specified by
-
-```         
-            ggplot2::geom_area(
-                    ggplot2::aes(x = ifelse(year >= lower, year, NA),
-                                 y = p.x),
-                    fill = "tomato3",
-                    color = "tomato3",
-                    alpha = 0.3,
-                    linewidth = 1
-```
-
-could be indicated as arguments, e.g. area_fill and area_color.
+arguments. E.g., `bar_col`, `spline_col`, `dot_col`, and `dot_size`
+should all be specified in the examples so the user can see what the
+input should/could be.
+
+#### sw_sum.R
+
+See note above on including plots.
+
+#### tests
+
+-   Do not need to namespace testthat calls, e.g., remove `testthat::`
+-   consider using snapshot testing, to capture exact values and shape
+    of data that should be stable - rather than always testing for data
+    shape and type columns, this should be able to capture those outputs
+-   consider snapshot error testing to capture exact error messages
+-   consider using `vdiffr` for testing ggplot plots. See
+    [visdat](https://github.com/ropensci/visdat/blob/master/tests/testthat/test-vis-dat.R)
+    for examples
+
+\_Originally posted by @njtierney in
+<https://github.com/ropensci/software-review/issues/618#issuecomment-1867354502_>
