@@ -4,10 +4,10 @@
 \alias{fh_header}
 \title{Retrieve the HEADER fields of a Heidelberg format (.fh) file}
 \usage{
-fh_header(rwl)
+fh_header(x)
 }
 \arguments{
-\item{rwl}{The output of \code{read_fh(x, header = TRUE)}, a \code{data.frame} of class
+\item{x}{The output of \code{read_fh(x, header = TRUE)}, a \code{data.frame} of class
 \code{rwl}.}
 }
 \value{

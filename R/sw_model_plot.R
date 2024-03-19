@@ -16,7 +16,10 @@
 #'   cred_mass = .95,
 #'   plot = FALSE
 #' )
-#' sw_model_plot(tmp)
+#' sw_model_plot(tmp,
+#'               bar_fill = "forestgreen",
+#'               bar_color = "darkgreen",
+#'               line_color = "tomato3")
 #'
 #' @export
 #'

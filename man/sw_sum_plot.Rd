@@ -44,6 +44,9 @@ SPD.
 trs_example6 <- trs_example6
 trs_example6
 tmp <- sw_sum(trs_example6)
-sw_sum_plot(tmp, bar_col = "burlywood1")
+sw_sum_plot(tmp, bar_col = "burlywood1",
+                 trend_col = "brown",
+                 dot_col = "orange",
+                 dot_shape = 23, dot_size = 5)
 
 }

@@ -29,7 +29,10 @@
 #'
 #' @export
 #' @examples
-#' sw_model("Sohar_2012_ELL_c")
+#' sw_model(sw_data = "Sohar_2012_ELL_c",
+#'           densfun = "lognormal",
+#'           cred_mass = .095,
+#'           plot = FALSE)
 #'
 #' sw_model("Hollstein_1980")
 #'

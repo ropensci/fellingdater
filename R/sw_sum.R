@@ -39,7 +39,7 @@
 #' @examples
 #' trs_example7
 #'
-#' sw_sum(trs_example7, plot = TRUE)
+#' sw_sum(trs_example7, densfun = "lognormal", cred_mass = 0.63, plot = FALSE)
 #'
 sw_sum <- function(x,
                    series = "series",

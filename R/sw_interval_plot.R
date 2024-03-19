@@ -19,7 +19,7 @@
 #'   densfun = "lognormal",
 #'   plot = FALSE
 #' )
-#' sw_interval_plot(tmp)
+#' sw_interval_plot(tmp, area_fill = "forestgreen", line_color = "forestgreen")
 #'
 #' @export
 #'
