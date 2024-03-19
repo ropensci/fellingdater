@@ -51,6 +51,12 @@ editor_options:
 > to install the development version of the pkg? I see that in the
 > vignette he indicated the two ways (pak and devtools).
 >
+> ***I work fro a government agency and mostly behind a firewall.
+> Installing packages with devtool::install_packages() often fails
+> (timeout) but works fine with pak::pak(). I have no idea why and it is
+> probably realted to the settings of the firewall, but therefore I
+> prefer pak over devtools now.***
+>
 > -   [ ] **Vignette(s):** demonstrating major functionality that runs
 >     successfully locally
 >
@@ -74,6 +80,8 @@ editor_options:
 > ```
 >
 > Please consider change the three `:::` by `::`
+
+> ***`:::` has been removed from the examples in the vignette***
 >
 > -   [x] **Function Documentation:** for all exported functions
 > -   [x] **Examples:** (that run successfully locally) for all exported
@@ -85,6 +93,8 @@ editor_options:
 >
 > No community guidelines found, only in DESCRIPTION there is a
 > BugReports linked.
+>
+> ***Guidelines have been added to th README***
 >
 > #### Functionality
 >
@@ -106,8 +116,8 @@ editor_options:
 >     -   Please consider to use lowercase name as indicated by 1.1.1
 >         point of the packaging guidelines
 >
->         ***snake_case and lowercase naming has been implemented
->         now.***
+>         ***snake_case and lowercase naming have been implemented
+>         consistently .***
 >
 >     -   Not all the functions follow the object_verb() naming scheme.
 >         For instance, the functions read_fh and get_header. I would
@@ -128,13 +138,15 @@ editor_options:
 >         change cat() or print() for message or warning, as packaging
 >         guidelines indicated.
 >
->         *cat() no longer used in any of the functions*
+>         ***cat() no longer used in any of the functions***
 >
 > Estimated hours spent reviewing: 13
 >
 > -   [x] Should the author(s) deem it appropriate, I agree to be
 >     acknowledged as a package reviewer ("rev" role) in the package
->     DESCRIPTION file.
+>     DESCRIPTION file***.***
+>
+> ***I've included you as a reviewer in the DESCRIPTON***
 >
 > ### Review Comments
 >
@@ -163,6 +175,14 @@ editor_options:
 > -   The data description lacks a consistent pattern. The author
 >     occasionally employs country abbreviations while at other times
 >     refrains from doing so. Let's strive for coherence in this regard.
+>
+>     ***This is because some of de provided sapwood datasets do not
+>     cover a specific country, but rather a region, or are composed of
+>     observations of timber from e.g. Norway but the timbers themselves
+>     have been found in the Netherlands (van Daalen_Norway).*** ***So I
+>     named the sapwood datasets according to their authors (and
+>     publication date if applicable, and a few letters to describe the
+>     region/country they cover.***
 >
 > -   Some code and documentation overpass the 80 characters
 >     (particularly data.R). Please consider adjust to this recommended
@@ -198,6 +218,9 @@ editor_options:
 >     like the rest of the functions in the package (eg. sw_interval and
 >     sw_interval_plot)? This could lighten the function size and also
 >     would be coherent with the rest of the package.
+>
+>     ***There is now a new function named sw_model_plot() as
+>     suggested.***
 >
 > -   The code style isn't consistent. Please consider use the styler
 >     package.
@@ -252,6 +275,8 @@ editor_options:
 >
 > Please consider review the test coverage of the movAv.R function
 > (\~57.14%)
+>
+> ***test coverage increased for mov_av()***
 >
 > ### Goodpractices
 >
@@ -310,6 +335,8 @@ editor_options:
 > R/cor_table.R:195:20
 > ```
 >
+> ***sapply() no longer used***
+>
 > ✖ avoid 1:length(...), 1:nrow(...), 1:ncol(...), 1:NROW(...) and
 > 1:NCOL(...) expressions. They are error prone and result 1:0 if the
 > expression on the right hand side is zero. Use seq_len() or
@@ -324,12 +351,16 @@ editor_options:
 > ... and 1 more lines
 > ```
 >
+> ***seq_len() is now used instead of 1:length(...)***
+>
 > ✖ fix this R CMD check NOTE: Note: found 11 marked UTF-8 strings
 >
 > ✖ avoid 'T' and 'F', as they are just variables which are set to the
 > logicals 'TRUE' and 'FALSE' by default, but are not reserved words and
 > hence can be overwritten by the user. Hence, one should always use
 > 'TRUE' and 'FALSE' for the logicals.
+>
+> ***`TRUE` now used consistently***
 >
 > ```         
 > R/sw_combine_plot.R:NA:NA
@@ -353,10 +384,14 @@ editor_options:
 >     ***Furthermore the fellingdateR::read_fh function allows to read
 >     data in CHRON or HALF-CHRONO format.***
 >
+>     ***read.fh() also throws errors when header fields include Capital
+>     letters (depends on the software used to produce the .fh files:
+>     TSAP, PAST, ...). read_fh() is case-insensitive.***
+>
 > -   There are several code commented that could be removed. eg.
 >     `# NEW: verbose = TRUE, header = FALSE` Please revise them
 >
->     ***The comments highlight which sections have been added, compared
+>     ***The comments highlight what sections have been added compared
 >     to the original dplR::read.fh function. I've removed the \`NEW:\`
 >     comments in the current version of read_fh()***
 >
@@ -397,6 +432,8 @@ editor_options:
 >     ***The function now starts with a check of the input and no longer
 >     requires cat (or equivalent).***
 >
+>     ***The get_header function was renamed to `fh_header`.***
+>
 > #### `cor_table.R`
 >
 > -   Very interesting and useful function. Has the author contemplated
@@ -405,11 +442,21 @@ editor_options:
 >     extracted as auxiliary functions, providing users with the
 >     flexibility to call them individually as needed.
 >
->     ***Certainly considered, but as this would require a full rewrite
->     of the current function, I prefer to have it on***
+>     ***Certainly considered, but this would require a full rewrite of
+>     the current function. Then it should also include the possibility
+>     to use the separate correlation values for crossdating a series on
+>     all positions along a resference series. For this package, the
+>     goal is to check the date assigned to the tree-ring series and to
+>     find the chronology that matches best in order to decide which
+>     spwood model to use (depending on timber provenance). So I would
+>     like to keep the function as it is, and have the breakdown into
+>     modular components for each correlation value on the todo-list for
+>     a new project/package.***
 >
 > -   The nomenclature of arguments exhibits a mix of snake_case and
->     dot.case. Let's ensure consistency in the naming convention.
+>     dot.case. Let's ensure consistency in the naming convention***.***
+>
+>     ***now all snake_case***
 >
 > -   Remove code comments in the argument section, eg***.***
 >
@@ -435,7 +482,7 @@ editor_options:
 > -   Ensure uniformity in assignment by using the same operator
 >     consistently---avoid mixing `<-` and `=`
 >
->     ***= no longer ues as assignment operator***
+>     ***= no longer used as assignment operator***
 >
 > -   Consider avoid the use of sapply. See this
 >     <https://adv-r.hadley.nz/functionals.html>. For instance, consider
@@ -452,7 +499,7 @@ editor_options:
 >                     sum(!is.na(col))) > 3, drop = FALSE]
 > ```
 >
-> ***sapply no longer used in this function***
+> ***`sapply()` no longer used in this, or other functions***
 >
 > #### `sw_model.R`
 >
@@ -472,9 +519,11 @@ editor_options:
 >     the sw_model function. Please consider this for all those
 >     functions with the same issue.
 >
->     ***You are right. I might have overcomplicated the sw-functions
->     with this. So I removed it from this and all other
->     sw_functions.***
+>     ***You are probably right. I might have overcomplicated the
+>     sw-functions with this. So I removed this option from this and all
+>     other sw_functions. Now a user-defined custom dataset  -
+>     a`data.frame`*** ***with columns `n_sapwood` and `count` - can be
+>     supplied to the function.***
 >
 > -   I think it is better to have a separate function for plotting,
 >     which could be called after the computation is completed by
@@ -487,6 +536,8 @@ editor_options:
 > s <- sw_model("Hollstein_1980", plot  = TRUE)
 > s + theme()panel.grid = element_blank()
 > ```
+>
+> ***sw_model_plot() was added to the package***
 >
 > So if there is an specific function to plot the data, this function
 > would include the `...` in the arguments, to allow include other
@@ -527,11 +578,15 @@ editor_options:
 > )
 > ```
 >
+> ***no longer needed in the new function sw_model_plot()***
+>
 > -   In the documentation of sw_model, the values of the densfun
 >     parameter are not in italics and are enclosed in double quotation
 >     marks. It doesn't matter, but please maintain consistency with the
 >     rest of the documentation. For example, in sw_interval.R, they are
 >     in italics.
+>
+>     ***densfun documentation in italic now***
 >
 > #### `sw_interval.R`
 >
@@ -547,6 +602,8 @@ editor_options:
 >       # if (last != 0) {
 >     ```
 >
+>     ***comments have been removed***
+>
 > -   In this function, the separation of the plot part from the
 >     computation one is appreciated. A further step would be to remove
 >     the plotting option completely from the function, and specified in
@@ -559,7 +616,21 @@ editor_options:
 >     another ggplot2 arguments. See also
 >     [ellipsis](https://ellipsis.r-lib.org/) pkg for more info.
 >     Consider apply this throughout the plot functions of the package.
+>
+>     ***Done!***
+>
 > -   Which notes are the author trying to avoid with?
+>
+>     ***When I run devtools::check() I get***
+>
+>     ```         
+>     ❯ checking R code for possible problems ... NOTE  
+>     x: no visible binding for global variable ‘p’ 
+>     ```
+>
+>     assigning NULL to these variables avoids the notes., as described
+>     in R Packages (2e)
+>     <https://r-pkgs.org/package-within.html#delta-a-failed-attempt-at-making-a-package>
 >
 > ```         
 > # to avoid notes in CMD check
@@ -588,11 +659,19 @@ editor_options:
 > }
 > ```
 >
+> ***OK. I've replaced this section in the code***
+>
 > -   You mixed snake_case with dot.case in the naming of objects. I
 >     would suggest to choose one and be consistent.
+>
+>     ***should_be_consistent_now***
+>
 > -   What this code snippet do? If I understand correctly, the
 >     sw_interval_plot requires the output of sw_interval, so is a .csv
 >     format an output of the sw_interval?
+>
+>     ***The following was deleted because the option to use a .csv file
+>     as input was removed from all function.***
 >
 > ```         
 >         if (grepl("\\.csv$", sw_data.p))
@@ -600,6 +679,8 @@ editor_options:
 > ```
 >
 > -   Please specify the meaning of the 'p' on the y-axis.
+>
+>     ***p = probability. explained now in \@return***
 >
 > #### `sw_combine.R`
 >
@@ -614,10 +695,16 @@ editor_options:
 >   }
 > ```
 >
+> ***More defensive programming is now implemented***
+>
 > -   Camel case and snake_case styles are mixed in the function. Please
->     be consistent.
+>     be consisten***t.***
+>
+>     ***all snake_case now***
+>
 > -   There are some duplications in the function, for instance
 >     `pdf_matrix[, 1] <- timeAxis`
+>
 > -   Please revise the comments within the function. Are they all
 >     necessary? Example:
 >
@@ -628,6 +715,8 @@ editor_options:
 >       # and replace COMB at that position with 1
 > ```
 >
+> ***Most comments have been removed***
+>
 > -   Perhaps this function could be modularized into several simpler
 >     functions. Initially, a function could evaluate whether the
 >     dataset contains all series with preserved sapwood or if any
@@ -635,23 +724,50 @@ editor_options:
 >     indicated in the examples of the function). Subsequently, based on
 >     the initial evaluation, the function could call auxiliary
 >     functions.
+>
+>     ***A check_input() function (in helper-functions.R) now takes care
+>     of the input***
+>
 > -   In any case, the function should provide detailed information
 >     about the approaches used for each case.
+>
+>     ***This is explained in the gettingstared vignette.***
+>
 > -   Please, see my comment about the data input in `csv` format for
 >     the sw_model.R
+>
+>     ***Input from .csv file no longer supported.***
+>
 > -   The elements of the output list generated by this function are not
 >     described. Please add to the documentation.
+>
+>     ***Added to the documentation (\@return)***
 >
 > #### `sw_combine_plot.R`
 >
 > -   Please consider taking out the rescale function out of the
 >     sw_combine_plot function.
-> -   A lot of mixing T, F with TRUE and FALSE. Please be consistent.
+>
+>     ***`rescale()`is now part of helper-functions.R***
+>
+> -   A lot of mixing T, F with TRUE and FALSE. Please be
+>     consistent***.***
+>
+>     ***only TRUE and FALSE are used now***
+>
 > -   Camel case and snake_case styles are mixed in the function. Please
->     be consistent.
+>     be consistent..
+>
+>     ***all snake_case***
+>
 > -   I would suggest to allow the user customize the color used. See my
 >     comment in the below section (Plot functions).
+>
+>     ***now possible to choose colors for fill and line.***
+>
 > -   Remove the commented codes inside the function:
+>
+>     ***Comments rmoved***
 >
 > ```         
 >       # NEXT LINE TRIGGERS WARNING
@@ -667,16 +783,25 @@ editor_options:
 > -   The function lacks an axis legend. I presume that the x-axis
 >     corresponds to calendar time, and the y-axis corresponds to 'p'.
 >     Is my understanding correct?
+>
+>     ***Correct. Label added to X-axis***
+>
 > -   Any way to indicate the "A_i" as real subscript? maybe parse =
 >     TRUE within geom_text?
+>
+>     ***Finally found out how to do this ;-) Done.***
+>
 > -   Please add information in the documentation about the agregation
 >     index
+>
 > -   In the second example:
 >
 > ```         
 > combo <- fellingdateR::sw_combine(trs_example2)
 > fellingdateR::sw_combine_plot(combo)
 > ```
+>
+> I ***removed the `::`from the example.***
 >
 > -   What do the arrow and the dot refer? Please include in the
 >     documentation.
@@ -685,15 +810,24 @@ editor_options:
 >
 > -   In the documentation there is a mistake. In the description of the
 >     `last` argument please add a blank space in `xcontaining`
+>
+>     ***corrected***
+>
 > -   In the documentation the values of the densfun parameter are not
 >     in italics and are enclosed in double quotation marks. It doesn't
 >     matter, but please maintain consistency with the rest of the
 >     documentation. For example, in sw_interval.R, they are in italics.
+>
+>     ***italic and consistent now***
+>
 > -   Regarding defensive programming idem comment that for sw_combine.
 >     This function requires a dataframe, as indicated in the
 >     documentation. However, there is no check for that; instead, the
 >     first line forces x to be a data.frame. I would suggest to add a
 >     defensive programming line such as:
+>
+>     ***defensive programming with helper function check_input()
+>     implemented***
 >
 > ```         
 >    if (!is.data.frame(x)) {
@@ -706,12 +840,23 @@ editor_options:
 > -   Good point here using customizable colors. Let's implement this
 >     feature consistently across other plot functions for a cohesive
 >     and customizable user experience.
+>
 > -   Can a user change the width of the moving average window used
 >     within the sw_sum_plot()? It seems that the sw_sum_plot() uses
 >     always the same.
+>
+>     ***Extra parameter added to tweak the window width of the
+>     smoother***
+>
 > -   Idem with the splines used.
+>
 > -   What do the blue dots, blue bars and red line mean? Please
 >     indicate in the documentation
+>
+>     ***The dots represent exact felling dates (with waney edge).
+>     Probability of 1 assigned to 1 specific year.***
+>
+>     ***Added to documentation***
 >
 > ### Other comments
 >
@@ -731,11 +876,16 @@ editor_options:
 >
 > Please be consistent along the package.
 >
+> ***Now same approach in all functions.***
+>
 > -   Please review the naming conventions, including CamelCase,
 >     snake_case, and dot.case, used for objects throughout the package.
 >     It is recommended to choose a consistent style, and I would
 >     suggest using snake_case. Ensure uniformity across the package for
->     improved clarity and maintainability.
+>     improved clarity and maintainability***.***
+>
+>     ***Done. All snake_case now.***
+>
 > -   I'm not sure if incorporating the reading of a csv is optimal in a
 >     function. What if a user wants to input a dataframe that isn't
 >     from a CSV file? I propose modifying the function to accept a
@@ -743,12 +893,16 @@ editor_options:
 >     columns. Additionally, allowing users to import from a CSV could
 >     be achieved by either creating a small auxiliary function or
 >     simply utilizing utils::read.csv(). This also reduce the size of
->     the sw_model function.
+>     the sw_model function***.***
+>
+>     ***This option has been removed.***
+>
 > -   In the different plot functions, the authors uses a common theme.
 >     It might be useful to create an auxiliary function with a
 >     ggplot2::theme() specification. Then, each plot function could
 >     used this auxiliary function by default or also allow to the user
 >     to specify a custom theme.
+>
 > -   I would suggest changing the specified colors in each plot
 >     function to custom arguments, allowing users to choose their
 >     preferred colors. For instance, in th sw_interval_plot the colors
@@ -765,6 +919,8 @@ editor_options:
 > ```
 >
 > could be indicated as arguments, e.g. area_fill and area_color.
+>
+> ***Done for sw_sum_plot, sw_interval_plot and sw_model.plot***
 
 ## Package name
 
@@ -791,28 +947,28 @@ piece of historical timber with sapwood. The question mark highlights
 what this package basically does: estimate the missing number of sapwood
 rings.
 
-Now README.md has a final paragraph with a link to the Contributor Code
-of Conduct
+***Now README.md has a final paragraph with a link to the Contributor
+Code of Conduct***
 
-\## Comments and contributions
+***\## Comments and contributions***
 
-\- Please report any issues or bugs here:
-<https://github.com/hanecakr/fellingdateR/issues>.
+***- Please report any issues or bugs here:
+<https://github.com/hanecakr/fellingdateR/issues>.***
 
-\- Get citation information for \`fellingdater\` in R typing
-\`citation(package = 'fellingdater')\`.
+***- Get citation information for \`fellingdater\` in R typing
+\`citation(package = 'fellingdater')\`.***
 
-\- Please note that the \`fellingdateR\` package is released with a
+***- Please note that the \`fellingdateR\` package is released with a
 [Contributor Code of
 Conduct](%5Bhttps://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md).](<https://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md>).)
-By contributing to this project, you agree to abide by its terms.
+By contributing to this project, you agree to abide by its terms.***
 
 ## cor_table
 
--   parameter \`values\` was removed from the function. Looking back,
-    this is not an option that would be used frequently., and is
-    certainly not required. Removing it from the function allows to
-    shorten the code a bit.
+***parameter \`values\` was removed from the function. Looking back,
+this is not an option that would be used frequently., and is certainly
+not required. Removing it from the function allows to shorten the code a
+bit.***
 
 # Reviewer 1
 
