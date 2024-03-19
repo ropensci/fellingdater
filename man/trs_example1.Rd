@@ -19,4 +19,8 @@ trs_example1
 \description{
 A dataset in which all series have preserved sapwood rings.
 }
+\examples{
+trs_example1
+
+}
 \keyword{datasets}

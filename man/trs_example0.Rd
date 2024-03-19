@@ -20,4 +20,8 @@ trs_example0
 A dataset in which all series have preserved sapwood.
 Unconventional variable names.
 }
+\examples{
+trs_example0
+
+}
 \keyword{datasets}

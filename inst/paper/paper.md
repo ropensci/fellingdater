@@ -361,7 +361,7 @@ provenance in the Southern Baltic region (sapwood model published by
 @wazny1990). The hdi delineates an interval in which the actual felling
 date is most likely situated. It is the shortest interval within a
 probability distribution for a given probability mass or credible
-interval (`credMass = …`). The hdi summarizes the distribution by
+interval (`cred_mass = …`). The hdi summarizes the distribution by
 specifying an interval that spans most of the distribution (in the
 example below the credible interval is set to 95%), as such that every
 point inside the interval has higher credibility than any point outside
@@ -376,7 +376,7 @@ probability mass is assigned to the tails of the sapwood model.
 sw_interval_plot <- sw_interval(n_sapwood = 10, 
             last = 1234, 
             hdi = TRUE, 
-            credMass = .95, 
+            cred_mass = .95, 
             sw_data = "Wazny_1990", 
             densfun = "lognormal", 
             plot = TRUE)

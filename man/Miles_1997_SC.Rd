@@ -27,7 +27,7 @@ Sapwood data set for the Southern counties (U.K.), up to and including Glouceste
 \examples{
 sw_data_info("Miles_1997_SC")
 
-sw_model("Miles_1997_SC")
+sw_model("Miles_1997_SC", plot = TRUE)
 
 }
 \keyword{datasets}

@@ -30,7 +30,7 @@ Unpublished data by S. van Daalen (version 19 Dec 2022, Van Daalen Dendrochronol
 \examples{
 sw_data_info("vanDaalen_NLBE")
 
-sw_model("vanDaalen_NLBE")
+sw_model("vanDaalen_NLBE", plot = TRUE)
 
 }
 \keyword{datasets}

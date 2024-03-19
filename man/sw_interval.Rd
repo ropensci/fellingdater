@@ -44,7 +44,7 @@ Should be one of:
 \itemize{
 \item If \code{TRUE}, a ggplot-style graph is returned of the individual
 sapwood model and estimate of the felling date range.
-\item If \code{FALSE}, a list with the numeric output of the modelling process is returned.
+\item If \code{FALSE}, a \code{list} with the numeric output of the modelling process is returned.
 }}
 }
 \value{
@@ -53,8 +53,8 @@ Depends on the value of \code{hdi}.
 \item If \code{hdi = TRUE}, a \verb{numeric vector} reporting the upper and lower limit
 of the hdi (attributes provide more detail on \code{cred_mass} and the applied
 sapwood model (\code{sw_data})).
-\item If \code{hdi = FALSE}, a \code{matrix} with scaled p values for each number of
-observed sapwood rings. This matrix
+\item If \code{hdi = FALSE}, a \code{data.frame} with scaled p values for each number of
+observed sapwood rings.
 }
 }
 \description{

@@ -27,7 +27,7 @@ Sapwood data set for Poland, published by Wazny in 1990.
 \examples{
 sw_data_info("Wazny_1990")
 
-sw_model("Wazny_1990")
+sw_model("Wazny_1990", plot = TRUE)
 
 }
 \keyword{datasets}

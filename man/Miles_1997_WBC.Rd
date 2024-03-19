@@ -27,7 +27,7 @@ Sapwood data set for Wales and border counties (U.K.), Shropshire, Hereford and 
 \examples{
 sw_data_info("Miles_1997_WBC")
 
-sw_model("Miles_1997_WBC")
+sw_model("Miles_1997_WBC", plot = TRUE)
 
 }
 \keyword{datasets}

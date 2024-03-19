@@ -28,7 +28,7 @@ Sapwood data set for Eastern Estonia, Latvia, Lithuania, published by Sohar et a
 \examples{
 sw_data_info("Sohar_2012_ELL_c")
 
-sw_model("Sohar_2012_ELL_c")
+sw_model("Sohar_2012_ELL_c", plot = TRUE)
 
 }
 \keyword{datasets}

@@ -19,4 +19,8 @@ trs_example3
 \description{
 A dataset with multiple exact felling dates.
 }
+\examples{
+trs_example3
+
+}
 \keyword{datasets}

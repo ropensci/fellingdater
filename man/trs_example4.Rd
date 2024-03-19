@@ -19,4 +19,8 @@ trs_example4
 \description{
 A combination of series with and without sapwood rings.
 }
+\examples{
+trs_example4
+
+}
 \keyword{datasets}

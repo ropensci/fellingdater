@@ -27,7 +27,7 @@ Sapwood data set for northern France , published by Pilcher in 1987.
 \examples{
 sw_data_info("Pilcher_1987")
 
-sw_model("Pilcher_1987")
+sw_model("Pilcher_1987", plot = TRUE)
 
 }
 \keyword{datasets}

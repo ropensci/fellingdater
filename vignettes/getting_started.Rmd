@@ -1,5 +1,5 @@
 ---
-title: "getting started"
+title: "Get started with `fellingdateR`"
 output: 
   rmarkdown::html_vignette:
     fig_width: 8
@@ -63,7 +63,7 @@ The light grey distributions represent the probability density function of the f
 The sapwood data used in the example above to estimate the felling date range, was published by [Hollstein (1980)](https://search.worldcat.org/nl/title/6391864) :
 
 ```{r model_sapwood_counts}
-sw_model("Hollstein_1980")
+sw_model("Hollstein_1980", plot = TRUE)
 ```
 
 ## Main functions
@@ -215,13 +215,21 @@ sw_data_info("Pilcher_1987")
 
 ```
 
-### sw_model
+### sw_model and sw_model_plot()
 
-A graphical representation of a sapwood data set is provided by the `sw_model()` function.
+A graphical representation of a sapwood data set is provided by the `sw_model_plot()` function.
 
 ```{r model}
 
-sw_model("Sohar_2012_ELL_c")
+tmp <- sw_model(sw_data = "Sohar_2012_ELL_c", 
+                densfun = "lognormal",
+                cred_mass = 0.95,
+                plot = FALSE)
+
+sw_model_plot(tmp, 
+              bar_fill = "steelblue3",
+              bar_color = "grey60",
+              line_color = "red3")
 
 sw_data_info("Sohar_2012_ELL_c")
 

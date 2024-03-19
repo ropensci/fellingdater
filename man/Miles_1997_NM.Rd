@@ -27,7 +27,7 @@ Sapwood data set for the Northern Midland counties (U.K.) - Cheshire, Staffordsh
 \examples{
 sw_data_info("Miles_1997_NM")
 
-sw_model("Miles_1997_NM")
+sw_model("Miles_1997_NM", plot = TRUE)
 
 }
 \keyword{datasets}

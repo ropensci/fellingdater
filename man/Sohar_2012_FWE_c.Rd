@@ -28,7 +28,7 @@ Sapwood data set for Southern Finland and western Estonia, published by Sohar et
 \examples{
 sw_data_info("Sohar_2012_FWE_c")
 
-sw_model("Sohar_2012_FWE_c")
+sw_model("Sohar_2012_FWE_c", plot = TRUE)
 
 }
 \keyword{datasets}

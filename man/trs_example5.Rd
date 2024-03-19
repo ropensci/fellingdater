@@ -19,4 +19,8 @@ trs_example5
 \description{
 None of the series in this dataset have preserved sapwood rings.
 }
+\examples{
+trs_example5
+
+}
 \keyword{datasets}

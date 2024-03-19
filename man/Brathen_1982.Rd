@@ -27,7 +27,7 @@ Sapwood data set for Western Sweden published by Bräthen in 1982.
 \examples{
 sw_data_info("Brathen_1982")
 
-sw_model("Brathen_1982")
+sw_model("Brathen_1982", plot = TRUE)
 
 }
 \keyword{datasets}

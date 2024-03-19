@@ -19,4 +19,8 @@ trs_example7
 \description{
 A test dataset for sw_sum().
 }
+\examples{
+trs_example7
+
+}
 \keyword{datasets}

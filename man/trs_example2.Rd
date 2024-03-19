@@ -19,4 +19,8 @@ trs_example2
 \description{
 A dataset in which one series has an exact felling date (= waney edge present).
 }
+\examples{
+trs_example2
+
+}
 \keyword{datasets}

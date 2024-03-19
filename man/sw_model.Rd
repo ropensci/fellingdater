@@ -30,8 +30,8 @@ Should be one of:
 within the credible interval (default = .954).}
 
 \item{source}{A character string with info on the data source. This info is
-incorporated in the output when a sapwood data set is provided from a
-user-defined \code{data.frame}.}
+incorporated in the titel of the plot when a sapwood data set is provided
+from a user-defined \code{data.frame}.}
 
 \item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is
 returned. When \code{FALSE}, a list with numeric output of the modelling process
@@ -41,7 +41,7 @@ is returned.}
 The return value depends on the \code{plot} parameter.
 \itemize{
 \item if \code{plot} is TRUE, a ggplot-style graph is returned.
-\item if \code{plot} is FALSE, a list with the numeric output of the modelling
+\item if \code{plot} is FALSE, a \code{list} with the numeric output of the modelling
 process is returned.
 }
 }

@@ -54,7 +54,7 @@ interval (default = .954).}
 \itemize{
 \item If \code{TRUE}, \code{\link[=sw_sum_plot]{sw_sum_plot()}} is triggered and a ggplot-style graph is
 returned with the summed probability density (SPD).
-\item If \code{FALSE}, a list with the numeric output of the modelling process is
+\item If \code{FALSE}, a \code{list} with the numeric output of the modelling process is
 returned.
 }}
 
