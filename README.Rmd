@@ -23,13 +23,18 @@ knitr::opts_chunk$set(
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 <!-- badges: end -->
 
-This R-package offers a set of functions that can assist you to infer felling date estimates from dated tree-ring series. The presence of (partially) preserved sapwood or waney edge allows to estimate a range for the actual felling date, for individual series as well as for a group of timbers. Furthermore, an additional function provides a tool to sum sapwood probability distributions, comparable to 'summed probability densities' commonly applied to sets of radiocarbon (^14^C) dates.
+This package offers a set of functions that can assist you to infer felling date estimates from dated tree-ring series. The presence of (partially) preserved sapwood  allows to estimate the missing number of sapwood rings ( ? in figure below), and to report an interval in which the actual felling date is situated. 
 
-![](man/figures/roof_cores.png)
+![](man/figures/cross-section.png)
+
+This procedure can be implemented for individual series as well as for a group of timbers. 
 
 Where it can be assumed that a group of historical timbers were all felled at the same time (i.e. in the same year), but due to the absence of the bark/cambial zone (waney edge) and the last formed tree ring this cannot be assessed, the preserved sapwood rings can be used to infer a date range for the felling date.
 
 Taking into account the observed number of sapwood rings on all samples and combining them into a single estimate, is likely to provide a more accurate and precise estimate of the felling date year for the group of timbers under study.
+
+Furthermore, an additional function provides a tool to sum sapwood probability distributions, comparable to 'summed probability densities' commonly applied to sets of radiocarbon (^14^C) dates.
+
 
 ## Installation
 
@@ -53,7 +58,6 @@ trs_example1
 
 ```{r example}
 sw_combine(trs_example1, plot = TRUE)
-
 ```
 
 The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date. 
@@ -72,6 +76,14 @@ You can find an overview of the **main functions** and **sapwood datasets** dist
 Some practical examples are provided in the [`getting started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html) vignette.
 
 
+## Genreal workflow
+
+The `fellingdateR`-package allows to fully document the methodology to establish a felling date -- for a single
+timber or a group of timbers -- making the whole procedure reproducible and could assist to build standardized workflows when applied to large datasets of historical tree-ring series originating from geographically
+distinct regions. The package offers several functions that are related to each step in the (generalized) workflow when working with tree-ring series from (pre-)historical objects or constructions 
+
+![](man/figures/fellingdateR_workflow.png)
+
 ## Motivation & citation
 
 This package was developed during the analysis of a large data set of tree-ring series that originate from medieval timber constructions in [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study were published in [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
@@ -84,7 +96,6 @@ Please cite this paper when using the `fellingdateR` package:
 To refer to the current version of the package:
 
 > Haneca K (2023). _fellingdateR: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures_. R package, version 0.0.0.9003,\ <https://github.com/hanecakr/fellingDateR>.
-
 
 
 ## Comments and contributions
