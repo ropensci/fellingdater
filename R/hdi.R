@@ -45,8 +45,8 @@ hdi <- function(x,
      # index of (first value) df_sorted higher than cred_mass
      outside_idx <- which(cumsum(df_sorted) >= sum(df$p) * cred_mass)
      outside_idx <- min(outside_idx)
-     upper = df_sorted[outside_idx]
-     indices = which(df$p >= upper)
+     upper <- df_sorted[outside_idx]
+     indices <- which(df$p >= upper)
      gaps <- which(diff(indices) > 1)
      starts <- indices[c(1, gaps + 1)]
      ends <- indices[c(gaps, length(indices))]

@@ -36,7 +36,7 @@
 #'   * _gammma_.
 #'
 #' @return Depends on the value of plot. If `TRUE` a ggplot-style is returned,
-#'   when `FALSE` a `data.frame` with the combined probability ($raw_data$comb),
+#'   when `FALSE` a `list` with the combined probability ($raw_data$comb),
 #'   the modelling parameters ($sapwood_data, $sapwood_model, $cred_mass),
 #'   the Highest Posterior Density Interval for combined combined felling date
 #'   interval ($hdi_combine), and the Agreement indices for the model ($A_model)

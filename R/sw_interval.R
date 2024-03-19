@@ -25,7 +25,7 @@
 #' @param plot A `logical`.
 #'   * If `TRUE`, a ggplot-style graph is returned of the individual
 #'   sapwood model and estimate of the felling date range.
-#'   * If `FALSE`, a list with the numeric output of the modelling process is returned.
+#'   * If `FALSE`, a `list` with the numeric output of the modelling process is returned.
 #' @examples
 #' # 10 sapwood rings observed and the Wazny 1990 sapwood model:
 #' sw_interval(
@@ -55,8 +55,8 @@
 #'  * If `hdi = TRUE`, a `numeric vector` reporting the upper and lower limit
 #'   of the hdi (attributes provide more detail on `cred_mass` and the applied
 #'   sapwood model (`sw_data`)).
-#'  * If `hdi = FALSE`, a `matrix` with scaled p values for each number of
-#'   observed sapwood rings. This matrix
+#'  * If `hdi = FALSE`, a `data.frame` with scaled p values for each number of
+#'   observed sapwood rings.
 
 sw_interval <-
   function(n_sapwood = NA,

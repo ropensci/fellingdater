@@ -32,17 +32,25 @@ mov_av <- function(x,
                    w = 11,
                    align = "center",
                    edges = "fill") {
+
+  if(!align %in% c("center", "left", "right")){
+    stop("'align' should be 'center', 'left' or 'right'")
+  }
+  if(!edges %in% c("fill", "nofill")){
+    stop("Take care of the edges! 'Edges' should be 'nofill' or 'fill'.")
+  }
+
   if (align == "center") {
     before <- floor((w - 1) / 2)
     after <- ceiling((w - 1) / 2)
-  } else if (align == "right") {
+  }
+  if (align == "right") {
     before <- w - 1
     after <- 0
-  } else if (align == "left") {
+  }
+  if (align == "left") {
     before <- 0
     after <- w - 1
-  } else {
-    stop("'align' should be 'center', 'left' or 'right'")
   }
 
   run_mean <- matrix(NA, nrow = length(x), ncol = 1)
@@ -58,7 +66,8 @@ mov_av <- function(x,
         print("Error in dataframe. Are there missing values?")
       }
     }
-  } else if (edges == "nofill") {
+  }
+  if (edges == "nofill") {
     for (i in 1:n) {
       if (i - before <= 0) {
         run_mean[i] <- NA
@@ -67,8 +76,6 @@ mov_av <- function(x,
           mean(x[max(0, (i - before)):(i + after)], na.rm = FALSE)
       }
     }
-  } else {
-    stop("Take care of the edges! 'Edges' should be 'nofill' or 'fill'.")
   }
 
   return(run_mean)

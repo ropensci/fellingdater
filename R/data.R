@@ -15,7 +15,7 @@
 #' @examples
 #' sw_data_info("Brathen_1982")
 #'
-#' sw_model("Brathen_1982")
+#' sw_model("Brathen_1982", plot = TRUE)
 #'
 "Brathen_1982"
 
@@ -37,7 +37,7 @@
 #' @examples
 #' sw_data_info("Hollstein_1980")
 #'
-#' sw_model("Hollstein_1980")
+#' sw_model("Hollstein_1980", plot = TRUE)
 #'
 "Hollstein_1980"
 
@@ -59,7 +59,7 @@
 #' @examples
 #' sw_data_info("Miles_1997_NM")
 #'
-#' sw_model("Miles_1997_NM")
+#' sw_model("Miles_1997_NM", plot = TRUE)
 #'
 "Miles_1997_NM"
 
@@ -81,7 +81,7 @@
 #' @examples
 #' sw_data_info("Miles_1997_SC")
 #'
-#' sw_model("Miles_1997_SC")
+#' sw_model("Miles_1997_SC", plot = TRUE)
 #'
 "Miles_1997_SC"
 
@@ -103,7 +103,7 @@
 #' @examples
 #' sw_data_info("Miles_1997_WBC")
 #'
-#' sw_model("Miles_1997_WBC")
+#' sw_model("Miles_1997_WBC", plot = TRUE)
 #'
 "Miles_1997_WBC"
 
@@ -125,7 +125,7 @@
 #' @examples
 #' sw_data_info("Pilcher_1987")
 #'
-#' sw_model("Pilcher_1987")
+#' sw_model("Pilcher_1987", plot = TRUE)
 #'
 "Pilcher_1987"
 
@@ -148,7 +148,7 @@
 #' @examples
 #' sw_data_info("Sohar_2012_ELL_c")
 #'
-#' sw_model("Sohar_2012_ELL_c")
+#' sw_model("Sohar_2012_ELL_c", plot = TRUE)
 #'
 "Sohar_2012_ELL_c"
 
@@ -171,7 +171,7 @@
 #' @examples
 #' sw_data_info("Sohar_2012_ELL_t")
 #'
-#' sw_model("Sohar_2012_ELL_t")
+#' sw_model("Sohar_2012_ELL_t", plot = TRUE)
 #'
 "Sohar_2012_ELL_t"
 
@@ -194,7 +194,7 @@
 #' @examples
 #' sw_data_info("Sohar_2012_FWE_c")
 #'
-#' sw_model("Sohar_2012_FWE_c")
+#' sw_model("Sohar_2012_FWE_c", plot = TRUE)
 #'
 "Sohar_2012_FWE_c"
 
@@ -217,7 +217,7 @@
 #' @examples
 #' sw_data_info("Sohar_2012_FWE_t")
 #'
-#' sw_model("Sohar_2012_FWE_t")
+#' sw_model("Sohar_2012_FWE_t", plot = TRUE)
 #'
 "Sohar_2012_FWE_t"
 
@@ -239,7 +239,7 @@
 #' @examples
 #' sw_data_info("Wazny_1990")
 #'
-#' sw_model("Wazny_1990")
+#' sw_model("Wazny_1990", plot = TRUE)
 #'
 "Wazny_1990"
 
@@ -264,7 +264,7 @@
 #' @examples
 #' sw_data_info("vanDaalen_Norway")
 #'
-#' sw_model("vanDaalen_Norway")
+#' sw_model("vanDaalen_Norway", plot = TRUE)
 #'
 "vanDaalen_Norway"
 
@@ -288,7 +288,7 @@
 #' @examples
 #' sw_data_info("vanDaalen_NLBE")
 #'
-#' sw_model("vanDaalen_NLBE")
+#' sw_model("vanDaalen_NLBE", plot = TRUE)
 #'
 "vanDaalen_NLBE"
 
@@ -304,7 +304,10 @@
 #'   \item{swr}{number of observed sapwood rings}
 #'   \item{bark}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example0
 #'
+
 "trs_example0"
 
 #' Example dataset 1
@@ -318,6 +321,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example1
 #'
 "trs_example1"
 
@@ -332,6 +337,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example2
 #'
 "trs_example2"
 
@@ -346,6 +353,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example3
 #'
 "trs_example3"
 
@@ -360,6 +369,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example4
 #'
 "trs_example4"
 
@@ -374,6 +385,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example5
 #'
 "trs_example5"
 
@@ -388,6 +401,8 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example6
 #'
 "trs_example6"
 
@@ -402,5 +417,7 @@
 #'   \item{n_sapwood}{number of observed sapwood rings}
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
+#' @examples
+#' trs_example7
 #'
 "trs_example7"

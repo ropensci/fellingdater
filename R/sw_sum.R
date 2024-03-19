@@ -25,7 +25,7 @@
 #' @param plot A `logical`.
 #'   * If `TRUE`, [sw_sum_plot()] is triggered and a ggplot-style graph is
 #'   returned with the summed probability density (SPD).
-#'   * If `FALSE`, a list with the numeric output of the modelling process is
+#'   * If `FALSE`, a `list` with the numeric output of the modelling process is
 #'   returned.
 #' @param scale_p A `logical`. If `TRUE` the summed probability density is
 #'   scaled to 1 (default).

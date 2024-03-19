@@ -19,12 +19,12 @@
 #'   returned. When `FALSE`, a list with numeric output of the modelling process
 #'   is returned.
 #' @param source A character string with info on the data source. This info is
-#'   incorporated in the output when a sapwood data set is provided from a
-#'   user-defined `data.frame`.
+#'   incorporated in the titel of the plot when a sapwood data set is provided
+#'   from a user-defined `data.frame`.
 #'
 #' @return The return value depends on the `plot` parameter.
 #'   * if `plot` is TRUE, a ggplot-style graph is returned.
-#'   * if `plot` is FALSE, a list with the numeric output of the modelling
+#'   * if `plot` is FALSE, a `list` with the numeric output of the modelling
 #'   process is returned.
 #'
 #' @export

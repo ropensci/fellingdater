@@ -5,6 +5,7 @@ reference:
 - title: Main functions
   contents:
   - sw_model
+  - sw_model_plot
   - sw_interval
   - sw_interval_plot
   - fd_report
@@ -16,12 +17,12 @@ reference:
 - title: Helper functions
   contents:
   - read_fh
-  - get_header
+  - fh_header
   - cor_table
   - sw_data_overview
   - sw_data_info
   - hdi
-  - movAv
+  - mov_av
 
 - title: Datasets
   contents:
@@ -39,5 +40,18 @@ reference:
   - vanDaalen_Norway
   - Wazny_1990
 
+- title: Example data
+  contents:
+  - trs_example0
+  - trs_example1
+  - trs_example2
+  - trs_example3
+  - trs_example4
+  - trs_example5
+  - trs_example6
+  - trs_example7
 
+- title: About
+  contents:
+  - fellingdateR
 
