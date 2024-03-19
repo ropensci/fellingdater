@@ -11,9 +11,8 @@ fd_report(
   n_sapwood = "n_sapwood",
   waneyedge = "waneyedge",
   sw_data = "Hollstein_1980",
-  credMass = 0.954,
-  densfun = "lognormal",
-  sep = ";"
+  cred_mass = 0.954,
+  densfun = "lognormal"
 )
 }
 \arguments{
@@ -44,28 +43,24 @@ sapwood rings are listed (should be \code{numeric} vector).}
 \item{sw_data}{There are two options:
 \itemize{
 \item A \code{character} string providing the name of the sapwood data set to use
-for modelling. Should be one of \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv
-file with columns ´n_sapwood´ and ´count´. This variable will be used for
-all individual series in \code{x}, or
+for modelling. It should be one of the data sets listed in
+\code{\link[=sw_data_overview]{sw_data_overview()}}, or the name of a \code{data.frame} with sapwood data
+in columns \code{n_sapwood} and \code{count}, or
 \item the name of the column in \code{x}that lists for each series one of the
-sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path to a .csv file
-with columns ´n_sapwood´ and ´count´.
+sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}.
 }}
 
-\item{credMass}{A \code{scalar [0, 1]} specifying the mass within the credible
+\item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
 interval (default = .954).}
 
-\item{densfun}{Name of the density function to fit to the sapwood data set.
+\item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
 \itemize{
-\item "lognormal" (the default value),
-\item "normal",
-\item "weibull",
-\item "gammma".
+\item \emph{lognormal} (the default value),
+\item \emph{normal},
+\item \emph{weibull},
+\item \emph{gammma}.
 }}
-
-\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from user-defined .csv-file.}
 }
 \value{
 A data.frame reporting the estimate of the felling date for each
@@ -106,10 +101,10 @@ sw_models_for_indiv_series <- c("Sohar_2012_ELL_c",
                                 "vanDaalen_Norway",
                                 "vanDaalen_Norway")
 
-trs_example2_edit <- cbind(trs_example2, sw_models_for_indiv_series)
+trs_example2_edit <- cbind(trs_example2, "sw_models" = sw_models_for_indiv_series)
 
 fd_report(trs_example2_edit,
-          sw_data = "sw_models_for_indiv_series"
+          sw_data = "sw_models"
           )
 
 }

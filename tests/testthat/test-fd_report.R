@@ -59,16 +59,16 @@ testthat::test_that("waneyedge must be boolean", {
                                regexp = "waneyedge")
 })
 
-testthat::test_that("credMass must be between 0 and 1", {
+testthat::test_that("cred_mass must be between 0 and 1", {
         testthat::expect_error(fd_report(trs_example4,
-                                         "credMass" = "lots"),
-                               regexp = "credMass")
+                                         "cred_mass" = "lots"),
+                               regexp = "cred_mass")
         testthat::expect_error(fd_report(trs_example5,
-                                         "credMass" = -145),
-                               regexp = "credMass")
+                                         "cred_mass" = -145),
+                               regexp = "cred_mass")
         testthat::expect_error(fd_report(trs_example6,
-                                         "credMass" = 1.01),
-                               regexp = "credMass")
+                                         "cred_mass" = 1.01),
+                               regexp = "cred_mass")
 })
 
 testthat::test_that("Output is a data.frame", {
