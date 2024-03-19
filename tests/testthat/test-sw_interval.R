@@ -9,14 +9,14 @@ testthat::test_that("n_sapwood is present and a natural number", {
 
 testthat::test_that("credMass is a number between 0 and 1", {
         testthat::expect_error(sw_interval(n_sapwood = 5,
-                                           credMass = -5),
-                               regexp = "credMass")
+                                           cred_mass = -5),
+                               regexp = "cred_mass")
         testthat::expect_error(sw_interval(n_sapwood = 5,
-                                           credMass = "nulkommadink"),
-                               regexp = "credMass")
+                                           cred_mass = "nulkommadink"),
+                               regexp = "cred_mass")
         testthat::expect_error(sw_interval(n_sapwood = 5,
-                                           credMass = 34.56),
-                               regexp = "credMass")
+                                           cred_mass = 34.56),
+                               regexp = "cred_mass")
 })
 
 testthat::test_that("sw_data exists", {
@@ -34,7 +34,7 @@ testthat::test_that("hdi works with lognormal density function", {
                 n_sapwood = 10,
                 last = 1234,
                 hdi = TRUE,
-                credMass = .95,
+                cred_mass = .95,
                 sw_data = "Wazny_1990",
                 densfun = "lognormal"
         )
@@ -48,7 +48,7 @@ testthat::test_that("hdi works with normal density function", {
                 n_sapwood = 10,
                 last = 1234,
                 hdi = TRUE,
-                credMass = .95,
+                cred_mass = .95,
                 sw_data = "Wazny_1990",
                 densfun = "normal"
         )
@@ -66,8 +66,8 @@ testthat::test_that("hdi does not work with invalid density function", {
         regexp = "not a supported distribution")
 })
 
-testthat::test_that("d.dens does not work with invalid density function", {
-        testthat::expect_error(d.dens(densfun = "nuka-cola", ),
+testthat::test_that("d_dens does not work with invalid density function", {
+        testthat::expect_error(d_dens(densfun = "nuka-cola", ),
                                regexp = "not a supported distribution")
 })
 
@@ -76,7 +76,7 @@ testthat::test_that("output is list", {
                 n_sapwood = 10,
                 last = 1234,
                 hdi = TRUE,
-                credMass = .95,
+                cred_mass = .95,
                 sw_data = "Wazny_1990",
                 densfun = "normal"
         )
@@ -91,7 +91,7 @@ testthat::test_that("output is data.frame", {
                         n_sapwood = 0,
                         last = 1234,
                         hdi = FALSE,
-                        credMass = .95,
+                        cred_mass = .95,
                         sw_data = "Wazny_1990",
                         densfun = "lognormal"
                 ),

@@ -8,10 +8,9 @@ sw_interval(
   n_sapwood = NA,
   last = 1,
   hdi = FALSE,
-  credMass = 0.954,
+  cred_mass = 0.954,
   sw_data = "Hollstein_1980",
   densfun = "lognormal",
-  sep = ";",
   plot = FALSE
 )
 }
@@ -25,12 +24,12 @@ ring (optional, default = 0).}
 density interval (credible interval) are returned. When \code{FALSE}, a matrix
 is returned with scaled p-values for each number of observed sapwood rings.}
 
-\item{credMass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
+\item{cred_mass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
 within the credible interval (default = .954)}
 
 \item{sw_data}{The name of the sapwood data set to use for modelling. It
-should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the path
-to a .csv file with columns \code{n_sapwood} and \code{count}.}
+should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the name
+of a \code{data.frame} with sapwood data in columns \code{n_sapwood} and \code{count}.}
 
 \item{densfun}{Name of the density function fitted to the sapwood data set.
 Should be one of:
@@ -40,9 +39,6 @@ Should be one of:
 \item \emph{weibull},
 \item \emph{gammma}.
 }}
-
-\item{sep}{Should be "," (comma)  or ";" (semi-colon) and is used when a
-sapwood data set is provided from a user-defined .csv-file.}
 
 \item{plot}{A \code{logical}.
 \itemize{
@@ -55,7 +51,7 @@ sapwood model and estimate of the felling date range.
 Depends on the value of \code{hdi}.
 \itemize{
 \item If \code{hdi = TRUE}, a \verb{numeric vector} reporting the upper and lower limit
-of the hdi (attributes provide more detail on \code{credMass} and the applied
+of the hdi (attributes provide more detail on \code{cred_mass} and the applied
 sapwood model (\code{sw_data})).
 \item If \code{hdi = FALSE}, a \code{matrix} with scaled p values for each number of
 observed sapwood rings. This matrix
@@ -69,20 +65,24 @@ and the selected sapwood data and model.
 }
 \examples{
 # 10 sapwood rings observed and the Wazny 1990 sapwood model:
-sw_interval(n_sapwood = 10,
-            last = 1234,
-            hdi = TRUE,
-            credMass = .95,
-            sw_data = "Wazny_1990",
-            densfun = "lognormal",
-            plot = FALSE)
- # same example as above, but with numerical output (hdi = FALSE):
-sw_interval(n_sapwood = 10,
-            last = 1234,
-            hdi = FALSE,
-            credMass = .95,
-            sw_data = "Wazny_1990",
-            densfun = "lognormal",
-            plot = FALSE)
+sw_interval(
+  n_sapwood = 10,
+  last = 1234,
+  hdi = TRUE,
+  cred_mass = .95,
+  sw_data = "Wazny_1990",
+  densfun = "lognormal",
+  plot = FALSE
+)
+# same example as above, but with numerical output (hdi = FALSE):
+sw_interval(
+  n_sapwood = 10,
+  last = 1234,
+  hdi = FALSE,
+  cred_mass = .95,
+  sw_data = "Wazny_1990",
+  densfun = "lognormal",
+  plot = FALSE
+)
 
 }

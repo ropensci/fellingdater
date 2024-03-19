@@ -4,10 +4,14 @@
 \alias{sw_interval_plot}
 \title{Plot function for the output of \code{\link[=sw_interval]{sw_interval()}}}
 \usage{
-sw_interval_plot(x)
+sw_interval_plot(x, area_fill = "tomato3", line_color = "tomato3", ...)
 }
 \arguments{
 \item{x}{Output of \code{\link[=sw_interval]{sw_interval()}}.}
+
+\item{area_fill}{Fill color for the area under fitted distribution.}
+
+\item{line_color}{Line color for the fitted distribution.}
 }
 \value{
 A ggplot-style graph.
@@ -17,13 +21,15 @@ Returns a ggplot-style graph of the probability density function for the
 felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 }
 \examples{
-tmp <- sw_interval(n_sapwood = 10,
-            last = 1000,
-           hdi = FALSE,
-            credMass = .95,
-            sw_data = "Hollstein_1980",
-            densfun = "lognormal",
-            plot = FALSE)
+tmp <- sw_interval(
+  n_sapwood = 10,
+  last = 1000,
+  hdi = FALSE,
+  cred_mass = .95,
+  sw_data = "Hollstein_1980",
+  densfun = "lognormal",
+  plot = FALSE
+)
 sw_interval_plot(tmp)
 
 }

@@ -97,7 +97,7 @@ sw_interval <-
     }
 
     sw_model_params <- sw_model(
-      sw_data,
+      sw_data = sw_data,
       densfun = densfun,
       cred_mass = cred_mass,
       plot = FALSE
@@ -122,7 +122,7 @@ sw_interval <-
       x = swr_n,
       param1 = a,
       param2 = sigma,
-      n = length(swr_n)
+      n = 1
     )
     pdf <- data.frame(year, swr_n, p)
     colnames(pdf) <- c("year", "n_sapwood", "p")
@@ -189,53 +189,3 @@ This value falls outside the range of the chosen sapwood model."
       return(hdi_int)
     }
   }
-
-
-###############################################################################
-# helper function to pick the appropriate Prob. Density Function (PDF).
-
-d_dens <- function(densfun = densfun,
-                   x = x,
-                   param1 = 0,
-                   param2 = 1,
-                   log = FALSE,
-                   n = 1) {
-  if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
-    stop(sprintf(
-      "!!! '%s' is not a supported distribution !!!",
-      densfun
-    ))
-  }
-
-  if (densfun == "lognormal") {
-    stats::dlnorm(
-      x = x,
-      meanlog = param1,
-      sdlog = param2,
-      log = log
-    )
-  } else if (densfun == "normal") {
-    stats::dnorm(
-      x = x,
-      mean = param1,
-      sd = param2,
-      log = log
-    )
-  } else if (densfun == "weibull") {
-    stats::dweibull(
-      x = x,
-      shape = param1,
-      scale = param2,
-      log = log
-    )
-  } else if (densfun == "gamma") {
-    stats::dgamma(
-      x = x,
-      shape = param1,
-      rate = param2,
-      log = log
-    )
-  }
-}
-
-###############################################################################

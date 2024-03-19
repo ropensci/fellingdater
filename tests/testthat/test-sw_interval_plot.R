@@ -4,7 +4,7 @@ testthat::test_that("sw_interval_plot() returns a ggplot object", {
           n_sapwood = 10,
           last = 1000,
           hdi = FALSE,
-          credMass = .95,
+          cred_mass = .95,
           sw_data = "Hollstein_1980",
           densfun = "lognormal",
           plot = FALSE
