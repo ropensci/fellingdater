@@ -85,29 +85,30 @@
 <code>fellingdateR</code>: Estimate, report and combine felling
 dates of historical tree-ring series<a class="anchor" aria-label="anchor" href="#fellingdater-estimate-report-and-combine-felling-dates-of-historical-tree-ring-series"></a>
 </h2>
-<p>This R-package offers a set of functions that can assist you to infer
-felling date estimates from dated tree-ring series. The presence of
-(partially) preserved sapwood or waney edge allows to estimate a range
-for the actual felling date, for individual series as well as for a
-group of timbers. Furthermore, an additional function provides a tool to
-sum sapwood probability distributions, comparable to ‘summed probability
-densities’ commonly applied to sets of radiocarbon (<sup>14</sup>C)
-dates.</p>
-<p>Where it can be assumed that a group of historical timbers were all
-felled at the same time (i.e. in the same year), but due to the absence
-of the bark/cambial zone (waney edge) and the last formed tree ring this
-cannot be assessed, the preserved sapwood rings can be used to infer a
-date range for the felling date.</p>
-<p>Taking into account the observed number of sapwood rings on all
-samples and combining them into a single estimate, is likely to provide
-a more accurate and precise estimate of the felling date year for the
-group of timbers under study.</p>
+<p>This R-package offers a suite of functions designed to assist you in
+inferring estimates for felling dates from dated tree-ring series. The
+presence of (partially) preserved sapwood or waney edge allows on a
+(pre-)historical timber allows to estimate the missing number of sapwood
+rings. from this estimate, a range for the actual felling date can be
+determined and reported, for individual series as well as for a group of
+related timbers.</p>
+<p>In cases where it can be assumed that a group of historical timbers
+were all felled simultaneously (i.e., in the same year), but due to the
+absence of the bark/cambial zone (waney edge) and the final formed tree
+ring, this cannot be determined, the preserved sapwood rings can be used
+to establish a date range for the felling event.</p>
+<p>Taking into account the observed number of sapwood rings across all
+analysed samples and combining them into a single estimate, a more
+accurate and precise estimation of the felling date year for the group
+of timbers under study is likely to be obtained.</p>
 <p>This vignette provides a quick overview of the package main
-functions.</p>
+functions, including a new tool to sum sapwood probability
+distributions, comparable to ‘summed probability densities (SPD)’
+commonly applied to sets of radiocarbon (<sup>14</sup>C) dates.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>You can install the development version of fellingdateR from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the development version of fellingdateR from <a href="https://github.com/hanecakr/fellingdateR/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"hanecakr/fellingdateR"</span><span class="op">)</span></span></code></pre></div>
@@ -144,20 +145,20 @@ date range, was published by <a href="https://search.worldcat.org/nl/title/63918
 <div class="section level4">
 <h4 id="sw_interval">sw_interval<a class="anchor" aria-label="anchor" href="#sw_interval"></a>
 </h4>
-<p>This function computes the probability density function (PDF) and
-highest probability density interval (hdi) of the felling date range
-based on the observed number of sapwood rings, their chronological
-dating and the selected sapwood data and model.</p>
-<p>In the example below, 10 sapwood rings were observed on a sample
-(last ring dated to 1234 AD) that is supposed to have a provenance in
-the Southern Baltic region (sapwood model published by <a href="https://www.academia.edu/3486096/Aufbau_und_Anwendung_der_Dendrochronologie_f%C3%BCr_Eichenholz_in_Polen" class="external-link">Wazny,
-1990</a>. The hdi delineates an interval in which the actual felling
-date is most likely situated. It is the shortest interval within a
-probability distribution for a given probability mass or credible
-interval. The hdi summarizes the distribution by specifying an interval
-that spans most of the distribution, say 95% of it, as such that every
-point inside the interval has higher credibility than any point outside
-the interval.</p>
+<p>This function calculates the probability density function (PDF) and
+the highest probability density interval (HDI) for the range of
+potential felling dates, based on the observed number of sapwood rings,
+their chronological dating and the selected sapwood data and model.</p>
+<p>In the example below, we observe 10 sapwood rings on a sample (with
+the last ring dated to 1234 AD) that originates from the Southern Baltic
+region. The sapwood model published by <a href="https://www.academia.edu/3486096/Aufbau_und_Anwendung_der_Dendrochronologie_f%C3%BCr_Eichenholz_in_Polen" class="external-link">Wazny,
+1990</a> covers this provenance region. The hdi delineates an interval
+in which the actual felling date is most likely situated. It represents
+the shortest interval within a probability distribution for a given
+probability mass or credible interval. The HDI summarizes the
+distribution by specifying an interval that spans most of the
+distribution, typically 95%, such that every point inside the interval
+has higher credibility than any point outside the interval.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_interval.html">sw_interval</a></span><span class="op">(</span>n_sapwood <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>            last <span class="op">=</span> <span class="fl">1234</span>,</span>
@@ -167,8 +168,8 @@ the interval.</p>
 <span>            densfun <span class="op">=</span> <span class="st">"lognormal"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   lower upper         p</span></span>
 <span><span class="co">#&gt; 1  1234  1250 0.9611793</span></span></code></pre></div>
-<p>When <code>hdi = FALSE</code> a matrix is returned with scaled p
-values for each number of observed sapwood rings.</p>
+<p>When <code>hdi = FALSE</code>, a matrix is returned with scaled
+<em>p</em>-values for each number of observed sapwood rings.</p>
 <p>The results of this procedure can be visualized by setting
 <code>plot = TRUE</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -185,8 +186,8 @@ values for each number of observed sapwood rings.</p>
 <div class="section level4">
 <h4 id="fd_report">fd_report<a class="anchor" aria-label="anchor" href="#fd_report"></a>
 </h4>
-<p>Reporting estimates of the felling date range for individual series,
-is provided by the <code><a href="../reference/fd_report.html">fd_report()</a></code> function.</p>
+<p>The <code><a href="../reference/fd_report.html">fd_report()</a></code>function reports estimates of the felling
+date (fd) range for individual series.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"aaa"</span>, <span class="st">"bbb"</span>, <span class="st">"ccc"</span><span class="op">)</span>,</span>
 <span>                 swr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>,</span>
@@ -205,15 +206,15 @@ is provided by the <code><a href="../reference/fd_report.html">fd_report()</a></
 <div class="section level4">
 <h4 id="sw_combine">sw_combine<a class="anchor" aria-label="anchor" href="#sw_combine"></a>
 </h4>
-<p>The procedure to combine felling dates of a group of related,
-individual series with (partially) preserved sapwood, in order to narrow
-down the range of a common felling date is provided by the
-<code><a href="../reference/sw_combine.html">sw_combine()</a></code> function. It returns a list with:</p>
+<p>The the <code><a href="../reference/sw_combine.html">sw_combine()</a></code> function combines felling dates of
+a group of related series with (partially) preserved sapwood, in order
+to narrow down the range of a common felling date. The function returns
+a list with:</p>
 <ul>
-<li><p>the pdf for the felling date of the individual series and the pdf
+<li><p>the PDF for the felling date of the individual series and the PDF
 of the model that combines these individual series
 (<code>$dataRaw</code>),</p></li>
-<li><p>the hdi for the combined estimate of the common felling date
+<li><p>the HDI for the combined estimate of the common felling date
 (<code>$hdi_model</code>),</p></li>
 <li><p>the <em>Agreement index</em> (<code>$A_comb</code>) of the model,
 expressing how well the individual series fit into the model (ideally
@@ -226,10 +227,10 @@ around 100%, and not lower than the critical threshold A_c = 60%)
 <div class="section level5">
 <h5 id="trs_example0">trs_example0<a class="anchor" aria-label="anchor" href="#trs_example0"></a>
 </h5>
-<p>A data set with dated tree-ring series which all have partially
-preserved sapwood. The names of the variables in the data set are mapped
-to the parameters of the <code><a href="../reference/sw_combine.html">sw_combine()</a></code> function. In the
-example below, the numeric output is returned:</p>
+<p>A data set with dated tree-ring series, all with partially preserved
+sapwood. The names of the variables in the data set are mapped to the
+parameters of the <code><a href="../reference/sw_combine.html">sw_combine()</a></code> function. In the example
+below, the numeric output is returned:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">trs_example0</span></span>
 <span><span class="co">#&gt;      trs  end swr  bark</span></span>
@@ -292,8 +293,8 @@ example below, the numeric output is returned:</p>
 <div class="section level5">
 <h5 id="trs_example2">trs_example2<a class="anchor" aria-label="anchor" href="#trs_example2"></a>
 </h5>
-<p>A data set with 5 tree-ring series of which one has an exact felling
-date:</p>
+<p>A data set with 5 tree-ring series, one of which has an exact felling
+date (waney edge present):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">trs_example2</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
@@ -319,7 +320,7 @@ waney edge:</p>
 <h5 id="trs_example4">trs_example4<a class="anchor" aria-label="anchor" href="#trs_example4"></a>
 </h5>
 <p>An attempt to compute a common felling date for a group of tree-ring
-series. All series include partially preserved sapwood:</p>
+series, all including partially preserved sapwood:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
@@ -335,19 +336,24 @@ index below 60%.</p>
 <code>earliest possible felling date</code> (<em>terminus post
 quem</em>) can be determined:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example5</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example5</span>,  plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level4">
 <h4 id="sw_sum">sw_sum<a class="anchor" aria-label="anchor" href="#sw_sum"></a>
 </h4>
-<p>The <code><a href="../reference/sw_sum.html">sw_sum()</a></code> function computes the the summed
-probability density (SPD) for a set of felling date ranges.</p>
+<p>The <code><a href="../reference/sw_sum.html">sw_sum()</a></code> function calculates the the summed
+probability density (SPD) for a set of felling date ranges. In the
+example, the SPD for a set of 9 series with partially preserved sapwood
+or waney edge is computed and plotted. A smoother for the SPD is plotted
+as well. The dots represent exact felling dates (i.e., series with waney
+edge).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in sw_sum(trs_example7, plot = TRUE): --&gt; 1 series without sapwood rings or waney edge detected</span></span>
-<span><span class="co">#&gt;         and removed from the data set</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">spd7</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in sw_sum(trs_example7, plot = FALSE): --&gt; 1 series without sapwood rings or waney edge detected</span></span>
+<span><span class="co">#&gt;         and removed from the data set</span></span>
+<span><span class="fu"><a href="../reference/sw_sum_plot.html">sw_sum_plot</a></span><span class="op">(</span><span class="va">spd7</span>, window_smooth <span class="op">=</span> <span class="fl">5</span>, bar_col <span class="op">=</span> <span class="st">"#95d5b2"</span>, trend_col <span class="op">=</span> <span class="st">"#dda15e"</span>, dot_col <span class="op">=</span> <span class="st">"forestgreen"</span>, dot_shape <span class="op">=</span> <span class="fl">23</span>, dot_size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
 </div>
@@ -358,24 +364,23 @@ probability density (SPD) for a set of felling date ranges.</p>
 <h4 id="sw_data_overview">sw_data_overview<a class="anchor" aria-label="anchor" href="#sw_data_overview"></a>
 </h4>
 <p>The function <code><a href="../reference/sw_data_overview.html">sw_data_overview()</a></code> provides an overview of
-all published sapwood data sets that are distributed with this
-package.</p>
+all published sapwood data sets distributed with this package.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_data_overview.html">sw_data_overview</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "Brathen_1982"     "Hollstein_1980"   "Miles_1997_NM"    "Miles_1997_SC"   </span></span>
 <span><span class="co">#&gt;  [5] "Miles_1997_WBC"   "Pilcher_1987"     "Sohar_2012_ELL_c" "Sohar_2012_ELL_t"</span></span>
 <span><span class="co">#&gt;  [9] "Sohar_2012_FWE_c" "Sohar_2012_FWE_t" "Wazny_1990"       "vanDaalen_NLBE"  </span></span>
 <span><span class="co">#&gt; [13] "vanDaalen_Norway"</span></span></code></pre></div>
-<p>Load the original data with,
-e.g. <code>get("Hollstein_1980")</code>.</p>
+<p>Load the original data with, for example,
+<code>get("Hollstein_1980")</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="sw_data_info">sw_data_info<a class="anchor" aria-label="anchor" href="#sw_data_info"></a>
 </h4>
 <p>More information on one of the sapwood data sets - how to cite the
-data set, the area the data represents, the number of observations and
-some basic summary stats - can be retrieved by the
-<code><a href="../reference/sw_data_info.html">sw_data_info()</a></code> function.</p>
+data set, the geographical area the data represents, the number of
+observations and some basic summary stats - can be retrieved by using
+the <code><a href="../reference/sw_data_info.html">sw_data_info()</a></code> function.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_data_info.html">sw_data_info</a></span><span class="op">(</span><span class="st">"Pilcher_1987"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $data</span></span>
@@ -429,10 +434,10 @@ some basic summary stats - can be retrieved by the
 <span><span class="co">#&gt; $summary_raw_data</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">#&gt;    2.00   10.00   12.00   11.69   13.00   27.00</span></span></code></pre></div>
-<p>The <code><a href="../reference/sw_model.html">sw_model()</a></code> function allows to fit a distribution to
-a data set of observed sapwood numbers and computes the highest
-posterior density interval (hdi) for a given credibility mass. The
-density function fitted to the sapwood data set should be one of:</p>
+<p>The <code><a href="../reference/sw_model.html">sw_model()</a></code> function fits a distribution to a data
+set of observed sapwood numbers and computes the highest posterior
+density interval (HDI) for a given credibility mass. The density
+function fitted to the sapwood data set should be one of:</p>
 <ul>
 <li>“lognormal” (the default value),</li>
 <li>“normal”,</li>
@@ -574,10 +579,8 @@ frame elements could share a common felling date:</p>
 <span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">series</span> <span class="op">!=</span> <span class="st">"K1_091"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
-<p>For more details see: <a href="https://doi.org/10.1111/1095-9270.12037" class="external-link">Haneca K. &amp; Daly A.
-(2014). Tree-Rings, Timbers and Trees: a dendrochronological survey of
-the 14th-century cog, Doel 1. <em>International Journal of Nautical
-Archaeology</em> 43, 87–102.</a></p>
+<p>For more details see: <a href="https://doi.org/10.1111/1095-9270.12037" class="external-link">Haneca &amp; Daly
+(2014)</a></p>
 </div>
 <div class="section level4">
 <h4 id="cor_table">cor_table<a class="anchor" aria-label="anchor" href="#cor_table"></a>
