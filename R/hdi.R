@@ -13,7 +13,7 @@
 #'
 #'  This function is applied in functions [sw_model] and [sw_interval].
 #'
-#' @param x A `data.frame` with columns ´n_sapwood´ and 'p' (the associated
+#' @param x A `data.frame` with columns `n_sapwood` and `p` (the associated
 #'  probability). `x` is computed in functions [sw_model], [sw_interval],
 #'  and [sw_combine].
 #' @param a The name of the column in x that lists the number of sapwood rings.

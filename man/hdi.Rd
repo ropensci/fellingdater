@@ -7,7 +7,7 @@
 hdi(x, a = "n_sapwood", b = "p", cred_mass = 0.954)
 }
 \arguments{
-\item{x}{A \code{data.frame} with columns ´n_sapwood´ and 'p' (the associated
+\item{x}{A \code{data.frame} with columns \code{n_sapwood} and \code{p} (the associated
 probability). \code{x} is computed in functions \link{sw_model}, \link{sw_interval},
 and \link{sw_combine}.}
 

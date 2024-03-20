@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 <!-- badges: end -->
 
-This R-package offers a suite of functions designed to assist dendrochronologists in inferring estimates for felling dates, derived from dated tree-ring series. The presence of (partially) preserved sapwood allows to estimate the missing number of sapwood rings ( ? in figure below), and to report an interval in which the actual felling date likely falls. 
+This R-package offers a suite of functions designed to assist dendrochronologists in inferring estimates for felling dates, derived from dated tree-ring series. The presence of partially preserved sapwood (*sw*) allows to estimate the missing number of sapwood rings ( ? in figure below), and to report an interval in which the actual felling date (*fd*) likely falls. 
 
 ![](man/figures/cross-section.png)
 
