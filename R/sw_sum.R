@@ -62,7 +62,7 @@ sw_sum <- function(x,
     densfun = densfun
   )
   n_original <- nrow(x)
-  x <- dplyr::filter(x, !is.na(n_sapwood) | isTRUE(waneyedge) )
+  x <- dplyr::filter(x, !is.na(n_sapwood) | isTRUE(waneyedge))
 
   if (nrow(x) < n_original) {
     warning(
@@ -87,7 +87,7 @@ sw_sum <- function(x,
 
   if (sw_data %in% sw_data_overview()) {
     sw_data <- rep(sw_data, nrow(x))
-  } else if (exists(sw_data)){
+  } else if (exists(sw_data)) {
     sw_data <- rep(sw_data, nrow(x))
   } else if (sw_data %in% colnames(x)) {
     sw_data <- x[, sw_data]
@@ -131,7 +131,7 @@ sw_sum <- function(x,
           last = yr,
           sw_data = sw_data_i,
           densfun = densfun,
-          cred_mass= cred_mass
+          cred_mass = cred_mass
         )
       pdf <- pdf[, -2] # remove column n_sapwood
       colnames(pdf) <- c("year", keycode_i)

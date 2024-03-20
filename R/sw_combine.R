@@ -41,7 +41,16 @@
 #'   the Highest Posterior Density Interval for combined combined felling date
 #'   interval ($hdi_combine), and the Agreement indices for the model ($A_model)
 #'   and individual series ($individual_series$agr_index).
+#'   The rationale of the agreement index is outlined by Bronk Ramsey (1995; 2009)
 #' @export
+#' @references
+#'   - Bronk Ramsey, C. (1995) Radiocarbon calibration and analysis of
+#'   stratigraphy: the OxCal program. _Radiocarbon_ **37**, 425–430.
+#'   <https://doi.org/10.1017/S0033822200030903>
+#'   - Bronk Ramsey, C. (2009) Bayesian analysis of radiocarbon dates.
+#'   _Radiocarbon_ **51**, 337–360.
+#'   <https://doi.org/10.1017/S0033822200033865>
+
 #'
 #' @seealso [sw_combine_plot()]
 #'

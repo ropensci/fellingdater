@@ -1,5 +1,5 @@
 ---
-title: "Get started with `fellingdateR`"
+title: "Get started"
 output: 
   rmarkdown::html_vignette:
     fig_width: 8

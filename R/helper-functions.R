@@ -145,7 +145,7 @@ or the name a data.frame with columns `n_sapwood` and `count`, not '%s'.",
 
 #' Helper function to define a custom theme for plotting in ggplot
 #' @noRd
-theme_fdr <- function(){
+theme_fdr <- function() {
   ggplot2::theme_minimal() +
   ggplot2::theme(
     plot.title = ggtext::element_markdown(),
@@ -157,4 +157,59 @@ theme_fdr <- function(){
     strip.background = ggplot2::element_blank(),
     strip.text.y = ggplot2::element_blank()
   )
+}
+
+
+#' Helper function to check input denfun
+#' @noRd
+check_densfun <- function(x) {
+  if (!x %in% c("lognormal", "normal", "weibull", "gamma"))
+    stop(
+      sprintf(
+        "\n'%s' is not a supported distribution.
+          \n`densfun` must be one of c('lognormal', 'normal', 'weibull', 'gamma')",
+        x
+      )
+    )
+}
+
+#' Helper function to check input plot
+#' @noRd
+check_plot <- function(x) {
+  if (!is.logical(x))
+    stop(
+      sprintf(
+        "'plot' should be TRUE or FALSE, not '%s'",
+        x
+        )
+      )
+}
+
+#' Helper function to check input cred_mass
+#' @noRd
+check_cred_mass <- function(x) {
+  if (is.na(x) || x <= 0 || x >= 1)
+  stop("--> cred_mass must be between 0 and 1")
+}
+
+
+#' Helper function to check input n_sapwood
+#' @noRd
+check_n_sapwood <- function(x) {
+  if (is.na(x)) {
+    message("--> n_sapwood must be a postitive numeric value, not 'NA'")
+    return(NA_integer_)
+  }
+
+  if (!is.numeric(x)) {
+    stop("--> n_sapwood must be a positive numeric value")
+  }
+
+  if (x < 0) {
+    stop("--> n_sapwood must be a positive numeric value")
+  }
+
+  if (isTRUE(x %% 1 != 0)) {
+    stop("--> n_sapwood must be an integer (no decimals allowed!)")
+  }
 }

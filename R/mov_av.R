@@ -23,8 +23,10 @@
 #' @return A `numeric` vector of the same length of `x` with the computed
 #'   running mean values.
 #' @examples
-#' num_vec <- rnorm(100)
-#' mov_av(num_vec, w = 20)
+#' num_vec <- sample(seq(50, 100, 1), 100, replace = TRUE)
+#' filtered <- mov_av(num_vec, w = 5, align = "center", edges = "nofill")
+#' plot(num_vec, type = "l")
+#' lines(filtered, col = "darkblue")
 #'
 #' @export
 

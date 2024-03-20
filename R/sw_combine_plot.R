@@ -15,7 +15,6 @@
 #' sw_combine_plot(tmp)
 #'
 sw_combine_plot <- function(x) {
-
   if (all(
     !(attributes(x)$names) %in% c(
       "raw_data",
@@ -34,10 +33,7 @@ sw_combine_plot <- function(x) {
   }
 
   # to avoid notes in CMD check
-  year <-
-    p <-
-    lower <-
-    upper <- comb <- last <- n_sapwood <- agr_index <- agreement <- NULL
+  year <- p <- lower <- upper <- comb <- last <- n_sapwood <- agr_index <- agreement <- NULL
 
 
   series <- colnames(x$raw_data)[2:(ncol(x$raw_data) - 1)]
@@ -60,7 +56,9 @@ sw_combine_plot <- function(x) {
     as.data.frame(combo) # added to avoid warning by dplyr::filter
 
   range <- range(pdf$year)
-  if (length(range < 20)){range[2] <- range[2] + 20}
+  if (length(range < 20)) {
+    range[2] <- range[2] + 20
+  }
 
   # creates a vector with series that only have a terminus post quem
   tpq <- which(apply(
@@ -228,15 +226,19 @@ sw_combine_plot <- function(x) {
         x = ceiling((range[2]) / 10) * 10,
         y = 0.40,
         label = ifelse(is.na(agr_index),
-                             "",
-                             paste0("A[i]", "==", round(
-                               as.numeric(agr_index), 1
-                             ),"*\'%'")),
+          "",
+          paste0("A[i]", "==", round(
+            as.numeric(agr_index), 1
+          ), "*\'%'")
+        ),
         color = ifelse(agr_index < 60, "poor", "good")
       ),
       hjust = 1, parse = TRUE
     ) +
-    ggplot2::scale_color_manual(values = c("good" = "black" ,"poor" = "tomato3")) +
+    ggplot2::scale_color_manual(values = c(
+      "good" = "black",
+      "poor" = "tomato3"
+    )) +
     ggplot2::facet_grid(dplyr::vars(as.factor(series)), ) +
     ggplot2::theme_minimal() +
     ggplot2::scale_x_continuous(
@@ -256,7 +258,6 @@ sw_combine_plot <- function(x) {
       axis.text.y = ggplot2::element_blank(),
     ) +
     ggplot2::xlab("calendar year") +
-
     ggplot2::labs(
       title = x$model_summary,
       subtitle = paste0(

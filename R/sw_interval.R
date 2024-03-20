@@ -66,34 +66,14 @@ sw_interval <-
            sw_data = "Hollstein_1980",
            densfun = "lognormal",
            plot = FALSE) {
-    # Check input of `n_sapwood` and `last`.
-    # Other parameters are checked by sw_model()
-    if (is.na(n_sapwood)) {
-      message("--> No pdf/hdi can be returend when n_sapwood = NA")
-      return(NA_integer_)
-    }
 
-    if (!is.numeric(n_sapwood)) {
-      stop("--> n_sapwood must be a numeric value")
-    }
-
-    if (n_sapwood < 0) {
-      stop("--> n_sapwood must be a positive number")
-    }
-
-    if (isTRUE(n_sapwood %% 1 != 0)) {
-      stop("--> n_sapwood must be an integer (no decimals allowed!)")
-    }
+    check_densfun(densfun)
+    check_plot(plot)
+    check_cred_mass(cred_mass)
+    check_n_sapwood(n_sapwood)
 
     if (!is.numeric(last)) {
       stop("--> `last` must be a numeric value")
-    }
-
-    if (!is.logical(plot)) {
-      stop(sprintf(
-        "--> 'plot' should be TRUE or FALSE, not '%s'",
-        plot
-      ))
     }
 
     sw_model_params <- sw_model(

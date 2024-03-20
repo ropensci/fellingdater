@@ -48,23 +48,9 @@ sw_model <-
     # to avoid notes in CMD check
     count <- n_sapwood <- model_fit <- p <- NULL
 
-
-    if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
-      stop(
-        sprintf(
-          "\n'%s' is not a supported distribution.
-          \n`densfun` must be one of c('lognormal', 'normal', 'weibull', 'gamma')",
-          densfun
-        )
-      )
-    }
-
-    if (!is.logical(plot)) {
-      stop(sprintf(
-        "'plot' should be TRUE or FALSE, not '%s'",
-        plot
-      ))
-    }
+    check_densfun(densfun)
+    check_plot(plot)
+    check_cred_mass(cred_mass)
 
     if (!is.character(sw_data)) {
       stop("--> sw_data should be one of `sw_data_overview()`

@@ -68,6 +68,7 @@ the modelling parameters ($sapwood_data, $sapwood_model, $cred_mass),
 the Highest Posterior Density Interval for combined combined felling date
 interval ($hdi_combine), and the Agreement indices for the model ($A_model)
 and individual series ($individual_series$agr_index).
+The rationale of the agreement index is outlined by Bronk Ramsey (1995; 2009)
 }
 \description{
 This function assesses whether it is possible to combine
@@ -88,6 +89,16 @@ sw_combine(trs_example2, plot = TRUE)
 trs_example3
 sw_combine(trs_example3, plot = FALSE)
 
+}
+\references{
+\itemize{
+\item Bronk Ramsey, C. (1995) Radiocarbon calibration and analysis of
+stratigraphy: the OxCal program. \emph{Radiocarbon} \strong{37}, 425–430.
+\url{https://doi.org/10.1017/S0033822200030903}
+\item Bronk Ramsey, C. (2009) Bayesian analysis of radiocarbon dates.
+\emph{Radiocarbon} \strong{51}, 337–360.
+\url{https://doi.org/10.1017/S0033822200033865}
+}
 }
 \seealso{
 \code{\link[=sw_combine_plot]{sw_combine_plot()}}
