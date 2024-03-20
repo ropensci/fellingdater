@@ -54,7 +54,7 @@ t_Ho: t-values according to the Hollstein (1980) algorithm
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/getting_started.html">Get started with `fellingdateR`</a>
+    <a class="dropdown-item" href="../articles/getting_started.html">Get started</a>
   </div>
 </li>
 <li class="nav-item">
@@ -202,6 +202,49 @@ big tree-ring data sets, <em>Archaeometry</em> <strong>63</strong>, 204-215.
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">cor_results</span> <span class="op">&lt;-</span> <span class="fu">cor_table</span><span class="op">(</span><span class="va">Doel1_trs</span>, output <span class="op">=</span> <span class="st">"table"</span>, min_overlap <span class="op">=</span> <span class="fl">80</span>,</span></span>
 <span class="r-in"><span>sort_by <span class="op">=</span> <span class="st">"t_Ho"</span>, remove_duplicates <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cor_results</span>,<span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     series length first last reference ref_first ref_last overlap  glk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 GD3-1BB     89  1222 1310    GQ1mBB      1150     1314      89 52.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73 GD3-1BB     89  1222 1310    S13mSB      1164     1322      89 48.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91 GD3-1BB     89  1222 1310     S6-SB      1221     1324      89 54.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 GD3-1BB     89  1222 1310    K1_095      1207     1320      89 51.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 GD3-1BB     89  1222 1310    GR1mBB      1220     1310      89 47.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87 GD3-1BB     89  1222 1310    S38-BB      1193     1306      85 54.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75 GG1-1BB     83  1240 1322    S13mSB      1164     1322      83 59.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69 GG1-1BB     83  1240 1322   S13A-BB      1232     1324      83 55.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 GG1-1BB     83  1240 1322    K1_095      1207     1320      81 50.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98 GG1-1BB     83  1240 1322     S6-SB      1221     1324      83 47.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  GQ1mBB    165  1150 1314    GR1mBB      1220     1310      91 76.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  GQ1mBB    165  1150 1314    S13mSB      1164     1322     151 59.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  GQ1mBB    165  1150 1314    K1_095      1207     1320     108 56.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  GQ1mBB    165  1150 1314    K1_091      1158     1292     135 60.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  GQ1mBB    165  1150 1314   S13A-BB      1232     1324      83 54.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  GQ1mBB    165  1150 1314    S38-BB      1193     1306     114 49.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  GQ1mBB    165  1150 1314     S6-SB      1221     1324      94 54.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  GR1mBB     91  1220 1310    S13mSB      1164     1322      91 65.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  GR1mBB     91  1220 1310    K1_095      1207     1320      91 60.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  GR1mBB     91  1220 1310     S6-SB      1221     1324      90 55.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           glk_p    r_pearson        t_St  t_BP  t_Ho</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 5.919436e-01 -0.249779208 -2.40605037  2.11  2.74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73 1.169772e+00  0.201284974  1.91669069  1.48  1.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91 3.910942e-01  0.035883266  0.33491251  2.16  1.92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 7.477459e-01  0.258187935  2.49273359  0.78  1.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 1.408056e+00 -0.370271866 -3.71792327  0.78  1.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87 4.423117e-01  0.426532081  4.29630804  0.20  0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75 7.546208e-02 -0.005084336 -0.04575962  2.28  2.93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69 3.173465e-01  0.217882020  2.00920920  1.06  2.06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 9.104270e-01  0.597953189  6.63071551  0.09  1.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98 1.421457e+00 -0.137136419 -1.24599977  0.27  0.78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 3.624784e-07  0.727924641 10.01554116 12.23 10.41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76 2.697516e-02  0.572471464  8.52261829  5.84  5.40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60 2.067270e-01 -0.282768827 -3.03515368  3.52  3.02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 1.922538e-02  0.151940473  1.77284639  2.28  2.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62 3.740983e-01 -0.041724848 -0.37585094  2.19  2.48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89 1.075278e+00 -0.178020527 -1.91457410  2.74  2.34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95 4.042757e-01  0.078494804  0.75522595  1.09  1.16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77 4.212192e-03  0.182334033  1.74946269  4.02  4.24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 5.640693e-02 -0.248806924 -2.42344980  3.38  3.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92 2.864524e-01  0.286284295  2.80290094  0.80  0.91</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
