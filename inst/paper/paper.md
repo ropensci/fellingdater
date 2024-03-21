@@ -1,5 +1,5 @@
 ---
-title: "_fellingdateR_: an R package to estimate, report and combine felling dates of historical tree-ring series."
+title: "_fellingdater_: an R package to estimate, report and combine felling dates of historical tree-ring series."
 author: Kristof Haneca
 orcid: 0000-0002-7719-8305
 affiliation: Flanders Heritage Agency, Brussels, Belgium
@@ -27,7 +27,7 @@ a calendar year time-scale, the end date of the outermost ring can be
 used to determine or estimate the year of death of the parent tree (i.e.
 the felling of the tree).
 
-The `fellingdateR` package aims to offer a set off functions that can
+The `fellingdater` package aims to offer a set off functions that can
 assist dendrochronologists to infer, combine and report felling date
 estimates from dated tree-ring series of (pre-)historical timbers, based
 on the presence of (partially) preserved sapwood or waney edge ([Fig.
@@ -35,7 +35,7 @@ on the presence of (partially) preserved sapwood or waney edge ([Fig.
 
 ![A cross-section of a historical timber from a medieval roof
 construction. The heartwood and sapwood areas are marked, as well as all
-ring boundaries. The `fellingdateR` package offers a workflow to
+ring boundaries. The `fellingdater` package offers a workflow to
 estimate the number of missing sapwood rings (?) -- that have been
 trimmed-of, powdered by wood-boring insects, or deteriorated by
 wood-decaying fungi -- between the last measured ring and the cambial
@@ -88,7 +88,7 @@ the confidence intervals they provide are key elements to obtain a
 reliable estimate of the felling date of a tree-ring dated piece of
 timber.
 
-The `fellingdateR` package aims to assist in that process by offering
+The `fellingdater` package aims to assist in that process by offering
 functions to infer, combine and report felling date estimates from dated
 tree-ring series, based on the presence of (partially) preserved sapwood
 or waney edge.
@@ -135,7 +135,7 @@ was so far not available as a set of functions in R [@rcoreteam2022].
 
 In order to facilitate and standardize the reporting, interpretation and
 combination of felling dates from historical timbers and objects, the
-`fellingdateR` R-package was devised . The package allows to fully
+`fellingdater` R-package was devised . The package allows to fully
 document the methodology to establish a felling date -- for a single
 timber or a group of timbers -- making the whole procedure reproducible
 and could assist to build standardized workflows when applied to large
@@ -149,7 +149,7 @@ tree-ring series from (pre-)historical objects or constructions ([Fig.
 
 ![A generalized workflow and related functions, for inferring felling
 dates from tree-ring dated historical
-timbers.](fellingdateR_workflow.png){#fig-workflow}
+timbers.](fellingdater_workflow.png){#fig-workflow}
 
 # Data within the package
 
@@ -173,7 +173,7 @@ form (`plot = FALSE`, a list) and as a ggplot-style graph [@wickham2016]
 ([Fig. 3](#fig-sw-model)).
 
 ``` r
-library(fellingdateR)
+library(fellingdater)
 
 # The function `sw_data_overview()` returns an overview of all available sapwood datasets
 # distributed with the package:
@@ -224,11 +224,11 @@ both for single series as for a group of related tree-ring series .
 
 ## Installation
 
-Since xxxx-xx-xx, fellingdateR is available on CRAN, meaning that it can
+Since xxxx-xx-xx, fellingdater is available on CRAN, meaning that it can
 be easily installed using the following commands in R:
 
 ``` r
-install.packages("fellingdateR")
+install.packages("fellingdater")
 ```
 
 The latest developing version is hosted on GitHub and can be installed
@@ -236,14 +236,14 @@ locally:
 
 ``` r
 #install.packages("pak")
-pak::pak("hanecakr/fellingdateR") 
+pak::pak("hanecakr/fellingdater") 
 ```
 
 or
 
 ``` r
 #install.packages("devtools")
-devtools::install_github("hanecakr/fellingdateR")
+devtools::install_github("hanecakr/fellingdater")
 ```
 
 ## Reading tree-ring files
@@ -265,7 +265,7 @@ In the example below, an .fh file with dated tree-ring series from a
 medieval ship DOEL1 [@haneca2014] is read with `read_fh()`.
 
 ``` r
-Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 
 # When header = TRUE, the get_header() function is triggered and HEADER fields 
 in the .fh file are returned as a data.frame, instead of the ring-width measurements.
@@ -537,7 +537,7 @@ above the blue bars of the SPD.](sw_sum.jpg){#fig-sw-sum}
 
 # Future work
 
-In its current version the package `fellingdateR`\` was inspired by the
+In its current version the package `fellingdater`\` was inspired by the
 general workflow for analyzing tree-ring datasets from wooden cultural
 heritage objects and constructions, made of European oak (*Quercus*
 sp.). The sapwood data included in the current version reflect this
@@ -547,7 +547,7 @@ named `n_sapwood` and `count`. The latter reporting the number of
 occurrences a certain number of sapwood rings (`n_sapwood`) was observed
 on a timber or core sample from the reference dataset. As such, sapwood
 data from other regions and species can also be explored, modeled and
-used to infer felling dates by the users of `fellingdateR`.
+used to infer felling dates by the users of `fellingdater`.
 
 When new datasets of sapwood counts become available, these can be
 incorporated in future versions of the package.

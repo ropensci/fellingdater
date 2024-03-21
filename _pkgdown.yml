@@ -1,4 +1,4 @@
-url: https://hanecakr.github.io/fellingdateR/
+url: https://hanecakr.github.io/fellingdater/
 template:
   bootstrap: 5
 reference:
@@ -53,5 +53,5 @@ reference:
 
 - title: About
   contents:
-  - fellingdateR
+  - fellingdater
 

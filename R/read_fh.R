@@ -49,7 +49,7 @@
 #'
 #' @export
 #' @examples
-#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 #' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 #' head(Doel1_trs, 10)
 #'

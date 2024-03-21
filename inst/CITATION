@@ -1,12 +1,12 @@
-citHeader("To cite fellingdateR in publications use:")
+citHeader("To cite fellingdater in publications use:")
 
 bibentry(
   bibtype    = "Manual",
-  title    = "fellingdateR: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures" ,
+  title    = "fellingdater: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures" ,
   author   = "Kristof Haneca",
   year     = "2023",
   note     = "R package, version 0.0.0.9003",
-  url      = "https://github.com/hanecakr/fellingDateR",
+  url      = "https://github.com/hanecakr/fellingdater",
 )
 
 bibentry(bibtype = "Article",

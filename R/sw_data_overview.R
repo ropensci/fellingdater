@@ -1,10 +1,10 @@
-#' Overview of available sapwood data sets in the `fellingdateR` package
+#' Overview of available sapwood data sets in the `fellingdater` package
 #'
 #' @description This function provides an overview of the available sapwood data
-#'   sets and models within the `fellingdateR` package.
+#'   sets and models within the `fellingdater` package.
 #'
 #' @return A `character` vector with the names of all available data sets with
-#'   sapwood counts in the `fellingdateR` package.
+#'   sapwood counts in the `fellingdater` package.
 #'
 #' @export
 #'
@@ -14,7 +14,7 @@
 #'
 sw_data_overview <- function() {
 
-     tmp <- utils::data(package = "fellingdateR")
+     tmp <- utils::data(package = "fellingdater")
      tmp <- tmp$results
      tmp <- tmp[, 3]
      tmp[!grepl('trs_example', tmp)]

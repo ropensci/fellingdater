@@ -1,6 +1,6 @@
-#' fellingdateR
+#' fellingdater
 #'
-#' @description fellingdateR is an R package that facilitate the analysis and
+#' @description fellingdater is an R package that facilitate the analysis and
 #' interpretation of tree-ring data from wooden cultural heritage objects and
 #' structures. The package standardizes the process of computing and combining
 #' felling date estimates (fd), derived from the observed number of sapwood
@@ -18,9 +18,9 @@
 #' }
 #'
 #' @section Learn more about fellingdater at:
-#' \url{https://hanecakr.github.io/fellingdateR/index.html/}
+#' \url{https://hanecakr.github.io/fellingdater/index.html/}
 #'
-#' @name fellingdateR
+#' @name fellingdater
 #' @docType package
 #' @keywords package
 "_PACKAGE"

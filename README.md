@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `fellingdateR`: Estimate, report and combine felling dates of historical tree-ring series
+# `fellingdater`: Estimate, report and combine felling dates of historical tree-ring series
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/hanecakr/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingdater/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/hanecakr/fellingDateR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingDateR?branch=main)
-[![pkgcheck](https://github.com/hanecakr/fellingDateR/workflows/pkgcheck/badge.svg)](https://github.com/hanecakr/fellingDateR/actions?query=workflow%3Apkgcheck)
+coverage](https://codecov.io/gh/hanecakr/fellingdater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingdater?branch=main)
+[![pkgcheck](https://github.com/hanecakr/fellingdater/workflows/pkgcheck/badge.svg)](https://github.com/hanecakr/fellingdater/actions?query=workflow%3Apkgcheck)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 <!-- badges: end -->
@@ -42,12 +42,12 @@ commonly applied to sets of radiocarbon (<sup>14</sup>C) dates.
 
 ## Installation
 
-You can install the development version of `fellingdateR` from
-[GitHub](https://github.com/hanecakr/fellingdateR/) with:
+You can install the development version of `fellingdater` from
+[GitHub](https://github.com/hanecakr/fellingdater/) with:
 
 ``` r
 #install.packages("pak")
-pak::pak("hanecakr/fellingdateR")
+pak::pak("hanecakr/fellingdater")
 ```
 
 ## Basic example
@@ -56,7 +56,7 @@ In the following example the combined felling date range for a set of
 five dated tree-ring series is computed:
 
 ``` r
-library(fellingdateR)
+library(fellingdater)
 
 ## a data set where all series have partially preserved sapwood:
 trs_example1
@@ -92,15 +92,15 @@ sw_model("Hollstein_1980", plot = TRUE)
 
 You can find an overview of the **main functions** and **sapwood
 datasets** distributed with the package in the
-[documentation](https://hanecakr.github.io/fellingdateR/reference/).
+[documentation](https://hanecakr.github.io/fellingdater/reference/).
 
 Some practical examples are provided in the
-[`Get started`](https://hanecakr.github.io/fellingdateR/articles/getting_started.html)
+[`Get started`](https://hanecakr.github.io/fellingdater/articles/getting_started.html)
 vignette.
 
 ## The workflow
 
-The `fellingdateR`-package allows to fully document the methodology to
+The `fellingdater`-package allows to fully document the methodology to
 establish a felling date – for a single timber or a group of timbers –
 making the whole procedure reproducible. It assists in building
 standardized workflows when applied to large datasets of historical
@@ -109,7 +109,7 @@ package is designed to offer several functions related to each step in
 the (generalized) workflow when working with tree-ring series from
 (pre-)historical objects or constructions.
 
-![](man/figures/fellingdateR_workflow.png)
+![](man/figures/fellingdater_workflow.png)
 
 ## Motivation & citation
 
@@ -119,7 +119,7 @@ tree-ring series originating from medieval timber constructions in
 this study were published in
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
-Please cite this paper when using the `fellingdateR` package:
+Please cite this paper when using the `fellingdater` package:
 
 > Kristof HANECA
 > [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
@@ -131,20 +131,20 @@ Please cite this paper when using the `fellingdateR` package:
 
 To refer to the current version of the package:
 
-> Haneca K (2023). *fellingdateR: an R-package to facilitate the
+> Haneca K (2023). *fellingdater: an R-package to facilitate the
 > organisation, analysis and interpretation of tree-ring data from
 > wooden heritage objects and structures*. R package, version
-> 0.0.0.9003, <https://github.com/hanecakr/fellingDateR>.
+> 0.0.0.9003, <https://github.com/hanecakr/fellingdater>.
 
 ## Comments and contributions
 
 - Please report any issues or bugs here:
-  <https://github.com/hanecakr/fellingdateR/issues>.
+  <https://github.com/hanecakr/fellingdater/issues>.
 
-- Get citation information for `fellingdateR` in R typing
-  `citation(package = 'fellingdateR')`.
+- Get citation information for `fellingdater` in R typing
+  `citation(package = 'fellingdater')`.
 
-- Please note that the `fellingdateR` package is released with a
+- Please note that the `fellingdater` package is released with a
   [Contributor Code of
-  Conduct](https://github.com/hanecakr/fellingdateR/blob/main/.github/CONTRIBUTING.md).
+  Conduct](https://github.com/hanecakr/fellingdater/blob/main/.github/CONTRIBUTING.md).
   By contributing to this project, you agree to abide by its terms.

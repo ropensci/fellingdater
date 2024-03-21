@@ -1,5 +1,5 @@
 testthat::test_that("Output is data.frame", {
-        x <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+        x <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
         x <- read_fh(x, verbose = FALSE)
         # crossdating ring-width series from Doel 1 against each other:
         x <- cor_table(x, output = "table", min_overlap = 80)
@@ -7,7 +7,7 @@ testthat::test_that("Output is data.frame", {
 })
 
 testthat::test_that("Output is data.frame with 14 columns", {
-        x <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+        x <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
         x <- read_fh(x, verbose = FALSE)
         # crossdating ring-width series from Doel 1 against each other:
         x <- cor_table(x, output = "table", min_overlap = 50)
@@ -16,7 +16,7 @@ testthat::test_that("Output is data.frame with 14 columns", {
 
 
 testthat::test_that("Output is list of matrices", {
-        x <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+        x <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
         x <- read_fh(x, verbose = FALSE)
         # crossdating ring-width series from Doel 1 against each other:
         x <- cor_table(x, output = "matrix", min_overlap = 80)

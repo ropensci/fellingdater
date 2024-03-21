@@ -1,11 +1,11 @@
 {
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
-  "identifier": "fellingdateR",
-  "description": "`fellingdateR` is an R package that aims to facilitate the analysis and interpretation of tree-ring data from wooden cultural heritage objects and structures. The package aims to facilitate and standardize the reporting, interpretation and combination of felling date estimates.",
-  "name": "fellingdateR: Estimate, report and combine felling dates from historical tree-ring \n    series",
-  "codeRepository": "https://github.com/hanecakr/fellingdateR",
-  "issueTracker": "https://github.com/hanecakr/fellingdateR/issues",
+  "identifier": "fellingdater",
+  "description": "`fellingdater` is an R package that aims to facilitate the analysis and interpretation of tree-ring data from wooden cultural heritage objects and structures. The package aims to facilitate and standardize the reporting, interpretation and combination of felling date estimates.",
+  "name": "fellingdater: Estimate, report and combine felling dates from historical tree-ring \n    series",
+  "codeRepository": "https://github.com/hanecakr/fellingdater",
+  "issueTracker": "https://github.com/hanecakr/fellingdater/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.0.0.9003",
   "programmingLanguage": {
@@ -115,12 +115,12 @@
           "familyName": "Haneca"
         }
       ],
-      "name": "fellingdateR: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures",
-      "url": "https://github.com/hanecakr/fellingDateR",
+      "name": "fellingdater: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures",
+      "url": "https://github.com/hanecakr/fellingdater",
       "description": "R package version 0.0.0.9003"
     }
   ],
-  "readme": "https://github.com/hanecakr/fellingdateR/blob/main/README.md",
-  "contIntegration": "https://github.com/hanecakr/fellingDateR/actions/workflows/R-CMD-check.yaml",
+  "readme": "https://github.com/hanecakr/fellingdater/blob/main/README.md",
+  "contIntegration": "https://github.com/hanecakr/fellingdater/actions/workflows/R-CMD-check.yaml",
   "keywords": ["tree-rings", "dendrochronology", "sapwood", "r", "r-package", "rstats"]
 }

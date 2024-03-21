@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `fellingdateR`: Estimate, report and combine felling dates of historical tree-ring series
+# `fellingdater`: Estimate, report and combine felling dates of historical tree-ring series
 
 This R-package offers a suite of functions designed to assist you in inferring estimates for felling dates from dated tree-ring series. The presence of (partially) preserved sapwood or waney edge allows on a (pre-)historical timber allows to estimate the missing number of sapwood rings. from this estimate, a range for the actual felling date can be determined and reported, for individual series as well as for a group of related timbers. 
 
@@ -29,18 +29,18 @@ This vignette provides a quick overview of the package main functions, including
 
 ## Installation
 
-You can install the development version of fellingdateR from [GitHub](https://github.com/hanecakr/fellingdateR/) with:
+You can install the development version of fellingdater from [GitHub](https://github.com/hanecakr/fellingdater/) with:
 
 ```{r eval=FALSE}
 #install.packages("devtools")
-devtools::install_github("hanecakr/fellingdateR")
+devtools::install_github("hanecakr/fellingdater")
 ```
 
 or
 
 ```{r eval=FALSE}
 # install.packages("pak")
-pak::pak("hanecakr/fellingdateR")
+pak::pak("hanecakr/fellingdater")
 ```
 
 ## Basic example
@@ -48,7 +48,7 @@ pak::pak("hanecakr/fellingdateR")
 In the following example the combined felling date range for a set of five dated tree-ring series is computed:
 
 ```{r setup}
-library(fellingdateR)
+library(fellingdater)
 
 ```
 
@@ -266,7 +266,7 @@ Furthermore, the `read_fh()` function is case insensitive.
 In the example below, an .fh file with dated tree-ring series from a medieval ship DOEL1 is read with `read_fh()`. The ring width measurement, in different formats, are converted to a `data.frame`.
 
 ```{r}
-Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 
@@ -331,7 +331,7 @@ The correlation values computed are:
 -   t_Ho: t-values according to the [Hollstein (1980)](https://search.worldcat.org/nl/title/6391864) algorithm
 
 ```{r}
-Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 

@@ -69,7 +69,7 @@ If \code{y} is not provided, it compares each series in \code{x} to all other se
 \examples{
 # example code
 
-Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 # crossdating ring-width series from Doel 1 against each other:
 

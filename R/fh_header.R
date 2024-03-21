@@ -10,7 +10,7 @@
 #'
 #' @return A `data.frame` with 29 header fields.
 #' @examples
-#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdateR")
+#' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 #' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 #' fh_header(Doel1_trs)
 #'

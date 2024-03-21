@@ -40,7 +40,7 @@ See `sw_data_overview()` for an overview of available data sets."
                paste0(
                     "--> '",
                     sw_data,
-                    "' is not listed in package `fellingdateR`\n
+                    "' is not listed in package `fellingdater`\n
 See `sw_data_overview()` for an overview of all available data sets."
                )
           )

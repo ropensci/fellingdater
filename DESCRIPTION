@@ -1,4 +1,4 @@
-Package: fellingdateR
+Package: fellingdater
 Title: Estimate, report and combine felling dates of historical tree-ring 
     series
 Version: 0.0.0.9003
@@ -14,14 +14,14 @@ Authors@R: c(
     person("Nicholas John", "Tierney", role = "rev",
         comment = c(ORCID = "0000-0003-1460-8722"))   
     )
-Description: fellingdateR is an R package that aims to facilitate the 
+Description: fellingdater is an R package that aims to facilitate the 
   analysis and interpretation of tree-ring data from wooden 
   cultural heritage objects and structures. The package standarizes the process
   of computing and combining felling date estimates, both for individual and 
   groups of related tree-ring series.
-URL: https://github.com/hanecakr/fellingdateR,
-    https://hanecakr.github.io/fellingdateR/
-BugReports: https://github.com/hanecakr/fellingdateR/issues
+URL: https://github.com/hanecakr/fellingdater,
+    https://hanecakr.github.io/fellingdater/
+BugReports: https://github.com/hanecakr/fellingdater/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-GB
