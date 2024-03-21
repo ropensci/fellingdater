@@ -109,7 +109,7 @@ package is designed to offer several functions related to each step in
 the (generalized) workflow when working with tree-ring series from
 (pre-)historical objects or constructions.
 
-![](man/figures/fellingdater_workflow.png)
+![](man/figures/workflow.png)
 
 ## Motivation & citation
 
