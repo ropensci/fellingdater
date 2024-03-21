@@ -81,7 +81,7 @@ Some practical examples are provided in the [`Get started`](https://hanecakr.git
 The `fellingdater`-package allows to fully document the methodology to establish a felling date -- for a single
 timber or a group of timbers -- making the whole procedure reproducible. It assists in building standardized workflows when applied to large datasets of historical tree-ring series originating from geographically distinct regions. The package is designed to offer several functions related to each step in the (generalized) workflow when working with tree-ring series from (pre-)historical objects or constructions. 
 
-![](man/figures/fellingdater_workflow.png)
+![](man/figures/workflow.png)
 
 ## Motivation & citation
 
