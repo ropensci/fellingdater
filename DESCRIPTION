@@ -1,7 +1,7 @@
 Package: fellingdater
 Title: Estimate, report and combine felling dates of historical tree-ring 
     series
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: c(
     person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be",role = c("aut", "cre"),
         comment = c(ORCID = "0000-0002-7719-8305")),
