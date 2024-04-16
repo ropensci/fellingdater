@@ -5,8 +5,8 @@ bibentry(
   title    = "fellingdater: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures" ,
   author   = "Kristof Haneca",
   year     = "2023",
-  note     = "R package, version 0.0.0.9003",
-  url      = "https://github.com/hanecakr/fellingdater",
+  note     = "R package, version 1.0.0",
+  url      = "https://github.com/ropensci/fellingdater",
 )
 
 bibentry(bibtype = "Article",

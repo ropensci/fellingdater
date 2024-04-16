@@ -44,7 +44,7 @@ on the presence of partially preserved sapwood or waney edge ([Fig.
 ![A cross-section of a historical timber from a medieval roof
 construction. The heartwood and sapwood areas are marked, as well as all
 ring boundaries. The `fellingdater` package offers a workflow to
-estimate the number of missing sapwood rings (?) -- that have been
+estimate the number of missing sapwood rings -- that have been
 trimmed-of, powdered by wood-boring insects, or deteriorated by
 wood-decaying fungi -- between the last measured ring and the cambial
 layer.](cross-section.png){#fig-cross-section}
@@ -146,7 +146,7 @@ was so far not available as a suite of functions in R [@rcoreteam2022].
 
 In order to facilitate and standardize the reporting, interpretation and
 combination of felling dates from historical timbers and objects, the
-`fellingdater` R-package was devised . The package allows to fully
+`fellingdater` R-package was devised. The package allows to fully
 document the methodology to establish a felling date -- for a single
 timber or a group of timbers -- making the whole procedure reproducible
 and assists in building standardized workflows when applied to large
@@ -219,6 +219,7 @@ sw_data_info("Pilcher_1987")
 
 # Pick the dataset most suited for your case-study and fit a (log-)normal, weibul,
 # or gamma distribution to the data.
+
 model <- sw_model("Hollstein_1980", plot = FALSE)
 sw_model_plot(model)
 ```
@@ -243,19 +244,19 @@ be easily installed using the following commands in R:
 install.packages("fellingdater")
 ```
 
-The latest developing version is hosted on GitHub and can be installed
+The latest developing version is hosted on [GitHub](https://github.com/ropensci/fellingdater/) 
+and [R-universe](https://ropensci.r-universe.dev/fellingdater), and can be installed
 locally:
 
-``` r
-#install.packages("pak")
-pak::pak("hanecakr/fellingdater") 
-```
 
+```r
+# install.packages("pak")
+pak::pak("ropensci/fellingdater")
+```
 or
 
-``` r
-#install.packages("devtools")
-devtools::install_github("hanecakr/fellingdater")
+```r
+install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 ```
 
 ## Reading tree-ring files

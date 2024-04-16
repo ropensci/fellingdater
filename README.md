@@ -16,9 +16,8 @@ Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci
 This R-package offers a suite of functions designed to assist
 dendrochronologists in inferring estimates for felling dates, derived
 from dated tree-ring series. The presence of partially preserved sapwood
-(*sw*) allows to estimate the missing number of sapwood rings ( ? in
-figure below), and to report an interval in which the actual felling
-date (*fd*) likely falls.
+(*sw*) allows to estimate the missing number of sapwood rings, and to
+report an interval in which the actual felling date (*fd*) likely falls.
 
 ![](man/figures/cross-section.png)
 
@@ -42,12 +41,17 @@ commonly applied to sets of radiocarbon (<sup>14</sup>C) dates.
 
 ## Installation
 
-You can install the development version of `fellingdater` from
-[GitHub](https://github.com/hanecakr/fellingdater/) with:
+You can install the latest release of `fellingdater` from
+[GitHub](https://github.com/ropensci/fellingdater/) or
+[R-universe](https://ropensci.r-universe.dev/fellingdater):
 
 ``` r
-#install.packages("pak")
-pak::pak("hanecakr/fellingdater")
+# install.packages("pak")
+pak::pak("ropensci/fellingdater")
+```
+
+``` r
+install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 ```
 
 ## Basic example
@@ -92,10 +96,10 @@ sw_model("Hollstein_1980", plot = TRUE)
 
 You can find an overview of the **main functions** and **sapwood
 datasets** distributed with the package in the
-[documentation](https://hanecakr.github.io/fellingdater/reference/).
+[documentation](https://docs.ropensci.org/fellingdater/reference/).
 
 Some practical examples are provided in the
-[`Get started`](https://hanecakr.github.io/fellingdater/articles/getting_started.html)
+[`Get started`](https://docs.ropensci.org/fellingdater/articles/getting_started.html)
 vignette.
 
 ## The workflow
@@ -131,20 +135,20 @@ Please cite this paper when using the `fellingdater` package:
 
 To refer to the current version of the package:
 
-> Haneca K (2023). *fellingdater: an R-package to facilitate the
+> Haneca K (2024). fellingdater: an R-package to facilitate the
 > organisation, analysis and interpretation of tree-ring data from
-> wooden heritage objects and structures*. R package, version
-> 0.0.0.9003, <https://github.com/hanecakr/fellingdater>.
+> wooden heritage objects and structures. R package, version 1.0.0,
+> <https://docs.ropensci.org/fellingdater>.
 
 ## Comments and contributions
 
 - Please report any issues or bugs here:
-  <https://github.com/hanecakr/fellingdater/issues>.
+  <https://github.com/ropensci/fellingdater/issues>.
 
 - Get citation information for `fellingdater` in R typing
   `citation(package = 'fellingdater')`.
 
 - Please note that the `fellingdater` package is released with a
   [Contributor Code of
-  Conduct](https://github.com/hanecakr/fellingdater/blob/main/.github/CONTRIBUTING.md).
+  Conduct](https://github.com/ropensci/fellingdater/blob/main/.github/CONTRIBUTING.md).
   By contributing to this project, you agree to abide by its terms.
