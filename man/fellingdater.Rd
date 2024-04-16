@@ -28,7 +28,7 @@ It's main functions are:
 }
 }
 \author{
-\strong{Maintainer}: Kristof Haneca \email{Kristof.Haneca@vlaanderen.be} (\href{https://orcid.org/0000-0002-7719-8305}{ORCID})
+\strong{Maintainer}: Kristof Haneca \email{Kristof.Haneca@vlaanderen.be} (\href{https://orcid.org/0000-0002-7719-8305}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{
