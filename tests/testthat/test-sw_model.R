@@ -18,7 +18,7 @@ testthat::test_that("sw_model does not work with invalid density function", {
 })
 
 testthat::test_that("sw_model with plot FALSE returns list", {
-        model = sw_model(densfun = "normal",
+        model <- sw_model(densfun = "normal",
                          cred_mass = 0.933,
                          plot = FALSE)
         testthat::expect_type(model,
