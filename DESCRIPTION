@@ -19,9 +19,8 @@ Description: fellingdater is an R package that aims to facilitate the
   cultural heritage objects and structures. The package standarizes the process
   of computing and combining felling date estimates, both for individual and 
   groups of related tree-ring series.
-URL: https://github.com/hanecakr/fellingdater,
-    https://hanecakr.github.io/fellingdater/
-BugReports: https://github.com/hanecakr/fellingdater/issues
+URL: https://docs.ropensci.org/fellingdater, https://github.com/ropensci/fellingdater
+BugReports: https://github.com/ropensci/fellingdater/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-GB

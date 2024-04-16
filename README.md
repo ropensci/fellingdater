@@ -5,10 +5,10 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/hanecakr/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hanecakr/fellingdater/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/hanecakr/fellingdater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/hanecakr/fellingdater?branch=main)
-[![pkgcheck](https://github.com/hanecakr/fellingdater/workflows/pkgcheck/badge.svg)](https://github.com/hanecakr/fellingdater/actions?query=workflow%3Apkgcheck)
+coverage](https://codecov.io/gh/ropensci/fellingdater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/fellingdater?branch=main)
+[![pkgcheck](https://github.com/ropensci/fellingdater/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fellingdater/actions?query=workflow%3Apkgcheck)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 <!-- badges: end -->
