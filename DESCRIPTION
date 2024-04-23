@@ -16,7 +16,7 @@ Authors@R: c(
     )
 Description: fellingdater is an R package that aims to facilitate the 
   analysis and interpretation of tree-ring data from wooden 
-  cultural heritage objects and structures. The package standarizes the process
+  cultural heritage objects and structures. The package standardizes the process
   of computing and combining felling date estimates, both for individual and 
   groups of related tree-ring series.
 URL: https://docs.ropensci.org/fellingdater, https://github.com/ropensci/fellingdater
