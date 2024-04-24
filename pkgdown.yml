@@ -3,7 +3,7 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   getting_started: getting_started.html
-last_built: 2024-04-23T06:04Z
+last_built: 2024-04-24T13:30Z
 urls:
   reference: https://hanecakr.github.io/fellingdater/reference
   article: https://hanecakr.github.io/fellingdater/articles
