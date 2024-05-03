@@ -9,9 +9,11 @@
 [![Codecov test
 coverage](https://codecov.io/gh/ropensci/fellingdater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/fellingdater?branch=main)
 [![pkgcheck](https://github.com/ropensci/fellingdater/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fellingdater/actions?query=workflow%3Apkgcheck)
-[![Status at rOpenSci Software Peer
-Review](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
-[![status](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
+[![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
+[![fellingdateer status
+badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
+[![JOSS](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
+
 <!-- badges: end -->
 
 This R-package offers a suite of functions designed to assist
