@@ -33,7 +33,7 @@ Imports:
     dplyr,
     ggplot2,
     ggtext,
-    MASS,
+    MASS (<= 7.3-60),
     tidyr,
     utils,
     dplR
