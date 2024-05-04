@@ -2,20 +2,21 @@
 title: "_fellingdater_: a toolkit to estimate, report and combine felling dates derived
   from historical tree-ring series."
 authors:
-- name: Kristof Haneca
-  orcid: "0000-0002-7719-8305"
-  affiliation: 1
+  - name: Kristof Haneca
+    orcid: 0000-0002-7719-8305
+    affiliation: 1
 affiliations:
-- name: Flanders Heritage Agency, Belgium
-  index: 1
+  - name: Flanders Heritage Agency, Belgium
+    index: 1
 date: "2024-04-24"
+year: 2024
 output: pdf_document
 tags:
-- R
-- tree-ring analysis
-- dendrochronology
-- sapwood
-- dendroarchaeology
+  - R
+  - tree-ring analysis
+  - dendrochronology
+  - sapwood
+  - dendroarchaeology
 editor_options:
   markdown:
     wrap: 72
