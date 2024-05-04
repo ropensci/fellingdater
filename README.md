@@ -6,9 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/ropensci/fellingdater/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/fellingdater?branch=main)
-[![pkgcheck](https://github.com/ropensci/fellingdater/workflows/pkgcheck/badge.svg)](https://github.com/ropensci/fellingdater/actions?query=workflow%3Apkgcheck)
 [![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 [![fellingdateer status
 badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
