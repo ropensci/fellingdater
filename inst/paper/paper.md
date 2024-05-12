@@ -47,13 +47,13 @@ Dendrochronology is the most precise chronometric dating technique for
 (pre-)historical wooden constructions and objects [@baillie1995]. It
 involves recording the ring-width pattern on a cross-section of an
 ancient wooden element and matching this pattern to absolutely dated
-reference chronologies. This allows to anchor the recorded tree-ring
+reference chronologies. This allows anchoring the recorded tree-ring
 pattern to an absolute time scale. In archaeological, architectural or
 art-historical studies, the primary objective of a dendrochronological
 survey is to ascertain an accurate estimate of the **felling date** (or
 dying-off) of the parent tree from which the timber originates
-[@haneca2009; [@dominguez-delmas_2020]; @tegel2022]. This felling date
-is the closest related and datable event to the creation of the wooden
+[@haneca2009; @dominguez-delmas_2020; @tegel2022]. This felling date is
+the closest related and datable event to the creation of the wooden
 object or construction.
 
 The exact felling date can be inferred from the most recently formed
@@ -74,39 +74,40 @@ based on the presence of (partially) preserved sapwood or waney edge.
 # Statement of need
 
 Many descriptive statistics and statistical models have been published
-to establish accurate estimates of the expected number of sapwood ring
+to establish accurate estimates of the expected number of sapwood rings
 [@edvardsson2022; @bleicher2020; @rybnicek2006; @pilcher1987;
 @hollstein1965; @hollstein1980; @wazny1990; @miles1997; @sohar2012;
 @bräthen1982; @haneca2009; @hughes1981; @jevsenak2019; @hillam1987;
-@gjerdrum2013; @shindo2024]. These models often rely on
-log-transformation of the original counts of sapwood numbers from living
-and historical timbers, or use regression models that include additional
-variables such as mean ring width, the cambial age of the tree or a
-combination of both. A standardized methodology is hampered by this
-variety in methodology and reporting.
+@gjerdrum2013; @shindo2024]. These models are based on counts of sapwood
+rings from living and historical timbers and often rely on
+log-transformation of the original data, or use regression models
+including additional variables such as mean ring width, the cambial age
+of the tree or a combination of both. A standardized methodology for
+reporting felling dates is therefore hampered by this variety in
+statistical approaches.
 
 A Bayesian method to improve the procedures to model sapwood data,
 compute lower and upper limits for the felling date based upon the
 selected sapwood model and a given credible interval have been
-introduced by @millard2002a. This procedure was then further refined by
+introduced by @millard2002a. This procedure was further refined by
 @miles2006, and critically reviewed with real-life examples by
 @tyers2008. This workflow has been incorporated in
 [OxCal](https://c14.arch.ox.ac.uk/oxcalhelp/Sapwood.html), the routine
 software for radiocarbon dating and modelling [@bronkramsey2009].
 Tree-ring analysis, on the other hand, relies on a growing set of
 R-packages, with the '*Dendrochronology Program Library in R*'
-[@bunn2008; @bunn2010; @bunn2022], at it's core (
-[opendendro.org](https://opendendro.org/); [@bunn2022a]). Yet, the
+[@bunn2008; @bunn2010; @bunn2022], at it's core
+[https://opendendro.org/, @bunn2022a]. Yet, the
 reporting of felling dates is currently not a standardized procedure
 incorporated in an R-package.
 
-The `fellingdater`package allows to fully document the methodology to
+The `fellingdater` package allows to fully document the methodology to
 establish a felling date -- for a single timber or a group of timbers --
 making the whole procedure reproducible and assists in building
-standardized workflows when applied to large datasets (e.g.
-[@haneca2020]). The package includes functions related to each step in
-the (generalized) workflow when analysing historical tree-ring series
-([Fig. 2](#fig-workflow)).
+standardized workflows when applied to large datasets [e.g.
+@haneca2020]. The package includes functions related to each step in the
+(generalized) workflow when analysing historical tree-ring series ([Fig.
+2](#fig-workflow)).
 
 ![A generalized workflow and related functions, for inferring felling
 dates from tree-ring dated historical
@@ -115,7 +116,7 @@ timbers.](workflow.png){#fig-workflow}
 # Data within the package
 
 The package comes with published datasets of sapwood counts, retrieved
-from their original publication [@haneca2012]. This was only possible
+from their original publication [e.g. @haneca2012]. This was only possible
 for a limited number of datasets as many have been published as
 histograms with wide bins (\>1), what does do not allow to retrieve the
 underlying data points. An overview of all included sapwood datasets is
@@ -125,7 +126,7 @@ More information on the datasets, such as the bibliographic reference to
 the original publication, the wood species and some basic descriptive
 statistics can be accessed by `sw_data_info(<name_of_dataset>).`
 
-`sw_model()` fits a density distribution to the original data, and
+`sw_model()` fits a chosen density distribution to the original data, and
 returns the output of the modelling process. With `sw_model_plot()` the
 model is visualized as a ggplot-style graph [@wickham2016] ([Fig.
 3](#fig-sw-model)).
@@ -143,7 +144,7 @@ model <- sw_model("Hollstein_1980", plot = FALSE)
 sw_model_plot(model)
 ```
 
-![Two sapwood datasets with a density function modeled to the raw
+![Two sapwood datasets with a fitted density function to the raw
 data.](sw_model_plot.jpg){#fig-sw-model}
 
 # Example of use
@@ -167,10 +168,10 @@ install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 The function `read_fh()` is an extension to the `dplR::read.fh()`
 function and allows to read .fh ([format
 Heidelberg](https://www.treeringsociety.org/resources/SOM/Brewer_Murphy_SupplementaryMaterial.pdf))
-files of ring widths (both in decadal, half-chrono and chrono format)
-[@brewer2011]. The function is focused on retrieving information found
-in the HEADER fields of the .fh files, that often harbour essential
-information necessary to establish a well informed estimate of the
+files of ring widths (in decadal, half-chrono or chrono format)
+[@brewer2011]. The function is focused on extracting information found
+in the HEADER fields of the .fh files, which often harbour essential
+information necessary for establishing a well informed estimate of the
 felling date. The `read_fh()` function retrieves the information from
 the HEADER fields and lists the items as attributes to the ring-width
 measurements. The `fh_header()`function facilitates easy conversion to a
@@ -180,10 +181,10 @@ measurements. The `fh_header()`function facilitates easy conversion to a
 
 The function `cor_table()` computes commonly used correlation values
 between dated tree-ring series and reference chronologies. This function
-helps to check the assigned end date of the series by comparing the
-measurements against absolutely dated reference chronologies, and
-thereby provide information on timber provenance. The latter allows to
-select the most appropriate sapwood model for the tree-ring data.
+helps to verify the assigned end date of the series by comparing the
+measurements against absolutely dated reference chronologies, 
+thereby providing information on timber provenance. The latter enables the 
+selection of the most appropriate sapwood model for the tree-ring data.
 
 The correlation values computed are:
 
@@ -193,13 +194,13 @@ The correlation values computed are:
 -   glk_p: significance level associated with the glk-value
     [@jansma1995].
 
--   r_pearson: the Pearson's correlation coefficient
+-   r_pearson: the Pearson's correlation coefficient.
 
--   t_St: Student's t-value based on r_pearson
+-   t_St: Student's _t_-value based on r_pearson.
 
--   t_BP: t-values according to the @baillie1973 algorithm
+-   t_BP: _t_-values according to the algorithm proposed by @baillie1973.
 
--   t_Ho: t-values according to the @hollstein1980 algorithm
+-   t_Ho: _t_-values according to the algorithm proposed by @hollstein1980.
 
 ``` r
 Doel1_trs <- read_fh(Doel1, header = FALSE)
@@ -214,19 +215,19 @@ cor_table(x = Doel1_trs,
 
 ## Felling date interval
 
-After selecting the appropriate sapwood model (e.g. , one of [Fig.
+After selecting the appropriate sapwood model (e.g., one of [Fig.
 2](#fig-sw-model)) one can use the model to estimate the upper and lower
 limits of the number of missing sapwood rings. The function
 `sw_interval()` calculates the probability density function (PDF) and
 highest probability density interval (HDI) of the felling date range
 based on the observed number of sapwood rings (`n_sapwood = ...`), their
-chronological dating (`last = ...`) and the selected sapwood data
+chronological dating (`last = ...`), and the selected sapwood data
 (`sw_data = ...`) and model (`densfun = ...`).
 
 In the example below, 10 sapwood rings were observed on a historical
-timber (last ring dated to 1234 CE) that is supposed to have a
-provenance in the Southern Baltic region (sapwood model published by
-[@wazny1990]). The HDI delineates an interval in which the actual
+timber (with the last ring dated to 1234 CE) that is supposed to have a
+provenance in the Southern Baltic region (covered by the sapwood model 
+published by [@wazny1990]). The HDI delineates an interval in which the actual
 felling date is most likely situated ([Fig. 4](#fig-sw_interval)).
 
 Note that the more sapwood rings that have been measured, the more
@@ -256,8 +257,8 @@ date.](sw_interval.jpg){#fig-sw-interval align="center" width="60%"}
 
 The procedure to combine felling dates of a group of related tree-ring
 series with (partially) preserved sapwood, in order to narrow down the
-range of a common felling date, is provided by the function
-`sw_combine()` . This function returns a `list` with:
+range of a shared felling date, is provided by the function
+`sw_combine()`. This function returns a `list` with:
 
 -   the probability density function (PDF) for the felling date of the
     individual series and the PDF of the model that combines these
@@ -267,7 +268,7 @@ range of a common felling date, is provided by the function
     (`$hdi_model`),
 
 -   the *Agreement index* (`$A_model`) of the model, expressing how well
-    the individual series fit into the model ,
+    the individual series fit into the model,
 
 -   an overview of the felling date range for the individual series
     (`$individual_series`), and their *Agreement index* (*A~i~*) to the
@@ -276,13 +277,13 @@ range of a common felling date, is provided by the function
 The function `sw_combine_plot()` allows to visualize the output.
 
 The rationale and mathematical background of the *Agreement index*
-(*A~i~*)was introduced and developed by Bronk Ramsey [-@bronkramsey1995;
--@bronkramseymethods2017]. Both the *A~i~* of the individual series as
+(*A~i~*) was introduced and developed by Bronk Ramsey [-@bronkramsey1995;
+-@bronkramseymethods2017]. Both the *A~i~* of the individual series and
 for the whole model (*A~model~*) should ideally be around 100%, and not
 lower than the critical threshold *A~c~* = 60%.
 
-The example dataset below consists of 5 dated tree-ring series of which
-one has an exact felling date ([Fig. 5, left](#fig-sw-combine)). The
+The example dataset below consists of 5 dated tree-ring series, one of which
+has an exact felling date ([Fig. 5, left](#fig-sw-combine)). The
 proposed combined felling date equals the felling date of the series
 with an exact felling date (trs_15), but now it can be assessed that
 this falls within the felling date ranges for three other individual
@@ -340,20 +341,20 @@ straightforward to assess temporal trends in the frequency of felling
 dates. The individual series each have their own probability density
 function based on a chosen sapwood model and the number of observed
 sapwood rings. To make another reference to radiocarbon dating, it is
-common practice in the analysis of large volumes of calibrated
+common practice in the analysis of large volumes of 
 radiocarbon dates to compute the *summed probability densities* (SPD) of
 the calibrated radiocarbon dates. Summed probabilities are used to
-determine the temporal density of ages (events), where there is no clear
-prior information on their distribution [@bronkramseymethods2017]. This
-procedure is implemented in OxCal and the R-package `rcarbon`
+determine the temporal density of ages (events) in situations where there is 
+no clear prior information on their distribution [@bronkramseymethods2017]. 
+This procedure is implemented in OxCal and the R-package `rcarbon`
 [@crema2020]. The function `sw_sum()` makes his procedure available for
 tree-ring analyses. The summed probability distribution (SPD) of the
 individual probability densities of felling dates of single tree-ring
-series with incomplete sapwood allows to visualize fluctuations in the
-incidence of potential felling dates through time. Exact felling dates
+series with incomplete sapwood allows visualizing of fluctuations in the
+incidence of potential felling dates over time. Exact felling dates
 derived from tree-ring series with waney edge are not included in the
 computational process of the SPD as they would result in anomalous
-spikes in the SPD, as their associated probability (*p* = 1) would be
+spikes in the SPD, since their associated probability (*p* = 1) would be
 assigned to a single calendar year. Therefore exact felling dates are
 plotted separately on top of the SPD ([Fig. 6](#fig-sw_sum)).
 
@@ -371,21 +372,21 @@ are plotted as triangles.](sw_sum.jpg){#fig-sw-sum}
 
 # Future work
 
-In its current version the package `fellingdater` is tailored to the
+In its current version, the package `fellingdater` is tailored to the
 general workflow for analyzing tree-ring datasets from wooden cultural
 heritage objects and constructions, made of European oak (*Quercus*
 sp.). The sapwood data included in the current version reflect this
-focus on oak. But all functions can also work with a custom sapwood
-dataset, provided as a `data.frame`. As such, sapwood data from other
+focus on oak. However, all functions can also work with a custom sapwood
+dataset provided as a `data.frame`. As such, sapwood data from other
 regions and wood species can also be explored, modeled and used to
-report felling dates.
+determine felling dates.
 
 # Acknowledgements
 
 Koen Van Daele and Ronald Visser fueled me with valuable feedback on
 earlier versions of the package.
 
-At rOpenSci, dr. Antonio J. Pérez-Luque, dr. Nicholas Tierney and dr.
+At _rOpenSci_, dr. Antonio J. Pérez-Luque, dr. Nicholas Tierney and dr.
 Maëlle Salmon provided an essential and constructive software review,
 allowing me to significantly improve the quality of the package.
 
