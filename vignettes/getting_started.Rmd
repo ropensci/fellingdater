@@ -29,18 +29,17 @@ This vignette provides a quick overview of the package main functions, including
 
 ## Installation
 
-You can install the development version of fellingdater from [GitHub](https://github.com/hanecakr/fellingdater/) with:
+The latest developing version is hosted on [GitHub](https://github.com/ropensci/fellingdater/) and [R-universe](https://ropensci.r-universe.dev/fellingdater), and can be installed locally:
 
-```{r eval=FALSE}
-#install.packages("devtools")
-devtools::install_github("hanecakr/fellingdater")
+``` r
+# install.packages("pak")
+pak::pak("ropensci/fellingdater")
 ```
 
 or
 
-```{r eval=FALSE}
-# install.packages("pak")
-pak::pak("hanecakr/fellingdater")
+``` r
+install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 ```
 
 ## Basic example

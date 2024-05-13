@@ -227,7 +227,7 @@ chronological dating (`last = ...`), and the selected sapwood data
 In the example below, 10 sapwood rings were observed on a historical
 timber (with the last ring dated to 1234 CE) that is supposed to have a
 provenance in the Southern Baltic region (covered by the sapwood model 
-published by [@wazny1990]). The HDI delineates an interval in which the actual
+published by Wazny [-@wazny1990]). The HDI delineates an interval in which the actual
 felling date is most likely situated ([Fig. 4](#fig-sw_interval)).
 
 Note that the more sapwood rings that have been measured, the more
