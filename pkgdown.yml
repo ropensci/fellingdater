@@ -3,8 +3,9 @@ pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   getting_started: getting_started.html
-last_built: 2024-05-12T19:37Z
+  the_workflow: the_workflow.html
+last_built: 2024-05-13T13:06Z
 urls:
-  reference: https://hanecakr.github.io/fellingdater/reference
-  article: https://hanecakr.github.io/fellingdater/articles
+  reference: https://ropensci.github.io/fellingdater/reference
+  article: https://ropensci.github.io/fellingdater/articles
 

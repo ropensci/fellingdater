@@ -42,6 +42,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/getting_started.html">Get started</a>
+    <a class="dropdown-item" href="../articles/the_workflow.html">The `fellingdater` workflow</a>
   </div>
 </li>
 <li class="nav-item">
@@ -108,14 +109,14 @@ commonly applied to sets of radiocarbon (<sup>14</sup>C) dates.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>You can install the development version of fellingdater from <a href="https://github.com/hanecakr/fellingdater/" class="external-link">GitHub</a> with:</p>
+<p>The latest developing version is hosted on <a href="https://github.com/ropensci/fellingdater/" class="external-link">GitHub</a> and <a href="https://ropensci.r-universe.dev/fellingdater" class="external-link">R-universe</a>, and
+can be installed locally:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"hanecakr/fellingdater"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ropensci/fellingdater"</span><span class="op">)</span></span></code></pre></div>
 <p>or</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"hanecakr/fellingdater"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fellingdater"</span>, repos <span class="op">=</span> <span class="st">"https://ropensci.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
@@ -181,7 +182,7 @@ has higher credibility than any point outside the interval.</p>
 <span>            sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span>, </span>
 <span>            densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
 <span>            plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
 <div class="section level4">
 <h4 id="fd_report">fd_report<a class="anchor" aria-label="anchor" href="#fd_report"></a>
@@ -305,7 +306,7 @@ date (waney edge present):</p>
 <span><span class="co">#&gt; 5 trs_10 1010        15      TRUE</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div class="section level5">
 <h5 id="trs_example3">trs_example3<a class="anchor" aria-label="anchor" href="#trs_example3"></a>
@@ -314,7 +315,7 @@ date (waney edge present):</p>
 waney edge:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example3</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
 <div class="section level5">
 <h5 id="trs_example4">trs_example4<a class="anchor" aria-label="anchor" href="#trs_example4"></a>
@@ -323,7 +324,7 @@ waney edge:</p>
 series, all including partially preserved sapwood:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>No common felling date can be computed for this particular data set.
 The model fails (agreement index of the model is below the critical
 threshold value (A_c) of 60%). Three series have an individual agreement
@@ -337,7 +338,7 @@ index below 60%.</p>
 quem</em>) can be determined:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example5</span>,  plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level4">
@@ -354,7 +355,7 @@ edge).</p>
 <span><span class="co">#&gt; Warning in sw_sum(trs_example7, plot = FALSE): --&gt; 1 series without sapwood rings or waney edge detected</span></span>
 <span><span class="co">#&gt;         and removed from the data set</span></span>
 <span><span class="fu"><a href="../reference/sw_sum_plot.html">sw_sum_plot</a></span><span class="op">(</span><span class="va">spd7</span>, window_smooth <span class="op">=</span> <span class="fl">5</span>, bar_col <span class="op">=</span> <span class="st">"#95d5b2"</span>, trend_col <span class="op">=</span> <span class="st">"#dda15e"</span>, dot_col <span class="op">=</span> <span class="st">"forestgreen"</span>, dot_shape <span class="op">=</span> <span class="fl">23</span>, dot_size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level3">
@@ -564,7 +565,7 @@ as input for the sw_functions:</p>
 <span>                               <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span></span>
 <span>   <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 <p>The attempt to combine the dated tree-ring series from DOEL1 into a
 single felling-date range fails. These tree-ring series cannot represent
 a single event.</p>
@@ -578,7 +579,7 @@ frame elements could share a common felling date:</p>
 <span>   <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">series</span> <span class="op">!=</span> <span class="st">"K1_091"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="getting_started_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p><img src="getting_started_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <p>For more details see: <a href="https://doi.org/10.1111/1095-9270.12037" class="external-link">Haneca &amp; Daly
 (2014)</a></p>
 </div>
