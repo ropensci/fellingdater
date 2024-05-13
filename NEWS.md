@@ -1,3 +1,10 @@
+# fellingdater 1.0.1
+
+fellingdater 1.0.1 (2024-05-13)
+===============================
+  * Paper.md updated for ‘The Journal of Open Source Software’ (JOSS).
+  * New vignette (article): "The fellingdater workflow"
+  
 
 fellingdater 1.0.0 (2024-04-16)
 ===============================
@@ -22,7 +29,7 @@ fellingdater 0.0.0.9003 (2023-11-20)
 ### NEW FEATURES
 
   * Version ready for submission to rOpenSci for software review
-  * First draft op paper for Journal of Open Software in /paper/paper.md
+  * First draft op paper for 'The Journal of Open Source Software' in /paper/paper.md
   
   
 
