@@ -9,6 +9,7 @@
 [![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
 [![fellingdateer status
 badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
+[![DOI](https://zenodo.org/badge/276190636.svg)](https://zenodo.org/doi/10.5281/zenodo.11186274)
 [![JOSS](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
 
 <!-- badges: end -->
@@ -137,7 +138,7 @@ To refer to the current version of the package:
 
 > Haneca K (2024). fellingdater: an R-package to facilitate the
 > organisation, analysis and interpretation of tree-ring data from
-> wooden heritage objects and structures. R package, version 1.0.0,
+> wooden heritage objects and structures. R package, version 1.0.1,
 > <https://docs.ropensci.org/fellingdater>.
 
 ## Comments and contributions
