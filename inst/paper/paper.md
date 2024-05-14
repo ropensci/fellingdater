@@ -216,7 +216,7 @@ cor_table(x = Doel1_trs,
 ## Felling date interval
 
 After selecting the appropriate sapwood model (e.g., one of [Fig.
-2](#fig-sw-model)) one can use the model to estimate the upper and lower
+3](#fig-sw-model)) one can use the model to estimate the upper and lower
 limits of the number of missing sapwood rings. The function
 `sw_interval()` calculates the probability density function (PDF) and
 highest probability density interval (HDI) of the felling date range
@@ -228,7 +228,7 @@ In the example below, 10 sapwood rings were observed on a historical
 timber (with the last ring dated to 1234 CE) that is supposed to have a
 provenance in the Southern Baltic region (covered by the sapwood model 
 published by Wazny [-@wazny1990]). The HDI delineates an interval in which the actual
-felling date is most likely situated ([Fig. 4](#fig-sw_interval)).
+felling date is most likely situated ([Fig. 4](#fig-sw-interval)).
 
 Note that the more sapwood rings that have been measured, the more
 probability mass is assigned to the tails of the sapwood model.
@@ -356,7 +356,7 @@ derived from tree-ring series with waney edge are not included in the
 computational process of the SPD as they would result in anomalous
 spikes in the SPD, since their associated probability (*p* = 1) would be
 assigned to a single calendar year. Therefore exact felling dates are
-plotted separately on top of the SPD ([Fig. 6](#fig-sw_sum)).
+plotted separately on top of the SPD ([Fig. 6](#fig-sw-sum)).
 
 ``` r
 sum <- sw_sum(trs_example7)
