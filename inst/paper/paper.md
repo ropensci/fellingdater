@@ -9,8 +9,6 @@ affiliations:
   - name: Flanders Heritage Agency, Belgium
     index: 1
 date: "2024-04-24"
-year: 2024
-output: pdf_document
 tags:
   - R
   - tree-ring analysis
@@ -25,10 +23,10 @@ bibliography: paper.bib
 
 # Summary
 
-Tree-ring dating, or dendrochronology, allows to assign calendar-year
+Tree-ring dating, or dendrochronology, allows the assignment of calendar-year
 dates to growth rings that can be observed on an old piece of timber.
 Once a tree-ring series is securely anchored to a calendar year
-time-scale, the end date of the outermost ring can be used to estimate
+time scale, the end date of the outermost ring can be used to estimate
 the year when the tree was felled.
 
 The `fellingdater` package offers a suite of functions that can assist
@@ -45,7 +43,7 @@ sapwood.](cross-section.png){#fig-cross-section}
 
 Dendrochronology is the most precise chronometric dating technique for
 (pre-)historical wooden constructions and objects [@baillie1995]. It
-involves recording the ring-width pattern on a cross-section of an
+involves recording the ring width pattern on a cross-section of an
 ancient wooden element and matching this pattern to absolutely dated
 reference chronologies. This allows anchoring the recorded tree-ring
 pattern to an absolute time scale. In archaeological, architectural or
@@ -96,7 +94,7 @@ introduced by @millard2002a. This procedure was further refined by
 software for radiocarbon dating and modelling [@bronkramsey2009].
 Tree-ring analysis, on the other hand, relies on a growing set of
 R-packages, with the '*Dendrochronology Program Library in R*'
-[@bunn2008; @bunn2010; @bunn2022], at it's core
+[@bunn2008; @bunn2010; @bunn2022], at its core
 [https://opendendro.org/, @bunn2022a]. Yet, the
 reporting of felling dates is currently not a standardized procedure
 incorporated in an R-package.
