@@ -239,8 +239,9 @@ below, the numeric output is returned:</p>
 <span><span class="co">#&gt; 2 trs_02 1009  10 FALSE</span></span>
 <span><span class="co">#&gt; 3 trs_03 1007  15 FALSE</span></span>
 <span><span class="co">#&gt; 4 trs_04 1005  16 FALSE</span></span>
-<span><span class="co">#&gt; 5 trs_05 1010   8 FALSE</span></span>
-<span><span class="co"># In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.</span></span>
+<span><span class="co">#&gt; 5 trs_05 1010   8 FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.</span></span>
 <span></span>
 <span><span class="va">output_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example0</span>,</span>
 <span>   series <span class="op">=</span> <span class="st">"trs"</span>,</span>
@@ -252,8 +253,9 @@ below, the numeric output is returned:</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">output_comb</span><span class="op">$</span><span class="va">rawData</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span>
-<span></span>
+<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="va">output_comb</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="co">#&gt; $sapwood_data</span></span>
 <span><span class="co">#&gt; [1] "Hollstein_1980"</span></span>
@@ -296,15 +298,16 @@ below, the numeric output is returned:</p>
 </h5>
 <p>A data set with 5 tree-ring series, one of which has an exact felling
 date (waney edge present):</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">trs_example2</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
 <span><span class="co">#&gt; 1 trs_06 1000         5     FALSE</span></span>
 <span><span class="co">#&gt; 2 trs_07 1005        10     FALSE</span></span>
 <span><span class="co">#&gt; 3 trs_08 1008        NA     FALSE</span></span>
 <span><span class="co">#&gt; 4 trs_09 1000         1     FALSE</span></span>
-<span><span class="co">#&gt; 5 trs_10 1010        15      TRUE</span></span>
-<span></span>
+<span><span class="co">#&gt; 5 trs_10 1010        15      TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
@@ -313,7 +316,7 @@ date (waney edge present):</p>
 </h5>
 <p>A data set where all tree-ring series have been measured up to the
 waney edge:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example3</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 </div>
@@ -322,7 +325,7 @@ waney edge:</p>
 </h5>
 <p>An attempt to compute a common felling date for a group of tree-ring
 series, all including partially preserved sapwood:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>No common felling date can be computed for this particular data set.
@@ -336,7 +339,7 @@ index below 60%.</p>
 <p>When no sapwood rings are observed and measured, only an
 <code>earliest possible felling date</code> (<em>terminus post
 quem</em>) can be determined:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example5</span>,  plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
@@ -350,11 +353,12 @@ example, the SPD for a set of 9 series with partially preserved sapwood
 or waney edge is computed and plotted. A smoother for the SPD is plotted
 as well. The dots represent exact felling dates (i.e., series with waney
 edge).</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spd7</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">trs_example7</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in sw_sum(trs_example7, plot = FALSE): --&gt; 1 series without sapwood rings or waney edge detected</span></span>
-<span><span class="co">#&gt;         and removed from the data set</span></span>
-<span><span class="fu"><a href="../reference/sw_sum_plot.html">sw_sum_plot</a></span><span class="op">(</span><span class="va">spd7</span>, window_smooth <span class="op">=</span> <span class="fl">5</span>, bar_col <span class="op">=</span> <span class="st">"#95d5b2"</span>, trend_col <span class="op">=</span> <span class="st">"#dda15e"</span>, dot_col <span class="op">=</span> <span class="st">"forestgreen"</span>, dot_shape <span class="op">=</span> <span class="fl">23</span>, dot_size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt;         and removed from the data set</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_sum_plot.html">sw_sum_plot</a></span><span class="op">(</span><span class="va">spd7</span>, window_smooth <span class="op">=</span> <span class="fl">5</span>, bar_col <span class="op">=</span> <span class="st">"#95d5b2"</span>, trend_col <span class="op">=</span> <span class="st">"#dda15e"</span>, dot_col <span class="op">=</span> <span class="st">"forestgreen"</span>, dot_shape <span class="op">=</span> <span class="fl">23</span>, dot_size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 </div>
 </div>
@@ -366,7 +370,7 @@ edge).</p>
 </h4>
 <p>The function <code><a href="../reference/sw_data_overview.html">sw_data_overview()</a></code> provides an overview of
 all published sapwood data sets distributed with this package.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_data_overview.html">sw_data_overview</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "Brathen_1982"     "Hollstein_1980"   "Miles_1997_NM"    "Miles_1997_SC"   </span></span>
 <span><span class="co">#&gt;  [5] "Miles_1997_WBC"   "Pilcher_1987"     "Sohar_2012_ELL_c" "Sohar_2012_ELL_t"</span></span>
@@ -382,7 +386,7 @@ all published sapwood data sets distributed with this package.</p>
 data set, the geographical area the data represents, the number of
 observations and some basic summary stats - can be retrieved by using
 the <code><a href="../reference/sw_data_info.html">sw_data_info()</a></code> function.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_data_info.html">sw_data_info</a></span><span class="op">(</span><span class="st">"Pilcher_1987"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $data</span></span>
 <span><span class="co">#&gt; [1] "Pilcher_1987"</span></span>
@@ -405,7 +409,7 @@ the <code><a href="../reference/sw_data_info.html">sw_data_info()</a></code> fun
 </h4>
 <p>A graphical representation of a sapwood data set is provided by the
 <code><a href="../reference/sw_model_plot.html">sw_model_plot()</a></code> function.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_model.html">sw_model</a></span><span class="op">(</span>sw_data <span class="op">=</span> <span class="st">"Sohar_2012_ELL_c"</span>, </span>
 <span>                densfun <span class="op">=</span> <span class="st">"lognormal"</span>,</span>
@@ -417,7 +421,7 @@ the <code><a href="../reference/sw_data_info.html">sw_data_info()</a></code> fun
 <span>              bar_color <span class="op">=</span> <span class="st">"grey60"</span>,</span>
 <span>              line_color <span class="op">=</span> <span class="st">"red3"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/model-1.png" width="700"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="../reference/sw_data_info.html">sw_data_info</a></span><span class="op">(</span><span class="st">"Sohar_2012_ELL_c"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $data</span></span>
@@ -446,7 +450,7 @@ function fitted to the sapwood data set should be one of:</p>
 <li>“gamma”.</li>
 </ul>
 <p>The credible interval should be a value between 0 and 1.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_model.html">sw_model</a></span><span class="op">(</span><span class="st">"Wazny_1990"</span>, densfun <span class="op">=</span> <span class="st">"gamma"</span>, cred_mass<span class="op">=</span> <span class="fl">.90</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in densfun(x, parm[1], parm[2], ...): NaNs produced</span></span></code></pre></div>
 <p><img src="getting_started_files/figure-html/sw_model_plot2-1.png" width="700"></p>
@@ -470,7 +474,7 @@ insensitive.</p>
 medieval ship DOEL1 is read with <code><a href="../reference/read_fh.html">read_fh()</a></code>. The ring width
 measurement, in different formats, are converted to a
 <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Doel1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"DOEL1.fh"</span>, package <span class="op">=</span> <span class="st">"fellingdater"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Doel1_trs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_fh.html">read_fh</a></span><span class="op">(</span><span class="va">Doel1</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -495,7 +499,7 @@ measurement, in different formats, are converted to a
 <p>When <code>header = TRUE</code>, the <code>get_header()</code>
 function is triggered and HEADER fields in the .fh file are returned as
 a <code>data.frame</code>, instead of the ring-width measurements.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/read_fh.html">read_fh</a></span><span class="op">(</span><span class="va">Doel1</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     series data_type         chrono_members species first last length n_sapwood</span></span>
 <span><span class="co">#&gt; 1   K1_091    Single                   &lt;NA&gt;    QUSP  1158 1292    135        15</span></span>
@@ -554,7 +558,7 @@ a <code>data.frame</code>, instead of the ring-width measurements.</p>
 <span><span class="co">#&gt; 10          &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;      &lt;NA&gt;  4.269711 51.298236</span></span></code></pre></div>
 <p>The <code>data.frame</code> with the HEADER fields can then be used
 as input for the sw_functions:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Doel1_header</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_fh.html">read_fh</a></span><span class="op">(</span><span class="va">Doel1</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Doel1_header</span> <span class="op">|&gt;</span> </span>
@@ -572,7 +576,7 @@ a single event.</p>
 <p>However, leaving out the tree-ring series of the keelplank (series
 “K1_091”) of this medieval ship shows that the hull planking and some
 frame elements could share a common felling date:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Doel1_header</span> <span class="op">|&gt;</span> </span>
 <span>   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>waneyedge <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"wk"</span>, <span class="va">waneyedge</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>                               <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -609,7 +613,7 @@ Pilcher (1973)</a> algorithm</p></li>
 <li><p>t_Ho: t-values according to the <a href="https://search.worldcat.org/nl/title/6391864" class="external-link">Hollstein (1980)</a>
 algorithm</p></li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Doel1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"DOEL1.fh"</span>, package <span class="op">=</span> <span class="st">"fellingdater"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Doel1_trs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_fh.html">read_fh</a></span><span class="op">(</span><span class="va">Doel1</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
