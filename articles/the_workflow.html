@@ -82,21 +82,21 @@
     
     
 <blockquote>
-<p><strong>This vignette is a lengthy version of a paper submitted to
-‘<em>The Journal of Open Source Software</em>’ (JOSS).</strong></p>
+<p><strong>This vignette is a lengthy version of a paper published in <a href="https://joss.theoj.org/papers/10.21105/joss.06716" class="external-link"><em>The Journal
+of Open Source Software</em></a>.</strong></p>
 </blockquote>
 <p><br></p>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
-<p>Tree-ring dating, or dendrochronology, allows to assign calendar-year
-dates to growth rings that can be observed on a cross-section of a stem
-or a piece of timber. It involves measuring the width of each growth
-ring and comparing the measured ring-width pattern to absolutely dated
-reference chronologies. Once a tree-ring series is securely anchored to
-a calendar year time-scale, the end date of the outermost ring can be
-used to determine or estimate the year of death of the parent tree
-(i.e., the felling of the tree).</p>
+<p>Tree-ring dating, or dendrochronology, allows the assignment of
+calendar-year dates to growth rings that can be observed on a
+cross-section of a stem or a piece of timber. It involves measuring the
+width of each growth ring and comparing the measured ring-width pattern
+to absolutely dated reference chronologies. Once a tree-ring series is
+securely anchored to a calendar year time scale, the end date of the
+outermost ring can be used to determine or estimate the year of death of
+the parent tree (i.e., the felling of the tree).</p>
 <p>The <code>fellingdater</code> package offers a suite of functions
 that can assist dendrochronologists to infer, combine and report felling
 date estimates from dated tree-ring series of (pre-)historical timbers,
@@ -202,7 +202,7 @@ archaeological and chronological information <span class="citation">(Bronk Ramse
 Tree-ring analyses, on the other hand, relies on a growing set of
 R-packages, with the ‘<em>Dendrochronology Program Library in R</em>’
 <span class="citation">(Bunn 2008, 2010; Bunn et al. 2022)</span>, the
-<code>dplR</code>-package, at it’s core <span class="citation">(see <a href="https://opendendro.org/" class="external-link uri">https://opendendro.org/</a>,
+<code>dplR</code>-package, at its core <span class="citation">(see <a href="https://opendendro.org/" class="external-link uri">https://opendendro.org/</a>,
 Bunn, Anchukaitis, and Swetnam 2022)</span>. Yet, the Bayesian
 methodology to establish sapwood estimates and felling dates was so far
 not available as a suite of functions in R <span class="citation">(R
@@ -413,7 +413,7 @@ wood.</p>
 <div class="section level3">
 <h3 id="felling-date-interval">Felling date interval<a class="anchor" aria-label="anchor" href="#felling-date-interval"></a>
 </h3>
-<p>After selecting the appropriate sapwood model (e.g., one of <a href="#fig-sw-model">Fig. 2</a>) one can use the model to estimate the
+<p>After selecting the appropriate sapwood model (e.g., one of <a href="#fig-sw-model">Fig. 3</a>) one can use the model to estimate the
 upper and lower limits of the number of missing sapwood rings. The
 function <code><a href="../reference/sw_interval.html">sw_interval()</a></code> calcualtes the probability density
 function (PDF) and highest probability density interval (HDI) of the
@@ -432,7 +432,7 @@ for a given probability mass or credible interval
 specifying an interval that spans most of the distribution (in the
 example below the credible interval is set to 95%), as such that every
 point inside the interval has higher credibility than any point outside
-the interval (<a href="#fig-sw_interval">Fig. 4</a>).</p>
+the interval (<a href="#fig-sw-interval">Fig. 4</a>).</p>
 <p>Note that the more sapwood rings that have been measured, the more
 probability mass is assigned to the tails of the sapwood model.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -593,7 +593,7 @@ would result in anomalous spikes in the SPD, as their associated
 probability (<em>p</em> = 1) would be assigned to a single calendar
 year, whereas for series with incomplete sapwood the total probability
 (<em>p</em> = 1) is dispersed over a wider time range. Therefore exact
-felling dates are plotted separately on top of the SPD (<a href="#fig-sw_sum">Fig. 6</a>).</p>
+felling dates are plotted separately on top of the SPD (<a href="#fig-sw-sum">Fig. 6</a>).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">trs_example7</span><span class="op">)</span></span>
 <span></span>
