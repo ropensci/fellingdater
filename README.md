@@ -124,22 +124,24 @@ tree-ring series originating from medieval timber constructions in
 this study were published in
 [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
-Please cite this paper when using the `fellingdater` package:
+Please cite these papers when using the `fellingdater` package:
+
+> Kristof HANECA
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305)
+> 2024. *fellingdater*: a toolkit to estimate, report and combine
+> felling dates derived from historical tree-ring series. *Journal of
+> Open Source Software*, 9(97), 6716. 
+> <https://doi.org/10.21105/joss.06716>
 
 > Kristof HANECA
 > [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
-> Vincent DEBONNE, Patrick HOFFSUMMER 2020. The ups and downs of the
-> building trade in a medieval city: tree-ring data as proxies for
-> economic, social and demographic dynamics in Bruges (*c.* 1200 –
-> 1500). *Dendrochronologia* 64, 125773.  
+> Vincent DEBONNE
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X),
+> Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a
+> medieval city: tree-ring data as proxies for economic, social and
+> demographic dynamics in Bruges (*c.* 1200 – 1500). *Dendrochronologia*
+> 64, 125773.  
 > <https://doi.org/10.1016/j.dendro.2020.125773>
-
-To refer to the current version of the package:
-
-> Haneca K (2024). fellingdater: an R-package to facilitate the
-> organisation, analysis and interpretation of tree-ring data from
-> wooden heritage objects and structures. R package, version 1.0.1,
-> <https://docs.ropensci.org/fellingdater>.
 
 ## Comments and contributions
 
