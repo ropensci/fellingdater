@@ -1,21 +1,25 @@
 citHeader("To cite fellingdater in publications use:")
 
 bibentry(
-  bibtype    = "Manual",
-  title    = "fellingdater: an R package to facilitate the organisation, analysis and interpretation of tree-ring data from wooden heritage objects and structures" ,
+  bibtype  = "Article",
+  title    = "fellingdater: a toolkit to estimate, report and combine felling dates derived from historical tree-ring series",
   author   = "Kristof Haneca",
+  journal  = "Journal of Open Source Software",
   year     = "2024",
-  note     = "R package, version 1.0.1",
-  url      = "https://github.com/ropensci/fellingdater",
+  volume   = "9",
+  number   = "97",
+  pages    = "6716",
+  doi      = "10.21105/joss.06716"
 )
 
-bibentry(bibtype = "Article",
-         title = "The ups and downs of the building trade in a medieval city: Tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200–1500)",
-         journal = "Dendrochronologia",
-         volume = "64",
-         pages = "125773",
-         year = "2020",
-         doi = "10.1016/j.dendro.2020.125773",
-         author = "Kristof Haneca, Vincent Debonne, Patrick Hoffsummer",
-         keywords = "dendrochronology, sapwood, rood constrcutions, tree-ring dating",
-         key = "Haneca_etal2020")
+bibentry(
+  bibtype  = "Article",
+  title    = "The ups and downs of the building trade in a medieval city: Tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200–1500)",
+  author   = "Kristof Haneca, Vincent Debonne, Patrick Hoffsummer",
+  journal  = "Dendrochronologia",
+  year     = "2020",
+  volume   = "64",
+  pages    = "125773",
+  doi      = "10.1016/j.dendro.2020.125773"
+)
+
