@@ -155,3 +155,27 @@ Please cite these papers when using the `fellingdater` package:
   [Contributor Code of
   Conduct](https://github.com/ropensci/fellingdater/blob/main/.github/CONTRIBUTING.md).
   By contributing to this project, you agree to abide by its terms.
+
+## Case studies using *fellingdater*
+
+- Haneca, K., De Groote, K., 2024. Ieper - De Meersen. Deel 5. Houten
+  grafkisten, tonnen en gebruiksvoorwerpen: dendrochronologie, typologie
+  en houtonderzoek. Onderzoeksrapporten agentschap Onroerend
+  Erfgoed 330. <https://doi.org/10.55465/CNJU8492>
+
+- Debonne, V., Haneca, K., 2023. Dating Medieval Ghent (Belgium):
+  dendrochronological and typological survey of the roofs of Saint
+  Nicholas’ Church. International Journal of Wood Culture. 3, 26–46.
+  <https://doi.org/10.1163/27723194-bja10016>
+
+- Domínguez-Delmás, M., Schroeder, H., Kuitems, M., Haneca, K.,
+  Archangel, S., van Duin, P., Piena, H., 2023. A stepwise
+  multidisciplinary approach to determine the date and provenance of
+  historical wooden objects. Journal of Cultural Heritage 62, 430–440.
+  <https://doi.org/10.1016/j.culher.2023.06.023>
+
+- Haneca, K., Debonne, V., Hoffsummer, P., 2020. The ups and downs of
+  the building trade in a medieval city: Tree-ring data as proxies for
+  economic, social and demographic dynamics in Bruges (c. 1200–1500).
+  Dendrochronologia 64, 125773.
+  <https://doi.org/10.1016/j.dendro.2020.125773>
