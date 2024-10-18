@@ -106,7 +106,7 @@ fd_report <- function(x,
 
         if (sw_data %in% sw_data_overview()) {
                 sw_data <- rep(sw_data, nrow(x))
-        } else if (exists(sw_data) & is.data.frame(sw_data)){
+        } else if (exists(sw_data)){
                 sw_data <- rep(sw_data, nrow(x))
         } else if (sw_data %in% colnames(x)) {
                 sw_data <- x[, sw_data]
