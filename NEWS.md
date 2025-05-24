@@ -1,4 +1,7 @@
-# fellingdater 1.0.2
+# fellingdater 1.0.3 (2025-05-24)
+
+- fix to fd_report() to allow user-defined sw_data.
+
 
 # fellingdater 1.0.2 (2024-05-22)
 
