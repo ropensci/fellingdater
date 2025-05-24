@@ -17,9 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml) [![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618) [![fellingdateer status badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
-[![DOI](https://zenodo.org/badge/276190636.svg)](https://zenodo.org/doi/10.5281/zenodo.11186274)
-[![JOSS](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
+[![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml) [![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618) [![fellingdateer status badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev) [![DOI](https://zenodo.org/badge/276190636.svg)](https://zenodo.org/doi/10.5281/zenodo.11186274) [![JOSS](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
 
 <!-- badges: end -->
 
@@ -89,16 +87,10 @@ This package was developed during the analysis of a large data set of tree-ring 
 
 Please cite these papers when using the `fellingdater` package:
 
->Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305) 2024. _fellingdater_: a toolkit to estimate, report and combine felling dates derived from historical tree-ring series. *Journal of Open Source
-Software*, 9(97), 6716.\ 
-> <https://doi.org/10.21105/joss.06716>
+> Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305) 2024. *fellingdater*: a toolkit to estimate, report and combine felling dates derived from historical tree-ring series. *Journal of Open Source Software*, 9(97), 6716.  <https://doi.org/10.21105/joss.06716>
 
 > Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
 > <https://doi.org/10.1016/j.dendro.2020.125773>
-
-
-
-
 
 ## Comments and contributions
 
@@ -108,15 +100,12 @@ Software*, 9(97), 6716.\
 
 -   Please note that the `fellingdater` package is released with a [Contributor Code of Conduct](https://github.com/ropensci/fellingdater/blob/main/.github/CONTRIBUTING.md). By contributing to this project, you agree to abide by its terms.
 
+## Case studies using *fellingdater*
 
+-   Haneca, K., De Groote, K., 2024. Ieper - De Meersen. Deel 5. Houten grafkisten, tonnen en gebruiksvoorwerpen: dendrochronologie, typologie en houtonderzoek. Onderzoeksrapporten agentschap Onroerend Erfgoed 330. <https://doi.org/10.55465/CNJU8492>
 
+-   Debonne, V., Haneca, K., 2023. Dating Medieval Ghent (Belgium): dendrochronological and typological survey of the roofs of Saint Nicholas’ Church. International Journal of Wood Culture. 3, 26–46. <https://doi.org/10.1163/27723194-bja10016>
 
-## Case studies using _fellingdater_
+-   Domínguez-Delmás, M., Schroeder, H., Kuitems, M., Haneca, K., Archangel, S., van Duin, P., Piena, H., 2023. A stepwise multidisciplinary approach to determine the date and provenance of historical wooden objects. Journal of Cultural Heritage 62, 430–440. <https://doi.org/10.1016/j.culher.2023.06.023>
 
-- Haneca, K., De Groote, K., 2024. Ieper - De Meersen. Deel 5. Houten grafkisten, tonnen en gebruiksvoorwerpen:  dendrochronologie, typologie en houtonderzoek. Onderzoeksrapporten agentschap Onroerend Erfgoed 330. <https://doi.org/10.55465/CNJU8492>
-
-- Debonne, V., Haneca, K., 2023. Dating Medieval Ghent (Belgium): dendrochronological and typological survey of the roofs of Saint Nicholas’ Church. International Journal of Wood Culture. 3, 26–46. <https://doi.org/10.1163/27723194-bja10016>
-
-- Domínguez-Delmás, M., Schroeder, H., Kuitems, M., Haneca, K., Archangel, S., van Duin, P., Piena, H., 2023. A stepwise multidisciplinary approach to determine the date and provenance of historical wooden objects. Journal of Cultural Heritage 62, 430–440. <https://doi.org/10.1016/j.culher.2023.06.023>
-
-- Haneca, K., Debonne, V., Hoffsummer, P., 2020. The ups and downs of the building trade in a medieval city: Tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200–1500). Dendrochronologia 64, 125773. <https://doi.org/10.1016/j.dendro.2020.125773>
+-   Haneca, K., Debonne, V., Hoffsummer, P., 2020. The ups and downs of the building trade in a medieval city: Tree-ring data as proxies for economic, social and demographic dynamics in Bruges (c. 1200–1500). Dendrochronologia 64, 125773. <https://doi.org/10.1016/j.dendro.2020.125773>
