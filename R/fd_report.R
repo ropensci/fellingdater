@@ -105,11 +105,11 @@ fd_report <- function(x,
         waneyedge <- x[, waneyedge]
 
         if (sw_data %in% sw_data_overview()) {
-                sw_data <- rep(sw_data, nrow(x))
-        } else if (exists(sw_data) & is.data.frame(sw_data)){
-                sw_data <- rep(sw_data, nrow(x))
+                sw_data_int <- rep(sw_data, nrow(x))
+        } else if (exists(sw_data)){
+                sw_data_int <- rep(sw_data, nrow(x))
         } else if (sw_data %in% colnames(x)) {
-                sw_data <- x[, sw_data]
+                sw_data_int <- x[, sw_data]
         }
 
         interval_matrix <- matrix(nrow = nrow(x),
@@ -120,7 +120,7 @@ fd_report <- function(x,
                 n_sapwood_i <- n_sapwood[i]
                 last_i <- last[i]
                 waneyedge_i <- waneyedge[i]
-                sw_data_i <- sw_data[i]
+                sw_data_i <- sw_data_int[i]
 
                 if (waneyedge_i) {
                         lower_i <- NA

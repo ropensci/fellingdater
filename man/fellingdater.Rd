@@ -2,8 +2,8 @@
 % Please edit documentation in R/fellingdater-package.R
 \docType{package}
 \name{fellingdater}
-\alias{fellingdater}
 \alias{fellingdater-package}
+\alias{fellingdater}
 \title{fellingdater}
 \description{
 fellingdater is an R package that facilitate the analysis and
