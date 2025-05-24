@@ -1,147 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/404.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/articles/getting_started.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/articles/the_workflow.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Brathen_1982.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Hollstein_1980.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_NM.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_SC.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_WBC.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Pilcher_1987.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_ELL_c.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_ELL_t.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_FWE_c.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_FWE_t.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/Wazny_1990.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/cor_table.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/fd_report.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/fellingdater.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/fh_header.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/hdi.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/mov_av.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/read_fh.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_combine.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_combine_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_data_info.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_data_overview.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_interval.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_interval_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_model.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_model_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_sum.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/sw_sum_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example0.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example1.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example2.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example3.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example4.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example5.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example6.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/trs_example7.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/vanDaalen_NLBE.html</loc>
-  </url>
-  <url>
-    <loc>https://ropensci.github.io/fellingdater/reference/vanDaalen_Norway.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ropensci.github.io/fellingdater/404.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/CONTRIBUTING.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/LICENSE-text.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/articles/getting_started.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/articles/index.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/articles/the_workflow.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/authors.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/index.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/news/index.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Brathen_1982.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Hollstein_1980.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_NM.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_SC.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Miles_1997_WBC.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Pilcher_1987.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_ELL_c.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_ELL_t.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_FWE_c.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Sohar_2012_FWE_t.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/Wazny_1990.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/cor_table.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/fd_report.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/fellingdater.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/fh_header.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/hdi.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/index.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/mov_av.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/read_fh.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_combine.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_combine_plot.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_data_info.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_data_overview.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_interval.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_interval_plot.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_model.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_model_plot.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_sum.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/sw_sum_plot.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example0.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example1.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example2.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example3.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example4.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example5.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example6.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/trs_example7.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/vanDaalen_NLBE.html</loc></url>
+<url><loc>https://ropensci.github.io/fellingdater/reference/vanDaalen_Norway.html</loc></url>
 </urlset>
+
