@@ -16,3 +16,4 @@
 ^Meta$
 ^cran-comments\.md$
 ^vignettes/articles$
+^NOTES\.qmd$
