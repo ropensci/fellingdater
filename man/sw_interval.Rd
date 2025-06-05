@@ -18,26 +18,26 @@ sw_interval(
 \item{n_sapwood}{A \code{numeric}. The number of observed sapwood rings.}
 
 \item{last}{A \code{numeric}. The calendar year assigned to the outermost sapwood
-ring (optional, default = 0).}
+ring (default = 1).}
 
-\item{hdi}{A \code{logical.} If \code{TRUE}, the lower and upper limit of the highest
-density interval (credible interval) are returned. When \code{FALSE}, a matrix
-is returned with scaled p-values for each number of observed sapwood rings.}
+\item{hdi}{Logical. If \code{TRUE}, the function returns the lower and upper bounds
+of the highest density interval (HDI). If \code{FALSE}, it returns a data frame with
+scaled probability values for each possible number of sapwood rings.}
 
-\item{cred_mass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
-within the credible interval (default = .954)}
+\item{cred_mass}{A numeric \code{scalar} in the range of \verb{[0, 1]}, specifying the
+mass of the credible interval (default = .954)}
 
 \item{sw_data}{The name of the sapwood data set to use for modelling. It
 should be one of the data sets listed in \code{\link[=sw_data_overview]{sw_data_overview()}}, or the name
 of a \code{data.frame} with sapwood data in columns \code{n_sapwood} and \code{count}.}
 
-\item{densfun}{Name of the density function fitted to the sapwood data set.
-Should be one of:
+\item{densfun}{A character string naming the distribution to fit.
+One of:
 \itemize{
-\item \emph{lognormal} (the default value),
+\item \emph{lognormal} (default),
 \item \emph{normal},
 \item \emph{weibull},
-\item \emph{gammma}.
+\item \emph{gamma}.
 }}
 
 \item{plot}{A \code{logical}.
@@ -48,41 +48,41 @@ sapwood model and estimate of the felling date range.
 }}
 }
 \value{
-Depends on the value of \code{hdi}.
+The type of output depends on the value of \code{hdi}:
 \itemize{
-\item If \code{hdi = TRUE}, a \verb{numeric vector} reporting the upper and lower limit
-of the hdi (attributes provide more detail on \code{cred_mass} and the applied
-sapwood model (\code{sw_data})).
-\item If \code{hdi = FALSE}, a \code{data.frame} with scaled p values for each number of
-observed sapwood rings.
+\item If \code{hdi = TRUE}, a numeric vector with the lower and upper limits of the
+highest density interval (HDI). Attributes include \code{cred_mass}, \code{sw_data},
+and the fitted \code{model}.
+\item If \code{hdi = FALSE}, a data frame with scaled probability values (\code{p}) for
+each year after the last dated sapwood ring.
 }
 }
 \description{
 This function computes the probability density function (PDF)
-and the highest posterior density interval (hdi) of the felling date range
-based on the observed number of sapwood rings, their chronological dating,
-and the selected sapwood data and model.
+and the highest posterior density interval (HDI) of the felling date range,
+based on the observed number of sapwood rings, their dating, and a selected
+sapwood dataset and model.
 }
 \examples{
 # 10 sapwood rings observed and the Wazny 1990 sapwood model:
 sw_interval(
-  n_sapwood = 10,
-  last = 1234,
-  hdi = TRUE,
-  cred_mass = .95,
-  sw_data = "Wazny_1990",
-  densfun = "lognormal",
-  plot = FALSE
+     n_sapwood = 10,
+     last = 1234,
+     hdi = TRUE,
+     cred_mass = .95,
+     sw_data = "Wazny_1990",
+     densfun = "lognormal",
+     plot = FALSE
 )
 # same example as above, but with numerical output (hdi = FALSE):
 sw_interval(
-  n_sapwood = 10,
-  last = 1234,
-  hdi = FALSE,
-  cred_mass = .95,
-  sw_data = "Wazny_1990",
-  densfun = "lognormal",
-  plot = FALSE
+     n_sapwood = 10,
+     last = 1234,
+     hdi = FALSE,
+     cred_mass = .95,
+     sw_data = "Wazny_1990",
+     densfun = "lognormal",
+     plot = FALSE
 )
 
 }
