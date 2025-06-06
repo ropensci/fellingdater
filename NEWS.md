@@ -1,6 +1,14 @@
+# fellingdater 1.1.0 (2025-06-05)
+
+-   Fixes to ensure that a user-defined sawpood dataset can be used with all relevant functions (fd_report(), sw_combine() and sw_sum().
+-   Extra checks on the input (e.g. check_input(), check_duplicate_labels() and check_sapwood_data_user().
+    These additional functions have been to 'helper-functions.R' and integrated into fd_report(), sw_combine() and sw_sum().
+
+-   The example data sets for testing sw_combine() and sw_sum() and fd_report() have been renamed from trs_example(1 to 7) to sw_example(1 to 7).
+
 # fellingdater 1.0.3 (2025-05-24)
 
-- fix to fd_report() to allow user-defined sw_data.
+-   fix to fd_report() to allow user-defined sw_data.
 
 
 # fellingdater 1.0.2 (2024-05-22)
