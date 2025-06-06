@@ -120,7 +120,7 @@ fd_report(df2,
      last = "end",
      sw_data = "sw_data"
 )
-
+#' @importFrom rlang .data
 }
 \seealso{
 \code{\link[=sw_interval]{sw_interval()}}, \code{\link[=sw_data_overview]{sw_data_overview()}}, \code{\link[=sw_interval_plot]{sw_interval_plot()}}

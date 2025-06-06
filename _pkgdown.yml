@@ -42,14 +42,14 @@ reference:
 
 - title: Example data
   contents:
-  - trs_example0
-  - trs_example1
-  - trs_example2
-  - trs_example3
-  - trs_example4
-  - trs_example5
-  - trs_example6
-  - trs_example7
+  - sw_example0
+  - sw_example1
+  - sw_example2
+  - sw_example3
+  - sw_example4
+  - sw_example5
+  - sw_example6
+  - sw_example7
 
 - title: About
   contents:

@@ -305,10 +305,9 @@
 #'   \item{bark}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example0
+#' sw_example0
 #'
-
-"trs_example0"
+"sw_example0"
 
 #' Example dataset 1
 #'
@@ -322,9 +321,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example1
+#' sw_example1
 #'
-"trs_example1"
+"sw_example1"
 
 #' Example dataset 2
 #'
@@ -338,9 +337,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example2
+#' sw_example2
 #'
-"trs_example2"
+"sw_example2"
 
 #' Example dataset 3
 #'
@@ -354,9 +353,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example3
+#' sw_example3
 #'
-"trs_example3"
+"sw_example3"
 
 #' Example dataset 4
 #'
@@ -370,9 +369,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example4
+#' sw_example4
 #'
-"trs_example4"
+"sw_example4"
 
 #' Example dataset 5
 #'
@@ -386,9 +385,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example5
+#' sw_example5
 #'
-"trs_example5"
+"sw_example5"
 
 #' Example dataset 6
 #'
@@ -402,9 +401,9 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example6
+#' sw_example6
 #'
-"trs_example6"
+"sw_example6"
 
 #' Example dataset 7
 #'
@@ -418,6 +417,6 @@
 #'   \item{waneyedge}{waney edge present TRUE/FALSE}
 #'   }
 #' @examples
-#' trs_example7
+#' sw_example7
 #'
-"trs_example7"
+"sw_example7"

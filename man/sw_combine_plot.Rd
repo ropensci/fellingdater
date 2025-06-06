@@ -19,8 +19,8 @@ interval for, or the exact felling date of, a group of tree-ring series,
 with agreement indices for the global model.
 }
 \examples{
-trs_example2
-tmp <- sw_combine(trs_example2)
+sw_example2
+tmp <- sw_combine(sw_example2)
 sw_combine_plot(tmp)
 
 }
