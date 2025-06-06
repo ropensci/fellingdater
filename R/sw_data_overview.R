@@ -13,9 +13,8 @@
 #' sw_data_overview()
 #'
 sw_data_overview <- function() {
-
      tmp <- utils::data(package = "fellingdater")
      tmp <- tmp$results
      tmp <- tmp[, 3]
-     tmp[!grepl('trs_example', tmp)]
+     tmp[!grepl("sw_example", tmp)]
 }

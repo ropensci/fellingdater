@@ -19,8 +19,9 @@ sw_sum(
 }
 \arguments{
 \item{x}{A \code{data.frame} with columns c("series", "swr", "waneyedge" ,
-"last"), Column "sw_model" is optional. Could be the output of read_fh(x,
-header = TRUE)}
+"last"). Could be the output of \code{\link[=read_fh]{read_fh()}}.
+Column "sw_model" is optional in order to specify the sapwood model to
+use for each series.}
 
 \item{series}{Name of the column in \code{x} where ID's of the tree-ring series
 are listed as \code{character} values.}
@@ -44,7 +45,7 @@ Should be one of:
 \item \emph{lognormal} (the default value),
 \item \emph{normal},
 \item \emph{weibull},
-\item \emph{gammma}.
+\item \emph{gamma}.
 }}
 
 \item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
@@ -69,9 +70,9 @@ Computes the summed probability density (SPD) for a set of
 felling date ranges.
 }
 \examples{
-trs_example7
+sw_example7
 
-sw_sum(trs_example7, densfun = "lognormal", cred_mass = 0.63, plot = FALSE)
+sw_sum(sw_example7, densfun = "lognormal", cred_mass = 0.63, plot = FALSE)
 
 }
 \seealso{

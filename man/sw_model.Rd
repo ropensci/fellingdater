@@ -23,14 +23,14 @@ Should be one of:
 \item \emph{lognormal} (the default value),
 \item \emph{normal},
 \item \emph{weibull},
-\item \emph{gammma}.
+\item \emph{gamma}.
 }}
 
 \item{cred_mass}{A \code{scalar} in the range of \verb{[0, 1]} specifying the mass
 within the credible interval (default = .954).}
 
 \item{source}{A character string with info on the data source. This info is
-incorporated in the titel of the plot when a sapwood data set is provided
+incorporated in the title of the plot when a sapwood data set is provided
 from a user-defined \code{data.frame}.}
 
 \item{plot}{A \code{logical}. If \code{TRUE} a plot of the fitted density function is
@@ -51,10 +51,12 @@ sapwood numbers and computes the highest posterior density interval (hdi)
 for a given credibility mass.
 }
 \examples{
-sw_model(sw_data = "Sohar_2012_ELL_c",
-          densfun = "lognormal",
-          cred_mass = .095,
-          plot = FALSE)
+sw_model(
+     sw_data = "Sohar_2012_ELL_c",
+     densfun = "lognormal",
+     cred_mass = .095,
+     plot = FALSE
+)
 
 sw_model("Hollstein_1980")
 

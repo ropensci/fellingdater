@@ -64,7 +64,7 @@ five dated tree-ring series is computed:
 library(fellingdater)
 
 ## a data set where all series have partially preserved sapwood:
-trs_example1
+sw_example1
 #>   series last n_sapwood waneyedge
 #> 1 trs_01 1000         5     FALSE
 #> 2 trs_02 1009        10     FALSE
@@ -74,7 +74,7 @@ trs_example1
 ```
 
 ``` r
-sw_combine(trs_example1, plot = TRUE)
+sw_combine(sw_example1, plot = TRUE)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />

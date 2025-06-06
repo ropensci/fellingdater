@@ -2,7 +2,7 @@
 % Please edit documentation in R/sw_combine.R
 \name{sw_combine}
 \alias{sw_combine}
-\title{Compute a single felling date range by combining multiple sapwood estimates}
+\title{Combine multiple sapwood estimates into a single felling date range}
 \usage{
 sw_combine(
   x,
@@ -46,7 +46,7 @@ Should be one of:
 \item \emph{lognormal} (the default value),
 \item \emph{normal},
 \item \emph{weibull},
-\item \emph{gammma}.
+\item \emph{gamma}.
 }}
 
 \item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
@@ -62,32 +62,41 @@ returned of the individual and combined estimate of the felling date. If
 \code{FALSE}, a list with numeric output of the modelling process is returned.}
 }
 \value{
-Depends on the value of plot. If \code{TRUE} a ggplot-style is returned,
-when \code{FALSE} a \code{list} with the combined probability ($raw_data$comb),
-the modelling parameters ($sapwood_data, $sapwood_model, $cred_mass),
-the Highest Posterior Density Interval for combined combined felling date
-interval ($hdi_combine), and the Agreement indices for the model ($A_model)
-and individual series ($individual_series$agr_index).
+@return Depends on \code{plot}:
+\itemize{
+\item If \code{TRUE}: a \code{ggplot}-style plot showing individual and combined felling date estimates.
+\item If \code{FALSE}: a \code{list} with:
+- \verb{$raw_data}: matrix of combined and individual densities.
+- \verb{$sapwood_data}: sapwood data set used.
+- \verb{$sapwood_model}: density function used.
+- \verb{$cred_mass}: credibility mass for the interval.
+- \verb{$hdi_combine}: HDI for the combined felling date range.
+- \verb{$individual_series}: summary with agreement indices.
+- \verb{$A_model}: overall model agreement index.
+- \verb{$A_c}: critical threshold (default 60\%).
+- \verb{$model_summary}: text summary of the result.Depends on the value of plot.
 The rationale of the agreement index is outlined by Bronk Ramsey (1995; 2009)
 }
+}
 \description{
-This function assesses whether it is possible to combine
-multiple sapwood estimates into a single felling date range.
+This function evaluates whether multiple sapwood estimates can
+be combined into a single felling date range and computes the resulting
+interval if possible.
 }
 \examples{
-# a data set in which all series have preserved sapwood
+# Example with all series preserving sapwood
 
-sw_combine(trs_example1, plot = TRUE)
+sw_combine(sw_example1, plot = TRUE)
 
-# a data set in which one series has an exact felling date (= waney edge preserved)
+# Example with one exact felling date (= waney edge preserved)
 
-trs_example2
-sw_combine(trs_example2, plot = TRUE)
+sw_example2
+sw_combine(sw_example2, plot = TRUE)
 
-# a data set in which multiples series have an exact felling date
+# Example with multiple exact felling dates
 
-trs_example3
-sw_combine(trs_example3, plot = FALSE)
+sw_example3
+sw_combine(sw_example3, plot = FALSE)
 
 }
 \references{

@@ -12,8 +12,8 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+     collapse = TRUE,
+     comment = "#>"
 )
 ```
 
@@ -48,13 +48,11 @@ In the following example the combined felling date range for a set of five dated
 
 ```{r setup}
 library(fellingdater)
-
 ```
 
 ```{r example}
 ## a data set where all series have partially preserved sapwood:
-sw_combine(trs_example1, plot = TRUE)
-
+sw_combine(sw_example1, plot = TRUE)
 ```
 
 The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.
@@ -74,12 +72,14 @@ This function calculates the probability density function (PDF) and the highest 
 In the example below, we observe 10 sapwood rings on a sample (with the last ring dated to 1234 AD) that originates from the Southern Baltic region. The sapwood model published by [Wazny, 1990](https://www.academia.edu/3486096/Aufbau_und_Anwendung_der_Dendrochronologie_f%C3%BCr_Eichenholz_in_Polen) covers this provenance region. The hdi delineates an interval in which the actual felling date is most likely situated. It represents the shortest interval within a probability distribution for a given probability mass or credible interval. The HDI summarizes the distribution by specifying an interval that spans most of the distribution, typically 95%, such that every point inside the interval has higher credibility than any point outside the interval.
 
 ```{r interval-individual}
-sw_interval(n_sapwood = 10,
-            last = 1234,
-            hdi = TRUE,
-            cred_mass = .95, 
-            sw_data = "Wazny_1990", 
-            densfun = "lognormal")
+sw_interval(
+     n_sapwood = 10,
+     last = 1234,
+     hdi = TRUE,
+     cred_mass = .95,
+     sw_data = "Wazny_1990",
+     densfun = "lognormal"
+)
 ```
 
 When `hdi = FALSE`, a matrix is returned with scaled _p_-values for each number of observed sapwood rings.
@@ -88,13 +88,15 @@ The results of this procedure can be visualized by setting `plot = TRUE`.
 
 ```{r }
 # 10 sapwood rings observed and the Wazny 1990 sapwood model:
-sw_interval(n_sapwood = 10,
-            last = 1234,
-            hdi = TRUE,
-            cred_mass = .95, 
-            sw_data = "Wazny_1990", 
-            densfun = "lognormal",
-            plot = TRUE)
+sw_interval(
+     n_sapwood = 10,
+     last = 1234,
+     hdi = TRUE,
+     cred_mass = .95,
+     sw_data = "Wazny_1990",
+     densfun = "lognormal",
+     plot = TRUE
+)
 ```
 
 ### fd_report
@@ -102,15 +104,18 @@ sw_interval(n_sapwood = 10,
 The `fd_report()`function reports estimates of the felling date (fd) range for individual series.
 
 ```{r}
-tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
-                 swr = c(10, 11, 12),
-                 waneyedge = c(FALSE, FALSE,TRUE),
-                 end = c(123, 456, 1789))
+tmp <- data.frame(
+     id = c("aaa", "bbb", "ccc"),
+     swr = c(10, 11, 12),
+     waneyedge = c(FALSE, FALSE, TRUE),
+     end = c(123, 456, 1789)
+)
 fd_report(tmp,
-         series = "id",
-         n_sapwood = "swr",
-         last = "end",
-         sw_data = "Wazny_1990")
+     series = "id",
+     n_sapwood = "swr",
+     last = "end",
+     sw_data = "Wazny_1990"
+)
 ```
 
 ### sw_combine
@@ -127,21 +132,21 @@ The the `sw_combine()` function combines felling dates of a group of related ser
 
 
 
-#### trs_example0
+#### sw_example0
 
 A data set with dated tree-ring series, all with partially preserved sapwood. The names of the variables in the data set are mapped to the parameters of the `sw_combine()` function. In the example below, the numeric output is returned:
 
 ```{r}
-trs_example0
-# In trs_example0, the column names are not equivalent to the default names in `sw_combine()`.
+sw_example0
+# In sw_example0, the column names are not equivalent to the default names in `sw_combine()`.
 
-output_comb <- sw_combine(trs_example0,
-   series = "trs",
-   last = "end",
-   n_sapwood = "swr",
-   waneyedge = "bark",
-   cred_mass = .954,
-   plot = FALSE
+output_comb <- sw_combine(sw_example0,
+     series = "trs",
+     last = "end",
+     n_sapwood = "swr",
+     waneyedge = "bark",
+     cred_mass = .954,
+     plot = FALSE
 )
 
 head(output_comb$rawData, 20)
@@ -149,41 +154,40 @@ head(output_comb$rawData, 20)
 output_comb[-1]
 ```
 
-#### trs_example2
+#### sw_example2
 
 A data set with 5 tree-ring series, one of which has an exact felling date (waney edge present):
 
 ```{r}
-trs_example2
+sw_example2
 
-sw_combine(trs_example2, plot = TRUE)
-
+sw_combine(sw_example2, plot = TRUE)
 ```
 
-#### trs_example3
+#### sw_example3
 
 A data set where all tree-ring series have been measured up to the waney edge:
 
 ```{r }
-sw_combine(trs_example3, plot = TRUE)
+sw_combine(sw_example3, plot = TRUE)
 ```
 
-#### trs_example4
+#### sw_example4
 
 An attempt to compute a common felling date for a group of tree-ring series, all including partially preserved sapwood:
 
 ```{r }
-sw_combine(trs_example4, plot = TRUE)
+sw_combine(sw_example4, plot = TRUE)
 ```
 
 No common felling date can be computed for this particular data set. The model fails (agreement index of the model is below the critical threshold value (A_c) of 60%). Three series have an individual agreement index below 60%.
 
-#### trs_example5
+#### sw_example5
 
 When no sapwood rings are observed and measured, only an `earliest possible felling date` (*terminus post quem*) can be determined:
 
 ```{r }
-sw_combine(trs_example5,  plot = TRUE)
+sw_combine(sw_example5, plot = TRUE)
 ```
 
 ### sw_sum
@@ -192,7 +196,7 @@ The `sw_sum()` function calculates the the summed probability density (SPD) for 
 In the example, the SPD for a set of 9 series with partially preserved sapwood or waney edge is computed and plotted. A smoother for the SPD is plotted as well. The dots represent exact felling dates (i.e., series with waney edge). 
 
 ```{r }
-spd7 <- sw_sum(trs_example7, plot = FALSE)
+spd7 <- sw_sum(sw_example7, plot = FALSE)
 sw_sum_plot(spd7, window_smooth = 5, bar_col = "#95d5b2", trend_col = "#dda15e", dot_col = "forestgreen", dot_shape = 23, dot_size = 4)
 ```
 
@@ -204,7 +208,6 @@ The function `sw_data_overview()` provides an overview of all published sapwood 
 
 ```{r overview}
 sw_data_overview()
-
 ```
 
 Load the original data with, for example, `get("Hollstein_1980")`.
@@ -215,7 +218,6 @@ More information on one of the sapwood data sets - how to cite the data set, the
 
 ```{r info}
 sw_data_info("Pilcher_1987")
-
 ```
 
 ### sw_model and sw_model_plot()
@@ -223,19 +225,20 @@ sw_data_info("Pilcher_1987")
 A graphical representation of a sapwood data set is provided by the `sw_model_plot()` function.
 
 ```{r model}
+tmp <- sw_model(
+     sw_data = "Sohar_2012_ELL_c",
+     densfun = "lognormal",
+     cred_mass = 0.95,
+     plot = FALSE
+)
 
-tmp <- sw_model(sw_data = "Sohar_2012_ELL_c", 
-                densfun = "lognormal",
-                cred_mass = 0.95,
-                plot = FALSE)
-
-sw_model_plot(tmp, 
-              bar_fill = "steelblue3",
-              bar_color = "grey60",
-              line_color = "red3")
+sw_model_plot(tmp,
+     bar_fill = "steelblue3",
+     bar_color = "grey60",
+     line_color = "red3"
+)
 
 sw_data_info("Sohar_2012_ELL_c")
-
 ```
 
 The `sw_model()` function fits a distribution to a data set of observed sapwood numbers and computes the highest posterior density interval (HDI) for a given credibility mass. The density function fitted to the sapwood data set should be one of:
@@ -248,8 +251,7 @@ The `sw_model()` function fits a distribution to a data set of observed sapwood 
 The credible interval should be a value between 0 and 1.
 
 ```{r sw_model_plot2}
-sw_model("Wazny_1990", densfun = "gamma", cred_mass= .90, plot = TRUE)
-
+sw_model("Wazny_1990", densfun = "gamma", cred_mass = .90, plot = TRUE)
 ```
 
 When `plot = FALSE`, a list with the numeric output of the modelling process is returned.
@@ -270,14 +272,12 @@ Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 
 head(Doel1_trs, 15)
-
 ```
 
 When `header = TRUE`, the `get_header()` function is triggered and HEADER fields in the .fh file are returned as a `data.frame`, instead of the ring-width measurements.
 
 ```{r}
 read_fh(Doel1, verbose = FALSE, header = TRUE)
-
 ```
 
 The `data.frame` with the HEADER fields can then be used as input for the sw_functions:
@@ -285,15 +285,14 @@ The `data.frame` with the HEADER fields can then be used as input for the sw_fun
 ```{r fig.asp=1}
 Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
 
-Doel1_header |> 
-   # first convert column 'waneyedge' to a logical vector 
-   # (in the original .fh file header fields the presence of waney edge is
-   # indicated by "WK" - a character string - in the corresponding HEADER field)
-   dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
-                               TRUE, FALSE)
-   ) |> 
-   sw_combine(plot = TRUE)
-   
+Doel1_header |>
+     # first convert column 'waneyedge' to a logical vector
+     # (in the original .fh file header fields the presence of waney edge is
+     # indicated by "WK" - a character string - in the corresponding HEADER field)
+     dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
+          TRUE, FALSE
+     )) |>
+     sw_combine(plot = TRUE)
 ```
 
 The attempt to combine the dated tree-ring series from DOEL1 into a single felling-date range fails. These tree-ring series cannot represent a single event.
@@ -301,12 +300,12 @@ The attempt to combine the dated tree-ring series from DOEL1 into a single felli
 However, leaving out the tree-ring series of the keelplank (series "K1_091") of this medieval ship shows that the hull planking and some frame elements could share a common felling date:
 
 ```{r fig.asp=1}
-Doel1_header |> 
-   dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
-                               TRUE, FALSE)
-   ) |> 
-   dplyr::filter(series != "K1_091") |> 
-   sw_combine(plot = TRUE)
+Doel1_header |>
+     dplyr::mutate(waneyedge = dplyr::if_else(grepl("wk", waneyedge, ignore.case = TRUE),
+          TRUE, FALSE
+     )) |>
+     dplyr::filter(series != "K1_091") |>
+     sw_combine(plot = TRUE)
 ```
 
 For more details see: [Haneca & Daly (2014)](https://doi.org/10.1111/1095-9270.12037)
@@ -337,5 +336,4 @@ Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 # crossdating ring-width series from Doel 1 against each other:
 cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80)
 head(cor_results, 20)
-
 ```

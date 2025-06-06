@@ -6,10 +6,10 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+     collapse = TRUE,
+     comment = "#>",
+     fig.path = "man/figures/README-",
+     out.width = "100%"
 )
 ```
 
@@ -56,11 +56,11 @@ In the following example the combined felling date range for a set of five dated
 library(fellingdater)
 
 ## a data set where all series have partially preserved sapwood:
-trs_example1
+sw_example1
 ```
 
 ```{r example}
-sw_combine(trs_example1, plot = TRUE)
+sw_combine(sw_example1, plot = TRUE)
 ```
 
 The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.

@@ -7,7 +7,7 @@
 sw_interval_plot(x, area_fill = "tomato3", line_color = "tomato3")
 }
 \arguments{
-\item{x}{Output of \code{\link[=sw_interval]{sw_interval()}}.}
+\item{x}{Output of \code{\link[=sw_interval]{sw_interval()}} with \code{hdi = FALSE}.}
 
 \item{area_fill}{Fill color for the area under fitted distribution.}
 
@@ -23,13 +23,13 @@ felling date range, as computed by \code{\link[=sw_interval]{sw_interval()}}.
 }
 \examples{
 tmp <- sw_interval(
-  n_sapwood = 10,
-  last = 1000,
-  hdi = FALSE,
-  cred_mass = .95,
-  sw_data = "Hollstein_1980",
-  densfun = "lognormal",
-  plot = FALSE
+     n_sapwood = 10,
+     last = 1000,
+     hdi = FALSE,
+     cred_mass = .95,
+     sw_data = "Hollstein_1980",
+     densfun = "lognormal",
+     plot = FALSE
 )
 sw_interval_plot(tmp, area_fill = "forestgreen", line_color = "forestgreen")
 

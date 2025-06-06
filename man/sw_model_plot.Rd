@@ -29,14 +29,15 @@ a data set of observed sapwood numbers, as computed by \code{\link[=sw_model]{sw
 }
 \examples{
 tmp <- sw_model(
-  sw_data = "Hollstein_1980",
-  densfun = "lognormal",
-  cred_mass = .95,
-  plot = FALSE
+     sw_data = "Hollstein_1980",
+     densfun = "lognormal",
+     cred_mass = .95,
+     plot = FALSE
 )
 sw_model_plot(tmp,
-              bar_fill = "forestgreen",
-              bar_color = "darkgreen",
-              line_color = "tomato3")
+     bar_fill = "forestgreen",
+     bar_color = "darkgreen",
+     line_color = "tomato3"
+)
 
 }

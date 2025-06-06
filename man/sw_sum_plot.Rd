@@ -15,38 +15,50 @@ sw_sum_plot(
 )
 }
 \arguments{
-\item{x}{The output of \code{sw_sum()}.}
+\item{x}{A \code{data.frame}, typically the output of \code{\link[=sw_sum]{sw_sum()}} with \code{plot = FALSE}.
+Must contain columns \code{"year"} and \code{"spd"}. If available, \code{"spd_wk"} (waney edge counts)
+will be used to add symbols representing exact felling years.}
 
-\item{bar_col}{The fill color for the bars.}
+\item{bar_col}{Fill color for the SPD bars. Default is \code{"steelblue"}.}
 
-\item{trend_col}{The line color of the fitted smoothing spline.}
+\item{trend_col}{Color of the smoothing spline line.}
 
-\item{dot_col}{The color of the shapes that represent exact felling dates.}
+\item{dot_col}{Fill color of the symbols representing exact felling dates (waney edge).
+Default is \code{"steelblue4"}.}
 
-\item{dot_size}{A size argument for the shapes that represent exact felling
-dates.}
+\item{dot_size}{Size of the felling date symbols. Default is \code{2}.}
 
-\item{dot_shape}{Number corresponding to the point symbol available in R for
-the shapes that represent exact felling dates.}
+\item{dot_shape}{Shape code for the felling date symbols. See \code{?points} for options.
+Default is \code{21} (circle).}
 
-\item{window_smooth}{A numeric value for the window width of the trend line}
+\item{window_smooth}{Numeric value specifying the smoothing window width (in years)
+for calculating the moving average trend line. Default is \code{11}.}
 }
 \value{
-A ggplot style graph, with calendar years on the X-axis and the
-probability (p) on the Y-axis.
+A \code{ggplot} object showing:
+\itemize{
+\item The SPD as a bar plot.
+\item A smoothing spline through the SPD.
+\item Stacked symbols for exact felling years (waney edge), if available.
+}
 }
 \description{
-This function plots the result of \code{sw_sum()} - both the SPD and
-the occurrence of exact felling dates - and adds a smoothing spline to the
-SPD.
+This function creates a visualization of the summed probability
+density (SPD) output from \code{\link[=sw_sum]{sw_sum()}}. It displays both the SPD as a bar plot
+and exact felling dates (waney edge series) as stacked points. A smoothing
+spline is also added to reveal long-term trends in felling activity.
 }
 \examples{
-trs_example6 <- trs_example6
-trs_example6
-tmp <- sw_sum(trs_example6)
-sw_sum_plot(tmp, bar_col = "burlywood1",
-                 trend_col = "brown",
-                 dot_col = "orange",
-                 dot_shape = 23, dot_size = 5)
+sw_example6
+tmp <- sw_sum(sw_example6, plot = FALSE)
+sw_sum_plot(tmp,
+     bar_col = "burlywood1",
+     trend_col = "brown",
+     dot_col = "orange",
+     dot_shape = 23, dot_size = 5
+)
 
+}
+\seealso{
+\code{\link[=sw_sum]{sw_sum()}} to generate the SPD data.
 }

@@ -26,5 +26,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom stats spline
 ## usethis namespace: end
 NULL
