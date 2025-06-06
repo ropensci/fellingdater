@@ -258,3 +258,55 @@ check_sapwood_data_user <- function(data) {
 
      invisible(TRUE)
 }
+
+#' Check for duplicate or missing series labels
+#'
+#' @description This helper function checks that all series labels are unique and non-missing.
+#' It is designed for use in workflows where series labels (e.g., tree-ring series IDs) are used
+#' to identify and merge data, such as in [sw_sum()]. If any duplicate or missing values are
+#' detected, an informative error is raised.
+#'
+#' @param x A character vector containing the series labels (typically a column extracted from
+#' a data frame).
+#'
+#' @return No return value. If all labels are valid, the function exits silently. If duplicate or
+#' missing labels are found, the function raises an error with a descriptive message.
+#'
+#' @keywords internal
+#' @examples
+#' # Valid labels
+#' check_duplicate_labels(c("a", "b", "c"))
+#'
+#' # Duplicate labels (will raise an error)
+#' \dontrun{
+#' check_duplicate_labels(c("a", "b", "a"))
+#' }
+#'
+#' # Missing labels (will raise an error)
+#' \dontrun{
+#' check_duplicate_labels(c("a", NA, "b", NA))
+#' }
+check_duplicate_labels <- function(x) {
+     dup_labs <- unique(x[duplicated(x) & !is.na(x)])
+     no_label <- sum(is.na(x))
+
+     msg <- character()
+
+     if (length(dup_labs) > 0) {
+          msg <- c(
+               msg,
+               paste("Duplicated series labels detected:", paste(dup_labs, collapse = ", "))
+          )
+     }
+
+     if (no_label > 0) {
+          msg <- c(
+               msg,
+               paste(no_label, "series have missing (NA) labels.")
+          )
+     }
+
+     if (length(msg) > 0) {
+          stop(paste(msg, collapse = "\n"))
+     }
+}
