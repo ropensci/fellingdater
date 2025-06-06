@@ -14,7 +14,7 @@ Authors@R: c(
     person("Nicholas John", "Tierney", role = "rev",
         comment = c(ORCID = "0000-0003-1460-8722"))   
     )
-Description: fellingdater is an R package that aims to facilitate the 
+Description: fellingdater aims to facilitate the 
   analysis and interpretation of tree-ring data from wooden 
   cultural heritage objects and structures. The package standardizes the process
   of computing and combining felling date estimates, both for individual and 
