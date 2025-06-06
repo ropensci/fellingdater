@@ -46,8 +46,7 @@ sw_sum_plot <- function(x,
                         dot_shape = 21,
                         window_smooth = 11) {
      # to avoid notes in CMD check
-     # spline <- spd_wk <- year <- y <- spd <- spd_mov_av <-
-     .data <- NULL
+     spd_wk <- year <- y <- spd <- spd_mov_av <- .data <- NULL
 
 
      pdf_matrix <- as.data.frame(x)

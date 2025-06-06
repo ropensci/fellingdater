@@ -273,19 +273,8 @@ check_sapwood_data_user <- function(data) {
 #' missing labels are found, the function raises an error with a descriptive message.
 #'
 #' @keywords internal
-#' @examples
-#' # Valid labels
-#' check_duplicate_labels(c("a", "b", "c"))
+#' @noRd
 #'
-#' # Duplicate labels (will raise an error)
-#' \dontrun{
-#' check_duplicate_labels(c("a", "b", "a"))
-#' }
-#'
-#' # Missing labels (will raise an error)
-#' \dontrun{
-#' check_duplicate_labels(c("a", NA, "b", NA))
-#' }
 check_duplicate_labels <- function(x) {
      dup_labs <- unique(x[duplicated(x) & !is.na(x)])
      no_label <- sum(is.na(x))

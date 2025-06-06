@@ -34,7 +34,7 @@ sw_combine_plot <- function(x) {
      }
 
      # to avoid notes in CMD check
-     year <- data <- NULL
+     year <- .data <- NULL
 
 
      series <- colnames(x$raw_data)[2:(ncol(x$raw_data) - 1)]
