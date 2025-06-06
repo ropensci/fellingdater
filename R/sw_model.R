@@ -58,6 +58,7 @@ sw_model <-
                     sw_source <- if (!is.na(source)) source else sw_data
                } else {
                     # user supplied data
+                    # Throws an error when object doesn't exist
                     observed <- get(sw_data, envir = parent.frame())
                     check_sapwood_data_user(observed)
                     sw_source <- if (!is.na(source)) source else "user defined"

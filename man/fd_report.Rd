@@ -19,14 +19,13 @@ fd_report(
 \item{x}{Name of a \code{data.frame} with at least four columms, providing
 information on
 \itemize{
-\item the id's of the tree-ring series
-\item the number of sapwood rings observed
-\item the presence of waney edge
-\item the date assigned to the last measured ring.
+\item the id's of the tree-ring series ("series")
+\item the number of sapwood rings observed ("n_sapwood)
+\item the presence of waney edge ("waneyedge")
+\item the year assigned to the last measured ring ("last").
 }
 
-A column describing the sapwood data set to be used for modelling and the
-computation of the hdi can be provided as well.}
+Optionally, a column specifying the sapwood data set (\code{sw_data}) can also be included.}
 
 \item{series}{Name of the column in \code{x} where id's of the tree-ring series
 are listed as \code{character} values.}
@@ -44,27 +43,37 @@ sapwood rings are listed (should be \code{numeric} vector).}
 \itemize{
 \item A \code{character} string providing the name of the sapwood data set to use
 for modelling. It should be one of the data sets listed in
-\code{\link[=sw_data_overview]{sw_data_overview()}}, or the name of a \code{data.frame} with sapwood data
+\code{\link[=sw_data_overview]{sw_data_overview()}},
+\item or the name of a \code{data.frame} with sapwood data
 in columns \code{n_sapwood} and \code{count}, or
-\item the name of the column in \code{x}that lists for each series one of the
-sapwood data sets given by \code{\link[=sw_data_overview]{sw_data_overview()}}.
+\item or character string naming a column in \code{x} that lists for each series
+the sapwood model to use, e.g. sw_data = "sapwood_model_column".
 }}
 
-\item{cred_mass}{A \code{scalar [0, 1]} specifying the mass within the credible
-interval (default = .954).}
+\item{cred_mass}{A numeric \code{scalar [0, 1]} specifying the mass within the
+credible interval (default = .954).}
 
-\item{densfun}{Name of the density function fitted to the sapwood data set.
-Should be one of:
+\item{densfun}{Name of the density function to fit to the sapwood
+distribution. Should be one of:
 \itemize{
 \item \emph{lognormal} (the default value),
 \item \emph{normal},
 \item \emph{weibull},
-\item \emph{gammma}.
+\item \emph{gamma}.
 }}
 }
 \value{
-A data.frame reporting the estimate of the felling date for each
-tree-ring series?
+A \code{data.frame} with felling date estimates per tree-ring series.
+Columns include:
+\itemize{
+\item \code{series}: series identifier
+\item \code{last}: last measured ring
+\item \code{n_sapwood}: number of sapwood rings
+\item \code{waneyedge}: TRUE/FALSE for waney edge
+\item \code{lower}, \code{upper}: numeric bounds for the estimated felling date
+\item \code{felling_date}: a character summary (e.g., "between 1500 and 1510")
+\item \code{sapwood_model}: the sapwood data/model used
+}
 }
 \description{
 This function reports the felling date estimate of individual
@@ -78,34 +87,39 @@ no bark or waney edge is present.
 \item an exact felling date: when bark or waney edge is present on the
 measured sample.
 }
-
-Reports the lower and upper boundaries of a felling date range
-for individual tree-ring series.
 }
 \examples{
-tmp <- data.frame(id = c("aaa", "bbb", "ccc"),
-                  swr = c(10, 11, 12),
-                  waneyedge = c(FALSE, FALSE,TRUE),
-                  end = c(10, 0, -10))
-fd_report(tmp,
-          series = "id",
-          n_sapwood = "swr",
-          last = "end",
-          sw_data = "Wazny_1990")
+df <- data.frame(
+     id = c("trs1", "trs2", "trs3", "trs4"),
+     swr = c(7, 1, 10, 12),
+     waneyedge = c(FALSE, FALSE, FALSE, TRUE),
+     end = c(1482, 1475, 1490, 1498)
+)
+fd_report(df,
+     series = "id",
+     n_sapwood = "swr",
+     last = "end",
+     sw_data = "Wazny_1990"
+)
 
 # Example with different sw_model for individual series
+# You can add a user-defined sapwood dataset as well.
 
-sw_models_for_indiv_series <- c("Sohar_2012_ELL_c",
-                                "Wazny_1990",
-                                "Hollstein_1980",
-                                "vanDaalen_Norway",
-                                "vanDaalen_Norway")
+sapwood_model_column <- c(
+     "Sohar_2012_ELL_c",
+     "Wazny_1990",
+     "Hollstein_1980",
+     "vanDaalen_Norway"
+)
 
-trs_example2_edit <- cbind(trs_example2, "sw_models" = sw_models_for_indiv_series)
+df2 <- cbind(df, sw_data = sapwood_model_column)
 
-fd_report(trs_example2_edit,
-          sw_data = "sw_models"
-          )
+fd_report(df2,
+     series = "id",
+     n_sapwood = "swr",
+     last = "end",
+     sw_data = "sw_data"
+)
 
 }
 \seealso{
