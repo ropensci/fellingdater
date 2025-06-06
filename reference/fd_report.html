@@ -9,9 +9,7 @@ no bark or waney edge is present.
 an exact felling date: when bark or waney edge is present on the
 measured sample.
 
-
-Reports the lower and upper boundaries of a felling date range
-for individual tree-ring series."><meta property="og:description" content="This function reports the felling date estimate of individual
+"><meta property="og:description" content="This function reports the felling date estimate of individual
 tree-ring series, based on the presence/absence of sapwood and/or waney
 edge. There are three possible modes of reporting:
 a terminus post quem or earliest possible felling date: when only
@@ -21,9 +19,7 @@ no bark or waney edge is present.
 an exact felling date: when bark or waney edge is present on the
 measured sample.
 
-
-Reports the lower and upper boundaries of a felling date range
-for individual tree-ring series."></head><body>
+"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -58,7 +54,7 @@ for individual tree-ring series."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Report felling dates of individual tree-ring series</h1>
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/v1.0.3/R/fd_report.R" class="external-link"><code>R/fd_report.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/main/R/fd_report.R" class="external-link"><code>R/fd_report.R</code></a></small>
       <div class="d-none name"><code>fd_report.Rd</code></div>
     </div>
 
@@ -71,9 +67,7 @@ heartwood rings have been observed and measured</p></li>
 no bark or waney edge is present.</p></li>
 <li><p>an exact felling date: when bark or waney edge is present on the
 measured sample.</p></li>
-</ul><p>Reports the lower and upper boundaries of a felling date range
-for individual tree-ring series.</p>
-    </div>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
@@ -95,12 +89,11 @@ for individual tree-ring series.</p>
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>Name of a <code>data.frame</code> with at least four columms, providing
-information on</p><ul><li><p>the id's of the tree-ring series</p></li>
-<li><p>the number of sapwood rings observed</p></li>
-<li><p>the presence of waney edge</p></li>
-<li><p>the date assigned to the last measured ring.</p></li>
-</ul><p>A column describing the sapwood data set to be used for modelling and the
-computation of the hdi can be provided as well.</p></dd>
+information on</p><ul><li><p>the id's of the tree-ring series ("series")</p></li>
+<li><p>the number of sapwood rings observed ("n_sapwood)</p></li>
+<li><p>the presence of waney edge ("waneyedge")</p></li>
+<li><p>the year assigned to the last measured ring ("last").</p></li>
+</ul><p>Optionally, a column specifying the sapwood data set (<code>sw_data</code>) can also be included.</p></dd>
 
 
 <dt id="arg-series">series<a class="anchor" aria-label="anchor" href="#arg-series"></a></dt>
@@ -126,32 +119,39 @@ sapwood rings are listed (should be <code>numeric</code> vector).</p></dd>
 <dt id="arg-sw-data">sw_data<a class="anchor" aria-label="anchor" href="#arg-sw-data"></a></dt>
 <dd><p>There are two options:</p><ul><li><p>A <code>character</code> string providing the name of the sapwood data set to use
 for modelling. It should be one of the data sets listed in
-<code><a href="sw_data_overview.html">sw_data_overview()</a></code>, or the name of a <code>data.frame</code> with sapwood data
+<code><a href="sw_data_overview.html">sw_data_overview()</a></code>,</p></li>
+<li><p>or the name of a <code>data.frame</code> with sapwood data
 in columns <code>n_sapwood</code> and <code>count</code>, or</p></li>
-<li><p>the name of the column in <code>x</code>that lists for each series one of the
-sapwood data sets given by <code><a href="sw_data_overview.html">sw_data_overview()</a></code>.</p></li>
+<li><p>or character string naming a column in <code>x</code> that lists for each series
+the sapwood model to use, e.g. sw_data = "sapwood_model_column".</p></li>
 </ul></dd>
 
 
 <dt id="arg-cred-mass">cred_mass<a class="anchor" aria-label="anchor" href="#arg-cred-mass"></a></dt>
-<dd><p>A <code>scalar [0, 1]</code> specifying the mass within the credible
-interval (default = .954).</p></dd>
+<dd><p>A numeric <code>scalar [0, 1]</code> specifying the mass within the
+credible interval (default = .954).</p></dd>
 
 
 <dt id="arg-densfun">densfun<a class="anchor" aria-label="anchor" href="#arg-densfun"></a></dt>
-<dd><p>Name of the density function fitted to the sapwood data set.
-Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
+<dd><p>Name of the density function to fit to the sapwood
+distribution. Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
 <li><p><em>normal</em>,</p></li>
 <li><p><em>weibull</em>,</p></li>
-<li><p><em>gammma</em>.</p></li>
+<li><p><em>gamma</em>.</p></li>
 </ul></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data.frame reporting the estimate of the felling date for each
-tree-ring series?</p>
-    </div>
+    <p>A <code>data.frame</code> with felling date estimates per tree-ring series.
+Columns include:</p><ul><li><p><code>series</code>: series identifier</p></li>
+<li><p><code>last</code>: last measured ring</p></li>
+<li><p><code>n_sapwood</code>: number of sapwood rings</p></li>
+<li><p><code>waneyedge</code>: TRUE/FALSE for waney edge</p></li>
+<li><p><code>lower</code>, <code>upper</code>: numeric bounds for the estimated felling date</p></li>
+<li><p><code>felling_date</code>: a character summary (e.g., "between 1500 and 1510")</p></li>
+<li><p><code>sapwood_model</code>: the sapwood data/model used</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="sw_interval.html">sw_interval()</a></code>, <code><a href="sw_data_overview.html">sw_data_overview()</a></code>, <code><a href="sw_interval_plot.html">sw_interval_plot()</a></code></p></div>
@@ -159,46 +159,58 @@ tree-ring series?</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"aaa"</span>, <span class="st">"bbb"</span>, <span class="st">"ccc"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                  swr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">11</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                  waneyedge <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>,<span class="cn">TRUE</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                  end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">tmp</span>,</span></span>
-<span class="r-in"><span>          series <span class="op">=</span> <span class="st">"id"</span>,</span></span>
-<span class="r-in"><span>          n_sapwood <span class="op">=</span> <span class="st">"swr"</span>,</span></span>
-<span class="r-in"><span>          last <span class="op">=</span> <span class="st">"end"</span>,</span></span>
-<span class="r-in"><span>          sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge lower upper      felling_date sapwood_model</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    aaa   10        10     FALSE    10    26 between 10 and 26    Wazny_1990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    bbb    0        11     FALSE     0    15  between 0 and 15    Wazny_1990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    ccc  -10        12      TRUE    NA   -10            in -10    Wazny_1990</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>     id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"trs1"</span>, <span class="st">"trs2"</span>, <span class="st">"trs3"</span>, <span class="st">"trs4"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>     swr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>     waneyedge <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>     end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1482</span>, <span class="fl">1475</span>, <span class="fl">1490</span>, <span class="fl">1498</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">df</span>,</span></span>
+<span class="r-in"><span>     series <span class="op">=</span> <span class="st">"id"</span>,</span></span>
+<span class="r-in"><span>     n_sapwood <span class="op">=</span> <span class="st">"swr"</span>,</span></span>
+<span class="r-in"><span>     last <span class="op">=</span> <span class="st">"end"</span>,</span></span>
+<span class="r-in"><span>     sw_data <span class="op">=</span> <span class="st">"Wazny_1990"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge lower upper          felling_date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   trs1 1482         7     FALSE  1483  1501 between 1483 and 1501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   trs2 1475         1     FALSE  1482  1500 between 1482 and 1500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   trs3 1490        10     FALSE  1490  1506 between 1490 and 1506</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   trs4 1498        12      TRUE    NA  1498               in 1498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sapwood_model</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    Wazny_1990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    Wazny_1990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3    Wazny_1990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    Wazny_1990</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example with different sw_model for individual series</span></span></span>
+<span class="r-in"><span><span class="co"># You can add a user-defined sapwood dataset as well.</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">sw_models_for_indiv_series</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sohar_2012_ELL_c"</span>,</span></span>
-<span class="r-in"><span>                                <span class="st">"Wazny_1990"</span>,</span></span>
-<span class="r-in"><span>                                <span class="st">"Hollstein_1980"</span>,</span></span>
-<span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span>,</span></span>
-<span class="r-in"><span>                                <span class="st">"vanDaalen_Norway"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sapwood_model_column</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>     <span class="st">"Sohar_2012_ELL_c"</span>,</span></span>
+<span class="r-in"><span>     <span class="st">"Wazny_1990"</span>,</span></span>
+<span class="r-in"><span>     <span class="st">"Hollstein_1980"</span>,</span></span>
+<span class="r-in"><span>     <span class="st">"vanDaalen_Norway"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">trs_example2_edit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">trs_example2</span>, <span class="st">"sw_models"</span> <span class="op">=</span> <span class="va">sw_models_for_indiv_series</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">df</span>, sw_data <span class="op">=</span> <span class="va">sapwood_model_column</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">trs_example2_edit</span>,</span></span>
-<span class="r-in"><span>          sw_data <span class="op">=</span> <span class="st">"sw_models"</span></span></span>
-<span class="r-in"><span>          <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fd_report</span><span class="op">(</span><span class="va">df2</span>,</span></span>
+<span class="r-in"><span>     series <span class="op">=</span> <span class="st">"id"</span>,</span></span>
+<span class="r-in"><span>     n_sapwood <span class="op">=</span> <span class="st">"swr"</span>,</span></span>
+<span class="r-in"><span>     last <span class="op">=</span> <span class="st">"end"</span>,</span></span>
+<span class="r-in"><span>     sw_data <span class="op">=</span> <span class="st">"sw_data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge lower upper          felling_date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_06 1000         5     FALSE  1002  1013 between 1002 and 1013</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 trs_07 1005        10     FALSE  1005  1021 between 1005 and 1021</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 trs_08 1008        NA     FALSE  1014    NA            after 1014</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 trs_09 1000         1     FALSE  1009  1031 between 1009 and 1031</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 trs_10 1010        15      TRUE    NA  1010               in 1010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   trs1 1482         7     FALSE  1482  1493 between 1482 and 1493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   trs2 1475         1     FALSE  1482  1500 between 1482 and 1500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   trs3 1490        10     FALSE  1490  1514 between 1490 and 1514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   trs4 1498        12      TRUE    NA  1498               in 1498</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      sapwood_model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 Sohar_2012_ELL_c</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2       Wazny_1990</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3   Hollstein_1980</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 vanDaalen_Norway</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 vanDaalen_Norway</span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#' @importFrom rlang .data</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -210,7 +222,7 @@ tree-ring series?</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

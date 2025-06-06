@@ -36,7 +36,7 @@ felling date ranges."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Compute the summed probability of multiple felling date ranges</h1>
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/v1.0.3/R/sw_sum.R" class="external-link"><code>R/sw_sum.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/main/R/sw_sum.R" class="external-link"><code>R/sw_sum.R</code></a></small>
       <div class="d-none name"><code>sw_sum.Rd</code></div>
     </div>
 
@@ -67,8 +67,9 @@ felling date ranges.</p>
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>A <code>data.frame</code> with columns c("series", "swr", "waneyedge" ,
-"last"), Column "sw_model" is optional. Could be the output of read_fh(x,
-header = TRUE)</p></dd>
+"last"). Could be the output of <code><a href="read_fh.html">read_fh()</a></code>.
+Column "sw_model" is optional in order to specify the sapwood model to
+use for each series.</p></dd>
 
 
 <dt id="arg-series">series<a class="anchor" aria-label="anchor" href="#arg-series"></a></dt>
@@ -102,7 +103,7 @@ of a <code>data.frame</code> with sapwood data in columns <code>n_sapwood</code>
 Should be one of:</p><ul><li><p><em>lognormal</em> (the default value),</p></li>
 <li><p><em>normal</em>,</p></li>
 <li><p><em>weibull</em>,</p></li>
-<li><p><em>gammma</em>.</p></li>
+<li><p><em>gamma</em>.</p></li>
 </ul></dd>
 
 
@@ -135,7 +136,7 @@ scaled to 1 (default).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">trs_example7</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sw_example7</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   series last n_sapwood waneyedge</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 trs_34 1000         5     FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 trs_35 1009        10     FALSE</span>
@@ -147,9 +148,9 @@ scaled to 1 (default).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8 trs_41 1050        NA      TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9 trs_42 1035         1     FALSE</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">sw_sum</span><span class="op">(</span><span class="va">trs_example7</span>, densfun <span class="op">=</span> <span class="st">"lognormal"</span>, cred_mass <span class="op">=</span> <span class="fl">0.63</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>--&gt; 1 series without sapwood rings or waney edge detected</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>         and removed from the data set</span>
+<span class="r-in"><span><span class="fu">sw_sum</span><span class="op">(</span><span class="va">sw_example7</span>, densfun <span class="op">=</span> <span class="st">"lognormal"</span>, cred_mass <span class="op">=</span> <span class="fl">0.63</span>, plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> --&gt; 1 series without sapwood rings or waney edge detected</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>         and removed from the data set</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     year       trs_34       trs_35 trs_36 trs_37       trs_38       trs_39</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1000 2.920043e-03           NA     NA     NA           NA           NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2   1001 7.851298e-03           NA     NA     NA           NA           NA</span>
@@ -436,7 +437,7 @@ scaled to 1 (default).</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>

@@ -60,7 +60,7 @@
       <h1>The ´fellingdater´ workflow</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/v1.0.3/vignettes/articles/the_workflow.Rmd" class="external-link"><code>vignettes/articles/the_workflow.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/main/vignettes/articles/the_workflow.Rmd" class="external-link"><code>vignettes/articles/the_workflow.Rmd</code></a></small>
       <div class="d-none name"><code>the_workflow.Rmd</code></div>
     </div>
 
@@ -501,7 +501,7 @@ common felling date based on their tree-ring patterns is demonstrated in
 the next section, with an example dataset consisting of 5 dated
 tree-ring series of which one has an exact felling date (<a href="#fig-sw-combine">Fig. 5, left</a>). The proposed felling date
 (dark grey distribution) equals the felling date of the series with an
-exact felling date (trs_15), but now it can be assessed that this falls
+exact felling date (sw_15), but now it can be assessed that this falls
 within the felling date ranges for three other individual series
 (trs_11, trs_12 and trs_14). One other series (trs_13) has no remaining
 sapwood and therefore only a <em>terminus post quem</em> (earliest
@@ -509,7 +509,7 @@ possible felling date) can be given (arrow pointing away from last
 measured ring). The agreement indexes of all individual series and the
 overall model are high and above the critical threshold of 60%.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">trs_example2</span></span>
+<code class="sourceCode R"><span><span class="va">sw_example2</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
 <span><span class="co">#&gt; 1 trs_11 1000         5     FALSE</span></span>
 <span><span class="co">#&gt; 2 trs_12 1005        10     FALSE</span></span>
@@ -517,7 +517,7 @@ overall model are high and above the critical threshold of 60%.</p>
 <span><span class="co">#&gt; 4 trs_14 1000         1     FALSE</span></span>
 <span><span class="co">#&gt; 5 trs_15 1010         3      TRUE</span></span>
 <span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">sw_example2</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="float" id="fig-sw-combine">
 <img src="images/sw_combine.jpg" alt="Fig. 5: Graphical output of sw_combine(). The sapwood model for the individual series in light grey, the probability density function of the combined felling in dark grey tone. The credible interval for the felling date of individual series is shown as a dashed red line and a black line for the combined estimate. The dataset in the left graph includes an exact felling date that matches with the estimates for the other series. The graph on the right shows a model that fails to group all series around a common felling date."><div class="figcaption">Fig. 5: Graphical output of
 <code><a href="../reference/sw_combine.html">sw_combine()</a></code>. The sapwood model for the individual series
@@ -538,7 +538,7 @@ model is far below 60%, as is the case for most of the individual
 series. In this particular example, probably two or three separate
 felling events are present.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">trs_example4</span></span>
+<code class="sourceCode R"><span><span class="va">sw_example4</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
 <span><span class="co">#&gt; 1 trs_21 1000         5     FALSE</span></span>
 <span><span class="co">#&gt; 2 trs_22 1005        10     FALSE</span></span>
@@ -546,7 +546,7 @@ felling events are present.</p>
 <span><span class="co">#&gt; 4 trs_24 1020         1     FALSE</span></span>
 <span><span class="co">#&gt; 5 trs_25 1040         0     FALSE</span></span>
 <span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">sw_example4</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div class="section level3">
@@ -580,7 +580,7 @@ year, whereas for series with incomplete sapwood the total probability
 (<em>p</em> = 1) is dispersed over a wider time range. Therefore exact
 felling dates are plotted separately on top of the SPD (<a href="#fig-sw-sum">Fig. 6</a>).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">trs_example7</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sw_sum.html">sw_sum</a></span><span class="op">(</span><span class="va">sw_example7</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/sw_sum_plot.html">sw_sum_plot</a></span><span class="op">(</span><span class="va">sum</span>, dot_size <span class="op">=</span> <span class="fl">2</span>, dot_shape <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span></code></pre></div>
 <div class="float" id="fig-sw-sum">
@@ -862,7 +862,7 @@ Use R! New York: Springer-Verlag. <a href="https://ggplot2.tidyverse.org" class=
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

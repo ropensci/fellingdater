@@ -84,7 +84,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/fellingdater" class="external-link">fellingdater</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## a data set where all series have partially preserved sapwood:</span></span>
-<span><span class="va">trs_example1</span></span>
+<span><span class="va">sw_example1</span></span>
 <span><span class="co">#&gt;   series last n_sapwood waneyedge</span></span>
 <span><span class="co">#&gt; 1 trs_01 1000         5     FALSE</span></span>
 <span><span class="co">#&gt; 2 trs_02 1009        10     FALSE</span></span>
@@ -92,7 +92,7 @@
 <span><span class="co">#&gt; 4 trs_04 1005        16     FALSE</span></span>
 <span><span class="co">#&gt; 5 trs_05 1010         8     FALSE</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">trs_example1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">sw_example1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="100%"></p>
 <p>The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.</p>
 <p>The sapwood model used in the example above to estimate the felling date range, was published by <a href="https://search.worldcat.org/nl/title/6391864" class="external-link">Hollstein (1980)</a>:</p>
@@ -145,9 +145,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -193,7 +192,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
