@@ -59,7 +59,6 @@ rescale <- function(x,
 }
 
 
-
 #' Helper function to check input for sw_combine, fd_report and sw_sum
 #' @noRd
 
@@ -160,7 +159,7 @@ theme_fdr <- function() {
 }
 
 
-#' Helper function to check input denfun
+#' Helper function to check input densfun
 #' @noRd
 check_densfun <- function(x) {
      if (!x %in% c("lognormal", "normal", "weibull", "gamma")) {
@@ -298,4 +297,127 @@ check_duplicate_labels <- function(x) {
      if (length(msg) > 0) {
           stop(paste(msg, collapse = "\n"))
      }
+}
+
+#' Check if input is a data.frame with one series
+#'
+#' Validates that the input is a data.frame with exactly one column (series).
+#' Intended for use in functions that operate on single tree-ring series.
+#'
+#' @param x An object to check.
+#' @param arg_name A string indicating the argument name (e.g., "x" or "y") for informative error messages.
+#'
+#' @return Invisibly returns `TRUE` if the input is valid; otherwise, throws an error.
+#' @keywords internal
+#'
+check_single_series <- function(x, arg_name = "x") {
+     if (!is.data.frame(x) || ncol(x) != 1) {
+          stop(sprintf("`%s` must be a data.frame with exactly one series (one column). Use `trs_select()` to extract a single series.", arg_name), call. = FALSE)
+     }
+     invisible(TRUE)
+}
+
+check_consecutive <- function(df) {
+     df_name <- deparse(substitute(df))
+     years <- as.integer(rownames(df))
+     if (any(is.na(years))) {
+          stop(paste("Rownames of", df_name, "are not all numeric."))
+     }
+     if (!all(diff(years) == 1)) {
+          stop(paste("Rownames of", df_name, "are not a continuous sequence of years."))
+     }
+}
+
+#' Detect synchronous growth changes between two tree-ring series ( helper for trs_plot_dated() )
+#'
+#' Identifies years when two tree-ring series show synchronous growth changes (SGC)
+#' - both increasing or both decreasing from the previous year. Based on the logic
+#' used in trs_pv() for distinguishing between synchronous and semi-synchronous growth.
+#'
+#' @param x A `data.frame` with one column of ring-width values and years as row names.
+#' @param y A `data.frame` with one column of ring-width values and years as row names.
+#'
+#' @return A `data.frame` with two columns:
+#'   \item{pv_logi}{Logical vector indicating synchronous growth changes (TRUE) or not (FALSE)}
+#'   \item{year}{Numeric vector of years corresponding to the logical values}
+#'
+#' @details
+#' The function compares year-to-year growth direction changes between two series
+#' using the same logic as trs_pv():
+#' - Synchronous Growth Changes (SGC): Both series change in the same direction (both + or both -)
+#' - Semi-synchronous/Asynchronous: One series changes while other doesn't, or they change in opposite directions
+#'
+#' Only years with synchronous growth changes receive TRUE values.
+#' Years with missing values in either series are marked as FALSE.
+#' The first year cannot be evaluated (no previous year for comparison) and is marked as FALSE.
+#'
+#' @examples
+#' # Create sample data
+#' years <- 1950:1980
+#' x <- data.frame(series1 = runif(length(years), 0.5, 2.0))
+#' rownames(x) <- years
+#' y <- data.frame(series2 = runif(length(years), 0.8, 1.8))
+#' rownames(y) <- years
+#'
+#' # Detect synchronous growth changes
+#' sync_growth <- sgc_for_plot(x, y)
+#' head(sync_growth)
+#'
+#' @export
+sgc_for_plot <- function(x, y) {
+     # Input validation
+     if (!is.data.frame(x) || ncol(x) != 1) {
+          stop("x must be a data.frame with exactly one column")
+     }
+     if (!is.data.frame(y) || ncol(y) != 1) {
+          stop("y must be a data.frame with exactly one column")
+     }
+
+     # Get years from row names and find common years
+     common_years <- intersect(rownames(x), rownames(y))
+     if (length(common_years) < 2) {
+          stop("Need at least 2 overlapping years")
+     }
+
+     # Sort years and subset data to common years
+     common_years <- sort(as.numeric(common_years))
+     x_subset <- x[as.character(common_years), 1, drop = TRUE]
+     y_subset <- y[as.character(common_years), 1, drop = TRUE]
+
+     # Calculate year-to-year changes and their signs (following trs_pv logic)
+     x_sign <- sign(diff(x_subset))
+     y_sign <- sign(diff(y_subset))
+
+     # Calculate growth comparison (gc) as in trs_pv
+     # gc = 0 means synchronous (same direction), gc = 1 means semi-synchronous/asynchronous
+     valid_idx <- which(!is.na(x_sign) & !is.na(y_sign))
+
+     # Initialize result vector for all years (including first year which gets FALSE)
+     n_years <- length(common_years)
+     sync_logical <- logical(n_years)
+
+     # For years where we can calculate differences (years 2 onwards)
+     if (length(valid_idx) > 0) {
+          gc <- abs(x_sign[valid_idx] - y_sign[valid_idx])
+          # Only synchronous growth changes (gc == 0) get TRUE
+          sgc_logical <- (gc == 0)
+          ssgc_logical <- (gc == 1)
+
+          # Map back to the full year sequence (adding 1 because diff removes first year)
+          sgc_logical[valid_idx + 1] <- sgc_logical
+          ssgc_logical[valid_idx + 1] <- ssgc_logical
+     }
+
+     # Create result data frame
+     result <- data.frame(
+          sgc_logi = sgc_logical,
+          ssgc_logi = ssgc_logical,
+          year = common_years,
+          stringsAsFactors = FALSE
+     )
+
+     # Set row names to years for consistency
+     rownames(result) <- as.character(common_years)
+
+     return(result)
 }
