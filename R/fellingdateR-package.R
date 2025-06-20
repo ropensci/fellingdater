@@ -26,6 +26,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom MASS fitdistr
 #' @importFrom stats spline
 ## usethis namespace: end
 NULL

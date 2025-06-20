@@ -73,9 +73,11 @@ Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 # crossdating ring-width series from Doel 1 against each other:
 
-cor_results <- cor_table(Doel1_trs, output = "table", min_overlap = 80,
-sort_by = "t_Ho", remove_duplicates = TRUE)
-head(cor_results,20)
+cor_results <- cor_table(Doel1_trs,
+     output = "table", min_overlap = 80,
+     sort_by = "t_Ho", remove_duplicates = TRUE
+)
+head(cor_results, 20)
 
 }
 \references{
