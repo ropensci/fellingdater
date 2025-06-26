@@ -60,7 +60,11 @@
 #' big tree-ring data sets, _Archaeometry_ **63**, 204-215.
 #' <https://doi.org/10.1111/arcm.12600>
 #'
-#' @description This function calculates common correlation values between dated
+#' @description
+#'  **Deprecated**: `cor_table()` is deprecated as of fellingdater version 1.2.0
+#'   Please use [trs_crossdate()] instead.
+#'
+#'  This function calculates common correlation values between dated
 #'   tree-ring series (`x`) and a set of reference chronologies (`y`). When no
 #'   master chronologies are provided, each series in x is compared to all other
 #'   series in x.
@@ -78,7 +82,7 @@
 #'   - t_Ho: t-values according to the Hollstein (1980) algorithm
 #' @examples
 #' # example code
-#'
+#' \dontrun{
 #' Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 #' Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 #' # crossdating ring-width series from Doel 1 against each other:
@@ -88,6 +92,9 @@
 #'      sort_by = "t_Ho", remove_duplicates = TRUE
 #' )
 #' head(cor_results, 20)
+#' }
+#' @seealso [trs_crossdate()] for the function that replaces `cor_table())`.
+#' @keywords internal
 #'
 cor_table <-
      function(x,

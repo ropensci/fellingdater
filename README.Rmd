@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -13,44 +16,126 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `fellingdater`: Estimate, report and combine felling dates of historical tree-ring series
+# `fellingdater`: Tree-ring dating and estimating felling dates of historical timbers
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml) [![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618) [![fellingdateer status badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
+[![R-CMD-check](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/fellingdater/actions/workflows/R-CMD-check.yaml)
+[![rOpenSci](https://badges.ropensci.org/618_status.svg)](https://github.com/ropensci/software-review/issues/618)
+[![fellingdateer status
+badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-universe.dev)
 [![DOI](https://zenodo.org/badge/276190636.svg)](https://zenodo.org/doi/10.5281/zenodo.11186274)
 [![JOSS](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b/status.svg)](https://joss.theoj.org/papers/3db8c54ec854b575bf5450336ccb000b)
 
 <!-- badges: end -->
 
-This R-package offers a suite of functions designed to assist dendrochronologists in inferring estimates for felling dates, derived from dated tree-ring series. The presence of partially preserved sapwood (*sw*) allows to estimate the missing number of sapwood rings, and to report an interval in which the actual felling date (*fd*) likely falls.
+The `fellingdater` package provides a comprehensive suite of functions
+for dendroarchaeological analysis, covering a workflow from
+tree-ring **data processing** and **crossdating**, up to the estimation
+and reporting of **felling dates**. Originally designed to assist
+dendrochronologists in inferring felling dates from dated tree-ring
+series with partially preserved sapwood, the package has been expanded
+to include a workflow for tree-ring dating, analysis, and visualization.
 
 ![](man/figures/cross-section.png)
 
-This procedure can be applied to individual series as well as to a collection of timbers.
-
-In cases where it can be assumed that a group of historical timbers were all felled simultaneously (i.e., in the same year), but due to the absence of the bark/cambial zone (waney edge) and the final formed tree ring, this cannot be determined, the preserved sapwood rings can be used to establish a date range for the felling event.
-
-Taking into account the observed number of sapwood rings across all analysed samples and combining them into a single estimate, a more accurate and precise estimation of the felling date year for the group of timbers under study is likely to be obtained.
-
-An additional function offers a tool for summing sapwood probability distributions, comparable to 'summed probability densities (SPD)' commonly applied to sets of radiocarbon (^14^C) dates.
-
 ## Installation
 
-You can install the latest release of `fellingdater` from [GitHub](https://github.com/ropensci/fellingdater/) or [R-universe](https://ropensci.r-universe.dev/fellingdater):
+You can install the latest release of `fellingdater` from
+[GitHub](https://github.com/ropensci/fellingdater/) or
+[R-universe](https://ropensci.r-universe.dev/fellingdater):
 
 ``` r
 # install.packages("pak")
 pak::pak("ropensci/fellingdater")
 ```
 
+or
+
 ``` r
 install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 ```
 
-## Basic example
+## Core functionality
 
-In the following example the combined felling date range for a set of five dated tree-ring series is computed:
+### **Tree-ring series analysis (`trs_*` functions)**:
+
+-   **Data generation and preparation**: Create synthetic datasets with
+    `trs_pseudo_rwl()`, or prepare real data with `trs_select()`, `trs_remove()`
+    and `trs_trim()`.
+
+-   **Crossdating analysis**: Perform crossdating with `trs_crossdate()`
+    and set end dates for the tree-ring series with `trs_date_end()`.
+
+    The statistical measures in the crossdating procedure include:
+
+    -   *t*-values according to [Hollstein
+        (1980)](https://search.worldcat.org/de/title/899062584) and
+        [Baillie & Pilcher (1973)](http://hdl.handle.net/10150/260029)
+        transformation procedures (`trs_tho()`and `trs_tbp()`)
+
+    -   percentage of parallel variation, including (Semi-)Synchronous
+        Growth Changes (SGC and SSGC, [Visser
+        2020](https://doi.org/10.1111/arcm.12600)), and
+        *Gleichläufigkeit* ([Buras & Wilmking
+        2015](https://doi.org/10.1016/j.dendro.2015.03.003), [Eckstein &
+        Bauch 1969](https://doi.org/10.1007/BF02741777), [Huber
+        1943](https://doi.org/10.1007/BF02603303)) and associated
+        significance level ([Jansma
+        1995](https://dspace.library.uu.nl/handle/1874/45149))
+        (`trs_pv()`)
+
+    -   correlation measures, *r* Pearson and *t*-values (`trs_tSt()`)
+
+-   **Visualization**: Display crossdating results with
+    `trs_plot_dated()`, or individual series with `trs_plot_rwl()`
+
+### **Felling date estimation (`sw_*` functions)**:
+
+The package's primary focus is estimating felling dates from accurately
+dated tree-ring series with preserved sapwood (*sw*). When the
+bark/cambial zone (waney edge) is absent, the preserved sapwood rings
+can be used to establish a date range for the felling event, allowing
+researchers to report an interval in which the actual felling date
+(*fd*) likely falls.
+
+This procedure can be applied to individual series as well as to a
+collection of timbers.
+
+-   **Individual series**: Estimate felling date ranges from tree-ring
+    series with preserved sapwood.
+
+-   **Group analysis**: Combine multiple samples assumed to be felled
+    simultaneously for enhanced precision.
+
+-   **Probability modeling**: Work with sapwood probability
+    distributions and create summed probability densities.
+
+![](man/figures/workflow.png)
+
+
+### Workflow
+
+The package workflow progresses logically through:
+
+1.  **Data preparation** - Generate synthetic data or prepare existing
+    tree-ring measurements
+2.  **Crossdating and statistical analysis** - Establish accurate
+    calendar dates for tree-ring series
+3.  **Quality control** - Validate dating results using multiple
+    statistical measures
+4.  **Felling date estimation** - Apply sapwood models to dated series
+    with preserved sapwood
+5.  **Grouping** - Combine individual estimates for related wooden finds
+6.  **Visualization and reporting** - Present results with
+    publication-ready graphics
+
+## Examples
+
+### Felling date estimation
+
+In the following example the combined felling date range for a set of
+five dated tree-ring series is computed:
 
 ```{r basic-example}
 library(fellingdater)
@@ -63,47 +148,144 @@ sw_example1
 sw_combine(sw_example1, plot = TRUE)
 ```
 
-The light grey distributions represent the probability density function of the felling date range for each individual series. The dark grey distribution is the combined estimate for a common felling date.
+The light grey distributions shows felling date probability densities
+for each individual series, while the dark grey distribution represents
+the combined estimate for a common felling date.
 
-The sapwood model used in the example above to estimate the felling date range, was published by [Hollstein (1980)](https://search.worldcat.org/nl/title/6391864):
+The sapwood model used in the example above to estimate the felling date
+range, was published by [Hollstein
+(1980)](https://search.worldcat.org/nl/title/6391864):
 
 ```{r model_sapwood_counts, dpi=200}
 sw_model("Hollstein_1980", plot = TRUE)
 ```
 
+### Tree-ring series analysis
+
+The package provides comprehensive tools for the tree-ring analysis
+workflow:
+
+- Generate synthetic tree-ring data for testing
+
+```{r trs-example}
+set.seed(1234)
+trs <- trs_pseudo_rwl(n_series = 5, series_length = c(100, 150),
+                      end_date = c(2000, 2025), related = TRUE,
+                      prefix = "series_")
+
+trs_plot_rwl(trs,
+             color = c("tomato3", "navyblue", "forestgreen", "purple", "orange")
+             )
+```
+
+- Crossdate a series against a reference series/chronology
+
+```{r}
+series <- trs |> trs_select("series_1", trim = TRUE)
+reference <- trs |> trs_select("series_2")
+cd_results <- trs_crossdate(series, reference, min_overlap = 50,
+                            sliding = TRUE, top_n = 5, rank_by = "t_Ho")
+
+cd_results
+```
+
+ - Visualize cross-dating results
+ 
+```{r}
+series_dated <- trs_end_date(series, 2014)
+trs_plot_dated(series_dated, reference, 
+               zscore = TRUE, pv_highlight = TRUE)
+
+```
+
 ## Getting started
 
-You can find an overview of the **main functions** and **sapwood datasets** distributed with the package in the [documentation](https://docs.ropensci.org/fellingdater/reference/).
+Explore the package capabilities through our documentation:
 
-Some practical examples are provided in the [`Get started`](https://docs.ropensci.org/fellingdater/articles/getting_started.html) vignette.
-
-## The workflow
-
-The `fellingdater`-package allows to fully document the methodology to establish a felling date -- for a single timber or a group of timbers -- making the whole procedure reproducible. It assists in building standardized workflows when applied to large datasets of historical tree-ring series originating from geographically distinct regions. The package is designed to offer several functions related to each step in the (generalized) workflow when working with tree-ring series from (pre-)historical objects or constructions.
-
-![](man/figures/workflow.png)
+-   **Function reference**: Complete overview of all functions and
+    datasets at
+    [docs.ropensci.org/fellingdater/reference/](https://docs.ropensci.org/fellingdater/reference/)
+-   **Practical examples**: Step-by-step workflows in the [`Get started`
+    vignette](https://docs.ropensci.org/fellingdater/articles/getting_started.html)
+-   **Sapwood models**: Available regional sapwood datasets and their
+    applications
 
 ## Motivation & citation
 
-This package was developed during the analysis of a large data set of tree-ring series originating from medieval timber constructions in [Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of this study were published in [*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
+This package was developed during the analysis of a large data set of
+tree-ring series originating from medieval timber constructions in
+[Bruges](https://en.wikipedia.org/wiki/Bruges) (Belgium). The results of
+this study were published in
+[*Dendrochronologia*](https://www.journals.elsevier.com/dendrochronologia).
 
 Please cite these papers when using the `fellingdater` package:
 
->Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305) 2024. _fellingdater_: a toolkit to estimate, report and combine felling dates derived from historical tree-ring series. *Journal of Open Source
-Software*, 9(97), 6716.\ 
+> Kristof HANECA
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305)
+> 2024. *fellingdater*: a toolkit to estimate, report and combine
+> felling dates derived from historical tree-ring series. *Journal of
+> Open Source Software*, 9(97), 6716. 
 > <https://doi.org/10.21105/joss.06716>
 
-> Kristof HANECA [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305), Vincent DEBONNE [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X), Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a medieval city: tree-ring data as proxies for economic, social and demographic dynamics in Bruges (*c.* 1200 -- 1500). *Dendrochronologia* 64, 125773.\
+> Kristof HANECA
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-7719-8305),
+> Vincent DEBONNE
+> [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-4536-146X),
+> Patrick HOFFSUMMER 2020. The ups and downs of the building trade in a
+> medieval city: tree-ring data as proxies for economic, social and
+> demographic dynamics in Bruges (*c.* 1200 -- 1500).
+> *Dendrochronologia* 64, 125773.\
 > <https://doi.org/10.1016/j.dendro.2020.125773>
 
+## Acknowledgements
 
+The `fellingdater` package builds on established crossdating algorithms
+from dendrochronology literature. It also draws inspiration from
+established R-apackages like [`dplR`](https://opendendro.org/r/).
 
+## Academic papers citing `fellingdater`
 
+> Altman J., Altmanova N., Fibich P., Korznikov K. & Fonti P. 2025:
+> Advancing dendrochronology with R: an overview of packages and future
+> perspectives, Frontiers in Ecology and Evolution 13, 1593675.
+> <https://doi.org/10.3389/fevo.2025.1593675>
+
+> Haneca K., Debonne V., Davies D., McCarroll D. & Loader N.J. 2025:
+> Oxygen isotope dendrochronology allows dating of historical timbers
+> across a wide geographical region, Dendrochronologia 89, 126283.
+> <https://doi.org/10.1016/j.dendro.2024.126283>
+
+> Haneca K. 2024: fellingdater: a toolkit to estimate, report and
+> combine felling dates derived from historical tree-ring series,
+> Journal of Open Source Software 9.97, 6716.
+> <https://doi.org/doi.org/10.21105/joss.06716>
+
+> Haneca K. & De Groote K. 2024: Ieper - De Meersen. Deel 5. Houten
+> grafkisten, tonnen en gebruiksvoorwerpen: dendrochronologie, typologie
+> en houtonderzoek, Onderzoeksrapporten agentschap Onroerend Erfgoed
+> 330, Brussel. <https://doi.org/10.55465/CNJU8492>
+
+> Domínguez-Delmás M., Schroeder H., Kuitems M., Haneca K., Archangel
+> S., van Duin P. & Piena H. 2023: A stepwise multidisciplinary approach
+> to determine the date and provenance of historical wooden objects,
+> Journal of Cultural Heritage 62, 430–440.
+> <https://doi.org/10.1016/j.culher.2023.06.023>
+
+> Haneca K., Debonne V. & Hoffsummer P. 2020: The ups and downs of the
+> building trade in a medieval city: Tree-ring data as proxies for
+> economic, social and demographic dynamics in Bruges (c. 1200–1500),
+> Dendrochronologia 64, 125773.
+> <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ## Comments and contributions
 
--   Please report any issues or bugs here: <https://github.com/ropensci/fellingdater/issues>.
+-   Please report any issues or bugs here:
+    <https://github.com/ropensci/fellingdater/issues>.
 
--   Get citation information for `fellingdater` in R typing `citation(package = 'fellingdater')`.
+-   Get citation information for `fellingdater` in R typing
+    `citation(package = 'fellingdater')`.
 
--   Please note that the `fellingdater` package is released with a [Contributor Code of Conduct](https://github.com/ropensci/fellingdater/blob/main/.github/CONTRIBUTING.md). By contributing to this project, you agree to abide by its terms.
+-   Please note that the `fellingdater` package is released with a
+    [Contributor Code of
+    Conduct](https://github.com/ropensci/fellingdater/blob/main/.github/CONTRIBUTING.md).
+    By contributing to this project, you agree to abide by its terms.

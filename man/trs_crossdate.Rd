@@ -2,7 +2,7 @@
 % Please edit documentation in R/trs_crossdate.R
 \name{trs_crossdate}
 \alias{trs_crossdate}
-\title{Comprehensive sliding window crossdating analysis using multiple methods}
+\title{Sliding window crossdating analysis using multiple statistical methods}
 \usage{
 trs_crossdate(
   x,
@@ -63,7 +63,7 @@ A data frame with crossdating results containing the following columns:
 }
 }
 \description{
-This function performs crossdating analysis using sliding window technique with
+This function performs crossdating analysis using a sliding window with
 multiple statistical methods: Parallel Variation (GLK/SGC), Baillie & Pilcher
 t-values, Hollstein t-values, and standard Pearson correlation t-values. It tests series
 at different temporal lags to find a potential date positions.

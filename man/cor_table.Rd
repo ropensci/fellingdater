@@ -41,6 +41,9 @@ set to "matrix." If \code{output} is set to "table," it returns a \code{data.fra
 reporting all correlation values.
 }
 \description{
+\strong{Deprecated}: \code{cor_table()} is deprecated as of fellingdater version 1.2.0
+Please use \code{\link[=trs_crossdate]{trs_crossdate()}} instead.
+
 This function calculates common correlation values between dated
 tree-ring series (\code{x}) and a set of reference chronologies (\code{y}). When no
 master chronologies are provided, each series in x is compared to all other
@@ -68,7 +71,7 @@ If \code{y} is not provided, it compares each series in \code{x} to all other se
 }
 \examples{
 # example code
-
+\dontrun{
 Doel1 <- system.file("extdata", "DOEL1.fh", package = "fellingdater")
 Doel1_trs <- read_fh(Doel1, verbose = FALSE)
 # crossdating ring-width series from Doel 1 against each other:
@@ -78,7 +81,7 @@ cor_results <- cor_table(Doel1_trs,
      sort_by = "t_Ho", remove_duplicates = TRUE
 )
 head(cor_results, 20)
-
+}
 }
 \references{
 \itemize{
@@ -110,3 +113,7 @@ big tree-ring data sets, \emph{Archaeometry} \strong{63}, 204-215.
 \url{https://doi.org/10.1111/arcm.12600}
 }
 }
+\seealso{
+\code{\link[=trs_crossdate]{trs_crossdate()}} for the function that replaces \verb{cor_table())}.
+}
+\keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/trs_plot_dated.R
 \name{trs_plot_dated}
 \alias{trs_plot_dated}
-\title{Plot a dated tree-ring series with a reference chronology}
+\title{Plot a dated tree-ring series with a reference series or chronology}
 \usage{
 trs_plot_dated(
   x,
@@ -11,7 +11,9 @@ trs_plot_dated(
   zscore = TRUE,
   pv_highlight = TRUE,
   pv_alpha = 0.2,
-  show_stats = TRUE
+  show_stats = TRUE,
+  labels = TRUE,
+  label_size = 3
 )
 }
 \arguments{
@@ -34,6 +36,11 @@ Defaults to \code{0.2}.}
 
 \item{show_stats}{Logical. If \code{TRUE}, displays crossdating statistics (e.g., overlap, correlation, sgc, t-values)
 as a plot subtitle. Defaults to \code{TRUE}.}
+
+\item{labels}{Logical. If \code{TRUE}, displays year labels and points at the start and end positions.
+If \code{FALSE}, neither labels nor points are shown. Defaults to \code{TRUE}.}
+
+\item{label_size}{Numeric. Controls the size of the year labels. Defaults to \code{3}.}
 }
 \value{
 A \code{ggplot} object showing the plotted time series.
@@ -41,7 +48,7 @@ A \code{ggplot} object showing the plotted time series.
 \description{
 Creates a line plot of a dated tree-ring series and a reference chronology,
 with optional z-score standardization, statistical annotations, and visual highlighting
-of parallel variation (Gleichläufigkeit).
+of synchronous growth changes (SCG).
 }
 \details{
 The function assumes that \code{x} and \code{y} are already calendar-dated and aligned by row names.
