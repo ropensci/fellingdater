@@ -29,11 +29,9 @@ badge](https://ropensci.r-universe.dev/badges/fellingdater)](https://ropensci.r-
 
 <!-- badges: end -->
 
-The `fellingdater` package provides a comprehensive suite of functions
-for dendroarchaeological analysis, covering a workflow from
-tree-ring **data processing** and **crossdating**, up to the estimation
-and reporting of **felling dates**. Originally designed to assist
-dendrochronologists in inferring felling dates from dated tree-ring
+The `fellingdater` package provides a suite of functions
+for dendrochronological and dendroarchaeological analysis, covering a workflow from tree-ring **data processing** and **crossdating**, up to
+the estimation and reporting of **felling dates**. Originally designed to assist dendrochronologists in inferring felling dates from dated tree-ring
 series with partially preserved sapwood, the package has been expanded
 to include a workflow for tree-ring dating, analysis, and visualization.
 
@@ -61,8 +59,7 @@ install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 ### **Tree-ring series analysis (`trs_*` functions)**:
 
 -   **Data generation and preparation**: Create synthetic datasets with
-    `trs_pseudo_rwl()`, or prepare real data with `trs_select()`, `trs_remove()`
-    and `trs_trim()`.
+    `trs_pseudo_rwl()`, or read and prepare real data with `read_fh()`, `trs_select()`, `trs_remove()` and `trs_trim()`.
 
 -   **Crossdating analysis**: Perform crossdating with `trs_crossdate()`
     and set end dates for the tree-ring series with `trs_date_end()`.
@@ -90,7 +87,7 @@ install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
 -   **Visualization**: Display crossdating results with
     `trs_plot_dated()`, or individual series with `trs_plot_rwl()`
 
-### **Felling date estimation (`sw_*` functions)**:
+### **Felling date estimation ** (`sw_*` functions):
 
 The package's primary focus is estimating felling dates from accurately
 dated tree-ring series with preserved sapwood (*sw*). When the
@@ -100,7 +97,7 @@ researchers to report an interval in which the actual felling date
 (*fd*) likely falls.
 
 This procedure can be applied to individual series as well as to a
-collection of timbers.
+collection of related timbers.
 
 -   **Individual series**: Estimate felling date ranges from tree-ring
     series with preserved sapwood.
@@ -108,8 +105,8 @@ collection of timbers.
 -   **Group analysis**: Combine multiple samples assumed to be felled
     simultaneously for enhanced precision.
 
--   **Probability modeling**: Work with sapwood probability
-    distributions and create summed probability densities.
+-   **Probability densities**: Work with sapwood probability
+    distributions and create summed probability densities that reflect          dynamics in felling date intensity.
 
 ![](man/figures/workflow.png)
 
@@ -126,7 +123,7 @@ The package workflow progresses logically through:
     statistical measures
 4.  **Felling date estimation** - Apply sapwood models to dated series
     with preserved sapwood
-5.  **Grouping** - Combine individual estimates for related wooden finds
+5.  **Grouping** - Combine individual felling date estimates for related        wooden finds
 6.  **Visualization and reporting** - Present results with
     publication-ready graphics
 
@@ -189,7 +186,7 @@ cd_results <- trs_crossdate(series, reference, min_overlap = 50,
 cd_results
 ```
 
- - Visualize cross-dating results
+ - Visualize crossdating results
  
 ```{r}
 series_dated <- trs_end_date(series, 2014)
@@ -247,34 +244,34 @@ established R-apackages like [`dplR`](https://opendendro.org/r/).
 
 > Altman J., Altmanova N., Fibich P., Korznikov K. & Fonti P. 2025:
 > Advancing dendrochronology with R: an overview of packages and future
-> perspectives, Frontiers in Ecology and Evolution 13, 1593675.
+> perspectives, *Frontiers in Ecology and Evolution* 13, 1593675.
 > <https://doi.org/10.3389/fevo.2025.1593675>
 
 > Haneca K., Debonne V., Davies D., McCarroll D. & Loader N.J. 2025:
 > Oxygen isotope dendrochronology allows dating of historical timbers
-> across a wide geographical region, Dendrochronologia 89, 126283.
+> across a wide geographical region, *Dendrochronologia* 89, 126283.
 > <https://doi.org/10.1016/j.dendro.2024.126283>
 
-> Haneca K. 2024: fellingdater: a toolkit to estimate, report and
+> Haneca K. 2024: *fellingdater*: a toolkit to estimate, report and
 > combine felling dates derived from historical tree-ring series,
-> Journal of Open Source Software 9.97, 6716.
+> *Journal of Open Source Software* 9.97, 6716.
 > <https://doi.org/doi.org/10.21105/joss.06716>
 
 > Haneca K. & De Groote K. 2024: Ieper - De Meersen. Deel 5. Houten
 > grafkisten, tonnen en gebruiksvoorwerpen: dendrochronologie, typologie
-> en houtonderzoek, Onderzoeksrapporten agentschap Onroerend Erfgoed
+> en houtonderzoek, *Onderzoeksrapporten agentschap Onroerend Erfgoed*
 > 330, Brussel. <https://doi.org/10.55465/CNJU8492>
 
 > Domínguez-Delmás M., Schroeder H., Kuitems M., Haneca K., Archangel
 > S., van Duin P. & Piena H. 2023: A stepwise multidisciplinary approach
 > to determine the date and provenance of historical wooden objects,
-> Journal of Cultural Heritage 62, 430–440.
+> *Journal of Cultural Heritage* 62, 430–440.
 > <https://doi.org/10.1016/j.culher.2023.06.023>
 
 > Haneca K., Debonne V. & Hoffsummer P. 2020: The ups and downs of the
 > building trade in a medieval city: Tree-ring data as proxies for
 > economic, social and demographic dynamics in Bruges (c. 1200–1500),
-> Dendrochronologia 64, 125773.
+> *Dendrochronologia* 64, 125773.
 > <https://doi.org/10.1016/j.dendro.2020.125773>
 
 ## Comments and contributions

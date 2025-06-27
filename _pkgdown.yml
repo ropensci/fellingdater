@@ -13,17 +13,17 @@ reference:
   - sw_combine_plot
   - sw_sum
   - sw_sum_plot
-
+  
+- title: Synthetic tree-ring series
+  contents:
+  - trs_pseudo_rwl
+  
 - title: Tree-ring data manipulation
   contents:
   - trs_select
   - trs_remove
   - trs_trim
   - trs_plot_rwl
-  
-- title: Synthetic tree-ring series
-  contents:
-  - trs_pseudo_rwl
 
 - title: Tree-ring dating
   contents:

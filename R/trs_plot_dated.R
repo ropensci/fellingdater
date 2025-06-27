@@ -165,7 +165,7 @@ trs_plot_dated <- function(x, y,
                          data = label_data,
                          ggplot2::aes(x = x, y = y, label = label, hjust = hjust),
                          size = label_size,
-                         label.size = 0,
+                         linewidth = 0,
                          fill = "white",
                          alpha = 0.8
                     )

@@ -123,9 +123,6 @@ self_check <- trs_crossdate(rwl_ref, sliding = FALSE)
 
 # Get top 3 matches per series ranked by Hollstein t-values
 top_matches <- trs_crossdate(rwl_test, rwl_ref, top_n = 3, rank_by = "t_Ho")
-
-# Get top 5 matches with default ordering (no sorting by statistic)
-top_default <- trs_crossdate(rwl_test, rwl_ref, top_n = 5)
 }
 
 }

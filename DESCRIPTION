@@ -1,6 +1,5 @@
 Package: fellingdater
-Title: Estimate, report and combine felling dates of historical tree-ring 
-    series
+Title: Tree-ring dating and estimating felling dates of historical timbers
 Version: 1.1.0
 Authors@R: c(
     person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be",role = c("aut", "cre", "cph"),
@@ -14,11 +13,13 @@ Authors@R: c(
     person("Nicholas John", "Tierney", role = "rev",
         comment = c(ORCID = "0000-0003-1460-8722"))   
     )
-Description: fellingdater aims to facilitate the 
-  analysis and interpretation of tree-ring data from wooden 
-  cultural heritage objects and structures. The package standardizes the process
-  of computing and combining felling date estimates, both for individual and 
-  groups of related tree-ring series.
+Description: fellingdater provides a comprehensive suite of functions
+  for dendrochronological  and dendroarchaeological analysis, covering a 
+  workflow from tree-ring **data processing** and **crossdating**, up to 
+  the estimation and reporting of **felling dates**. Originally designed
+  to assist dendrochronologists in inferring felling dates from dated tree-ring
+  series with partially preserved sapwood, the package has been expanded
+  to include a workflow for tree-ring dating, analysis, and visualization.
 URL: https://docs.ropensci.org/fellingdater, https://github.com/ropensci/fellingdater, https://ropensci.github.io/fellingdater
 BugReports: https://github.com/ropensci/fellingdater/issues
 License: MIT + file LICENSE
@@ -38,7 +39,8 @@ Imports:
     tidyr,
     utils,
     dplR,
-    stats
+    stats,
+    rlang
 Suggests: 
     covr,
     knitr,

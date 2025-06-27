@@ -4,28 +4,23 @@
 \name{fellingdater}
 \alias{fellingdater-package}
 \alias{fellingdater}
-\title{fellingdater}
+\title{fellingdater: Tree-ring dating and estimating felling dates of historical timbers}
 \description{
-fellingdater is an R package that facilitate the analysis and
+fellingdater is an R package that facilitates the analysis and
 interpretation of tree-ring data from wooden cultural heritage objects and
 structures. The package standardizes the process of computing and combining
 felling date estimates (fd), derived from the observed number of sapwood
 rings (sw), both for individual and groups of related tree-ring series.
 }
-\section{Learn more about fellingdater at}{
-
-\url{https://hanecakr.github.io/fellingdater/index.html/}
-}
-
 \seealso{
-It's main functions are:
+Useful links:
 \itemize{
-\item \code{\link[=sw_model]{sw_model()}}
-\item \code{\link[=sw_interval]{sw_interval()}}
-\item \code{\link[=fd_report]{fd_report()}}
-\item \code{\link[=sw_combine]{sw_combine()}}
-\item \code{\link[=sw_sum]{sw_sum()}}
+  \item \url{https://docs.ropensci.org/fellingdater}
+  \item \url{https://github.com/ropensci/fellingdater}
+  \item \url{https://ropensci.github.io/fellingdater}
+  \item Report bugs at \url{https://github.com/ropensci/fellingdater/issues}
 }
+
 }
 \author{
 \strong{Maintainer}: Kristof Haneca \email{Kristof.Haneca@vlaanderen.be} (\href{https://orcid.org/0000-0002-7719-8305}{ORCID}) [copyright holder]
