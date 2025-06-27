@@ -56,11 +56,10 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Get started</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Get started</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/v1.1.0/vignettes/getting_started.Rmd" class="external-link"><code>vignettes/getting_started.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/main/vignettes/getting_started.Rmd" class="external-link"><code>vignettes/getting_started.Rmd</code></a></small>
       <div class="d-none name"><code>getting_started.Rmd</code></div>
     </div>
 
@@ -362,8 +361,8 @@ all published sapwood data sets distributed with this package.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sw_data_overview.html">sw_data_overview</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "Brathen_1982"     "Hollstein_1980"   "Miles_1997_NM"    "Miles_1997_SC"   </span></span>
 <span><span class="co">#&gt;  [5] "Miles_1997_WBC"   "Pilcher_1987"     "Sohar_2012_ELL_c" "Sohar_2012_ELL_t"</span></span>
-<span><span class="co">#&gt;  [9] "Sohar_2012_FWE_c" "Sohar_2012_FWE_t" "Wazny_1990"       "vanDaalen_NLBE"  </span></span>
-<span><span class="co">#&gt; [13] "vanDaalen_Norway"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [9] "Sohar_2012_FWE_c" "Sohar_2012_FWE_t" "Wazny_1990"       "Weitz_2025"      </span></span>
+<span><span class="co">#&gt; [13] "vanDaalen_NLBE"   "vanDaalen_Norway"</span></span></code></pre></div>
 <p>Load the original data with, for example,
 <code>get("Hollstein_1980")</code>.</p>
 </div>
@@ -610,6 +609,10 @@ algorithm</p></li>
 <span></span>
 <span><span class="co"># crossdating ring-width series from Doel 1 against each other:</span></span>
 <span><span class="va">cor_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cor_table.html">cor_table</a></span><span class="op">(</span><span class="va">Doel1_trs</span>, output <span class="op">=</span> <span class="st">"table"</span>, min_overlap <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in cor_table(Doel1_trs, output = "table", min_overlap = 80): Please use the function `trs_crossdate(x, y, sliding = FALSE)`</span></span>
+<span><span class="co">#&gt;             instead of `cor_table()`.</span></span>
+<span><span class="co">#&gt;             For sliding correlations, use `trs_crossdate(x, y, sliding = TRUE)`.</span></span>
+<span><span class="co">#&gt;             See`?trs_crossdate()` for more information and help</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cor_results</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     series length first last reference ref_first ref_last overlap  glk</span></span>
 <span><span class="co">#&gt; 29 GD3-1BB     89  1222 1310    GQ1mBB      1150     1314      89 52.8</span></span>
