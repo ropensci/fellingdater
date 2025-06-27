@@ -243,7 +243,6 @@
 #'
 "Wazny_1990"
 
-
 #' van Daalen (unpublished) sapwood data set.
 #'
 #' Sapwood data set for historical timbers found in the Netherlands that were
@@ -291,6 +290,27 @@
 #' sw_model("vanDaalen_NLBE", plot = TRUE)
 #'
 "vanDaalen_NLBE"
+
+#' Weitz 2025 sapwood data set.
+#'
+#' Sapwood data set for the Brussels region in Belgium, published by Weitz et al. in 2025.
+#'
+#' @name Weitz_2025
+#' @docType data
+#' @format A tibble of 2 variables:
+#' \describe{
+#'   \item{n_sapwood}{number of sapwood rings}
+#'   \item{count}{number of times n_sapwood was observed}
+#'   }
+#' @details
+#'     sample size = 443 observations
+#' @source Weitz A., Haneca K. & Hoffsummer P. (in press): Estimating sapwood counts for historical oak timbers from Brussels, Belgium (13th-18th C), International Journal of Wood Culture.
+#' @examples
+#' sw_data_info("Weitz_2025")
+#'
+#' sw_model("Weitz_2025", plot = TRUE)
+#'
+"Weitz_2025"
 
 #' Example dataset 0
 #'

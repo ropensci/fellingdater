@@ -404,7 +404,7 @@ sw_combine <- function(x,
                     cred_mass = cred_mass,
                     densfun = densfun
                )[, 1:6]
-               summary$agr_index <- round(agr_index, 1)
+               summary$agr_index <- as.numeric(round(agr_index, 1))
                rownames(summary) <- NULL
 
                agr_model <-

@@ -2,7 +2,7 @@ url: https://ropensci.github.io/fellingdater/
 template:
   bootstrap: 5
 reference:
-- title: Main functions
+- title: Sapwood functions
   contents:
   - sw_model
   - sw_model_plot
@@ -13,16 +13,41 @@ reference:
   - sw_combine_plot
   - sw_sum
   - sw_sum_plot
+  
+- title: Synthetic tree-ring series
+  contents:
+  - trs_pseudo_rwl
+  
+- title: Tree-ring data manipulation
+  contents:
+  - trs_select
+  - trs_remove
+  - trs_trim
+  - trs_plot_rwl
+
+- title: Tree-ring dating
+  contents:
+  - trs_crossdate
+  - trs_end_date
+  - trs_plot_dated
 
 - title: Helper functions
   contents:
   - read_fh
   - fh_header
-  - cor_table
+  - cor_table # deprected!
   - sw_data_overview
   - sw_data_info
   - hdi
   - mov_av
+  - trs_pv
+  - trs_tSt
+  - trs_tbp
+  - trs_tbp_transform
+  - trs_tho
+  - trs_tho_transform
+  - trs_zscore
+  - sgc_for_plot
 
 - title: Datasets
   contents:
@@ -39,6 +64,7 @@ reference:
   - vanDaalen_NLBE
   - vanDaalen_Norway
   - Wazny_1990
+  - Weitz_2025
 
 - title: Example data
   contents:
