@@ -1,3 +1,7 @@
+# fellingdater (development version)
+
+-   Preparing for next release 1.2.0
+
 # fellingdater 1.1.0 (2025-06-05)
 
 -   Fixes to ensure that a user-defined sapwood dataset can be used with all relevant functions (fd_report(), sw_combine() and sw_sum().
