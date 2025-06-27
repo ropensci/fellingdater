@@ -51,7 +51,8 @@ pak::pak("ropensci/fellingdater")
 or
 
 ``` r
-install.packages("fellingdater", repos = "https://ropensci.r-universe.dev")
+# install.packages("remotes")
+remotes::install_github("ropensci/fellingdater")
 ```
 
 ## Core functionality
