@@ -65,7 +65,7 @@
 <span class="r-in"><span><span class="va">z_rwl</span> <span class="op">&lt;-</span> <span class="fu">trs_zscore</span><span class="op">(</span><span class="va">rwl</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">z_rwl</span>, <span class="fl">2</span>, <span class="va">mean</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># should be ~0</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         trs_1         trs_2         trs_3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.379696e-16  4.879853e-16 -1.382569e-16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.038975e-16  4.366559e-16  2.591330e-16 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">z_rwl</span>, <span class="fl">2</span>, <span class="va">sd</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># should be ~1</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> trs_1 trs_2 trs_3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     1     1     1 </span>

@@ -65,6 +65,26 @@ constant window size and avoid NA values.</p>
     <p>A matrix of log-transformed index values.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create sample data,</span></span></span>
+<span class="r-in"><span><span class="va">trs</span> <span class="op">&lt;-</span> <span class="fu"><a href="trs_pseudo_rwl.html">trs_pseudo_rwl</a></span><span class="op">(</span>n_series <span class="op">=</span> <span class="fl">5</span>, series_length <span class="op">=</span> <span class="fl">100</span>, end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2025</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">transformed</span> <span class="op">&lt;-</span> <span class="fu">trs_tbp_transform</span><span class="op">(</span><span class="va">trs</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">transformed</span>, <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         trs_1    trs_2    trs_3    trs_4    trs_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1921       NA       NA 4.611591       NA       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1922 4.649622       NA 4.603532 4.663278       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1923 4.605170       NA 4.634158 4.635807       NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1924 4.584036       NA 4.562970 4.545451 4.605170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1925 4.630737 4.717287 4.665490 4.628072 4.660406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1926 4.625789 4.615533 4.688183 4.641102 4.605170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1927 4.618445 4.554218 4.552420 4.570232 4.652087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1928 4.631393 4.644121 4.570232 4.618593 4.676547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1929 4.499810 4.529617 4.492746 4.489098 4.410301</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1930 4.462854 4.477657 4.551230 4.545106 4.465408</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

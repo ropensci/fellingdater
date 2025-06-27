@@ -93,6 +93,20 @@ using the formula: t = r * sqrt(n-2) / sqrt(1-r²), where n is the number of
 overlapping observations.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create sample data,</span></span></span>
+<span class="r-in"><span><span class="va">trs</span> <span class="op">&lt;-</span> <span class="fu"><a href="trs_pseudo_rwl.html">trs_pseudo_rwl</a></span><span class="op">(</span>n_series <span class="op">=</span> <span class="fl">5</span>, series_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">100</span><span class="op">)</span>, end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2010</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">trs_tSt</span><span class="op">(</span><span class="va">trs</span><span class="op">)</span><span class="op">$</span><span class="va">t_St</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       trs_1 trs_2 trs_3 trs_4 trs_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_1   Inf 13.32 10.77 11.26 15.59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_2 13.32   Inf 13.04 13.24 13.28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_3 10.77 13.04   Inf 10.97 12.66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_4 11.26 13.24 10.97   Inf 13.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_5 15.59 13.28 12.66 13.84   Inf</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

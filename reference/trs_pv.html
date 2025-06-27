@@ -98,6 +98,20 @@ Synchronous Growth Changes (SGC), adapted from the <code>dplR</code> package.</p
 <code>series</code>, <code>reference</code>, <code>glk</code>, <code>glk_p</code>, <code>sgc</code>, <code>ssgc</code>, <code>sgc_p</code>, and <code>overlap</code>.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create sample data,</span></span></span>
+<span class="r-in"><span><span class="va">trs</span> <span class="op">&lt;-</span> <span class="fu"><a href="trs_pseudo_rwl.html">trs_pseudo_rwl</a></span><span class="op">(</span>n_series <span class="op">=</span> <span class="fl">5</span>, series_length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">100</span><span class="op">)</span>, end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2010</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">trs_pv</span><span class="op">(</span><span class="va">trs</span><span class="op">)</span><span class="op">$</span><span class="va">sgc</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       trs_1 trs_2 trs_3 trs_4 trs_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_1 100.0  81.5  71.0  79.6  78.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_2  81.5 100.0  71.0  75.0  75.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_3  71.0  71.0 100.0  70.2  75.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_4  79.6  75.0  70.2 100.0  79.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> trs_5  78.7  75.3  75.3  79.8 100.0</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
