@@ -17,3 +17,10 @@ Applies a 5-year centered moving average and computes the log index:
 \code{log(100 * value / MA5)}. Uses edge mirroring to maintain
 constant window size and avoid NA values.
 }
+\examples{
+# Create sample data,
+trs <- trs_pseudo_rwl(n_series = 5, series_length = 100, end_date = c(2020, 2025))
+transformed <- trs_tbp_transform(trs)
+head(transformed, 10)
+
+}

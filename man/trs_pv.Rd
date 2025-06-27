@@ -35,3 +35,9 @@ If \code{as_df = TRUE}, returns a data frame with columns:
 Compares tree-ring series in two data frames using Gleichläufigkeit (GLK) and
 Synchronous Growth Changes (SGC), adapted from the \code{dplR} package.
 }
+\examples{
+# Create sample data,
+trs <- trs_pseudo_rwl(n_series = 5, series_length = c(80, 100), end_date = c(2010, 2020))
+trs_pv(trs)$sgc
+
+}

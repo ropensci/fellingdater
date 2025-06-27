@@ -24,56 +24,61 @@
 #' using the formula: t = r * sqrt(n-2) / sqrt(1-r²), where n is the number of
 #' overlapping observations.
 #'
+#' @examples
+#' # Create sample data,
+#' trs <- trs_pseudo_rwl(n_series = 5, series_length = c(80, 100), end_date = c(2010, 2020))
+#' trs_tSt(trs)$t_St
+#'
 #' @export
 trs_tSt <- function(x, y = NULL, min_overlap = 30, as_df = FALSE) {
-  stopifnot(is.data.frame(x))
-  if (is.null(y)) y <- x
-  stopifnot(is.data.frame(y))
+     stopifnot(is.data.frame(x))
+     if (is.null(y)) y <- x
+     stopifnot(is.data.frame(y))
 
-  nx <- ncol(x)
-  ny <- ncol(y)
+     nx <- ncol(x)
+     ny <- ncol(y)
 
-  r_mat <- matrix(NA_real_,
-    nrow = nx, ncol = ny,
-    dimnames = list(colnames(x), colnames(y))
-  )
-  tSt_mat <- matrix(NA_real_,
-    nrow = nx, ncol = ny,
-    dimnames = list(colnames(x), colnames(y))
-  )
-  overlap_mat <- matrix(NA_integer_,
-    nrow = nx, ncol = ny,
-    dimnames = list(colnames(x), colnames(y))
-  )
+     r_mat <- matrix(NA_real_,
+          nrow = nx, ncol = ny,
+          dimnames = list(colnames(x), colnames(y))
+     )
+     tSt_mat <- matrix(NA_real_,
+          nrow = nx, ncol = ny,
+          dimnames = list(colnames(x), colnames(y))
+     )
+     overlap_mat <- matrix(NA_integer_,
+          nrow = nx, ncol = ny,
+          dimnames = list(colnames(x), colnames(y))
+     )
 
-  for (i in seq_len(nx)) {
-    for (j in seq_len(ny)) {
-      xi <- x[, i]
-      yj <- y[, j]
-      valid_idx <- which(!is.na(xi) & !is.na(yj))
-      ovl <- length(valid_idx)
-      overlap_mat[i, j] <- ovl
+     for (i in seq_len(nx)) {
+          for (j in seq_len(ny)) {
+               xi <- x[, i]
+               yj <- y[, j]
+               valid_idx <- which(!is.na(xi) & !is.na(yj))
+               ovl <- length(valid_idx)
+               overlap_mat[i, j] <- ovl
 
-      if (ovl >= min_overlap) {
-        r <- suppressWarnings(stats::cor(xi[valid_idx], yj[valid_idx], method = "pearson"))
-        r_mat[i, j] <- r
+               if (ovl >= min_overlap) {
+                    r <- suppressWarnings(stats::cor(xi[valid_idx], yj[valid_idx], method = "pearson"))
+                    r_mat[i, j] <- r
 
-        if (!is.na(r) && abs(r) < 0.99999 && ovl > 2) {
-          tSt_mat[i, j] <- round(r * sqrt(ovl - 2) / sqrt(1 - r^2), 2)
-        } else if (!is.na(r) && abs(r) >= 0.99999) {
-          tSt_mat[i, j] <- sign(r) * Inf
-        }
-      }
-    }
-  }
+                    if (!is.na(r) && abs(r) < 0.99999 && ovl > 2) {
+                         tSt_mat[i, j] <- round(r * sqrt(ovl - 2) / sqrt(1 - r^2), 2)
+                    } else if (!is.na(r) && abs(r) >= 0.99999) {
+                         tSt_mat[i, j] <- sign(r) * Inf
+                    }
+               }
+          }
+     }
 
-  if (as_df) {
-    df <- expand.grid(series = colnames(x), reference = colnames(y), KEEP.OUT.ATTRS = FALSE)
-    df$r_pearson <- as.vector(r_mat)
-    df$t_St <- as.vector(tSt_mat)
-    df$overlap <- as.vector(overlap_mat)
-    return(df)
-  } else {
-    return(list(r_pearson = r_mat, t_St = tSt_mat, overlap = overlap_mat))
-  }
+     if (as_df) {
+          df <- expand.grid(series = colnames(x), reference = colnames(y), KEEP.OUT.ATTRS = FALSE)
+          df$r_pearson <- as.vector(r_mat)
+          df$t_St <- as.vector(tSt_mat)
+          df$overlap <- as.vector(overlap_mat)
+          return(df)
+     } else {
+          return(list(r_pearson = r_mat, t_St = tSt_mat, overlap = overlap_mat))
+     }
 }

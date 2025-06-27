@@ -36,3 +36,9 @@ series from the two input datasets, then converts these to Student's t-statistic
 using the formula: t = r * sqrt(n-2) / sqrt(1-r²), where n is the number of
 overlapping observations.
 }
+\examples{
+# Create sample data,
+trs <- trs_pseudo_rwl(n_series = 5, series_length = c(80, 100), end_date = c(2010, 2020))
+trs_tSt(trs)$t_St
+
+}

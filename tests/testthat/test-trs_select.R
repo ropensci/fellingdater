@@ -104,7 +104,7 @@ test_that("trs_select handles data integrity with year column", {
 
      # Test that result maintains data relationships
      result <- trs_select(x, series = c("trs_2", "trs_4"), rownames_to_years = TRUE)
-     for (i in 1:nrow(result)) {
+     for (i in seq_len(nrow(result))) {
           year <- result$year[i]
           row_idx <- which(as.numeric(rownames(x)) == year)
           expect_equal(result$trs_2[i], x$trs_2[row_idx])

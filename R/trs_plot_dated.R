@@ -79,15 +79,15 @@ trs_plot_dated <- function(x, y,
 
      data_corr <- suppressMessages(
           trs_crossdate(
-               x = trs_plot[, 1, drop = F],
-               y = ref_plot[, 1, drop = F],
+               x = trs_plot[, 1, drop = FALSE],
+               y = ref_plot[, 1, drop = FALSE],
                min_overlap = 10,
                sliding = FALSE,
                pb = FALSE
           )
      )
 
-     pv <- sgc_for_plot(trs_plot[, 1, drop = F], ref_plot[, 1, drop = F])
+     pv <- sgc_for_plot(trs_plot[, 1, drop = FALSE], ref_plot[, 1, drop = FALSE])
      pv$year <- as.numeric(rownames(pv))
 
      if (zscore) {
