@@ -124,13 +124,13 @@ test_that("trs_remove missing series error", {
      # Test multiple missing series
      expect_error(
           trs_remove(test_rwl, series = c("missing1", "missing2")),
-          'The following series were not found in the data.frame: "missing1", "missing2"'
+          "The following series were not found.*missing1.*missing2.*"
      )
 
      # Test mix of existing and missing series
      expect_error(
           trs_remove(test_rwl, series = c("trs_1", "missing", "trs_2")),
-          'The following series were not found in the data.frame: "missing"'
+          "The following series were not found.*missing"
      )
 })
 

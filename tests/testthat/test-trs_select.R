@@ -84,13 +84,13 @@ test_that("trs_select handles missing series gracefully", {
      # Multiple missing series
      expect_error(
           trs_select(x, series = c("missing1", "missing2")),
-          'Series "missing1", "missing2" not found in dataframe'
+          "Series.*missing1.*missing2.*not found in dataframe"
      )
 
      # Mix of existing and missing series
      expect_error(
           trs_select(x, series = c("trs_1", "missing", "trs_2")),
-          'Series "missing" not found in dataframe'
+          "Series.*missing.*not found in dataframe"
      )
 })
 

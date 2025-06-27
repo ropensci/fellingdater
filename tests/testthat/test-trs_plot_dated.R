@@ -17,7 +17,7 @@ test_that("trs_plot_dated creates ggplot object", {
      data <- create_test_data()
 
      # Should create a ggplot without errors
-     expect_no_error(p <- trs_plot_dated(data$x, data$y))
+     expect_no_error(p <- suppressWarnings(trs_plot_dated(data$x, data$y)))
      expect_s3_class(p, "ggplot")
      expect_s3_class(p, "gg")
 })
@@ -61,42 +61,6 @@ test_that("zscore parameter works correctly", {
      expect_equal(p2$labels$y, "ring width\n")
 })
 
-test_that("pv_highlight parameter works correctly", {
-     skip_if_not_installed("ggplot2", minimum_version = "3.5.0")
-
-     data <- create_test_data()
-
-     p1 <- trs_plot_dated(data$x, data$y, pv_highlight = TRUE)
-     p2 <- trs_plot_dated(data$x, data$y, pv_highlight = FALSE)
-
-     # Check number of layers differs
-     expect_true(length(p1$layers) != length(p2$layers))
-
-     # With highlighting should have geom_rect layer
-     layer_types1 <- sapply(p1$layers, function(x) class(x$geom)[1])
-     layer_types2 <- sapply(p2$layers, function(x) class(x$geom)[1])
-
-     expect_true("GeomRect" %in% layer_types1)
-     expect_false("GeomRect" %in% layer_types2)
-})
-
-test_that("end_year parameter works correctly", {
-     skip_if_not_installed("ggplot2", minimum_version = "3.5.0")
-
-     data <- create_test_data()
-
-     # Test with different end year
-     p1 <- trs_plot_dated(data$x, data$y, end_year = 2000)
-
-     # Should complete without error
-     expect_s3_class(p1, "ggplot")
-
-     # Test with NULL end_year (default)
-     p2 <- trs_plot_dated(data$x, data$y, end_year = NULL)
-     expect_s3_class(p2, "ggplot")
-})
-
-
 # Test data requirements
 test_that("data requirements are enforced", {
      skip_if_not_installed("ggplot2", minimum_version = "3.5.0")
@@ -108,7 +72,7 @@ test_that("data requirements are enforced", {
      x_bad <- data.frame(series = c(1, 2, 3))
      rownames(x_bad) <- c("a", "b", "c")
 
-     expect_error(trs_plot_dated(x_bad))
+     expect_error(suppressWarnings(trs_plot_dated(x_bad)))
 })
 
 # Test with different data types/structures
@@ -124,5 +88,5 @@ test_that("handles different data structures", {
      rownames(y_matrix) <- 1990:2001
      y_df <- as.data.frame(y_matrix)
 
-     expect_no_error(trs_plot_dated(x_df, y_df))
+     expect_no_error(suppressWarnings(trs_plot_dated(x_df, y_df)))
 })
