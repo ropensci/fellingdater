@@ -33,7 +33,7 @@ LazyData: true
 Imports: 
     dplyr,
     plyr,
-    ggplot2,
+    ggplot2 (>= 3.5.0),
     ggtext,
     MASS,
     tidyr,
