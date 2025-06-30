@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">fellingdater</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +37,15 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="fellingdater-development-version">fellingdater (development version)<a class="anchor" aria-label="anchor" href="#fellingdater-development-version"></a></h2>
-<ul><li>Preparing for next release 1.2.0</li>
+<h2 class="pkg-version" data-toc-text="1.2.0" id="fellingdater-120-2025-06-30">fellingdater 1.2.0 (2025-06-30)<a class="anchor" aria-label="anchor" href="#fellingdater-120-2025-06-30"></a></h2>
+<p>NEW FEATURES A new set of functions for tree-ring dating, analysis, and visualization (trs_*)</p>
+<ul><li><p>Data generation and preparation: trs_pseudo_rwl(): Generate synthetic tree-ring datasets for testing and method development trs_select(): Select specific series from tree-ring data trs_remove(): Remove series from tree-ring datasets trs_trim(): Remove leading and trailing NA’s in tree-ring datasets or single series</p></li>
+<li><p>Crossdating analysis: trs_crossdate(): Comprehensive crossdating analysis with multiple statistical measures trs_date_end(): Set end dates for tree-ring series based on crossdating results trs_tho(): Calculate t-values according to the Hollstein (1980) transformation trs_tbp(): Calculate t-values according to the Baillie &amp; Pilcher (1973) transformation trs_pv(): Calculate percentage of parallel variation including SGC, SSGC, and Gleichläufigkeit, with significance levels trs_tSt(): Calculate correlation measures (Pearson r and t-values)</p></li>
+<li><p>Visualization: trs_plot_dated(): Display crossdating results with highlighting of parallel variation trs_plot_rwl(): Plot individual tree-ring series with customizable colors and styling</p></li>
+</ul><p>Enhanced workflow integration</p>
+<p>Tree-ring analysis functions now seamlessly integrate with existing felling date estimation (sw_* functions) Complete dendroarchaeological workflow from data processing through crossdating to felling date estimation Support for both synthetic data generation and real dendrochronological datasets</p>
+<p>NEW DATASET</p>
+<ul><li>Weitz_2025: New sapwood model for the Brussels region (Belgium) based on Weitz et al. (2025)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="fellingdater-110-2025-06-05">fellingdater 1.1.0 (2025-06-05)<a class="anchor" aria-label="anchor" href="#fellingdater-110-2025-06-05"></a></h2>
