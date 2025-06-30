@@ -6,11 +6,13 @@
 \alias{fellingdater}
 \title{fellingdater: Tree-ring dating and estimating felling dates of historical timbers}
 \description{
-fellingdater is an R package that facilitates the analysis and
-interpretation of tree-ring data from wooden cultural heritage objects and
-structures. The package standardizes the process of computing and combining
-felling date estimates (fd), derived from the observed number of sapwood
-rings (sw), both for individual and groups of related tree-ring series.
+fellingdater provides a comprehensive suite of functions
+for dendrochronological and dendroarchaeological analysis, covering a
+workflow from tree-ring \strong{data processing} and \strong{crossdating}, up to the
+estimation and reporting of \strong{felling dates}. Originally designed to assist
+dendrochronologists in inferring felling dates from dated tree-ring series
+with partially preserved sapwood, the package has been expanded to include a
+workflow for tree-ring dating, analysis, and visualization.
 }
 \seealso{
 Useful links:
