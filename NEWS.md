@@ -1,6 +1,36 @@
-# fellingdater (development version)
+# fellingdater 1.2.0 (2025-06-30)
 
--   Preparing for next release 1.2.0
+NEW FEATURES
+A new set of functions for tree-ring dating, analysis, and visualization (trs_*)
+
+- Data generation and preparation:
+trs_pseudo_rwl(): Generate synthetic tree-ring datasets for testing and method development
+trs_select(): Select specific series from tree-ring data
+trs_remove(): Remove series from tree-ring datasets
+trs_trim(): Remove leading and trailing NA's in tree-ring datasets or single series
+
+- Crossdating analysis:
+trs_crossdate(): Comprehensive crossdating analysis with multiple statistical measures
+trs_date_end(): Set end dates for tree-ring series based on crossdating results
+trs_tho(): Calculate t-values according to the Hollstein (1980) transformation
+trs_tbp(): Calculate t-values according to the Baillie & Pilcher (1973) transformation
+trs_pv(): Calculate percentage of parallel variation including SGC, SSGC, and Gleichläufigkeit, with significance levels
+trs_tSt(): Calculate correlation measures (Pearson r and t-values)
+
+- Visualization:
+trs_plot_dated(): Display crossdating results with highlighting of parallel variation
+trs_plot_rwl(): Plot individual tree-ring series with customizable colors and styling
+
+Enhanced workflow integration
+
+Tree-ring analysis functions now seamlessly integrate with existing felling date estimation (sw_* functions)
+Complete dendroarchaeological workflow from data processing through crossdating to felling date estimation
+Support for both synthetic data generation and real dendrochronological datasets
+
+NEW DATASET
+
+- Weitz_2025: New sapwood model for the Brussels region (Belgium) based on Weitz et al. (2025)
+
 
 # fellingdater 1.1.0 (2025-06-05)
 

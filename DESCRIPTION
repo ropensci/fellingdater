@@ -1,6 +1,6 @@
 Package: fellingdater
 Title: Tree-ring dating and estimating felling dates of historical timbers
-Version: 1.1.0.9000
+Version: 1.2.0
 Authors@R: c(
     person("Kristof", "Haneca", , "Kristof.Haneca@vlaanderen.be",role = c("aut", "cre", "cph"),
         comment = c(ORCID = "0000-0002-7719-8305")),
