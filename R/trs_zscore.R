@@ -14,39 +14,43 @@
 #'
 #' @export
 trs_zscore <- function(x) {
-  # Input validation
-  if (!is.data.frame(x)) {
-    stop("Input must be a data.frame")
-  }
+     # Input validation
+     if (!is.data.frame(x)) {
+          stop("Input must be a data.frame")
+     }
 
-  if (nrow(x) == 0 || ncol(x) == 0) {
-    stop("Input data.frame cannot be empty")
-  }
+     if (nrow(x) == 0 || ncol(x) == 0) {
+          stop("Input data.frame cannot be empty")
+     }
 
-  original_class <- class(x)
-  years <- rownames(x)
+     original_class <- class(x)
+     years <- rownames(x)
 
-  z <- as.data.frame(lapply(x, function(y) {
-    # Remove NAs for calculation
-    valid_vals <- y[!is.na(y)]
+     z <- as.data.frame(
+          lapply(x, function(y) {
+               # Remove NAs for calculation
+               valid_vals <- y[!is.na(y)]
 
-    # Check for insufficient data or zero variance
-    if (length(valid_vals) < 2) {
-      return(rep(NA_real_, length(y)))
-    }
+               # Check for insufficient data or zero variance
+               if (length(valid_vals) < 2) {
+                    return(rep(NA_real_, length(y)))
+               }
 
-    mean_y <- mean(valid_vals)
-    sd_y <- stats::sd(valid_vals)
+               mean_y <- mean(valid_vals)
+               sd_y <- stats::sd(valid_vals)
 
-    # Handle zero variance case
-    if (sd_y == 0 || is.na(sd_y)) {
-      return(rep(NA_real_, length(y)))
-    }
-    # Calculate z-scores
-    (y - mean_y) / sd_y
-  }))
+               # Handle zero variance case
+               if (sd_y == 0 || is.na(sd_y)) {
+                    return(rep(NA_real_, length(y)))
+               }
+               # Calculate z-scores
+               (y - mean_y) / sd_y
+          }),
+          # preserve original names, even if they include white spaces
+          check.names = FALSE
+     )
 
-  rownames(z) <- years
-  class(z) <- original_class
-  return(z)
+     rownames(z) <- years
+     class(z) <- original_class
+     return(z)
 }
