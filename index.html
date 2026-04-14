@@ -151,12 +151,12 @@
 <span><span class="co">#&gt; 5 trs_05 1010         8     FALSE</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/sw_combine.html">sw_combine</a></span><span class="op">(</span><span class="va">sw_example1</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<p><img src="reference/figures/README-example-1.png" alt="" width="100%"></p>
 <p>The light grey distributions shows felling date probability densities for each individual series, while the dark grey distribution represents the combined estimate for a common felling date.</p>
 <p>The sapwood model used in the example above to estimate the felling date range, was published by <a href="https://search.worldcat.org/nl/title/6391864" class="external-link">Hollstein (1980)</a>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/sw_model.html">sw_model</a></span><span class="op">(</span><span class="st">"Hollstein_1980"</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-model_sapwood_counts-1.png" width="100%"></p>
+<p><img src="reference/figures/README-model_sapwood_counts-1.png" alt="" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="tree-ring-series-analysis">Tree-ring series analysis<a class="anchor" aria-label="anchor" href="#tree-ring-series-analysis"></a>
@@ -174,7 +174,7 @@
 <span><span class="fu"><a href="reference/trs_plot_rwl.html">trs_plot_rwl</a></span><span class="op">(</span><span class="va">trs</span>,</span>
 <span>             color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>, <span class="st">"navyblue"</span>, <span class="st">"forestgreen"</span>, <span class="st">"purple"</span>, <span class="st">"orange"</span><span class="op">)</span></span>
 <span>             <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-trs-example-1.png" width="100%"></p>
+<p><img src="reference/figures/README-trs-example-1.png" alt="" width="100%"></p>
 <ul>
 <li>Crossdate a series against a reference series/chronology</li>
 </ul>
@@ -207,7 +207,7 @@
 <code class="sourceCode R"><span><span class="va">series_dated</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trs_end_date.html">trs_end_date</a></span><span class="op">(</span><span class="va">series</span>, <span class="fl">2014</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/trs_plot_dated.html">trs_plot_dated</a></span><span class="op">(</span><span class="va">series_dated</span>, <span class="va">reference</span>, </span>
 <span>               zscore <span class="op">=</span> <span class="cn">TRUE</span>, pv_highlight <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-3-1.png" alt="" width="100%"></p>
 </div>
 </div>
 <div class="section level2">
@@ -246,6 +246,12 @@
 <h2 id="academic-papers-citing-fellingdater">Academic papers citing <code>fellingdater</code>
 <a class="anchor" aria-label="anchor" href="#academic-papers-citing-fellingdater"></a>
 </h2>
+<blockquote>
+<p>Gmińska-Nowak B., Raczkowski J., Chlebus E. &amp; Heussner K.-U. 2025: Cistercian heritage in Pelplin, Poland. Dendrochronological dating of the covers of medieval codices, <em>Dendrochronologia</em> 94, 126439.<a href="https://doi.org/10.1016/j.dendro.2025.126439" class="external-link uri">https://doi.org/10.1016/j.dendro.2025.126439</a></p>
+</blockquote>
+<blockquote>
+<p>Weitz A., Haneca K. &amp; Hoffsummer P. 2025: Estimating sapwood counts for historical oak timbers from Brussels, Belgium (13th–18th century), <em>International Journal of Wood Culture</em> 5, 1–16. <a href="https://doi.org/10.1163/27723194-bja10038" class="external-link uri">https://doi.org/10.1163/27723194-bja10038</a></p>
+</blockquote>
 <blockquote>
 <p>Altman J., Altmanova N., Fibich P., Korznikov K. &amp; Fonti P. 2025: Advancing dendrochronology with R: an overview of packages and future perspectives, <em>Frontiers in Ecology and Evolution</em> 13, 1593675. <a href="https://doi.org/10.3389/fevo.2025.1593675" class="external-link uri">https://doi.org/10.3389/fevo.2025.1593675</a></p>
 </blockquote>
@@ -333,7 +339,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

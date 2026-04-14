@@ -37,7 +37,7 @@ of synchronous growth changes (SCG)."><meta property="og:image" content="https:/
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Plot a dated tree-ring series with a reference series or chronology</h1>
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/v1.2.0/R/trs_plot_dated.R" class="external-link"><code>R/trs_plot_dated.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/fellingdater/blob/main/R/trs_plot_dated.R" class="external-link"><code>R/trs_plot_dated.R</code></a></small>
       <div class="d-none name"><code>trs_plot_dated.Rd</code></div>
     </div>
 
@@ -58,7 +58,8 @@ of synchronous growth changes (SCG).</p>
 <span>  pv_alpha <span class="op">=</span> <span class="fl">0.2</span>,</span>
 <span>  show_stats <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  labels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  label_size <span class="op">=</span> <span class="fl">3</span></span>
+<span>  label_size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  x_breaks <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -108,6 +109,13 @@ If <code>FALSE</code>, neither labels nor points are shown. Defaults to <code>TR
 <dt id="arg-label-size">label_size<a class="anchor" aria-label="anchor" href="#arg-label-size"></a></dt>
 <dd><p>Numeric. Controls the size of the year labels. Defaults to <code>3</code>.</p></dd>
 
+
+<dt id="arg-x-breaks">x_breaks<a class="anchor" aria-label="anchor" href="#arg-x-breaks"></a></dt>
+<dd><p>Numeric. The interval between x-axis tick marks (in years).
+If <code>NULL</code> (default), the interval is chosen automatically based on the
+length of the series: 10 years for series ≤ 100 years, 20 for ≤ 250,
+50 for ≤ 500, and 100 otherwise. Must be a positive number if provided.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -128,7 +136,6 @@ Required helper functions include: <code><a href="trs_trim.html">trs_trim</a></c
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="trs_pseudo_rwl.html">trs_pseudo_rwl</a></span><span class="op">(</span>n_series <span class="op">=</span> <span class="fl">1</span>, series_length <span class="op">=</span> <span class="fl">80</span>, end_date <span class="op">=</span> <span class="fl">1500</span>, prefix <span class="op">=</span> <span class="st">"trs_"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="trs_pseudo_rwl.html">trs_pseudo_rwl</a></span><span class="op">(</span>n_series <span class="op">=</span> <span class="fl">1</span>, series_length <span class="op">=</span> <span class="fl">400</span>, end_date <span class="op">=</span> <span class="fl">1700</span>, prefix <span class="op">=</span> <span class="st">"ref_"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">trs_plot_dated</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Ignoring unknown parameters: `linewidth`</span>
 <span class="r-plt img"><img src="trs_plot_dated-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -142,7 +149,7 @@ Required helper functions include: <code><a href="trs_trim.html">trs_trim</a></c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
