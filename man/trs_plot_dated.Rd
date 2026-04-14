@@ -45,8 +45,7 @@ If \code{FALSE}, neither labels nor points are shown. Defaults to \code{TRUE}.}
 
 \item{x_breaks}{Numeric. The interval between x-axis tick marks (in years).
 If \code{NULL} (default), the interval is chosen automatically based on the
-length of the series: 10 years for series ≤ 100 years, 20 for ≤ 250,
-50 for ≤ 500, and 100 otherwise. Must be a positive number if provided.}
+length of the series. Must be a positive number if provided.}
 }
 \value{
 A \code{ggplot} object showing the plotted time series.

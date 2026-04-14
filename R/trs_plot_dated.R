@@ -22,8 +22,7 @@
 #' @param label_size Numeric. Controls the size of the year labels. Defaults to `3`.
 #' @param x_breaks Numeric. The interval between x-axis tick marks (in years).
 #'   If `NULL` (default), the interval is chosen automatically based on the
-#'   length of the series: 10 years for series ≤ 100 years, 20 for ≤ 250,
-#'   50 for ≤ 500, and 100 otherwise. Must be a positive number if provided.
+#'   length of the series. Must be a positive number if provided.
 #'
 #' @return A `ggplot` object showing the plotted time series.
 #'

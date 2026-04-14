@@ -16,6 +16,7 @@ DOCUMENTATION
 # fellingdater 1.2.0 (2025-06-30)
 
 NEW FEATURES
+
 A new set of functions for tree-ring dating, analysis, and visualization (trs_*)
 
 - Data generation and preparation:
