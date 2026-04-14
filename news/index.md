@@ -24,8 +24,10 @@ companion paper to the package
 
 ## fellingdater 1.2.0 (2025-06-30)
 
-NEW FEATURES A new set of functions for tree-ring dating, analysis, and
-visualization (trs\_\*)
+NEW FEATURES
+
+A new set of functions for tree-ring dating, analysis, and visualization
+(trs\_\*)
 
 - Data generation and preparation: trs_pseudo_rwl(): Generate synthetic
   tree-ring datasets for testing and method development trs_select():

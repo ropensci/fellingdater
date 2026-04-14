@@ -77,8 +77,7 @@ trs_plot_dated(
 
   Numeric. The interval between x-axis tick marks (in years). If `NULL`
   (default), the interval is chosen automatically based on the length of
-  the series: 10 years for series ≤ 100 years, 20 for ≤ 250, 50 for ≤
-  500, and 100 otherwise. Must be a positive number if provided.
+  the series. Must be a positive number if provided.
 
 ## Value
 
