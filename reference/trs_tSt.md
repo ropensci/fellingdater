@@ -51,7 +51,7 @@ A list containing:
 
 The function computes Pearson correlation coefficients between all pairs
 of series from the two input datasets, then converts these to Student's
-t-statistics using the formula: t = r \* sqrt(n-2) / sqrt(1-r²), where n
+t-statistics using the formula: t = r \* sqrt(n-2) / sqrt(1-^2), where n
 is the number of overlapping observations.
 
 ## Examples

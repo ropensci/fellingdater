@@ -79,8 +79,9 @@ Where \\n\\ is the number of overlapping observations (original years,
 not growth ratios). The degrees of freedom are adjusted by subtracting 3
 to account for the growth ratio transformation.
 
-Negative correlations are set to 0, and perfect correlations (\|r\| ≥ 1)
-result in infinite t-values to handle floating-point precision issues.
+Negative correlations are set to 0, and perfect correlations (\|r\|
+\>= 1) result in infinite t-values to handle floating-point precision
+issues.
 
 ## References
 
