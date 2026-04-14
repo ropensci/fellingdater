@@ -21,7 +21,7 @@
 #' @details
 #' The function computes Pearson correlation coefficients between all pairs of
 #' series from the two input datasets, then converts these to Student's t-statistics
-#' using the formula: t = r * sqrt(n-2) / sqrt(1-r²), where n is the number of
+#' using the formula: t = r * sqrt(n-2) / sqrt(1-^2), where n is the number of
 #' overlapping observations.
 #'
 #' @examples
@@ -32,22 +32,30 @@
 #' @export
 trs_tSt <- function(x, y = NULL, min_overlap = 30, as_df = FALSE) {
      stopifnot(is.data.frame(x))
-     if (is.null(y)) y <- x
+     if (is.null(y)) {
+          y <- x
+     }
      stopifnot(is.data.frame(y))
 
      nx <- ncol(x)
      ny <- ncol(y)
 
-     r_mat <- matrix(NA_real_,
-          nrow = nx, ncol = ny,
+     r_mat <- matrix(
+          NA_real_,
+          nrow = nx,
+          ncol = ny,
           dimnames = list(colnames(x), colnames(y))
      )
-     tSt_mat <- matrix(NA_real_,
-          nrow = nx, ncol = ny,
+     tSt_mat <- matrix(
+          NA_real_,
+          nrow = nx,
+          ncol = ny,
           dimnames = list(colnames(x), colnames(y))
      )
-     overlap_mat <- matrix(NA_integer_,
-          nrow = nx, ncol = ny,
+     overlap_mat <- matrix(
+          NA_integer_,
+          nrow = nx,
+          ncol = ny,
           dimnames = list(colnames(x), colnames(y))
      )
 
@@ -60,11 +68,18 @@ trs_tSt <- function(x, y = NULL, min_overlap = 30, as_df = FALSE) {
                overlap_mat[i, j] <- ovl
 
                if (ovl >= min_overlap) {
-                    r <- suppressWarnings(stats::cor(xi[valid_idx], yj[valid_idx], method = "pearson"))
+                    r <- suppressWarnings(stats::cor(
+                         xi[valid_idx],
+                         yj[valid_idx],
+                         method = "pearson"
+                    ))
                     r_mat[i, j] <- r
 
                     if (!is.na(r) && abs(r) < 0.99999 && ovl > 2) {
-                         tSt_mat[i, j] <- round(r * sqrt(ovl - 2) / sqrt(1 - r^2), 2)
+                         tSt_mat[i, j] <- round(
+                              r * sqrt(ovl - 2) / sqrt(1 - r^2),
+                              2
+                         )
                     } else if (!is.na(r) && abs(r) >= 0.99999) {
                          tSt_mat[i, j] <- sign(r) * Inf
                     }
@@ -73,7 +88,11 @@ trs_tSt <- function(x, y = NULL, min_overlap = 30, as_df = FALSE) {
      }
 
      if (as_df) {
-          df <- expand.grid(series = colnames(x), reference = colnames(y), KEEP.OUT.ATTRS = FALSE)
+          df <- expand.grid(
+               series = colnames(x),
+               reference = colnames(y),
+               KEEP.OUT.ATTRS = FALSE
+          )
           df$r_pearson <- as.vector(r_mat)
           df$t_St <- as.vector(tSt_mat)
           df$overlap <- as.vector(overlap_mat)

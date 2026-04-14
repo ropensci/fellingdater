@@ -33,7 +33,7 @@ Student's t-statistics between all pairs of series from two tree-ring datasets.
 \details{
 The function computes Pearson correlation coefficients between all pairs of
 series from the two input datasets, then converts these to Student's t-statistics
-using the formula: t = r * sqrt(n-2) / sqrt(1-r²), where n is the number of
+using the formula: t = r * sqrt(n-2) / sqrt(1-^2), where n is the number of
 overlapping observations.
 }
 \examples{

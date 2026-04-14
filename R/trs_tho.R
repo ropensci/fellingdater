@@ -44,7 +44,7 @@
 #' Where \eqn{n} is the number of overlapping observations (original years, not growth ratios).
 #' The degrees of freedom are adjusted by subtracting 3 to account for the growth ratio transformation.
 #'
-#' Negative correlations are set to 0, and perfect correlations (|r| ≥ 1) result
+#' Negative correlations are set to 0, and perfect correlations (|r| >= 1) result
 #' in infinite t-values to handle floating-point precision issues.
 #'
 #' @references
@@ -72,9 +72,17 @@
 #' @seealso \code{\link{trs_tbp}} for Baillie & Pilcher t-values
 #'
 #' @export
-trs_tho <- function(x, y = NULL, min_overlap = 50, as_df = FALSE, transform = TRUE) {
+trs_tho <- function(
+  x,
+  y = NULL,
+  min_overlap = 50,
+  as_df = FALSE,
+  transform = TRUE
+) {
   stopifnot(is.data.frame(x))
-  if (is.null(y)) y <- x
+  if (is.null(y)) {
+    y <- x
+  }
   stopifnot(is.data.frame(y))
 
   if (!all(sapply(x, is.numeric)) || !all(sapply(y, is.numeric))) {
@@ -103,12 +111,16 @@ trs_tho <- function(x, y = NULL, min_overlap = 50, as_df = FALSE, transform = TR
   nx <- ncol(wuch_x)
   ny <- ncol(wuch_y)
 
-  tho_mat <- matrix(NA_real_,
-    nrow = nx, ncol = ny,
+  tho_mat <- matrix(
+    NA_real_,
+    nrow = nx,
+    ncol = ny,
     dimnames = list(colnames(x), colnames(y))
   )
-  overlap_mat <- matrix(NA_integer_,
-    nrow = nx, ncol = ny,
+  overlap_mat <- matrix(
+    NA_integer_,
+    nrow = nx,
+    ncol = ny,
     dimnames = list(colnames(x), colnames(y))
   )
 
@@ -121,12 +133,18 @@ trs_tho <- function(x, y = NULL, min_overlap = 50, as_df = FALSE, transform = TR
       overlap_mat[i, j] <- ovl
 
       if (ovl >= min_overlap) {
-        r <- suppressWarnings(stats::cor(xi[shared_years], yj[shared_years], method = "pearson"))
+        r <- suppressWarnings(stats::cor(
+          xi[shared_years],
+          yj[shared_years],
+          method = "pearson"
+        ))
 
         if (!is.na(r) && abs(r) >= 0.999999) {
           tho_mat[i, j] <- sign(r) * Inf
         } else {
-          if (is.na(r) || r < 0) r <- 0
+          if (is.na(r) || r < 0) {
+            r <- 0
+          }
           df_adj <- ovl - 3 # 2 - 1 degrees of freedom adjustment
           tho_mat[i, j] <- round(r * sqrt(df_adj) / sqrt(1 - r^2), 2)
         }
@@ -135,7 +153,11 @@ trs_tho <- function(x, y = NULL, min_overlap = 50, as_df = FALSE, transform = TR
   }
 
   if (as_df) {
-    df <- expand.grid(series = colnames(x), reference = colnames(y), KEEP.OUT.ATTRS = FALSE)
+    df <- expand.grid(
+      series = colnames(x),
+      reference = colnames(y),
+      KEEP.OUT.ATTRS = FALSE
+    )
     df$t_Ho <- as.vector(tho_mat)
     df$overlap <- as.vector(overlap_mat)
     return(df)
