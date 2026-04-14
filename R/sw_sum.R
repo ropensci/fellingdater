@@ -42,16 +42,18 @@
 #'
 #' sw_sum(sw_example7, densfun = "lognormal", cred_mass = 0.63, plot = FALSE)
 #'
-sw_sum <- function(x,
-                   series = "series",
-                   last = "last",
-                   n_sapwood = "n_sapwood",
-                   waneyedge = "waneyedge",
-                   sw_data = "Hollstein_1980",
-                   densfun = "lognormal",
-                   cred_mass = 0.954,
-                   plot = FALSE,
-                   scale_p = FALSE) {
+sw_sum <- function(
+     x,
+     series = "series",
+     last = "last",
+     n_sapwood = "n_sapwood",
+     waneyedge = "waneyedge",
+     sw_data = "Hollstein_1980",
+     densfun = "lognormal",
+     cred_mass = 0.954,
+     plot = FALSE,
+     scale_p = FALSE
+) {
      check_duplicate_labels(x[[series]])
      check_input(
           x = x,
@@ -77,15 +79,15 @@ sw_sum <- function(x,
           )
      }
 
-     swr <- x[, n_sapwood]
-     end_date <- x[, last]
-     cambium <- x[, waneyedge]
+     swr <- x[[n_sapwood]]
+     end_date <- x[[last]]
+     cambium <- x[[waneyedge]]
 
      if (nrow(x) == 0) {
           stop("--> No series with sapwood or waney edge in dataset")
      }
 
-     keycodes <- x[, series]
+     keycodes <- x[[series]]
 
      if (sw_data %in% sw_data_overview()) {
           sw_data <- rep(sw_data, nrow(x))
@@ -102,7 +104,6 @@ sw_sum <- function(x,
      time_axis <- seq(time_range[1], time_range[2] + 100, by = 1)
 
      pdf_matrix <- matrix(nrow = length(time_axis), ncol = 1)
-
 
      pdf_matrix[, 1] <- time_axis
      colnames(pdf_matrix) <- "year"
@@ -121,11 +122,7 @@ sw_sum <- function(x,
                pdf[1, 1] <- felling_date
                pdf[1, 2] <- 1
                pdf_matrix <-
-                    merge(pdf_matrix,
-                         pdf,
-                         by = "year",
-                         all = TRUE
-                    )
+                    merge(pdf_matrix, pdf, by = "year", all = TRUE)
           } else {
                pdf <-
                     sw_interval(
@@ -138,11 +135,7 @@ sw_sum <- function(x,
                pdf <- pdf[, -2] # remove column n_sapwood
                colnames(pdf) <- c("year", keycode_i)
                pdf_matrix <-
-                    merge(pdf_matrix,
-                         pdf,
-                         by = "year",
-                         all = TRUE
-                    )
+                    merge(pdf_matrix, pdf, by = "year", all = TRUE)
           }
      }
 

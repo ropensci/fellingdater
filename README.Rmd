@@ -243,6 +243,15 @@ established R-apackages like [`dplR`](https://opendendro.org/r/).
 
 ## Academic papers citing `fellingdater`
 
+> Gmińska-Nowak B., Raczkowski J., Chlebus E. & Heussner K.-U. 2025: Cistercian heritage
+> in Pelplin, Poland. Dendrochronological dating of the covers of medieval codices, 
+> *Dendrochronologia* 94, 126439.<https://doi.org/10.1016/j.dendro.2025.126439>
+ 
+> Weitz A., Haneca K. & Hoffsummer P. 2025: Estimating sapwood counts for 
+> historical oak timbers from Brussels, Belgium (13th–18th century), 
+> *International Journal of Wood Culture* 5, 1–16.
+> <https://doi.org/10.1163/27723194-bja10038>
+
 > Altman J., Altmanova N., Fibich P., Korznikov K. & Fonti P. 2025:
 > Advancing dendrochronology with R: an overview of packages and future
 > perspectives, *Frontiers in Ecology and Evolution* 13, 1593675.

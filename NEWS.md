@@ -1,3 +1,18 @@
+# fellingdater 1.2.1 (2026-04-14)
+
+IMPROVEMENTS
+- `trs_plot_dated()` gains a new `x_breaks` argument to control x-axis tick intervals
+- `trs_plot_dated()` now handles non-syntactic column names safely using `make.names()`
+- improved y-axis scaling and plot appearance for `trs_plot_dated()`
+- fix for `trs_crossdate()` so it behaves correctly when `top_n` is activated 
+
+BUG FIXES
+- `read_fh()` now safely handles non-UTF-8 characters by normalizing input with `iconv()`
+
+DOCUMENTATION
+- added recent scientific publications citing the companion paper to the package
+
+
 # fellingdater 1.2.0 (2025-06-30)
 
 NEW FEATURES

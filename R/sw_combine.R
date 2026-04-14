@@ -78,16 +78,18 @@
 #' sw_example3
 #' sw_combine(sw_example3, plot = FALSE)
 #'
-sw_combine <- function(x,
-                       series = "series",
-                       last = "last",
-                       n_sapwood = "n_sapwood",
-                       waneyedge = "waneyedge",
-                       sw_data = "Hollstein_1980",
-                       densfun = "lognormal",
-                       cred_mass = 0.954,
-                       hdi = TRUE,
-                       plot = FALSE) {
+sw_combine <- function(
+     x,
+     series = "series",
+     last = "last",
+     n_sapwood = "n_sapwood",
+     waneyedge = "waneyedge",
+     sw_data = "Hollstein_1980",
+     densfun = "lognormal",
+     cred_mass = 0.954,
+     hdi = TRUE,
+     plot = FALSE
+) {
      check_input(
           x = x,
           series = series,
@@ -99,9 +101,9 @@ sw_combine <- function(x,
           densfun = densfun
      )
 
-     swr <- x[, n_sapwood]
-     end_date <- x[, last]
-     cambium <- x[, waneyedge]
+     swr <- x[[n_sapwood]]
+     end_date <- x[[last]]
+     cambium <- x[[waneyedge]]
 
      n <- nrow(x)
      time_axis <- seq(min(end_date) - 3, max(end_date) + 100, by = 1)
@@ -133,21 +135,14 @@ sw_combine <- function(x,
 
           for (i in seq_len(length(keycodes))) {
                keycode_i <- keycodes[i]
-               pdf <- matrix(NA_real_,
-                    nrow = length(time_axis),
-                    ncol = 2
-               )
+               pdf <- matrix(NA_real_, nrow = length(time_axis), ncol = 2)
                pdf[, 1] <- time_axis
                colnames(pdf) <- c("year", keycode_i)
                end_date_i <- end_date[i]
                pdf[pdf[, "year"] < end_date_i, keycode_i] <- 0
                pdf[pdf[, "year"] >= end_date_i, keycode_i] <- NA_real_
                pdf_matrix <-
-                    merge(pdf_matrix,
-                         pdf,
-                         by = "year",
-                         all = TRUE
-                    )
+                    merge(pdf_matrix, pdf, by = "year", all = TRUE)
           }
 
           pdf_matrix <-
@@ -196,37 +191,23 @@ sw_combine <- function(x,
                if (cambium_i == TRUE) {
                     # exact felling date
                     pdf <-
-                         matrix(NA_real_,
-                              nrow = length(time_axis),
-                              ncol = 2
-                         )
+                         matrix(NA_real_, nrow = length(time_axis), ncol = 2)
                     pdf[, 1] <- time_axis
                     colnames(pdf) <- c("year", keycode_i)
                     pdf[pdf[, "year"] == end_date_i, keycode_i] <- 1
                     pdf[pdf[, "year"] != end_date_i, keycode_i] <- 0
                     pdf_matrix <-
-                         merge(pdf_matrix,
-                              pdf,
-                              by = "year",
-                              all = TRUE
-                         )
+                         merge(pdf_matrix, pdf, by = "year", all = TRUE)
                } else if (is.na(swr_i)) {
                     # terminus post quem date
                     pdf <-
-                         matrix(NA_real_,
-                              nrow = length(time_axis),
-                              ncol = 2
-                         )
+                         matrix(NA_real_, nrow = length(time_axis), ncol = 2)
                     pdf[, 1] <- time_axis
                     colnames(pdf) <- c("year", keycode_i)
                     pdf[pdf[, "year"] < end_date_i, keycode_i] <- 0
                     pdf[pdf[, "year"] >= end_date_i, keycode_i] <- NA_real_
                     pdf_matrix <-
-                         merge(pdf_matrix,
-                              pdf,
-                              by = "year",
-                              all = TRUE
-                         )
+                         merge(pdf_matrix, pdf, by = "year", all = TRUE)
                } else {
                     #  apply sw_interval to each individual series
                     pdf <- sw_interval(
@@ -241,11 +222,7 @@ sw_combine <- function(x,
                     pdf <- pdf[c(1, 3)]
                     colnames(pdf) <- c("year", keycode_i)
                     pdf_matrix <-
-                         merge(pdf_matrix,
-                              pdf,
-                              by = "year",
-                              all = TRUE
-                         )
+                         merge(pdf_matrix, pdf, by = "year", all = TRUE)
                     # fill matrix with 0's when NA
                     pdf_matrix[is.na(pdf_matrix[, keycode_i]), keycode_i] <-
                          0
@@ -267,16 +244,21 @@ sw_combine <- function(x,
                     }
                )
 
-               if (any(pdf_matrix[, 2:length(keycodes) + 1] == 1, na.rm = TRUE)) {
+               if (
+                    any(pdf_matrix[, 2:length(keycodes) + 1] == 1, na.rm = TRUE)
+               ) {
                     # when multiple exact felling dates are listed that do no correspond
                     # check rowwise if there is any p-value == 1, and set comb = 1
-                    pdf_matrix[apply(
-                         pdf_matrix[, 2:length(keycodes) + 1] == 1,
-                         1,
-                         FUN = function(x) {
-                              any(x, na.rm = TRUE)
-                         }
-                    ), "comb"] <- 1
+                    pdf_matrix[
+                         apply(
+                              pdf_matrix[, 2:length(keycodes) + 1] == 1,
+                              1,
+                              FUN = function(x) {
+                                   any(x, na.rm = TRUE)
+                              }
+                         ),
+                         "comb"
+                    ] <- 1
                } else if (sum(pdf_matrix$comb, na.rm = TRUE) > 0) {
                     # avoid division by 0
                     pdf_matrix$comb <-
@@ -286,8 +268,10 @@ sw_combine <- function(x,
 
           if (hdi == FALSE) {
                return(pdf_matrix)
-          } else if (hdi == TRUE &
-               sum(pdf_matrix$comb, na.rm = TRUE) == 0) {
+          } else if (
+               hdi == TRUE &
+                    sum(pdf_matrix$comb, na.rm = TRUE) == 0
+          ) {
                message <- paste0("unable to combine these ", n, " series")
 
                hdi_range <- c(
@@ -310,8 +294,10 @@ sw_combine <- function(x,
 
                agr_crit <- NA_real_
                agr_model <- NA_real_
-          } else if (hdi == TRUE &
-               (length(which(pdf_matrix[, "comb"] == 1)) > 1)) {
+          } else if (
+               hdi == TRUE &
+                    (length(which(pdf_matrix[, "comb"] == 1)) > 1)
+          ) {
                # case with multiple and not corresponding felling dates
 
                fds <- pdf_matrix[pdf_matrix[, "comb"] == 1, "year"]
@@ -408,16 +394,20 @@ sw_combine <- function(x,
                rownames(summary) <- NULL
 
                agr_model <-
-                    round(100 * agr_prod^(1 / sqrt(
-                         length(keycodes)
-                    )), 1)
+                    round(
+                         100 *
+                              agr_prod^(1 /
+                                   sqrt(
+                                        length(keycodes)
+                                   )),
+                         1
+                    )
 
                agr_crit <- 60
           }
      }
      names(agr_model) <- "Overall agreement index (%)"
      names(agr_crit) <- "Critical threshold (%)"
-
 
      model_summary <- list(
           raw_data = pdf_matrix,

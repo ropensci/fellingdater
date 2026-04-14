@@ -14,8 +14,9 @@
 #' @param sliding Logical. If `TRUE`, performs sliding window analysis testing
 #'   multiple temporal lags. If `FALSE`, tests only at lag 0 (contemporary positioning).
 #'   Default is `TRUE`.
-#' @param top_n Integer or NULL. If specified, returns only the top n matches per
-#'   test series (after optional sorting by `rank_by`). Default is `NULL`.
+#' @param top_n Integer or NULL. If specified, returns only the top `n` matches
+#'   per test series, ranked by the statistic given in `rank_by`. Requires
+#'   `rank_by` to be specified. Default is `NULL`.
 #' @param rank_by Character or NULL. Statistic to rank by when sorting results per
 #'   test series. If `NULL`, no additional sorting is applied beyond default ordering.
 #'   Options are "r_pearson", "t_St", "t_BP", "t_Ho", "sgc", "ssgc", "glk".
@@ -143,14 +144,27 @@
 #' @importFrom utils txtProgressBar setTxtProgressBar head
 #'
 #' @export
-trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
-                          top_n = NULL, rank_by = NULL, pb = TRUE) {
+trs_crossdate <- function(
+     x,
+     y = NULL,
+     min_overlap = 30,
+     sliding = TRUE,
+     top_n = NULL,
+     rank_by = NULL,
+     pb = TRUE
+) {
      # Input validation
      stopifnot(is.data.frame(x))
-     if (is.null(y)) y <- x
+     if (is.null(y)) {
+          y <- x
+     }
      stopifnot(is.data.frame(y))
-     if (nrow(x) == 0 || ncol(x) == 0) stop("'x' cannot be empty")
-     if (!all(sapply(x, is.numeric))) stop("All columns in 'x' must be numeric")
+     if (nrow(x) == 0 || ncol(x) == 0) {
+          stop("'x' cannot be empty")
+     }
+     if (!all(sapply(x, is.numeric))) {
+          stop("All columns in 'x' must be numeric")
+     }
 
      x <- trs_trim(x)
      y <- trs_trim(y)
@@ -159,7 +173,7 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
      check_consecutive(x)
      check_consecutive(y)
 
-     if (min_overlap < 3 || min_overlap %% 1 != 0) {
+     if (!is.numeric(min_overlap) || min_overlap < 3 || min_overlap %% 1 != 0) {
           stop("'min_overlap' should be a single integer >= 3")
      }
 
@@ -167,13 +181,31 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
           stop("'sliding' must be a logical value (TRUE/FALSE)")
      }
 
+     if (!is.null(top_n) && !is.numeric(top_n)) {
+          stop("'top_n' must be a positive integer")
+     }
      if (!is.null(top_n) && (top_n < 1 || top_n != as.integer(top_n))) {
           stop("'top_n' must be a positive integer")
      }
+     if (!is.null(top_n) && is.null(rank_by)) {
+          stop("'top_n' requires 'rank_by' to be specified")
+     }
+
      # Validate rank_by parameter
-     valid_rank_by <- c("r_pearson", "t_St", "t_BP", "t_Ho", "sgc", "ssgc", "glk")
+     valid_rank_by <- c(
+          "r_pearson",
+          "t_St",
+          "t_BP",
+          "t_Ho",
+          "sgc",
+          "ssgc",
+          "glk"
+     )
      if (!is.null(rank_by) && !rank_by %in% valid_rank_by) {
-          stop("'rank_by' must be NULL or one of: ", paste(valid_rank_by, collapse = ", "))
+          stop(
+               "'rank_by' must be NULL or one of: ",
+               paste(valid_rank_by, collapse = ", ")
+          )
      }
 
      x_years <- as.integer(rownames(x))
@@ -278,9 +310,12 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
 
           # Compute Parallel Variation (PV) statistics
           pv_result <- suppressWarnings(
-               trs_pv(x_sub, y_sub,
+               trs_pv(
+                    x_sub,
+                    y_sub,
                     min_overlap = min_overlap,
-                    prob = TRUE, as_df = FALSE
+                    prob = TRUE,
+                    as_df = FALSE
                )
           )
 
@@ -291,9 +326,12 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
           rownames(tbp_x_sub) <- as.character(common_years)
           rownames(tbp_y_sub) <- as.character(common_years)
 
-          tbp_result <- trs_tbp(tbp_x_sub, tbp_y_sub,
+          tbp_result <- trs_tbp(
+               tbp_x_sub,
+               tbp_y_sub,
                min_overlap = min_overlap,
-               as_df = FALSE, transform = FALSE
+               as_df = FALSE,
+               transform = FALSE
           )
 
           # Compute Hollstein t-values
@@ -303,16 +341,27 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
           rownames(tho_x_sub) <- as.character(common_years)
           rownames(tho_y_sub) <- as.character(common_years)
 
-          tho_result <- trs_tho(tho_x_sub, tho_y_sub,
+          tho_result <- trs_tho(
+               tho_x_sub,
+               tho_y_sub,
                min_overlap = min_overlap,
-               as_df = FALSE, transform = FALSE
+               as_df = FALSE,
+               transform = FALSE
           )
 
           # Compute Pearson correlation and associated t-values
-          cor_result <- trs_tSt(x_sub, y_sub, min_overlap = min_overlap, as_df = FALSE)
+          cor_result <- trs_tSt(
+               x_sub,
+               y_sub,
+               min_overlap = min_overlap,
+               as_df = FALSE
+          )
 
           # Find valid combinations (vectorized approach)
-          valid_combinations <- which(!is.na(pv_result$overlap) & pv_result$overlap >= min_overlap, arr.ind = TRUE)
+          valid_combinations <- which(
+               !is.na(pv_result$overlap) & pv_result$overlap >= min_overlap,
+               arr.ind = TRUE
+          )
 
           if (nrow(valid_combinations) > 0) {
                for (k in seq_len(nrow(valid_combinations))) {
@@ -437,36 +486,47 @@ trs_crossdate <- function(x, y = NULL, min_overlap = 30, sliding = TRUE,
           results_df <- results_df[ord_idx, ]
           rownames(results_df) <- NULL
 
-          # Apply optional sorting by rank_by and filtering by top_n (only when rank_by is specified)
+          # Apply optional sorting by rank_by
           if (!is.null(rank_by)) {
-               final_results <- do.call(rbind, lapply(split(results_df, results_df$series), function(group) {
-                    # Handle NA values in ranking column
-                    valid_rows <- !is.na(group[[rank_by]])
-                    if (sum(valid_rows) == 0) {
-                         # If no valid values for ranking, return empty group if top_n filtering needed
-                         if (!is.null(top_n)) {
-                              return(group[0, , drop = FALSE]) # Return empty if top_n filtering needed
-                         } else {
-                              return(group) # Return unsorted group
+               results_df <- do.call(
+                    rbind,
+                    lapply(
+                         split(results_df, results_df$series),
+                         function(group) {
+                              valid_rows <- !is.na(group[[rank_by]])
+                              if (sum(valid_rows) == 0) {
+                                   return(group)
+                              }
+
+                              group_valid <- group[valid_rows, , drop = FALSE]
+                              group_invalid <- group[
+                                   !valid_rows,
+                                   ,
+                                   drop = FALSE
+                              ]
+                              ord <- order(-group_valid[[rank_by]])
+                              rbind(
+                                   group_valid[ord, , drop = FALSE],
+                                   group_invalid
+                              )
                          }
-                    }
+                    )
+               )
+               rownames(results_df) <- NULL
+          }
 
-                    # Sort by rank_by (high to low)
-                    group_valid <- group[valid_rows, , drop = FALSE]
-                    group_invalid <- group[!valid_rows, , drop = FALSE]
-
-                    ord <- order(-group_valid[[rank_by]])
-                    group <- rbind(group_valid[ord, , drop = FALSE], group_invalid)
-
-                    # Apply top_n filtering if specified
-                    if (!is.null(top_n)) {
-                         group <- utils::head(group, n = top_n)
-                    }
-
-                    return(group)
-               }))
-               rownames(final_results) <- NULL
-               return(final_results)
+          # Apply top_n filtering independently of rank_by
+          if (!is.null(top_n)) {
+               results_df <- do.call(
+                    rbind,
+                    lapply(
+                         split(results_df, results_df$series),
+                         function(group) {
+                              utils::head(group, n = top_n)
+                         }
+                    )
+               )
+               rownames(results_df) <- NULL
           }
      } else {
           results_df <- data.frame()

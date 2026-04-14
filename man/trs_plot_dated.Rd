@@ -13,7 +13,8 @@ trs_plot_dated(
   pv_alpha = 0.2,
   show_stats = TRUE,
   labels = TRUE,
-  label_size = 3
+  label_size = 3,
+  x_breaks = NULL
 )
 }
 \arguments{
@@ -41,6 +42,11 @@ as a plot subtitle. Defaults to \code{TRUE}.}
 If \code{FALSE}, neither labels nor points are shown. Defaults to \code{TRUE}.}
 
 \item{label_size}{Numeric. Controls the size of the year labels. Defaults to \code{3}.}
+
+\item{x_breaks}{Numeric. The interval between x-axis tick marks (in years).
+If \code{NULL} (default), the interval is chosen automatically based on the
+length of the series: 10 years for series ≤ 100 years, 20 for ≤ 250,
+50 for ≤ 500, and 100 otherwise. Must be a positive number if provided.}
 }
 \value{
 A \code{ggplot} object showing the plotted time series.

@@ -203,7 +203,7 @@ Weitz_2025 <-
         dplyr::filter(!is.na(count))
 
 attr(Weitz_2025, "citation") <-
-        "Weitz A., Haneca K. & Hoffsummer P. (in press): Estimating sapwood counts for historical oak timbers from Brussels, Belgium (13th-18th C), International Journal of Wood Culture."
+        "Weitz A., Haneca K. & Hoffsummer P. (2025): Estimating sapwood counts for historical oak timbers from Brussels, Belgium (13th-18th C), International Journal of Wood Culture 5, 1-16. DOI: https://doi.org/10.1163/27723194-bja10038."
 attr(Weitz_2025, "area") <- "Wider Brussels region (Belgium)."
 
 usethis::use_data(Weitz_2025, overwrite = TRUE)

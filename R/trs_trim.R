@@ -20,7 +20,9 @@
 #'
 #' @export
 trs_trim <- function(x, rownames_to_years = FALSE) {
-  if (!is.data.frame(x)) stop("Input must be a data.frame.")
+  if (!is.data.frame(x)) {
+    stop("Input must be a data.frame.")
+  }
 
   if (!is.numeric(as.numeric(rownames(x)))) {
     stop("Rownames must be numeric years.")
@@ -36,6 +38,7 @@ trs_trim <- function(x, rownames_to_years = FALSE) {
 
   if (rownames_to_years) {
     x_trim$year <- as.numeric(rownames(x_trim))
+    x_trim <- x_trim[, c("year", setdiff(names(x_trim), "year"))]
   }
   class(x_trim) <- original_class
   return(x_trim)

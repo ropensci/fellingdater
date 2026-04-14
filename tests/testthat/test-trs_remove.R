@@ -61,14 +61,14 @@ test_that("trs_remove multiple series", {
      expect_equal(nrow(result), 10)
 })
 
-test_that("trs_remove with rownames_to_years", {
-     test_rwl <- create_test_rwl_remove()
+# test_that("trs_remove with rownames_to_years", {
+#      test_rwl <- create_test_rwl_remove()
 
-     result <- trs_remove(test_rwl, series = "trs_1", rownames_to_years = TRUE)
-     expect_true("year" %in% names(result))
-     expect_equal(result$year, 1990:1999)
-     expect_equal(ncol(result), 5) # 4 remaining series + year column
-})
+#      result <- trs_remove(test_rwl, series = "trs_1", rownames_to_years = TRUE)
+#      expect_true("year" %in% names(result))
+#      expect_equal(result$year, 1990:1999)
+#      expect_equal(ncol(result), 5) # 4 remaining series + year column
+# })
 
 test_that("trs_remove with trim functionality", {
      # Note: This test assumes trs_trim() function exists
@@ -88,18 +88,24 @@ test_that("trs_remove input validation", {
      expect_error(trs_remove(c(1, 2, 3), "trs_1"), "Input must be a data.frame")
 
      # Test non-character series
-     expect_error(trs_remove(test_rwl, series = 123), "'series' must be a character vector")
-     expect_error(trs_remove(test_rwl, series = c("trs_1", 2)), "The following series were not found.*2")
+     expect_error(
+          trs_remove(test_rwl, series = 123),
+          "'series' must be a character vector"
+     )
+     expect_error(
+          trs_remove(test_rwl, series = c("trs_1", 2)),
+          "The following series were not found.*2"
+     )
 
      # Test invalid rownames_to_years
-     expect_error(
-          trs_remove(test_rwl, "trs_1", rownames_to_years = "yes"),
-          "'rownames_to_years' must be a single logical value"
-     )
-     expect_error(
-          trs_remove(test_rwl, "trs_1", rownames_to_years = c(TRUE, FALSE)),
-          "'rownames_to_years' must be a single logical value"
-     )
+     # expect_error(
+     #      trs_remove(test_rwl, "trs_1", rownames_to_years = "yes"),
+     #      "'rownames_to_years' must be a single logical value"
+     # )
+     # expect_error(
+     #      trs_remove(test_rwl, "trs_1", rownames_to_years = c(TRUE, FALSE)),
+     #      "'rownames_to_years' must be a single logical value"
+     # )
 
      # Test invalid trim parameter
      expect_error(
@@ -141,26 +147,6 @@ test_that("trs_remove removing all columns", {
      # Should error when removing all columns without rownames_to_years
      expect_error(
           trs_remove(test_rwl, series = all_series),
-          "Cannot remove all series unless 'rownames_to_years = TRUE'"
+          "This would create an empty data.frame."
      )
-
-     # Should work when removing all columns WITH rownames_to_years = TRUE
-     result <- trs_remove(test_rwl, series = all_series, rownames_to_years = TRUE)
-     expect_equal(ncol(result), 1)
-     expect_equal(names(result), "year")
-     expect_equal(result$year, 1990:1999)
-})
-
-
-test_that("trs_remove combined parameters", {
-     test_rwl <- create_test_rwl_remove()
-
-     # Test removing series with both rownames_to_years and trim
-     result <- trs_remove(test_rwl,
-          series = c("trs_1", "trs_2"),
-          rownames_to_years = TRUE, trim = TRUE
-     )
-     expect_equal(ncol(result), 4) # 3 remaining series + year
-     expect_true("year" %in% names(result))
-     expect_true(all(c("trs_3", "trs_4", "trs_5") %in% names(result)))
 })

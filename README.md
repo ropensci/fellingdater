@@ -141,7 +141,7 @@ sw_example1
 sw_combine(sw_example1, plot = TRUE)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
 
 The light grey distributions shows felling date probability densities
 for each individual series, while the dark grey distribution represents
@@ -155,7 +155,7 @@ range, was published by [Hollstein
 sw_model("Hollstein_1980", plot = TRUE)
 ```
 
-<img src="man/figures/README-model_sapwood_counts-1.png" width="100%" />
+<img src="man/figures/README-model_sapwood_counts-1.png" alt="" width="100%" />
 
 ### Tree-ring series analysis
 
@@ -175,7 +175,7 @@ trs_plot_rwl(trs,
              )
 ```
 
-<img src="man/figures/README-trs-example-1.png" width="100%" />
+<img src="man/figures/README-trs-example-1.png" alt="" width="100%" />
 
 - Crossdate a series against a reference series/chronology
 
@@ -211,7 +211,7 @@ trs_plot_dated(series_dated, reference,
                zscore = TRUE, pv_highlight = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
 
 ## Getting started
 
@@ -259,6 +259,16 @@ from dendrochronology literature. It also draws inspiration from
 established R-apackages like [`dplR`](https://opendendro.org/r/).
 
 ## Academic papers citing `fellingdater`
+
+> Gmińska-Nowak B., Raczkowski J., Chlebus E. & Heussner K.-U. 2025:
+> Cistercian heritage in Pelplin, Poland. Dendrochronological dating of
+> the covers of medieval codices, *Dendrochronologia* 94,
+> 126439.<https://doi.org/10.1016/j.dendro.2025.126439>
+
+> Weitz A., Haneca K. & Hoffsummer P. 2025: Estimating sapwood counts
+> for historical oak timbers from Brussels, Belgium (13th–18th century),
+> *International Journal of Wood Culture* 5, 1–16.
+> <https://doi.org/10.1163/27723194-bja10038>
 
 > Altman J., Altmanova N., Fibich P., Korznikov K. & Fonti P. 2025:
 > Advancing dendrochronology with R: an overview of packages and future

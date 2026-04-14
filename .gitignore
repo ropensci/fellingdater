@@ -27,3 +27,6 @@ review_rOpenSci.Rmd
 /doc/
 /Meta/
 NOTES.qmd
+
+/.quarto/
+windows

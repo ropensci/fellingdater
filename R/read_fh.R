@@ -56,11 +56,15 @@
 #' Doel1_header <- read_fh(Doel1, verbose = FALSE, header = TRUE)
 #' Doel1_header
 #'
-read_fh <- function(fname,
-                    BC_correction = FALSE,
-                    verbose = TRUE,
-                    header = FALSE) {
+read_fh <- function(
+     fname,
+     BC_correction = FALSE,
+     verbose = TRUE,
+     header = FALSE
+) {
      inp <- readLines(fname, ok = TRUE, warn = FALSE)
+     # iconv() converts character vectors between encodings
+     inp <- iconv(inp, from = "UTF-8", to = "UTF-8", sub = "?")
      # removes empty lines in .fh file
      inp <- inp[nzchar(trimws(inp))]
      ## Get start and end positions of headers and data blocks
@@ -173,7 +177,8 @@ read_fh <- function(fname,
                )
           )
           if (length(this.keycode) != 1) {
-               string2 <- gettext('number of "KeyCode" lines is not 1',
+               string2 <- gettext(
+                    'number of "KeyCode" lines is not 1',
                     domain = "R-dplR"
                )
                stop(
@@ -201,7 +206,8 @@ read_fh <- function(fname,
                )
           )
           if (length(this.length) != 1) {
-               string2 <- gettext('number of "Length" lines is not 1',
+               string2 <- gettext(
+                    'number of "Length" lines is not 1',
                     domain = "R-dplR"
                )
                stop(
@@ -225,7 +231,8 @@ read_fh <- function(fname,
                )
           )
           if (length(this.end.year) != 1) {
-               string2 <- gettext('number of "DateEnd" lines is not 1',
+               string2 <- gettext(
+                    'number of "DateEnd" lines is not 1',
                     domain = "R-dplR"
                )
                stop(
@@ -252,7 +259,8 @@ read_fh <- function(fname,
                if (length(this.end.year) == 1) {
                     start.years[i] <- end.years[i] - lengths[i] + 1
                } else {
-                    string2 <- gettext('number of "DateBegin" lines is not 1',
+                    string2 <- gettext(
+                         'number of "DateBegin" lines is not 1',
                          domain = "R-dplR"
                     )
                     stop(
@@ -268,15 +276,21 @@ read_fh <- function(fname,
           } else {
                start.years[i] <- as.numeric(this.start.year)
                # check for BC - AD dates and add not existing year 0
-               if (start.years[i] < 0 &&
-                    end.years[i] > 0 && BC_correction == TRUE) {
+               if (
+                    start.years[i] < 0 &&
+                         end.years[i] > 0 &&
+                         BC_correction == TRUE
+               ) {
                     start.years[i] <- start.years[i] + 1
                }
           }
           ## correct BC dates to +1, because rwl-format uses non-existing year 0
           ## and this is not necessary in the FH-format
-          if (start.years[i] < 0 &&
-               end.years[i] < 0 && BC_correction == TRUE) {
+          if (
+               start.years[i] < 0 &&
+                    end.years[i] < 0 &&
+                    BC_correction == TRUE
+          ) {
                start.years[i] <- start.years[i] + 1
                end.years[i] <- end.years[i] + 1
           }
@@ -296,7 +310,11 @@ read_fh <- function(fname,
                this.unit <- sub("mm", "", this.unit, ignore.case = TRUE)
                div.loc <- regexpr("/", this.unit, fixed = TRUE)
                if (div.loc > 0) {
-                    multipliers[i] <- as.numeric(substr(this.unit, 1, div.loc - 1))
+                    multipliers[i] <- as.numeric(substr(
+                         this.unit,
+                         1,
+                         div.loc - 1
+                    ))
                     divisors[i] <-
                          as.numeric(substr(
                               this.unit,
@@ -308,7 +326,8 @@ read_fh <- function(fname,
                     divisors[i] <- 1
                }
                if (is.na(multipliers[i]) || is.na(divisors[i])) {
-                    string2 <- gettext('cannot interpret "Unit" line',
+                    string2 <- gettext(
+                         'cannot interpret "Unit" line',
                          domain = "R-dplR"
                     )
                     stop(
@@ -322,7 +341,8 @@ read_fh <- function(fname,
                     )
                }
           } else if (length(this.unit) > 1) {
-               string2 <- gettext('number of "Unit" lines is > 1',
+               string2 <- gettext(
+                    'number of "Unit" lines is > 1',
                     domain = "R-dplR"
                )
                stop(
@@ -387,10 +407,7 @@ read_fh <- function(fname,
                "RadiusNo=",
                "",
                fixed = TRUE,
-               x = grep("^RadiusNo=", this.header,
-                    value =
-                         TRUE
-               )
+               x = grep("^RadiusNo=", this.header, value = TRUE)
           )
           if (length(this.radius) == 1) {
                tmp <- suppressWarnings(as.numeric(this.radius))
@@ -432,8 +449,11 @@ read_fh <- function(fname,
                )
           if (length(this.missing) == 1) {
                tmp <- suppressWarnings(as.numeric(this.missing))
-               if (identical(tmp, round(tmp)) &&
-                    tmp >= 0 && !is.na(tmp)) {
+               if (
+                    identical(tmp, round(tmp)) &&
+                         tmp >= 0 &&
+                         !is.na(tmp)
+               ) {
                     pith.offset[i] <- tmp + 1
                }
           }
@@ -452,8 +472,11 @@ read_fh <- function(fname,
                )
           if (length(this.missing.delta) == 1) {
                tmp <- suppressWarnings(as.numeric(this.missing.delta))
-               if (identical(tmp, round(tmp)) &&
-                    tmp >= 0 && !is.na(tmp)) {
+               if (
+                    identical(tmp, round(tmp)) &&
+                         tmp >= 0 &&
+                         !is.na(tmp)
+               ) {
                     # !is.na() when text input
                     pith_offset_delta[i] <- tmp
                }
@@ -864,13 +887,17 @@ read_fh <- function(fname,
           portion <- inp[portion.start:portion.end]
 
           ## data is in column format (with comments)
-          if (nchar(portion[1]) < 60 ||
-               grepl(";", portion[1], fixed = TRUE)) {
+          if (
+               nchar(portion[1]) < 60 ||
+                    grepl(";", portion[1], fixed = TRUE)
+          ) {
                data <- as.numeric(vapply(portion, strip.comment, "foo"))
 
                ## data is in block format
-          } else if (data_type[i] == "Single" ||
-               data_type[i] == "Tree") {
+          } else if (
+               data_type[i] == "Single" ||
+                    data_type[i] == "Tree"
+          ) {
                data <- numeric(length(portion) * 10)
                for (j in seq_along(portion)) {
                     row.fwf <- substring(
@@ -902,10 +929,8 @@ read_fh <- function(fname,
                          data <- data[-zeros]
                     }
                }
-          }
-
-          ## data in block format (Quadro) => chronology
-          else if (data_type[i] == "Quadro") {
+          } else if (data_type[i] == "Quadro") {
+               ## data in block format (Quadro) => chronology
                data <- numeric(length(portion) * 4)
                for (j in seq_along(portion)) {
                     row.fwf <- substring(
@@ -938,11 +963,11 @@ read_fh <- function(fname,
                          data <- data[-zeros]
                     }
                }
-          }
-
-          ## data in block format (Double) => half-chrono
-          else if (data_type[i] == "Double" ||
-               data_type[i] == "HalfChrono") {
+          } else if (
+               data_type[i] == "Double" ||
+                    data_type[i] == "HalfChrono"
+          ) {
+               ## data in block format (Double) => half-chrono
                data <- numeric(length(portion) * 5)
                for (j in seq_along(portion)) {
                     row.fwf <- substring(
@@ -981,7 +1006,10 @@ read_fh <- function(fname,
           n.true <- length(data)
           if (n.true == n.expected) {
                ## write data into matrix
-               dendro.matrix[(start.years[i] - r.off):(end.years[i] - r.off), i] <-
+               dendro.matrix[
+                    (start.years[i] - r.off):(end.years[i] - r.off),
+                    i
+               ] <-
                     data
           } else if (n.true < n.expected) {
                stop(
@@ -995,7 +1023,10 @@ read_fh <- function(fname,
                     domain = NA
                )
           } else if (all(is.na(data[(n.expected + 1):n.true]))) {
-               dendro.matrix[(start.years[i] - r.off):(end.years[i] - r.off), i] <-
+               dendro.matrix[
+                    (start.years[i] - r.off):(end.years[i] - r.off),
+                    i
+               ] <-
                     data[seq_len(n.expected)]
           } else {
                stop(
@@ -1022,20 +1053,11 @@ read_fh <- function(fname,
                n
           ))
           start.years.char <-
-               format(start.years,
-                    scientific = FALSE,
-                    trim = TRUE
-               )
+               format(start.years, scientific = FALSE, trim = TRUE)
           end.years.char <-
-               format(end.years,
-                    scientific = FALSE,
-                    trim = TRUE
-               )
+               format(end.years, scientific = FALSE, trim = TRUE)
           seq.series.char <-
-               format(seq_len(n),
-                    scientific = FALSE,
-                    trim = TRUE
-               )
+               format(seq_len(n), scientific = FALSE, trim = TRUE)
           ## column titles + 'data_type' added to message
           cat(
                paste0(
@@ -1128,9 +1150,7 @@ read_fh <- function(fname,
                     if (max.existing < 1) {
                          free.ids <- 1:total.dupl
                     } else {
-                         free.ids <- which(!(
-                              1:max.existing %in% existing
-                         ))
+                         free.ids <- which(!(1:max.existing %in% existing))
                          free.ids <-
                               c(
                                    free.ids,

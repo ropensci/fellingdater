@@ -4,26 +4,24 @@
 \alias{trs_remove}
 \title{Removes one or more series from an rwl-style data frame}
 \usage{
-trs_remove(x, series, rownames_to_years = FALSE, trim = FALSE)
+trs_remove(x, series, trim = FALSE)
 }
 \arguments{
 \item{x}{A \code{data.frame} of class \code{"rwl"}, where each column is a tree-ring width series and rownames represent years.}
 
 \item{series}{A character vector specifying the names of the series (columns) to remove.}
 
-\item{rownames_to_years}{Logical. If \code{TRUE}, the rownames of \code{x} (years) are added as a column named \code{year}.}
-
 \item{trim}{Logical. If \code{TRUE}, leading and trailing all-NA rows are removed using \code{trs_trim()}.}
 }
 \value{
-A \code{data.frame} with the specified series removed. If \code{rownames_to_years = TRUE}, the result will have an additional \code{year} column.
+A \code{data.frame} with the specified series removed.
 }
 \description{
 Removes one or more tree-ring series (columns) from a data frame of class \code{"rwl"}. Optionally adds the rownames (assumed to be years) as a column.
 }
 \examples{
 rwl <- trs_pseudo_rwl(n_series = 3, series_length = 60, end_date = 2000)
-trs_remove(rwl, series = "trs_1")
-trs_remove(rwl, series = c("trs_1", "trs_3"), rownames_to_years = TRUE)
+trs_remove(rwl, series = "trs_1", trim = TRUE)
+trs_remove(rwl, series = c("trs_1", "trs_3"))
 
 }

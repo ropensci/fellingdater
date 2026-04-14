@@ -28,8 +28,9 @@ series pairs to compute statistics. Must be >= 3. Default is 30.}
 multiple temporal lags. If \code{FALSE}, tests only at lag 0 (contemporary positioning).
 Default is \code{TRUE}.}
 
-\item{top_n}{Integer or NULL. If specified, returns only the top n matches per
-test series (after optional sorting by \code{rank_by}). Default is \code{NULL}.}
+\item{top_n}{Integer or NULL. If specified, returns only the top \code{n} matches
+per test series, ranked by the statistic given in \code{rank_by}. Requires
+\code{rank_by} to be specified. Default is \code{NULL}.}
 
 \item{rank_by}{Character or NULL. Statistic to rank by when sorting results per
 test series. If \code{NULL}, no additional sorting is applied beyond default ordering.

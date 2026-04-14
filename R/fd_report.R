@@ -97,15 +97,18 @@
 #' @export
 #' @seealso [sw_interval()], [sw_data_overview()], [sw_interval_plot()]
 
-fd_report <- function(x,
-                      series = "series",
-                      last = "last",
-                      n_sapwood = "n_sapwood",
-                      waneyedge = "waneyedge",
-                      sw_data = "Hollstein_1980",
-                      cred_mass = 0.954,
-                      densfun = "lognormal") {
-     check_input(x,
+fd_report <- function(
+     x,
+     series = "series",
+     last = "last",
+     n_sapwood = "n_sapwood",
+     waneyedge = "waneyedge",
+     sw_data = "Hollstein_1980",
+     cred_mass = 0.954,
+     densfun = "lognormal"
+) {
+     check_input(
+          x,
           series = series,
           last = last,
           n_sapwood = n_sapwood,
@@ -115,10 +118,10 @@ fd_report <- function(x,
           densfun = densfun
      )
 
-     series <- x[, series]
-     n_sapwood <- x[, n_sapwood]
-     last <- x[, last]
-     waneyedge <- x[, waneyedge]
+     series <- x[[series]]
+     n_sapwood <- x[[n_sapwood]]
+     last <- x[[last]]
+     waneyedge <- x[[waneyedge]]
 
      # checks if sw_data is one of the data sets within the package
      if (sw_data %in% sw_data_overview()) {

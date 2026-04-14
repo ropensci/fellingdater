@@ -1,12 +1,14 @@
 #' Helper function to scale a Probability Density Function (PDF) to a
 #' Probability Frequency Function.
 #' @noRd
-d_dens <- function(densfun = densfun,
-                   x = x,
-                   param1 = 0,
-                   param2 = 1,
-                   log = FALSE,
-                   n = 1) {
+d_dens <- function(
+     densfun = densfun,
+     x = x,
+     param1 = 0,
+     param2 = 1,
+     log = FALSE,
+     n = 1
+) {
      if (!densfun %in% c("lognormal", "normal", "weibull", "gamma")) {
           stop(sprintf(
                "!!! '%s' is not a supported distribution !!!",
@@ -14,46 +16,49 @@ d_dens <- function(densfun = densfun,
           ))
      }
      if (densfun == "lognormal") {
-          n * stats::dlnorm(
-               x = x,
-               meanlog = param1,
-               sdlog = param2,
-               log = log
-          )
+          n *
+               stats::dlnorm(
+                    x = x,
+                    meanlog = param1,
+                    sdlog = param2,
+                    log = log
+               )
      } else if (densfun == "normal") {
-          n * stats::dnorm(
-               x = x,
-               mean = param1,
-               sd = param2,
-               log = log
-          )
+          n *
+               stats::dnorm(
+                    x = x,
+                    mean = param1,
+                    sd = param2,
+                    log = log
+               )
      } else if (densfun == "weibull") {
-          n * stats::dweibull(
-               x = x,
-               shape = param1,
-               scale = param2,
-               log = log
-          )
+          n *
+               stats::dweibull(
+                    x = x,
+                    shape = param1,
+                    scale = param2,
+                    log = log
+               )
      } else if (densfun == "gamma") {
-          n * stats::dgamma(
-               x = x,
-               shape = param1,
-               rate = param2,
-               log = log
-          )
+          n *
+               stats::dgamma(
+                    x = x,
+                    shape = param1,
+                    rate = param2,
+                    log = log
+               )
      }
 }
 
 
-#' Helper function to rescale probabilities between [0, 1].
+#' Helper function to rescale probabilities between 0 and 1.
 #' @noRd
-rescale <- function(x,
-                    floor = 0,
-                    ceiling = 1) {
+rescale <- function(x, floor = 0, ceiling = 1) {
      if (max(x, na.rm = TRUE) == 0) {
           x
      } else {
-          (x - min(x, na.rm = TRUE)) * (ceiling - floor) /
+          (x - min(x, na.rm = TRUE)) *
+               (ceiling - floor) /
                (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
      }
 }
@@ -62,14 +67,16 @@ rescale <- function(x,
 #' Helper function to check input for sw_combine, fd_report and sw_sum
 #' @noRd
 
-check_input <- function(x = x,
-                        series = series,
-                        last = last,
-                        n_sapwood = n_sapwood,
-                        waneyedge = waneyedge,
-                        sw_data = sw_data,
-                        cred_mass = cred_mass,
-                        densfun = densfun) {
+check_input <- function(
+     x = x,
+     series = series,
+     last = last,
+     n_sapwood = n_sapwood,
+     waneyedge = waneyedge,
+     sw_data = sw_data,
+     cred_mass = cred_mass,
+     densfun = densfun
+) {
      if (!is.data.frame(x)) {
           stop("Input 'x' must be a dataframe.")
      }
@@ -87,24 +94,27 @@ check_input <- function(x = x,
      if (!waneyedge %in% names(x)) {
           stop("--> column 'waneyedge' does not exist")
      }
-     series <- x[, series] # check for NA's
+     series <- x[[series]] # check for NA's
      if (any(is.na(series))) {
           stop("--> some 'series' have no id")
      }
 
-     if (is.character(x[, n_sapwood])) {
-          # was !is.numeric !!!
+     if (!is.numeric(x[[n_sapwood]])) {
+          # was is.character(x[, n_sapwood])
           stop("--> 'n_sapwood' must be a numeric vector")
      }
 
-     if (!is.numeric(x[, last])) {
+     if (!is.numeric(x[[last]])) {
+          # was !is.numeric(x[, last]), but different behaviour for tibble/data.frame
           stop("--> 'last' must be a numeric vector")
      }
 
-     if (!is.logical(x[, waneyedge])) {
+     if (!is.logical(x[[waneyedge]])) {
           # check is.logical
-          stop("--> 'waneyedge' should be a logical vector (TRUE/FALSE),
-indicating the presence of waney edge.\n")
+          stop(
+               "--> 'waneyedge' should be a logical vector (TRUE/FALSE),
+indicating the presence of waney edge.\n"
+          )
      }
 
      if (is.na(cred_mass) || cred_mass <= 0 || cred_mass >= 1) {
@@ -112,16 +122,20 @@ indicating the presence of waney edge.\n")
      }
 
      if (!is.character(sw_data)) {
-          stop("--> sw_data should be one of `sw_data_overview()`
+          stop(
+               "--> sw_data should be one of `sw_data_overview()`
          or the name a data.frame with numeric values in columns
-         `n_sapwood` and `count`.)")
+         `n_sapwood` and `count`.)"
+          )
      }
 
-     if (all(
-          !sw_data %in% sw_data_overview(),
-          !exists(sw_data),
-          !sw_data %in% colnames(x)
-     )) {
+     if (
+          all(
+               !sw_data %in% sw_data_overview(),
+               !exists(sw_data),
+               !sw_data %in% colnames(x)
+          )
+     ) {
           stop(
                sprintf(
                     "--> sw_data should be one of `sw_data_overview()`
@@ -199,7 +213,7 @@ check_cred_mass <- function(x) {
 #' @noRd
 check_n_sapwood <- function(x) {
      if (is.na(x)) {
-          message("--> n_sapwood must be a postitive numeric value, not 'NA'")
+          message("--> n_sapwood must be a positive numeric value, not 'NA'")
           return(NA_integer_)
      }
 
@@ -236,7 +250,9 @@ check_sapwood_data_user <- function(data) {
 
      required_cols <- c("n_sapwood", "count")
      if (!all(required_cols %in% names(data))) {
-          stop("User-defined data.frame must contain columns: `n_sapwood` and `count`.")
+          stop(
+               "User-defined data.frame must contain columns: `n_sapwood` and `count`."
+          )
      }
 
      if (!is.numeric(data$n_sapwood) || !is.numeric(data$count)) {
@@ -244,7 +260,9 @@ check_sapwood_data_user <- function(data) {
      }
 
      if (anyNA(data$n_sapwood) || anyNA(data$count)) {
-          stop("--> Columns `n_sapwood` and `count` must not contain NA values.")
+          stop(
+               "--> Columns `n_sapwood` and `count` must not contain NA values."
+          )
      }
 
      if (any(data$n_sapwood <= 0)) {
@@ -283,7 +301,10 @@ check_duplicate_labels <- function(x) {
      if (length(dup_labs) > 0) {
           msg <- c(
                msg,
-               paste("Duplicated series labels detected:", paste(dup_labs, collapse = ", "))
+               paste(
+                    "Duplicated series labels detected:",
+                    paste(dup_labs, collapse = ", ")
+               )
           )
      }
 
@@ -312,7 +333,13 @@ check_duplicate_labels <- function(x) {
 #'
 check_single_series <- function(x, arg_name = "x") {
      if (!is.data.frame(x) || ncol(x) != 1) {
-          stop(sprintf("`%s` must be a data.frame with exactly one series (one column). Use `trs_select()` to extract a single series.", arg_name), call. = FALSE)
+          stop(
+               sprintf(
+                    "`%s` must be a data.frame with exactly one series (one column). Use `trs_select()` to extract a single series.",
+                    arg_name
+               ),
+               call. = FALSE
+          )
      }
      invisible(TRUE)
 }
@@ -324,7 +351,11 @@ check_consecutive <- function(df) {
           stop(paste("Rownames of", df_name, "are not all numeric."))
      }
      if (!all(diff(years) == 1)) {
-          stop(paste("Rownames of", df_name, "are not a continuous sequence of years."))
+          stop(paste(
+               "Rownames of",
+               df_name,
+               "are not a continuous sequence of years."
+          ))
      }
 }
 

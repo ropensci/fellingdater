@@ -20,6 +20,10 @@
 #' @param labels Logical. If `TRUE`, displays year labels and points at the start and end positions.
 #'   If `FALSE`, neither labels nor points are shown. Defaults to `TRUE`.
 #' @param label_size Numeric. Controls the size of the year labels. Defaults to `3`.
+#' @param x_breaks Numeric. The interval between x-axis tick marks (in years).
+#'   If `NULL` (default), the interval is chosen automatically based on the
+#'   length of the series: 10 years for series ≤ 100 years, 20 for ≤ 250,
+#'   50 for ≤ 500, and 100 otherwise. Must be a positive number if provided.
 #'
 #' @return A `ggplot` object showing the plotted time series.
 #'
@@ -43,35 +47,50 @@
 #' y <- trs_pseudo_rwl(n_series = 1, series_length = 400, end_date = 1700, prefix = "ref_")
 #' trs_plot_dated(x, y)
 #'
-trs_plot_dated <- function(x, y,
-                           end_year = NULL,
-                           zscore = TRUE,
-                           pv_highlight = TRUE,
-                           pv_alpha = 0.2,
-                           show_stats = TRUE,
-                           labels = TRUE,
-                           label_size = 3) {
+trs_plot_dated <- function(
+     x,
+     y,
+     end_year = NULL,
+     zscore = TRUE,
+     pv_highlight = TRUE,
+     pv_alpha = 0.2,
+     show_stats = TRUE,
+     labels = TRUE,
+     label_size = 3,
+     x_breaks = NULL
+) {
      .data <- pv <- year <- label <- hjust <- NULL
 
      check_single_series(x, "x")
      check_single_series(y, "y")
 
-     if (!is.null(end_year) && is.numeric(end_year)) {
+     if (!is.null(end_year)) {
+          if (!is.numeric(end_year)) {
+               stop("'end_year' must be a numeric value")
+          }
           x <- trs_end_date(x, end_year = end_year, trim = TRUE)
      }
+
      if (!is.numeric(label_size) || label_size <= 0) {
           stop("label_size must be a positive number")
      }
 
+     trs_name_display <- names(x)
+     names(x) <- make.names(names(x))
      trs_name <- names(x)
      trs_plot <- trs_trim(x, rownames_to_years = TRUE)
+     ref_name_display <- names(y)
+     names(y) <- make.names(names(y))
      ref_name <- names(y)
      ref_plot <- trs_trim(y, rownames_to_years = TRUE)
      common_years <- intersect(trs_plot$year, ref_plot$year)
      years_min <- min(trs_plot$year)
      years_max <- max(trs_plot$year)
 
-     ref_plot <- subset(ref_plot, year %in% c((years_min - 10):(years_max + 10)))
+     ref_plot <- subset(
+          ref_plot,
+          year %in% c((years_min - 10):(years_max + 10))
+     )
 
      if (length(common_years) < 10) {
           stop("overlap less than 10 years")
@@ -79,29 +98,53 @@ trs_plot_dated <- function(x, y,
 
      data_corr <- suppressMessages(
           trs_crossdate(
-               x = trs_plot[, 1, drop = FALSE],
-               y = ref_plot[, 1, drop = FALSE],
+               x = trs_plot[, trs_name, drop = FALSE],
+               y = ref_plot[, ref_name, drop = FALSE],
                min_overlap = 10,
                sliding = FALSE,
                pb = FALSE
           )
      )
 
-     pv <- sgc_for_plot(trs_plot[, 1, drop = FALSE], ref_plot[, 1, drop = FALSE])
+     pv <- sgc_for_plot(
+          trs_plot[, trs_name, drop = FALSE],
+          ref_plot[, ref_name, drop = FALSE]
+     )
      pv$year <- as.numeric(rownames(pv))
 
      if (zscore) {
-          trs_plot <- trs_zscore(trs_plot[, 1, drop = FALSE])
+          trs_plot <- trs_zscore(trs_plot[, trs_name, drop = FALSE])
           trs_plot$year <- as.numeric(rownames(trs_plot))
 
-          ref_plot <- trs_zscore(ref_plot[, 1, drop = FALSE])
+          ref_plot <- trs_zscore(ref_plot[, ref_name, drop = FALSE])
           ref_plot$year <- as.numeric(rownames(ref_plot))
      }
 
-     y_last <- trs_plot[trs_plot$year == years_max, 1]
-     y_first <- trs_plot[trs_plot$year == years_min, 1]
-     value_min <- min(c(trs_plot[[1]], ref_plot[[1]]))
-     value_max <- max(c(trs_plot[[1]], ref_plot[[1]]))
+     y_last <- trs_plot[trs_plot$year == years_max, trs_name]
+     y_first <- trs_plot[trs_plot$year == years_min, trs_name]
+     # to avoid labels get clipped, with expand = c(0, 0) in scale_y_continuous
+     value_min <- floor(
+          min(c(trs_plot[[trs_name]], ref_plot[[ref_name]]), na.rm = TRUE) * 4
+     ) /
+          4
+     value_max <- ceiling(
+          max(c(trs_plot[[trs_name]], ref_plot[[ref_name]]), na.rm = TRUE) * 4
+     ) /
+          4
+
+     # Auto-select break interval if not specified
+     if (!is.null(x_breaks) && (!is.numeric(x_breaks) || x_breaks <= 0)) {
+          stop("'x_breaks' must be a positive number")
+     }
+     if (is.null(x_breaks)) {
+          series_length <- years_max - years_min
+          x_breaks <- dplyr::case_when(
+               series_length <= 100 ~ 10,
+               series_length <= 250 ~ 20,
+               series_length <= 500 ~ 50,
+               TRUE ~ 100
+          )
+     }
 
      if (labels) {
           # Create data frame for year labels
@@ -111,7 +154,6 @@ trs_plot_dated <- function(x, y,
                label = c(as.character(years_min), as.character(years_max)),
                hjust = c(1, 0)
           )
-
           # Create data frame for points
           point_data <- data.frame(
                x = c(years_min, years_max),
@@ -137,6 +179,15 @@ trs_plot_dated <- function(x, y,
                     )
                }
           } +
+          {
+               if (zscore) {
+                    ggplot2::geom_hline(
+                         yintercept = 0,
+                         linetype = "dashed",
+                         alpha = 0.3
+                    )
+               }
+          } +
           ggplot2::geom_line(
                data = trs_plot,
                ggplot2::aes(x = year, y = .data[[trs_name]])
@@ -146,7 +197,8 @@ trs_plot_dated <- function(x, y,
                ggplot2::aes(
                     x = year,
                     y = .data[[ref_name]]
-               ), color = "red3"
+               ),
+               color = "red3"
           ) +
           {
                if (labels) {
@@ -163,7 +215,12 @@ trs_plot_dated <- function(x, y,
                if (labels) {
                     ggplot2::geom_label(
                          data = label_data,
-                         ggplot2::aes(x = x, y = y, label = label, hjust = hjust),
+                         ggplot2::aes(
+                              x = x,
+                              y = y,
+                              label = label,
+                              hjust = hjust
+                         ),
                          size = label_size,
                          linewidth = 0,
                          fill = "white",
@@ -181,26 +238,28 @@ trs_plot_dated <- function(x, y,
                plot.title = ggtext::element_markdown(size = 10),
                plot.title.position = "plot",
                plot.caption = ggtext::element_markdown(size = 8),
-               plot.subtitle = ggtext::element_markdown(face = "italic", size = 8)
+               plot.subtitle = ggtext::element_markdown(
+                    face = "italic",
+                    size = 8
+               )
           ) +
           ggplot2::scale_x_continuous(
                limits = c(years_min - 10, years_max + 10),
                breaks = seq(
-                    plyr::round_any(years_min -
-                         10, 10, f = floor),
-                    plyr::round_any(years_max + 10, 10, f = floor),
-                    by = 10
+                    plyr::round_any(years_min - 10, x_breaks, f = floor),
+                    plyr::round_any(years_max + 10, x_breaks, f = floor),
+                    by = x_breaks
                )
           ) +
           ggplot2::scale_y_continuous(expand = c(0, 0)) +
           ggplot2::ylab(if (zscore) "z-score\n" else "ring width\n") +
           ggplot2::labs(
                title = paste(
-                    data_corr["series"],
+                    trs_name_display,
                     "<span style = 'color:white;'></span>",
                     "---",
                     "<span style = 'color:red3;'>",
-                    data_corr["reference"],
+                    ref_name_display,
                     "</span>"
                )
           ) +
@@ -215,7 +274,8 @@ trs_plot_dated <- function(x, y,
                               round(data_corr["r_pearson"], 2),
                               "<span style = 'color:white;'>----</span>",
                               "sgc = ",
-                              data_corr["sgc"], "%",
+                              data_corr["sgc"],
+                              "%",
                               "<span style = 'color:white;'>----</span>",
                               "t<sub>BP</sub> = ",
                               data_corr["t_BP"],
