@@ -2,25 +2,30 @@
 
 ## fellingdater 1.2.1 (2026-04-14)
 
-IMPROVEMENTS -
-[`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md)
-gains a new `x_breaks` argument to control x-axis tick intervals -
-[`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md)
-now handles non-syntactic column names safely using
-[`make.names()`](https://rdrr.io/r/base/make.names.html) - improved
-y-axis scaling and plot appearance for
-[`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md) -
-fix for
-[`trs_crossdate()`](https://ropensci.github.io/fellingdater/reference/trs_crossdate.md)
-so it behaves correctly when `top_n` is activated
+IMPROVEMENTS
 
-BUG FIXES -
-[`read_fh()`](https://ropensci.github.io/fellingdater/reference/read_fh.md)
-now safely handles non-UTF-8 characters by normalizing input with
-[`iconv()`](https://rdrr.io/r/base/iconv.html)
+- [`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md)
+  gains a new `x_breaks` argument to control x-axis tick intervals
+- [`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md)
+  now handles non-syntactic column names safely using
+  [`make.names()`](https://rdrr.io/r/base/make.names.html)
+- improved y-axis scaling and plot appearance for
+  [`trs_plot_dated()`](https://ropensci.github.io/fellingdater/reference/trs_plot_dated.md)
+- fix for
+  [`trs_crossdate()`](https://ropensci.github.io/fellingdater/reference/trs_crossdate.md)
+  so it behaves correctly when `top_n` is activated
 
-DOCUMENTATION - added recent scientific publications citing the
-companion paper to the package
+BUG FIXES
+
+- [`read_fh()`](https://ropensci.github.io/fellingdater/reference/read_fh.md)
+  now safely handles non-UTF-8 characters by normalizing input with
+  [`iconv()`](https://rdrr.io/r/base/iconv.html)
+
+DOCUMENTATION
+
+- added recent scientific publications citing the companion paper to the
+  package
+- removed non-ASCII characters from function documentation
 
 ## fellingdater 1.2.0 (2025-06-30)
 
