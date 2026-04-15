@@ -20,7 +20,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/ropensci/fellingdater/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/ropensci/fellingdater/blob/v1.2.1/inst/CITATION)
 
 Haneca K (2024). “fellingdater: a toolkit to estimate, report and
 combine felling dates derived from historical tree-ring series.”
